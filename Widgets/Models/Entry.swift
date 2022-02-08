@@ -16,12 +16,3 @@ enum AssetWidgetEntryKind {
     case Unsupported
     case Success
 }
-
-
-struct RandomAssetWidgetEntry: TimelineEntry {
-    let date: Date
-    let kind: AssetWidgetEntryKind
-    let displayInfo: Bool
-    let data: Asset?
-}
-

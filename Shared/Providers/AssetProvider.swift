@@ -31,7 +31,11 @@ final class AssetProvider {
             let request = APIRequest(url: url)
             
             let response = try await request.perform(ofType: OpenSeaApiAssetsResponse.self)
-            return response.assets
+            
+            let cleanedAssets = response.assets.filter { $0.imageThumbnailUrl != nil && $0.imageUrl != nil }
+            
+            return cleanedAssets
+            
         } catch {
             print("⚠️ AssetProvider::fetchAssets: \(error)")
             

@@ -15,5 +15,6 @@ struct WidgetsBundle: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         BasicAssetWidget()
+        RandomAssetWidget()
     }
 }

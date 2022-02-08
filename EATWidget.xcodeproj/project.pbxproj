@@ -88,6 +88,7 @@
 		5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
 		5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
 		5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
+		5C63090E27B3202000AC2A24 /* RandomAssetWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090D27B3202000AC2A24 /* RandomAssetWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +182,7 @@
 		5C63090227B2F9A600AC2A24 /* HexBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexBackground.swift; sourceTree = "<group>"; };
 		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
 		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
+		5C63090D27B3202000AC2A24 /* RandomAssetWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAssetWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6308E727B2EB7400AC2A24 /* BasicAssetWidget.swift */,
+				5C63090D27B3202000AC2A24 /* RandomAssetWidget.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
 				5C6308E827B2EB7400AC2A24 /* BasicAssetWidget.swift in Sources */,
+				5C63090E27B3202000AC2A24 /* RandomAssetWidget.swift in Sources */,
 				5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */,
 				5C6308F127B2F14900AC2A24 /* UnconfiguredView.swift in Sources */,
 				5C6308F927B2F23900AC2A24 /* WalletView.swift in Sources */,

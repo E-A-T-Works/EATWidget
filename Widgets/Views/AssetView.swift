@@ -67,9 +67,10 @@ struct AssetView: View {
                             )
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 24, height: 24)
+                            .frame(width: 32, height: 32)
                             .cornerRadius(12)
-                            .padding(8)
+                            .padding([.top], 12)
+                            .padding([.trailing], 8)
                             
                             Spacer()
                         }
@@ -84,7 +85,8 @@ struct AssetView: View {
                                     .font(.headline)
                                     .lineLimit(1)
                             }
-                            .padding(8)
+                            .padding([.bottom], 12)
+                            .padding([.leading, .trailing], 12)
 
                         }
                         Spacer()
@@ -96,6 +98,36 @@ struct AssetView: View {
         }
     }
 }
+
+
+// MARK: Small
+
+struct AssetView_Small: View {
+    var body: some View {
+        Text("Small")
+    }
+}
+
+
+// MARK: Medium
+
+struct AssetView_Medium: View {
+    var body: some View {
+        Text("Medium")
+    }
+}
+
+
+// MARK: Large
+
+struct AssetView_Large: View {
+    var body: some View {
+        Text("Large")
+    }
+}
+
+
+// MARK: Preview
 
 struct AssetView_Previews: PreviewProvider {
     static var previews: some View {
