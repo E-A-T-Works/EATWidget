@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct EATWidgetApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
+        // TODO: Replace this with ContentView which handles openURL
+        // see: https://medium.com/@karaiskc/programmatic-navigation-in-swiftui-30b75613f285
+        
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            NavigationView {
+                CollectionPage()
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }

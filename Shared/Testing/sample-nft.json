@@ -1,0 +1,203 @@
+{
+  "id": 6504,
+  "token_id": "6511",
+  "num_sales": 0,
+  "background_color": "dfdffa",
+  "image_url": "https://lh3.googleusercontent.com/rVIk8-4HlQBMZBY6ZqWTiS2C3o35c8dckAua22XCoaveyOAOdpQJCyrh93ugKElLPSfTOnHZ838hYu2cjkRoWM8e",
+  "image_preview_url": "https://lh3.googleusercontent.com/rVIk8-4HlQBMZBY6ZqWTiS2C3o35c8dckAua22XCoaveyOAOdpQJCyrh93ugKElLPSfTOnHZ838hYu2cjkRoWM8e=s250",
+  "image_thumbnail_url": "https://lh3.googleusercontent.com/rVIk8-4HlQBMZBY6ZqWTiS2C3o35c8dckAua22XCoaveyOAOdpQJCyrh93ugKElLPSfTOnHZ838hYu2cjkRoWM8e=s128",
+  "image_original_url": "https://img.cryptokitties.co/0x06012c8cf97bead5deae237070f9587f8e7a266d/6511.png",
+  "animation_url": null,
+  "animation_original_url": null,
+  "name": null,
+  "description": "Heyo! I'm Kitty #6511. I'm a professional Ventriloquist and I love hamburgers. I once got in a fight with a rhino, and won. Let's get busy!",
+  "external_link": "https://www.cryptokitties.co/kitty/6511",
+  "asset_contract": {
+    "address": "0x16baf0de678e52367adc69fd067e5edd1d33e3bf",
+    "asset_contract_type": "non-fungible",
+    "created_date": "2018-01-23T04:50:03.948541",
+    "name": "CryptoKittiesRinkeby",
+    "nft_version": "1.0",
+    "opensea_version": null,
+    "owner": 8995,
+    "schema_name": "ERC721",
+    "symbol": "KITTYR",
+    "total_supply": null,
+    "description": "The Rinkeby version of CryptoKitties",
+    "external_link": null,
+    "image_url": "https://storage.googleapis.com/opensea-static/cryptokitties-logo.png",
+    "default_to_fiat": false,
+    "dev_buyer_fee_basis_points": 0,
+    "dev_seller_fee_basis_points": 0,
+    "only_proxied_transfers": false,
+    "opensea_buyer_fee_basis_points": 0,
+    "opensea_seller_fee_basis_points": 250,
+    "buyer_fee_basis_points": 0,
+    "seller_fee_basis_points": 250,
+    "payout_address": null
+  },
+  "permalink": "https://testnets.opensea.io/assets/0x16baf0de678e52367adc69fd067e5edd1d33e3bf/6511",
+  "collection": {
+    "banner_image_url": null,
+    "chat_url": null,
+    "created_date": "2019-04-26T22:01:15.323664",
+    "default_to_fiat": false,
+    "description": "The Rinkeby version of CryptoKitties",
+    "dev_buyer_fee_basis_points": "0",
+    "dev_seller_fee_basis_points": "0",
+    "discord_url": null,
+    "display_data": {
+      "images": [
+        "https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/52.svg",
+        "https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/7119.svg",
+        "https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/7130.svg",
+        "https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/7125.svg",
+        "https://storage.googleapis.com/ck-kitty-image/0x06012c8cf97bead5deae237070f9587f8e7a266d/7129.svg",
+        "https://user-images.githubusercontent.com/613881/34621969-0afee35a-f200-11e7-99a9-86088f2aabfe.png"
+      ]
+    },
+    "external_url": null,
+    "featured": true,
+    "featured_image_url": "https://storage.googleapis.com/opensea-static/Category-Thumb-CryptoKittes.png",
+    "hidden": false,
+    "safelist_request_status": "verified",
+    "image_url": "https://storage.googleapis.com/opensea-static/cryptokitties-logo.png",
+    "is_subject_to_whitelist": false,
+    "large_image_url": null,
+    "medium_username": null,
+    "name": "CryptoKittiesRinkeby",
+    "only_proxied_transfers": false,
+    "opensea_buyer_fee_basis_points": "0",
+    "opensea_seller_fee_basis_points": "250",
+    "payout_address": null,
+    "require_email": false,
+    "short_description": null,
+    "slug": "cryptokittiesrinkeby",
+    "telegram_url": null,
+    "twitter_username": null,
+    "instagram_username": null,
+    "wiki_url": null
+  },
+  "decimals": null,
+  "token_metadata": "",
+  "owner": {
+    "user": null,
+    "profile_img_url": "https://storage.googleapis.com/opensea-static/opensea-profile/10.png",
+    "address": "0x8a316edee51b65e1627c801dbc09aa413c8f97c2",
+    "config": ""
+  },
+  "sell_orders": null,
+  "creator": null,
+  "traits": [
+    {
+      "trait_type": "pattern",
+      "value": "totesbasic",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 3029,
+      "order": null
+    },
+    {
+      "trait_type": "mouth",
+      "value": "soserious",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 1637,
+      "order": null
+    },
+    {
+      "trait_type": "generation",
+      "value": 0,
+      "display_type": "number",
+      "max_value": null,
+      "trait_count": 2955,
+      "order": null
+    },
+    {
+      "trait_type": "virginity",
+      "value": "virgin",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 5765,
+      "order": null
+    },
+    {
+      "trait_type": "eye_shape",
+      "value": "thicccbrowz",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 569,
+      "order": null
+    },
+    {
+      "trait_type": "base_colour",
+      "value": "orangesoda",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 325,
+      "order": null
+    },
+    {
+      "trait_type": "cooldown_timer",
+      "value": "Fast (1 min)",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 1605,
+      "order": null
+    },
+    {
+      "trait_type": "highlight_colour",
+      "value": "royalpurple",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 315,
+      "order": null
+    },
+    {
+      "trait_type": "accent_colour",
+      "value": "granitegrey",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 783,
+      "order": null
+    },
+    {
+      "trait_type": "eye_colour",
+      "value": "sizzurp",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 308,
+      "order": null
+    },
+    {
+      "trait_type": "fur",
+      "value": "laperm",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 113,
+      "order": null
+    },
+    {
+      "trait_type": "purrstige",
+      "value": "pu11",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 293,
+      "order": null
+    },
+    {
+      "trait_type": "secret",
+      "value": "se19",
+      "display_type": null,
+      "max_value": null,
+      "trait_count": 57,
+      "order": null
+    }
+  ],
+  "last_sale": null,
+  "top_bid": null,
+  "listing_date": null,
+  "is_presale": false,
+  "transfer_fee_payment_token": null,
+  "transfer_fee": null
+}
