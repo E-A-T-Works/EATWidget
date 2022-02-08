@@ -40,9 +40,40 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<BasicAssetWidgetEntry>) -> Void
     ) {
-        // TODO:
+        //
+        //  Parse intent configuration
+        //
         
         print("GET TIMELINE")
+        
+        let identifier = configuration.Asset?.identifier
+        let contractAddress = identifier?.components(separatedBy: "/").first
+        let tokenId = identifier?.components(separatedBy: "/").last
+        
+        let displayInfo = configuration.DisplayInfo?.boolValue ?? false
+        
+        print("Intent Values: \(identifier ?? "MISSING") \(contractAddress ?? "MISSING") \(tokenId ?? "MISSING") \(displayInfo)")
+        
+        if contractAddress == nil || tokenId == nil {
+            
+            let timeline = Timeline(
+                entries: [
+                    BasicAssetWidgetEntry(
+                        date: Date(),
+                        kind: AssetWidgetEntryKind.Unconfigured,
+                        displayInfo: false,
+                        data: nil
+                    )
+                ],
+                policy: .never
+            )
+            completion(timeline)
+            return
+        }
+        
+        //
+        //  Fetch relevent data
+        //
         
         
         let timeline = Timeline(
@@ -76,6 +107,8 @@ struct BasicAssetWidgetEntryView : View {
         switch entry.kind {
         case .Placeholder:
             Text("Placeholder")
+        case .Unconfigured:
+            Text("Configuration Required")
         case .NotFound:
             Text("Not Found")
         case .Unsupported:

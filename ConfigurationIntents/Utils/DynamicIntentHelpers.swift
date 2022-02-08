@@ -59,7 +59,7 @@ final class DynamicIntentHelpers {
                     identifier: "\(asset.contract.address)/\(asset.tokenId)",
                     display: asset.title ?? asset.tokenId,
                     subtitle: asset.contract.address,
-                    image: INImage(url: asset.imageThumbnailUrl!)
+                    image: asset.imageThumbnailUrl != nil ? INImage(url: asset.imageThumbnailUrl!) : INImage(named: "Placeholder")
                 )
             }
             

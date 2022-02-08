@@ -25,6 +25,7 @@ struct AssetData {
 
 enum AssetWidgetEntryKind {
     case Placeholder
+    case Unconfigured
     case NotFound
     case Unsupported
     case Success
