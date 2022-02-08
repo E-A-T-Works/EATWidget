@@ -54,7 +54,7 @@ class WalletStorage: NSObject, ObservableObject {
                 try walletFetchController.performFetch()
                 return walletFetchController.fetchedObjects ?? []
             } catch {
-                print("⚠️ \(error.localizedDescription)")
+                print("⚠️ \(error)")
                 return []
             }
         }

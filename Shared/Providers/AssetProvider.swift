@@ -96,7 +96,7 @@ final class AssetProvider {
             return items[randomIndex]
         
         } catch {
-            print("⚠️ NFTProvider::fetchRandomNFT: \(error.localizedDescription)")
+            print("⚠️ NFTProvider::fetchRandomNFT: \(error)")
             
             throw OpenSeaError.BadResponse
         }

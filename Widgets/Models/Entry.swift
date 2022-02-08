@@ -9,20 +9,6 @@ import SwiftUI
 import WidgetKit
 
 
-// MARK: Structs
-
-struct AssetData {
-    let contractAddress: String?
-    let tokenId: String?
-    
-    let image: UIImage?
-    
-    let backgroundColor: Color?
-    let title: String?
-}
-
-// MARK: Enums
-
 enum AssetWidgetEntryKind {
     case Placeholder
     case Unconfigured
@@ -32,14 +18,10 @@ enum AssetWidgetEntryKind {
 }
 
 
-// MARK: Widget Entries
-
-
-
 struct RandomAssetWidgetEntry: TimelineEntry {
     let date: Date
     let kind: AssetWidgetEntryKind
     let displayInfo: Bool
-    let data: AssetData?
+    let data: Asset?
 }
 

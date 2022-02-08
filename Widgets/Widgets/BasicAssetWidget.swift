@@ -75,19 +75,43 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        
-        let timeline = Timeline(
-            entries: [
-                BasicAssetWidgetEntry(
-                    date: Date(),
-                    kind: AssetWidgetEntryKind.Success,
-                    displayInfo: false,
-                    data: nil
+        Task {
+            do {
+                let asset = try await AssetProvider.fetchAsset(contractAddress: contractAddress!, tokenId: tokenId!)
+                
+                let timeline = Timeline(
+                    entries: [
+                        BasicAssetWidgetEntry(
+                            date: Date(),
+                            kind: AssetWidgetEntryKind.Success,
+                            displayInfo: displayInfo,
+                            data: asset
+                        )
+                    ],
+                    policy: .never
                 )
-            ],
-            policy: .never
-        )
-        completion(timeline)
+                completion(timeline)
+                return
+                
+            } catch {
+                print("⚠️ BasicAssetWidget::getTimeline: \(error)")
+                
+                let timeline = Timeline(
+                    entries: [
+                        BasicAssetWidgetEntry(
+                            date: Date(),
+                            kind: AssetWidgetEntryKind.NotFound,
+                            displayInfo: false,
+                            data: nil
+                        )
+                    ],
+                    policy: .never
+                )
+                completion(timeline)
+                return
+            }
+            
+        }
     }
 }
 
@@ -96,7 +120,7 @@ struct BasicAssetWidgetEntry: TimelineEntry {
     let date: Date
     let kind: AssetWidgetEntryKind
     let displayInfo: Bool
-    let data: AssetData?
+    let data: Asset?
 }
 
 
@@ -106,15 +130,15 @@ struct BasicAssetWidgetEntryView : View {
     var body: some View {
         switch entry.kind {
         case .Placeholder:
-            Text("Placeholder")
+            PlaceholderView()
         case .Unconfigured:
-            Text("Configuration Required")
+            UnconfiguredView()
         case .NotFound:
-            Text("Not Found")
+            NotFoundView()
         case .Unsupported:
-            Text("Unsupported")
+            UnsupportedView()
         case .Success:
-            Text("WIDGET")
+            AssetView(item: entry.data!)
         }
     }
 }
