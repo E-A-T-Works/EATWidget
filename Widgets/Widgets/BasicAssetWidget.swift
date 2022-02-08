@@ -138,7 +138,7 @@ struct BasicAssetWidgetEntryView : View {
         case .Unsupported:
             UnsupportedView()
         case .Success:
-            AssetView(item: entry.data!)
+            AssetView(item: entry.data!, displayInfo: entry.displayInfo)
         }
     }
 }
