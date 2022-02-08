@@ -19,8 +19,6 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        print("Timeline")
-        
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -48,7 +46,6 @@ struct WidgetsEntryView : View {
     }
 }
 
-@main
 struct Widgets: Widget {
     let kind: String = "Widgets"
 

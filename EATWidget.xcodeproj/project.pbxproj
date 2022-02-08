@@ -58,6 +58,24 @@
 		5C6308C827B2E0C800AC2A24 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308C727B2E0C800AC2A24 /* Widgets.swift */; };
 		5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6308C927B2E0C900AC2A24 /* Assets.xcassets */; };
 		5C6308CE27B2E0C900AC2A24 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C6308C127B2E0C800AC2A24 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */; };
+		5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084127B2B44900AC2A24 /* Persistence.swift */; };
+		5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
+		5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085227B2B51E00AC2A24 /* Contract.swift */; };
+		5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
+		5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085427B2B52500AC2A24 /* Asset.swift */; };
+		5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086427B2C32E00AC2A24 /* AssetProvider.swift */; };
+		5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
+		5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
+		5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
+		5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
+		5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
+		5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
+		5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308AB27B2D92800AC2A24 /* WidgetIntents.intentdefinition */; };
+		5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308E527B2EA5C00AC2A24 /* Entry.swift */; };
+		5C6308E827B2EB7400AC2A24 /* BasicAssetWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308E727B2EB7400AC2A24 /* BasicAssetWidget.swift */; };
+		5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308E927B2EB8D00AC2A24 /* WidgetsBundle.swift */; };
+		5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308EB27B2EC2000AC2A24 /* WidgetsHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +154,10 @@
 		5C6308C927B2E0C900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6308CB27B2E0C900AC2A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6308D227B2E0CE00AC2A24 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		5C6308E527B2EA5C00AC2A24 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		5C6308E727B2EB7400AC2A24 /* BasicAssetWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAssetWidget.swift; sourceTree = "<group>"; };
+		5C6308E927B2EB8D00AC2A24 /* WidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsBundle.swift; sourceTree = "<group>"; };
+		5C6308EB27B2EC2000AC2A24 /* WidgetsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,7 +366,7 @@
 				5C6308A327B2D8EE00AC2A24 /* Info.plist */,
 				5C6308AB27B2D92800AC2A24 /* WidgetIntents.intentdefinition */,
 				5C6308A127B2D8EE00AC2A24 /* IntentHandler.swift */,
-				5C6308BB27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift */,
+				5C6308E327B2E72700AC2A24 /* Utils */,
 			);
 			path = ConfigurationIntents;
 			sourceTree = "<group>";
@@ -352,11 +374,47 @@
 		5C6308C627B2E0C800AC2A24 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				5C6308C727B2E0C800AC2A24 /* Widgets.swift */,
 				5C6308C927B2E0C900AC2A24 /* Assets.xcassets */,
 				5C6308CB27B2E0C900AC2A24 /* Info.plist */,
+				5C6308E927B2EB8D00AC2A24 /* WidgetsBundle.swift */,
+				5C6308C727B2E0C800AC2A24 /* Widgets.swift */,
+				5C6308E727B2EB7400AC2A24 /* BasicAssetWidget.swift */,
+				5C6308E427B2EA3C00AC2A24 /* Models */,
+				5C6308E127B2E6FF00AC2A24 /* Views */,
+				5C6308E227B2E71400AC2A24 /* Utils */,
 			);
 			path = Widgets;
+			sourceTree = "<group>";
+		};
+		5C6308E127B2E6FF00AC2A24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C6308E227B2E71400AC2A24 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C6308EB27B2EC2000AC2A24 /* WidgetsHelpers.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5C6308E327B2E72700AC2A24 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C6308BB27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5C6308E427B2EA3C00AC2A24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C6308E527B2EA5C00AC2A24 /* Entry.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,6 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */,
 				5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -545,7 +604,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
+				5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */,
+				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
+				5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */,
+				5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */,
+				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
+				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
+				5C6308E827B2EB7400AC2A24 /* BasicAssetWidget.swift in Sources */,
+				5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */,
+				5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */,
+				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,
+				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
 				5C6308C827B2E0C800AC2A24 /* Widgets.swift in Sources */,
+				5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */,
+				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
+				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
+				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,
+				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
