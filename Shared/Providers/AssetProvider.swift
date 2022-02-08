@@ -33,7 +33,7 @@ final class AssetProvider {
             let response = try await request.perform(ofType: OpenSeaApiAssetsResponse.self)
             return response.assets
         } catch {
-            print("⚠️ NFTProvider::fetchNFTs: \(error.localizedDescription)")
+            print("⚠️ AssetProvider::fetchAssets: \(error)")
             
             throw OpenSeaError.BadResponse
         }
@@ -42,8 +42,6 @@ final class AssetProvider {
     
     
     static func fetchAsset(contractAddress: String, tokenId:String) async throws -> Asset {
-        print("fetchNFTs \(contractAddress) \(tokenId)")
-        
         do {
             var components = URLComponents()
             components.scheme = "https"
@@ -61,7 +59,7 @@ final class AssetProvider {
             return try await request.perform(ofType: OpenSeaApiAssetResponse.self)
             
         } catch {
-            print("⚠️ NFTProvider::fetchNFT: \(error.localizedDescription)")
+            print("⚠️ AssetProvider::fetchAsset: \(error)")
             
             throw OpenSeaError.BadResponse
         }
@@ -81,7 +79,7 @@ final class AssetProvider {
             
             return UIImage(data: data)!
         } catch {
-            print("⚠️ NFTProvider::fetchNFTImage: \(error.localizedDescription)")
+            print("⚠️ AssetProvider::fetchAssetImage: \(error)")
             
             throw OpenSeaError.BadResponse
         }
@@ -96,7 +94,7 @@ final class AssetProvider {
             return items[randomIndex]
         
         } catch {
-            print("⚠️ NFTProvider::fetchRandomNFT: \(error)")
+            print("⚠️ AssetProvider::fetchRandomAsset: \(error)")
             
             throw OpenSeaError.BadResponse
         }

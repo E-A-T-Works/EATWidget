@@ -14,16 +14,25 @@ struct AssetView: View {
     
     let contractAddress: String
     let tokenId: String
-    let imageThumbnailUrl: URL?
+    let imageUrl: URL?
     let title: String?
     let backgroundColor: String?
     
     let displayInfo: Bool
     
     var body: some View {
-        Text("Asset")
-        Text(tokenId)
-        Text("\(family.rawValue)")
+        ZStack {
+            HexBackground(hexColor: backgroundColor)
+            
+            URLImageView(url: imageUrl!)
+//                .frame(width: .infinity, height: .infinity)
+            
+//            VStack {
+//                Text("Asset")
+//                Text(tokenId)
+//                Text("\(family.rawValue)")
+//            }
+        }
     }
 }
 
@@ -34,7 +43,7 @@ struct AssetView_Previews: PreviewProvider {
                 AssetView(
                     contractAddress: TestData.asset.contract.address,
                     tokenId: TestData.asset.tokenId,
-                    imageThumbnailUrl: TestData.asset.imageThumbnailUrl,
+                    imageUrl: TestData.asset.imageUrl,
                     title: TestData.asset.title,
                     backgroundColor: TestData.asset.backgroundColor,
                     displayInfo: false
@@ -49,14 +58,14 @@ struct AssetView_Previews: PreviewProvider {
                 AssetView(
                     contractAddress: TestData.asset.contract.address,
                     tokenId: TestData.asset.tokenId,
-                    imageThumbnailUrl: TestData.asset.imageThumbnailUrl,
+                    imageUrl: TestData.asset.imageUrl,
                     title: TestData.asset.title,
                     backgroundColor: TestData.asset.backgroundColor,
                     displayInfo: true
                 )
             }
             .previewContext(
-                WidgetPreviewContext(family: .systemLarge)
+                WidgetPreviewContext(family: .systemSmall)
             )
         }
     }

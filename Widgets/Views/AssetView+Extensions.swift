@@ -9,7 +9,7 @@ extension AssetView {
     init(item: Asset, displayInfo: Bool) {
         contractAddress = item.contract.address
         tokenId = item.tokenId
-        imageThumbnailUrl = item.imageThumbnailUrl
+        imageUrl = item.imageUrl
         title = item.title
         backgroundColor = item.backgroundColor
         self.displayInfo = displayInfo
@@ -20,7 +20,7 @@ extension AssetView {
     init(item: Asset) {
         contractAddress = item.contract.address
         tokenId = item.tokenId
-        imageThumbnailUrl = item.imageThumbnailUrl
+        imageUrl = item.imageUrl
         title = item.title
         backgroundColor = item.backgroundColor
         displayInfo = false

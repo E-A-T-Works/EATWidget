@@ -84,6 +84,7 @@
 		5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FA27B2F35B00AC2A24 /* AssetView+Extensions.swift */; };
 		5C6308FD27B2F3F400AC2A24 /* WalletView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FC27B2F3F400AC2A24 /* WalletView+Extensions.swift */; };
 		5C63090127B2F72000AC2A24 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImageView.swift */; };
+		5C63090327B2F9A600AC2A24 /* HexBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090227B2F9A600AC2A24 /* HexBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		5C6308FA27B2F35B00AC2A24 /* AssetView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetView+Extensions.swift"; sourceTree = "<group>"; };
 		5C6308FC27B2F3F400AC2A24 /* WalletView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletView+Extensions.swift"; sourceTree = "<group>"; };
 		5C63090027B2F72000AC2A24 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		5C63090227B2F9A600AC2A24 /* HexBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				5C63090027B2F72000AC2A24 /* URLImageView.swift */,
+				5C63090227B2F9A600AC2A24 /* HexBackground.swift */,
 				5C6308EE27B2F12D00AC2A24 /* PlaceholderView.swift */,
 				5C6308F027B2F14900AC2A24 /* UnconfiguredView.swift */,
 				5C6308F227B2F16E00AC2A24 /* NotFoundView.swift */,
@@ -653,6 +656,7 @@
 				5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */,
 				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,
+				5C63090327B2F9A600AC2A24 /* HexBackground.swift in Sources */,
 				5C6308F727B2F1FB00AC2A24 /* UnsupportedView.swift in Sources */,
 				5C6308F327B2F16E00AC2A24 /* NotFoundView.swift in Sources */,
 				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
