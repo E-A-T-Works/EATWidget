@@ -85,6 +85,9 @@
 		5C6308FD27B2F3F400AC2A24 /* WalletView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FC27B2F3F400AC2A24 /* WalletView+Extensions.swift */; };
 		5C63090127B2F72000AC2A24 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImageView.swift */; };
 		5C63090327B2F9A600AC2A24 /* HexBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090227B2F9A600AC2A24 /* HexBackground.swift */; };
+		5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
+		5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
+		5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +179,8 @@
 		5C6308FC27B2F3F400AC2A24 /* WalletView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletView+Extensions.swift"; sourceTree = "<group>"; };
 		5C63090027B2F72000AC2A24 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		5C63090227B2F9A600AC2A24 /* HexBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexBackground.swift; sourceTree = "<group>"; };
+		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
+		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				5C63084D27B2B4A500AC2A24 /* Placeholder.png */,
+				5C63090A27B30FDD00AC2A24 /* Icon_Black.png */,
+				5C63090927B30FDD00AC2A24 /* Icon_White.png */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -576,6 +583,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */,
+				5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */,
+				5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */,
+				5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */,
 				5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

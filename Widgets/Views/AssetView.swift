@@ -20,18 +20,79 @@ struct AssetView: View {
     
     let displayInfo: Bool
     
+    private func getScaleFactor() -> Double {
+        return displayInfo ? 0.72 : 1.0
+    }
+    
+    private func getImageSize(width: Double, height: Double) -> Double {
+        let scaleFactor = getScaleFactor()
+        let size = width > height ? width : height
+        
+        return size * scaleFactor
+    }
+    
     var body: some View {
-        ZStack {
-            HexBackground(hexColor: backgroundColor)
-            
-            URLImageView(url: imageUrl!)
-//                .frame(width: .infinity, height: .infinity)
-            
-//            VStack {
-//                Text("Asset")
-//                Text(tokenId)
-//                Text("\(family.rawValue)")
-//            }
+        GeometryReader { geo in
+            ZStack {
+                HexBackground(hexColor: backgroundColor)
+                
+                HStack {
+                    VStack {
+                        URLImageView(url: imageUrl!)
+                            .scaledToFill()
+                            .frame(
+                                width: getImageSize(
+                                    width: geo.size.width,
+                                    height: geo.size.height
+                                ),
+                                height: getImageSize(
+                                    width: geo.size.width,
+                                    height: geo.size.height
+                                )
+                            )
+
+                        Spacer()
+                    }
+                    Spacer()
+                }
+                .padding(displayInfo ? 8 : 0)
+                
+                if(displayInfo) {
+
+                    HStack(alignment: .top) {
+                        Spacer()
+                        VStack {
+                            Image(
+                                uiImage: UIImage(named: "Icon_Black")!
+                            )
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24)
+                            .cornerRadius(12)
+                            .padding(8)
+                            
+                            Spacer()
+                        }
+                    }
+
+
+                    HStack(alignment: .bottom) {
+                        VStack(alignment: .leading) {
+                            Spacer()
+                            VStack {
+                                Text("\(title ?? "Untitled")")
+                                    .font(.headline)
+                                    .lineLimit(1)
+                            }
+                            .padding(8)
+
+                        }
+                        Spacer()
+                    }
+
+                }
+
+            }
         }
     }
 }
