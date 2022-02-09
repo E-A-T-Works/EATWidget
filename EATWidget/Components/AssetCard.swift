@@ -10,6 +10,7 @@ import SwiftUI
 struct AssetCard: View {
     
     @State private var backgroundColor: Color = .clear
+    @State private var foregroundColor: Color = .black
     
     let contractAddress: String
     let tokenId: String
@@ -17,7 +18,7 @@ struct AssetCard: View {
     let title: String?
     let preferredBackgroundColor: String?
     
-    private func setBackgroundColor()  {
+    private func resolveColors()  {
         if(preferredBackgroundColor != nil) {
             let uiColor = UIColor(hexString: preferredBackgroundColor!)!
             backgroundColor = Color(uiColor: uiColor)
@@ -33,7 +34,9 @@ struct AssetCard: View {
         let uiImage = UIImage(data: data!)
         
         let uiColor = uiImage?.averageColor ?? .clear
+        
         backgroundColor = Color(uiColor: uiColor)
+        foregroundColor = uiColor.isDarkColor ? Color.white : Color.black
     }
     
     var body: some View {
@@ -66,9 +69,8 @@ struct AssetCard: View {
                                     design: .default
                                 )
                             )
-                            .foregroundColor(
-                                Color(uiColor: Theme.foregroundColorForCard())
-                            )
+                            .foregroundColor(foregroundColor)
+
                         Text(tokenId)
                             .font(
                                 .system(
@@ -77,9 +79,7 @@ struct AssetCard: View {
                                     design: .default
                                 )
                             )
-                            .foregroundColor(
-                                Color(uiColor: Theme.foregroundColorForCard()).opacity(0.80)
-                            )
+                            .foregroundColor(foregroundColor.opacity(0.80))
                     }
                     
                     Spacer()
@@ -90,7 +90,7 @@ struct AssetCard: View {
                 .frame(height: 50)
             }
             .background(backgroundColor)
-            .onAppear(perform: setBackgroundColor)
+            .onAppear(perform: resolveColors)
         }
     }
 }

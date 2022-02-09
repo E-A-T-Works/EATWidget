@@ -34,7 +34,6 @@ struct CollectionPage: View {
                         alignment: .center, spacing: spacing
                     ) {
                         ForEach(viewModel.assets) { asset in
-//                        ForEach(TestData.assets) { asset in
                             AssetCard(item: asset)
                                 .frame(width: geo.size.width - 1.5 * spacing)
                                 .frame(height: (geo.size.width -  1.5 * spacing) + 58)

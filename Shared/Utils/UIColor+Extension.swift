@@ -7,6 +7,7 @@
 //  Reference:
 //      https://swiftuirecipes.com/blog/hex-color-in-swiftui
 //      https://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
+//      https://stackoverflow.com/questions/47365583/determining-text-color-from-the-background-color-in-swift/47366748
 //
 
 
@@ -58,5 +59,17 @@ extension UIColor {
         Scanner(string: fullHex)
             .scanHexInt64(&hexComponent)
         return CGFloat(Double(hexComponent) / 255.0)
+    }
+}
+
+
+extension UIColor {
+    var isDarkColor: Bool {
+        var r, g, b, a: CGFloat
+        (r, g, b, a) = (0, 0, 0, 0)
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        let lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
+        
+        return  lum < 0.50
     }
 }
