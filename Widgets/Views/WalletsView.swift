@@ -17,10 +17,30 @@ struct WalletsViewData {
 
 struct WalletsView: View {
     
+    @Environment(\.widgetFamily) var family: WidgetFamily
+    
     let items: [WalletsViewData]
     
     var body: some View {
-        Text("Some Wallet")
+        
+        ZStack {
+        
+            HStack {
+                ForEach(items, id: \.address) { item in
+                
+                    VStack {
+                        
+                        Text(item.title ?? "Untitled")
+                        Text(item.balance ?? "0")
+                        
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        
     }
 }
 

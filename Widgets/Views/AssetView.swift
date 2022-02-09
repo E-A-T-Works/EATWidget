@@ -9,7 +9,6 @@ import SwiftUI
 import WidgetKit
 
 
-
 struct AssetView: View {
     
     @Environment(\.widgetFamily) var family: WidgetFamily

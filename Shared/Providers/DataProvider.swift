@@ -20,7 +20,11 @@ final class DataProvider {
         components.host = "rinkeby-api.opensea.io"
         components.path = "/api/v1/assets"
         components.queryItems = [
-            URLQueryItem(name: "address", value: address)
+            URLQueryItem(name: "module", value: "account"),
+            URLQueryItem(name: "action", value: "balance"),
+            URLQueryItem(name: "address", value: address),
+            URLQueryItem(name: "tag", value: "latest"),
+            URLQueryItem(name: "apiKey", value: "AIGTQC6I35XHC132KY4UKEGXRFEAJ16XQ6")
        ]
         
         guard let url = components.url else {
@@ -32,10 +36,8 @@ final class DataProvider {
             
             let response = try await request.perform(ofType: EtherscanAccountBalanceResponse.self)
             
-            let result = response.result
-            
-            let balance = result.balance
-            
+            let balance = response.result
+
             return balance
         } catch {
             print("⚠️ DataProvider::fetchWalletBalance: \(error)")

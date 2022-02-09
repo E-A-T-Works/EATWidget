@@ -36,14 +36,19 @@ struct OpenSeaApiAssetsResponse: Decodable {
     let assets: [Asset]
 }
 
+struct EtherscanAccountBalanceResponse: Decodable {
+    let status: String
+    let message: String
+    let result: String
+}
 
 struct EtherscanAccountBalanceResultResponse: Decodable {
     let account: String
     let balance: String
 }
 
-struct EtherscanAccountBalanceResponse: Decodable {
+struct EtherscanAccountMultiBalanceResponse: Decodable {
     let status: String
     let message: String
-    let result: EtherscanAccountBalanceResultResponse
+    let result: [EtherscanAccountBalanceResultResponse]
 }

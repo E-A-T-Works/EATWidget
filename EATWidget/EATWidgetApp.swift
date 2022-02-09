@@ -14,10 +14,7 @@ struct EATWidgetApp: App {
         // see: https://medium.com/@karaiskc/programmatic-navigation-in-swiftui-30b75613f285
         
         WindowGroup {
-            NavigationView {
-                CollectionPage()
-            }
-            .navigationViewStyle(.stack)
+            ContentView()
         }
     }
 }

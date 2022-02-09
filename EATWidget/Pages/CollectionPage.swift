@@ -10,26 +10,39 @@ import SwiftUI
 struct CollectionPage: View {
     @StateObject private var viewModel = CollectionPageViewModel()
     
+    init() {
+        Theme.navigationBarColors(
+            background: Theme.backgroundColorForPage(),
+            titleColor: Theme.foregroundColorForPage()
+        )
+    }
+    
     var body: some View {
-        List() {
-            ForEach(viewModel.wallets) { wallet in
-                Section(header: Text(wallet.address!)) {
-                    ForEach(viewModel.assetsByWallet[wallet.address!] ?? []) { asset in
-                        
-                        NavigationLink(
-                            destination: AssetPage(
-                                contractAddress: asset.contract.address,
-                                tokenId: asset.tokenId
-                            )
-                        ) {
-                            AssetItem(item: asset)
+        
+        ZStack {
+            List() {
+                ForEach(viewModel.wallets) { wallet in
+                    Section(header: Text(wallet.address!)) {
+                        ForEach(viewModel.assetsByWallet[wallet.address!] ?? []) { asset in
+                            
+                            NavigationLink(
+                                destination: AssetPage(
+                                    contractAddress: asset.contract.address,
+                                    tokenId: asset.tokenId
+                                )
+                            ) {
+                                AssetItem(item: asset)
+                            }
+                            
                         }
-                        
                     }
                 }
             }
+            .listStyle(.grouped)
+            
+            Color(Theme.backgroundColorForPage()).ignoresSafeArea()
+            
         }
-        .listStyle(.grouped)
         .navigationTitle("Collection")
         .toolbar(content: {
             ToolbarItem(
@@ -41,23 +54,7 @@ struct CollectionPage: View {
                                 ConnectSheet()
                             }
                     }
-                    
-                    
-//                    Button(action: viewModel.presentConnectSheet, label: { Image(systemName: "plus") })
-                    
-                    
-//                    Button("Connect", action: viewModel.presentConnectSheet)
-//                        .sheet(isPresented: $viewModel.showingConnectSheet) {
-//                            NavigationView {
-//                                ConnectPage()
-//                            }
-//                    }
-////
-//                    Button {
-//                        viewModel.presentConnectSheet()
-//                    } label: {
-//                        Image(systemName: "plus")
-//                    }
+
                 }
             )
         })
