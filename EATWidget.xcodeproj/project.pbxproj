@@ -18,7 +18,7 @@
 		5C63085527B2B52500AC2A24 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085427B2B52500AC2A24 /* Asset.swift */; };
 		5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
-		5C63085E27B2B5FD00AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
+		5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */; };
 		5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
 		5C63086227B2B62A00AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C63086527B2C32E00AC2A24 /* AssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086427B2C32E00AC2A24 /* AssetProvider.swift */; };
@@ -47,7 +47,7 @@
 		5C6308B327B2DA0000AC2A24 /* AssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086427B2C32E00AC2A24 /* AssetProvider.swift */; };
 		5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
-		5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
+		5C6308B627B2DA0800AC2A24 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */; };
 		5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
 		5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
@@ -67,7 +67,7 @@
 		5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
-		5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
+		5C6308DD27B2E3B600AC2A24 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */; };
 		5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
 		5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308AB27B2D92800AC2A24 /* WidgetIntents.intentdefinition */; };
@@ -99,6 +99,14 @@
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
+		5C91BE1327B44AE7001074CE /* AssetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1227B44AE7001074CE /* AssetCard.swift */; };
+		5C91BE1527B44B5C001074CE /* AssetCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */; };
+		5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */; };
+		5C91BE1827B45FA0001074CE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */; };
+		5C91BE1A27B468B0001074CE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extension.swift */; };
+		5C91BE1B27B468B0001074CE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extension.swift */; };
+		5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
+		5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,7 +154,7 @@
 		5C63085427B2B52500AC2A24 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		5C63085727B2B5B000AC2A24 /* sample-nft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-nft.json"; sourceTree = "<group>"; };
 		5C63085927B2B5BE00AC2A24 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
 		5C63085F27B2B60F00AC2A24 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		5C63086127B2B62A00AC2A24 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		5C63086427B2C32E00AC2A24 /* AssetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetProvider.swift; sourceTree = "<group>"; };
@@ -197,6 +205,10 @@
 		5C63091327B407FC00AC2A24 /* WalletWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		5C91BE1227B44AE7001074CE /* AssetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCard.swift; sourceTree = "<group>"; };
+		5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetCard+Extensions.swift"; sourceTree = "<group>"; };
+		5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		5C91BE1927B468B0001074CE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,8 +337,10 @@
 			children = (
 				5C63086127B2B62A00AC2A24 /* APIRequest.swift */,
 				5C63085F27B2B60F00AC2A24 /* Formatters.swift */,
-				5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */,
 				5C91BE0E27B43A27001074CE /* Theme.swift */,
+				5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */,
+				5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */,
+				5C91BE1927B468B0001074CE /* UIColor+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -382,6 +396,8 @@
 				5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */,
 				5C63087027B2C4BC00AC2A24 /* AssetItem.swift */,
 				5C63087E27B2CBEE00AC2A24 /* AssetItem+Extensions.swift */,
+				5C91BE1227B44AE7001074CE /* AssetCard.swift */,
+				5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -584,6 +600,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
+				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
+				5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */,
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
@@ -619,9 +637,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */,
-				5C63085E27B2B5FD00AC2A24 /* Sequence+Extensions.swift in Sources */,
+				5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImageView.swift in Sources */,
 				5C63085527B2B52500AC2A24 /* Asset.swift in Sources */,
+				5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
@@ -629,8 +648,10 @@
 				5C63084227B2B44900AC2A24 /* Persistence.swift in Sources */,
 				5C63085327B2B51E00AC2A24 /* Contract.swift in Sources */,
 				5C63087B27B2C75F00AC2A24 /* AssetPage.swift in Sources */,
+				5C91BE1327B44AE7001074CE /* AssetCard.swift in Sources */,
 				5C63086727B2C34900AC2A24 /* API.swift in Sources */,
 				5C63087727B2C6A000AC2A24 /* AssetPageViewModel.swift in Sources */,
+				5C91BE1527B44B5C001074CE /* AssetCard+Extensions.swift in Sources */,
 				5C91BE0F27B43A27001074CE /* Theme.swift in Sources */,
 				5C63086227B2B62A00AC2A24 /* APIRequest.swift in Sources */,
 				5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */,
@@ -638,6 +659,7 @@
 				5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* AssetItem.swift in Sources */,
 				5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */,
+				5C91BE1A27B468B0001074CE /* UIColor+Extension.swift in Sources */,
 				5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
@@ -653,7 +675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */,
+				5C6308B627B2DA0800AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C6308B127B2D9FC00AC2A24 /* Asset.swift in Sources */,
@@ -678,8 +700,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
-				5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */,
+				5C6308DD27B2E3B600AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImageView.swift in Sources */,
+				5C91BE1B27B468B0001074CE /* UIColor+Extension.swift in Sources */,
 				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
@@ -704,6 +727,7 @@
 				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
 				5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */,
 				5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */,
+				5C91BE1827B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
 				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
 				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,

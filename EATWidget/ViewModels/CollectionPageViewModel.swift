@@ -57,6 +57,7 @@ final class CollectionPageViewModel: ObservableObject {
                 self.assets = self.assetsByWallet.reduce(into: []) {  acc, curr in
                     acc += curr.value
                 }
+
             } catch {
                 print("⚠️ (CanvasPageViewModel)::load() \(error)")
             }

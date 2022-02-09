@@ -14,9 +14,9 @@ struct HexBackground: View {
     
     var body: some View {
         if hexColor != nil {
-            Color(hexColor!)
+            Color(uiColor: UIColor(hexString: hexColor!)!)
         } else {
-            Color.white.opacity(0)
+            Color.clear
         }
     }
 }

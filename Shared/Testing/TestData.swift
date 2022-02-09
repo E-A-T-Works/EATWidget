@@ -7,12 +7,24 @@
 
 import Foundation
 
+struct JSONTestData:Decodable {
+    let results: [Asset]
+}
+
 struct TestData {
-    static let asset: Asset = {
+    static let assets: [Asset] = { () -> [Asset] in
         let url = Bundle.main.url(forResource: "sample-nft", withExtension: "json")!
         let data = try! Data(contentsOf: url)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
-        return try! decoder.decode(Asset.self, from: data)
+        
+        let payload = try! decoder.decode(JSONTestData.self, from: data)
+        
+        return payload.results
+    }()
+    
+    static let asset: Asset = { () -> Asset in
+    
+        return TestData.assets.first!
     }()
 }

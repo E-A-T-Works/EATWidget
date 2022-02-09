@@ -13,55 +13,75 @@ struct CollectionPage: View {
     init() {
         Theme.navigationBarColors(
             background: Theme.backgroundColorForPage(),
-            titleColor: Theme.foregroundColorForPage()
-        )
+            titleColor: Theme.foregroundColorForPage(),
+            tintColor: Theme.foregroundColorForPage()
+       )
     }
+
+    let spacing = 16.0
+    let cornerRadius = 8.0
+    let boxShadowRadius = 8.0
     
     var body: some View {
-        
-        ZStack {
-            List() {
-                ForEach(viewModel.wallets) { wallet in
-                    Section(header: Text(wallet.address!)) {
-                        ForEach(viewModel.assetsByWallet[wallet.address!] ?? []) { asset in
-                            
-                            NavigationLink(
-                                destination: AssetPage(
-                                    contractAddress: asset.contract.address,
-                                    tokenId: asset.tokenId
-                                )
-                            ) {
-                                AssetItem(item: asset)
-                            }
-                            
+
+        GeometryReader { geo in
+            ZStack {
+                Color(uiColor: Theme.backgroundColorForPage()).ignoresSafeArea(.all)
+                
+                ScrollView {
+                    LazyVGrid(
+                        columns: [GridItem(.flexible(minimum: geo.size.width, maximum: geo.size.width), spacing: 0)],
+                        alignment: .center, spacing: spacing
+                    ) {
+                        ForEach(viewModel.assets) { asset in
+//                        ForEach(TestData.assets) { asset in
+                            AssetCard(item: asset)
+                                .frame(width: geo.size.width - 1.5 * spacing)
+                                .frame(height: (geo.size.width -  1.5 * spacing) + 58)
+                                .cornerRadius(cornerRadius)
+                                .shadow(radius: boxShadowRadius)
                         }
                     }
                 }
-            }
-            .listStyle(.grouped)
-            
-            Color(Theme.backgroundColorForPage()).ignoresSafeArea()
-            
-        }
-        .navigationTitle("Collection")
-        .toolbar(content: {
-            ToolbarItem(
-                placement: .navigationBarTrailing,
-                content: {
-                    Button("Connect", action: { viewModel.presentConnectSheet() })
-                        .sheet(isPresented: $viewModel.showingConnectSheet) {
-                            NavigationView {
-                                ConnectSheet()
+                .navigationTitle("Collection")
+                .toolbar(content: {
+                    ToolbarItem(
+                        placement: .navigationBarLeading,
+                        content: {
+                            Button {
+                                // TODO
+                            } label: {
+                                Image(
+                                    uiImage: UIImage(named: "Icon_Black")!
+                                )
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .background(.white)
+                                .cornerRadius(16)
                             }
-                    }
+                        }
+                    )
+                    ToolbarItem(
+                        placement: .navigationBarTrailing,
+                        content: {
+                            Button("Connect", action: { viewModel.presentConnectSheet() })
+                                .sheet(isPresented: $viewModel.showingConnectSheet) {
+                                    NavigationView {
+                                        ConnectSheet()
+                                    }
+                            }
 
+                        }
+                    )
+                })
+                .onAppear {
+                    viewModel.load()
                 }
-            )
-        })
-        .onAppear {
-            viewModel.load()
+                
+            }
+            
         }
-        
     }
 }
 

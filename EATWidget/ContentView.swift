@@ -13,6 +13,7 @@ struct ContentView: View {
             CollectionPage()
         }
         .navigationViewStyle(.stack)
+        .preferredColorScheme(.dark)
     }
 }
 

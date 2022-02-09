@@ -1,5 +1,5 @@
 //
-//  Sequence+Extensions.swift
+//  Sequence+Extension.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
