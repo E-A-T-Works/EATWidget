@@ -63,6 +63,9 @@ final class Theme {
         return UIColor(Color.accentColor)
     }
     
+    
+    static func resolveColorsFromImage(imageUrl: URL?, preferredBackgroundColor: String?) {}
+    
 }
 
 

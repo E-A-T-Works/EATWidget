@@ -10,7 +10,7 @@ import Combine
 
 
 @MainActor
-final class AssetPageViewModel: ObservableObject {
+final class AssetSheetViewModel: ObservableObject {
     
     // MARK: - Properties
 

@@ -10,6 +10,11 @@ import SwiftUI
 struct CollectionPage: View {
     @StateObject private var viewModel = CollectionPageViewModel()
     
+    let cardSpacing = 16.0
+    let cardCornerRadius = 12.0
+    let cardBoxShadowRadius = 8.0
+    
+    
     init() {
         Theme.navigationBarColors(
             background: Theme.backgroundColorForPage(),
@@ -18,9 +23,6 @@ struct CollectionPage: View {
        )
     }
 
-    let spacing = 16.0
-    let cornerRadius = 12.0
-    let boxShadowRadius = 8.0
     
     var body: some View {
 
@@ -31,14 +33,14 @@ struct CollectionPage: View {
                 ScrollView {
                     LazyVGrid(
                         columns: [GridItem(.flexible(minimum: geo.size.width, maximum: geo.size.width), spacing: 0)],
-                        alignment: .center, spacing: spacing
+                        alignment: .center, spacing: cardSpacing
                     ) {
                         ForEach(viewModel.assets) { asset in
                             AssetCard(item: asset)
-                                .frame(width: geo.size.width - 1.5 * spacing)
-                                .frame(height: (geo.size.width -  1.5 * spacing) + 58)
-                                .cornerRadius(cornerRadius)
-                                .shadow(radius: boxShadowRadius)
+                                .frame(width: geo.size.width - 1.5 * cardSpacing)
+                                .frame(height: (geo.size.width -  1.5 * cardSpacing) + 58)
+                                .cornerRadius(cardCornerRadius)
+                                .shadow(radius: cardBoxShadowRadius)
                                 .onTapGesture {
                                     viewModel.presentAssetSheet(
                                         contractAddress: asset.contract.address,

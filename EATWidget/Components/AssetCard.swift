@@ -22,11 +22,13 @@ struct AssetCard: View {
         if(preferredBackgroundColor != nil) {
             let uiColor = UIColor(hexString: preferredBackgroundColor!)!
             backgroundColor = Color(uiColor: uiColor)
+            foregroundColor = uiColor.isDarkColor ? .white : .black
             return
         }
         
         if(imageUrl == nil) {
             backgroundColor = .clear
+            foregroundColor = .black
             return
         }
         
@@ -36,7 +38,7 @@ struct AssetCard: View {
         let uiColor = uiImage?.averageColor ?? .clear
         
         backgroundColor = Color(uiColor: uiColor)
-        foregroundColor = uiColor.isDarkColor ? Color.white : Color.black
+        foregroundColor = uiColor.isDarkColor ? .white : .black
     }
     
     var body: some View {
