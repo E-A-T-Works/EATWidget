@@ -12,6 +12,11 @@ import Combine
 @MainActor
 final class CollectionPageViewModel: ObservableObject {
     
+    enum SheetContent {
+        case Connect
+        case Asset(contractAddress: String, tokenId: String)
+    }
+    
     // MARK: - Properties
 
     @Published private(set) var wallets: [Wallet] = []
@@ -19,9 +24,9 @@ final class CollectionPageViewModel: ObservableObject {
     
     @Published private(set) var assetsByWallet: [String:[Asset]] = [:]
     
-    @Published var showingConnectSheet: Bool = false
-    @Published var showingAssetSheet: Bool = false
-    
+    @Published var sheetContent: SheetContent = .Connect
+    @Published var showingSheet: Bool = false
+
     private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
@@ -35,7 +40,13 @@ final class CollectionPageViewModel: ObservableObject {
     // MARK: - Public Methods
     
     func presentConnectSheet() {
-        showingConnectSheet.toggle()
+        sheetContent = .Connect
+        showingSheet.toggle()
+    }
+    
+    func presentAssetSheet(contractAddress: String, tokenId: String) {
+        sheetContent = .Asset(contractAddress: contractAddress, tokenId: tokenId)
+        showingSheet.toggle()
     }
 
     func load() {

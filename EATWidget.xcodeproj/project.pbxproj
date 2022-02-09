@@ -113,6 +113,7 @@
 		5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2127B471B3001074CE /* HexagonParameters.swift */; };
 		5C91BE2527B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2627B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
+		5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2727B47BC3001074CE /* AssetSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,7 @@
 		5C91BE1E27B47174001074CE /* BadgeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBackground.swift; sourceTree = "<group>"; };
 		5C91BE2127B471B3001074CE /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		5C91BE2427B4754C001074CE /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
+		5C91BE2727B47BC3001074CE /* AssetSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				5C63088227B2D2A000AC2A24 /* ConnectSheet.swift */,
+				5C91BE2727B47BC3001074CE /* AssetSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImageView.swift in Sources */,
 				5C63085527B2B52500AC2A24 /* Asset.swift in Sources */,
+				5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */,
 				5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,

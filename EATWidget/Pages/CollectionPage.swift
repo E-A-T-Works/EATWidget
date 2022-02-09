@@ -19,7 +19,7 @@ struct CollectionPage: View {
     }
 
     let spacing = 16.0
-    let cornerRadius = 8.0
+    let cornerRadius = 12.0
     let boxShadowRadius = 8.0
     
     var body: some View {
@@ -39,6 +39,12 @@ struct CollectionPage: View {
                                 .frame(height: (geo.size.width -  1.5 * spacing) + 58)
                                 .cornerRadius(cornerRadius)
                                 .shadow(radius: boxShadowRadius)
+                                .onTapGesture {
+                                    viewModel.presentAssetSheet(
+                                        contractAddress: asset.contract.address,
+                                        tokenId: asset.tokenId
+                                    )   
+                                }
                         }
                     }
                 }
@@ -59,17 +65,22 @@ struct CollectionPage: View {
                         placement: .navigationBarTrailing,
                         content: {
                             Button("Connect", action: { viewModel.presentConnectSheet() })
-                                .sheet(isPresented: $viewModel.showingConnectSheet) {
-                                    NavigationView {
-                                        ConnectSheet()
-                                    }
-                            }
-
                         }
                     )
                 })
                 .onAppear {
                     viewModel.load()
+                }
+                .sheet(isPresented: $viewModel.showingSheet) {
+                    switch viewModel.sheetContent {
+                    case .Connect:
+                        ConnectSheet()
+                    case .Asset(let contractAddress, let tokenId): AssetSheet(
+                            contractAddress: contractAddress,
+                            tokenId: tokenId
+                        )
+                        
+                    }
                 }
                 
             }
