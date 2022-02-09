@@ -9,12 +9,13 @@ import WidgetKit
 import SwiftUI
 
 struct BasicAssetWidgetProvider: IntentTimelineProvider {
+    
     func placeholder(
         in context: Context
     ) -> BasicAssetWidgetEntry {
         return BasicAssetWidgetEntry(
             date: Date(),
-            kind: AssetWidgetEntryKind.Placeholder,
+            kind: .Placeholder,
             displayInfo: false,
             data: nil
         )
@@ -28,7 +29,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
         completion(
             BasicAssetWidgetEntry(
                 date: Date(),
-                kind: AssetWidgetEntryKind.Placeholder,
+                kind: .Placeholder,
                 displayInfo: false,
                 data: nil
             )
@@ -44,15 +45,11 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
         //  Parse intent configuration
         //
         
-        print("GET TIMELINE")
-        
         let identifier = configuration.Asset?.identifier
         let contractAddress = identifier?.components(separatedBy: "/").first
         let tokenId = identifier?.components(separatedBy: "/").last
         
         let displayInfo = configuration.DisplayInfo?.boolValue ?? false
-        
-        print("Intent Values: \(identifier ?? "MISSING") \(contractAddress ?? "MISSING") \(tokenId ?? "MISSING") \(displayInfo)")
         
         if contractAddress == nil || tokenId == nil {
             
@@ -60,7 +57,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
                 entries: [
                     BasicAssetWidgetEntry(
                         date: Date(),
-                        kind: AssetWidgetEntryKind.Unconfigured,
+                        kind: .Unconfigured,
                         displayInfo: false,
                         data: nil
                     )
@@ -83,7 +80,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
                     entries: [
                         BasicAssetWidgetEntry(
                             date: Date(),
-                            kind: AssetWidgetEntryKind.Success,
+                            kind: .Success,
                             displayInfo: displayInfo,
                             data: asset
                         )
@@ -100,7 +97,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
                     entries: [
                         BasicAssetWidgetEntry(
                             date: Date(),
-                            kind: AssetWidgetEntryKind.NotFound,
+                            kind: .NotFound,
                             displayInfo: false,
                             data: nil
                         )
@@ -118,7 +115,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
 
 struct BasicAssetWidgetEntry: TimelineEntry {
     let date: Date
-    let kind: AssetWidgetEntryKind
+    let kind: WidgetEntryKind
     let displayInfo: Bool
     let data: Asset?
 }

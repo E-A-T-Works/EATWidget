@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 
-enum AssetWidgetEntryKind {
+enum WidgetEntryKind {
     case Placeholder
     case Unconfigured
     case NotFound

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum OpenSeaError: Error {
+enum APIError: Error {
     case InvalidUrl
     case BadResponse
     case Unsupported
@@ -34,4 +34,16 @@ typealias OpenSeaApiAssetResponse = Asset
 
 struct OpenSeaApiAssetsResponse: Decodable {
     let assets: [Asset]
+}
+
+
+struct EtherscanAccountBalanceResultResponse: Decodable {
+    let account: String
+    let balance: String
+}
+
+struct EtherscanAccountBalanceResponse: Decodable {
+    let status: String
+    let message: String
+    let result: EtherscanAccountBalanceResultResponse
 }

@@ -12,7 +12,7 @@ import SwiftUI
 final class AssetProvider {
     
     static func fetchAssets(ownerAddress: String) async throws -> [Asset] {
-        do {
+        
             var components = URLComponents()
             components.scheme = "https"
             components.host = "rinkeby-api.opensea.io"
@@ -25,9 +25,10 @@ final class AssetProvider {
            ]
             
             guard let url = components.url else {
-                throw OpenSeaError.InvalidUrl
+                throw APIError.InvalidUrl
             }
-            
+           
+        do {
             let request = APIRequest(url: url)
             
             let response = try await request.perform(ofType: OpenSeaApiAssetsResponse.self)
@@ -39,7 +40,7 @@ final class AssetProvider {
         } catch {
             print("⚠️ AssetProvider::fetchAssets: \(error)")
             
-            throw OpenSeaError.BadResponse
+            throw APIError.BadResponse
         }
         
     }
@@ -56,7 +57,7 @@ final class AssetProvider {
                 
                 print("INVALID URL")
                 
-                throw OpenSeaError.InvalidUrl
+                throw APIError.InvalidUrl
             }
             
             let request = APIRequest(url: url)
@@ -65,7 +66,7 @@ final class AssetProvider {
         } catch {
             print("⚠️ AssetProvider::fetchAsset: \(error)")
             
-            throw OpenSeaError.BadResponse
+            throw APIError.BadResponse
         }
     }
     
@@ -75,7 +76,7 @@ final class AssetProvider {
             let imageUrl = item.imageUrl
             
             if imageUrl == nil {
-                throw OpenSeaError.Unsupported
+                throw APIError.Unsupported
             }
             
             let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
@@ -85,7 +86,7 @@ final class AssetProvider {
         } catch {
             print("⚠️ AssetProvider::fetchAssetImage: \(error)")
             
-            throw OpenSeaError.BadResponse
+            throw APIError.BadResponse
         }
     }
     
@@ -100,7 +101,7 @@ final class AssetProvider {
         } catch {
             print("⚠️ AssetProvider::fetchRandomAsset: \(error)")
             
-            throw OpenSeaError.BadResponse
+            throw APIError.BadResponse
         }
     }
 }

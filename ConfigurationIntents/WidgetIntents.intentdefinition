@@ -26,12 +26,39 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>2</integer>
+			<integer>3</integer>
 			<key>INIntentName</key>
 			<string>WalletOptions</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
+					<key>INIntentParameterArraySizes</key>
+					<array>
+						<dict>
+							<key>INIntentParameterArraySizeSize</key>
+							<integer>1</integer>
+							<key>INIntentParameterArraySizeSizeClass</key>
+							<string>Small</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterArraySizeSize</key>
+							<integer>4</integer>
+							<key>INIntentParameterArraySizeSizeClass</key>
+							<string>Medium</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterArraySizeSize</key>
+							<integer>8</integer>
+							<key>INIntentParameterArraySizeSizeClass</key>
+							<string>Large</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterArraySizeSize</key>
+							<integer>12</integer>
+							<key>INIntentParameterArraySizeSizeClass</key>
+							<string>ExtraLarge</string>
+						</dict>
+					</array>
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
@@ -39,6 +66,8 @@
 					<key>INIntentParameterDisplayNameID</key>
 					<string>hoZIq3</string>
 					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterFixedSizeArray</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
 					<string>Wallet</string>
@@ -83,8 +112,10 @@
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>3</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>

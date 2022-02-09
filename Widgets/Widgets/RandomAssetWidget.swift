@@ -14,7 +14,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
     ) -> RandomAssetWidgetEntry {
         return RandomAssetWidgetEntry(
             date: Date(),
-            kind: AssetWidgetEntryKind.Placeholder,
+            kind: .Placeholder,
             displayInfo: false,
             data: nil
         )
@@ -28,7 +28,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
         completion(
             RandomAssetWidgetEntry(
                 date: Date(),
-                kind: AssetWidgetEntryKind.Placeholder,
+                kind: .Placeholder,
                 displayInfo: false,
                 data: nil
             )
@@ -58,7 +58,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
                 entries: [
                     RandomAssetWidgetEntry(
                         date: Date(),
-                        kind: AssetWidgetEntryKind.Unconfigured,
+                        kind: .Unconfigured,
                         displayInfo: false,
                         data: nil
                     )
@@ -85,7 +85,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
                     entries: [
                         RandomAssetWidgetEntry(
                             date: Date(),
-                            kind: AssetWidgetEntryKind.Success,
+                            kind: .Success,
                             displayInfo: displayInfo,
                             data: asset
                         )
@@ -102,7 +102,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
                     entries: [
                         RandomAssetWidgetEntry(
                             date: Date(),
-                            kind: AssetWidgetEntryKind.NotFound,
+                            kind: .NotFound,
                             displayInfo: false,
                             data: nil
                         )
@@ -120,7 +120,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
 
 struct RandomAssetWidgetEntry: TimelineEntry {
     let date: Date
-    let kind: AssetWidgetEntryKind
+    let kind: WidgetEntryKind
     let displayInfo: Bool
     let data: Asset?
 }
