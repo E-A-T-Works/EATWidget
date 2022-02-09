@@ -50,14 +50,8 @@ struct CollectionPage: View {
                             Button {
                                 // TODO
                             } label: {
-                                Image(
-                                    uiImage: UIImage(named: "Icon_Black")!
-                                )
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 32, height: 32)
-                                .background(.white)
-                                .cornerRadius(16)
+                                Branding()
+                                    .frame(width: 32, height: 32)
                             }
                         }
                     )

@@ -107,6 +107,12 @@
 		5C91BE1B27B468B0001074CE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extension.swift */; };
 		5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
 		5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
+		5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1E27B47174001074CE /* BadgeBackground.swift */; };
+		5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1E27B47174001074CE /* BadgeBackground.swift */; };
+		5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2127B471B3001074CE /* HexagonParameters.swift */; };
+		5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2127B471B3001074CE /* HexagonParameters.swift */; };
+		5C91BE2527B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
+		5C91BE2627B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +215,9 @@
 		5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetCard+Extensions.swift"; sourceTree = "<group>"; };
 		5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		5C91BE1927B468B0001074CE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		5C91BE1E27B47174001074CE /* BadgeBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeBackground.swift; sourceTree = "<group>"; };
+		5C91BE2127B471B3001074CE /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
+		5C91BE2427B4754C001074CE /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +328,7 @@
 				5C63085227B2B51E00AC2A24 /* Contract.swift */,
 				5C63085427B2B52500AC2A24 /* Asset.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
+				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,6 +502,8 @@
 			children = (
 				5C63090027B2F72000AC2A24 /* URLImageView.swift */,
 				5C63090227B2F9A600AC2A24 /* HexBackground.swift */,
+				5C91BE1E27B47174001074CE /* BadgeBackground.swift */,
+				5C91BE2427B4754C001074CE /* Branding.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -640,6 +652,7 @@
 				5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImageView.swift in Sources */,
 				5C63085527B2B52500AC2A24 /* Asset.swift in Sources */,
+				5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
@@ -664,10 +677,12 @@
 				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
+				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
 				5C63091927B435E800AC2A24 /* HexBackground.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* AssetItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
+				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
 				5C6308DD27B2E3B600AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImageView.swift in Sources */,
@@ -708,6 +724,7 @@
 				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */,
+				5C91BE2627B4754C001074CE /* Branding.swift in Sources */,
 				5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */,
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */,
@@ -732,6 +749,7 @@
 				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
 				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
+				5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
