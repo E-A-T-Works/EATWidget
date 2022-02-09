@@ -89,6 +89,9 @@
 		5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
 		5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
 		5C63090E27B3202000AC2A24 /* RandomAssetWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090D27B3202000AC2A24 /* RandomAssetWidget.swift */; };
+		5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
+		5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
+		5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +186,7 @@
 		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
 		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
 		5C63090D27B3202000AC2A24 /* RandomAssetWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAssetWidget.swift; sourceTree = "<group>"; };
+		5C63090F27B337F700AC2A24 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				5C63086427B2C32E00AC2A24 /* AssetProvider.swift */,
+				5C63090F27B337F700AC2A24 /* DataProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -617,6 +622,7 @@
 				5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* AssetItem.swift in Sources */,
 				5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */,
+				5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
@@ -639,6 +645,7 @@
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
 				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
+				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308B027B2D9FA00AC2A24 /* Contract.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
@@ -655,6 +662,7 @@
 				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
 				5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImageView.swift in Sources */,
+				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
