@@ -35,66 +35,13 @@ struct AssetCard: View {
         let data = try? Data(contentsOf: imageUrl!)
         let uiImage = UIImage(data: data!)
         
-        let uiColor = uiImage?.averageColor ?? .clear
+        let uiColor = uiImage?.averageColor?.tint ?? .clear
         
         backgroundColor = Color(uiColor: uiColor)
         foregroundColor = uiColor.isDarkColor ? .white : .black
     }
     
     var body: some View {
-//        GeometryReader { geo in
-//            VStack {
-//                AsyncImage(url: imageUrl){ phase in
-//                    if let image = phase.image {
-//                        image
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                    } else if phase.error != nil {
-//                        Image(systemName: "photo")
-//                            .resizable()
-//                    } else {
-//                        ProgressView()
-//                    }
-//                }
-//                .frame(
-//                    width: geo.size.width,
-//                    height: geo.size.width
-//                )
-//
-//                HStack {
-//                    VStack(alignment: .leading) {
-//                        Text(title ?? "Untitled")
-//                            .font(
-//                                .system(
-//                                    size: 18,
-//                                    weight: .bold,
-//                                    design: .default
-//                                )
-//                            )
-//                            .foregroundColor(foregroundColor)
-//
-//                        Text(tokenId)
-//                            .font(
-//                                .system(
-//                                    size: 12,
-//                                    weight: .regular,
-//                                    design: .default
-//                                )
-//                            )
-//                            .foregroundColor(foregroundColor.opacity(0.80))
-//                    }
-//
-//                    Spacer()
-//                }
-//                .padding([.top, .bottom], 5)
-//                .padding([.leading, .trailing], 8)
-//                .frame(width: geo.size.width)
-//                .frame(height: 50)
-//            }
-//            .background(backgroundColor)
-//            .onAppear(perform: resolveColors)
-//        }
-    
         VStack {
             AsyncImage(url: imageUrl){ phase in
                 if let image = phase.image {
@@ -116,11 +63,12 @@ struct AssetCard: View {
                 }
                 Spacer()
             }
-            .padding()
+            .padding([.leading, .trailing], 4)
+            .padding([.top, .bottom], 4)
             
         }
         .background(backgroundColor)
-        .cornerRadius(20)
+        .cornerRadius(0)
         .onAppear(perform: resolveColors)
         
     
@@ -132,11 +80,11 @@ struct AssetCard: View {
 struct AssetCard_Previews: PreviewProvider {
     static var previews: some View {
         AssetCard(
-            contractAddress: TestData.asset.contract.address,
-            tokenId: TestData.asset.tokenId,
-            imageUrl: TestData.asset.imageUrl!,
-            title: TestData.asset.title,
-            preferredBackgroundColor: TestData.asset.backgroundColor
+            contractAddress: TestData.assets[1].contract.address,
+            tokenId: TestData.assets[1].tokenId,
+            imageUrl: TestData.assets[1].imageUrl!,
+            title: TestData.assets[1].title,
+            preferredBackgroundColor: TestData.assets[1].backgroundColor
         )
         .padding()
     }

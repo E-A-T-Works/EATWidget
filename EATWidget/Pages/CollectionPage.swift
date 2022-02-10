@@ -15,7 +15,8 @@ struct CollectionPage: View {
     var body: some View {
         GeometryReader { geo in
             StaggeredGrid(
-                list: TestData.assets,
+//                list: TestData.assets,
+                list: viewModel.assets,
                 columns: viewModel.columns,
                 showsIndicators: false,
                 spacing: 10,
@@ -30,7 +31,7 @@ struct CollectionPage: View {
                         }
                 }
             )
-            .padding(.horizontal)
+            .padding([.horizontal], 10)
             .animation(.easeInOut, value: viewModel.columns)
             .navigationTitle("Collection")
             .toolbar(content: {
