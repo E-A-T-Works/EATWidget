@@ -30,7 +30,10 @@ struct AssetSheet: View {
             } else {
                 ScrollView {
                     
+                    ///
                     /// Image
+                    ///
+                    
                     CachedAsyncImage(url: viewModel.asset?.imageUrl){ image in
                         image
                             .resizable()
@@ -41,7 +44,10 @@ struct AssetSheet: View {
                     }
                     .padding([.bottom], spacing)
                     
+                    ///
                     /// Actions
+                    ///
+                    
                     VStack(alignment: .center) {
                         HStack {
                         
@@ -49,25 +55,31 @@ struct AssetSheet: View {
                                 destination: (viewModel.asset?.permalink!)!,
                                 label: {
                                     HStack{
-                                        Image(systemName: "link")
+                                        Image(uiImage: UIImage(named: "opensea")!).resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width:24)
                                         Text("OpenSea")
                                             .lineLimit(1)
                                     }
-                                    .foregroundColor(viewModel.foregroundColor)
                                 }
-                            ).padding([.horizontal], 2)
+                            )
+                                .buttonStyle(.bordered)
+                                .padding(.horizontal, 6)
                             
                             Link(
                                 destination: (viewModel.asset?.permalink!)!,
                                 label: {
                                     HStack{
-                                        Image(systemName: "link")
+                                        Image(uiImage: UIImage(named: "etherscan")!).resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width:24)
                                         Text("Etherscan")
                                             .lineLimit(1)
                                     }
-                                    .foregroundColor(viewModel.foregroundColor)
                                 }
-                            ).padding([.horizontal], 2)
+                            )
+                                .buttonStyle(.bordered)
+                                .padding(.horizontal, 6)
                                
                         }
                         
@@ -76,16 +88,14 @@ struct AssetSheet: View {
                     .padding([.bottom], spacing)
                     .padding(.horizontal)
                     
+                    ///
+                    /// Heading
+                    ///
                     
-                    /// Heading    
                     HStack {
                         VStack(alignment: .leading) {
                             Text(viewModel.asset?.title ?? "Untitled")
                                 .font(.title)
-                                .lineLimit(1)
-                            
-                            Text(viewModel.asset?.tokenId ?? "")
-                                .font(.caption)
                                 .lineLimit(1)
                         }
                         
@@ -105,8 +115,9 @@ struct AssetSheet: View {
                     .padding(.horizontal)
                     
                     
-                    
+                    ///
                     /// Description
+                    ///
                     
                     if viewModel.asset?.text != nil {
                         HStack {
@@ -121,7 +132,16 @@ struct AssetSheet: View {
                             .padding()
                     }
                     
-                    /// Details
+                    
+                    ///
+                    /// Author
+                    ///
+                    
+                    
+                    
+                    ///
+                    /// Stats
+                    ///
                     
                     VStack {
                         HStack {
@@ -157,6 +177,29 @@ struct AssetSheet: View {
                     .padding([.bottom], spacing)
                     .padding(.horizontal)
                     
+                    Divider()
+                        .padding()
+                    
+                    ///
+                    /// Metadata
+                    ///
+                    
+                    VStack {
+                        Link(
+                            destination: (viewModel.asset?.permalink!)!,
+                            label: {
+                                HStack{
+                                    Image(systemName: "link")
+                                    Text("Metadata")
+                                        .lineLimit(1)
+                                }
+                            }
+                        )
+                            .buttonStyle(.bordered)
+                            .padding(.horizontal, 6)
+                    }
+                    
+                    
                 }
             
             }
@@ -173,10 +216,11 @@ struct AssetSheet: View {
                         }, label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(.black)
+                                
                         }
                     )
                     .buttonStyle(.bordered)
-                    .frame(width: 24, height: 24)
+                    .frame(width: 30, height: 30)
                     .cornerRadius(48)
                     .padding()
                 }
