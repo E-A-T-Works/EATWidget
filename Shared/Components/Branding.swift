@@ -10,7 +10,7 @@ import SwiftUI
 struct Branding: View {
     var body: some View {
         ZStack{
-            BadgeBackground()
+//            BadgeBackground()
             Image(
                 uiImage: UIImage(named: "Icon_Black")!
             )
@@ -27,7 +27,7 @@ struct Branding_Previews: PreviewProvider {
                 .frame(width: 64, height: 64)
                 .padding()
         }
-        .background(.black)
+//        .background(.black)
         .previewLayout(PreviewLayout.sizeThatFits)
             
     }

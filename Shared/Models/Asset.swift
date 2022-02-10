@@ -10,7 +10,7 @@
 
 import Foundation
 
-struct Asset: Identifiable {
+struct Asset: Identifiable, Hashable {
     let id: String
     
     let tokenId: String

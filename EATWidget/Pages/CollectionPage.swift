@@ -10,83 +10,62 @@ import SwiftUI
 struct CollectionPage: View {
     @StateObject private var viewModel = CollectionPageViewModel()
     
-    let cardSpacing = 16.0
-    let cardCornerRadius = 12.0
-    let cardBoxShadowRadius = 8.0
-    
-    
-    init() {
-        Theme.navigationBarColors(
-            background: Theme.backgroundColorForPage(),
-            titleColor: Theme.foregroundColorForPage(),
-            tintColor: Theme.foregroundColorForPage()
-       )
-    }
-
+    @Namespace var animation
     
     var body: some View {
-
         GeometryReader { geo in
-            ZStack {
-                Color(uiColor: Theme.backgroundColorForPage()).ignoresSafeArea(.all)
-                
-                ScrollView {
-                    LazyVGrid(
-                        columns: [GridItem(.flexible(minimum: geo.size.width, maximum: geo.size.width), spacing: 0)],
-                        alignment: .center, spacing: cardSpacing
-                    ) {
-                        ForEach(viewModel.assets) { asset in
-                            AssetCard(item: asset)
-                                .frame(width: geo.size.width - 1.5 * cardSpacing)
-                                .frame(height: (geo.size.width -  1.5 * cardSpacing) + 58)
-                                .cornerRadius(cardCornerRadius)
-                                .shadow(radius: cardBoxShadowRadius)
-                                .onTapGesture {
-                                    viewModel.presentAssetSheet(
-                                        contractAddress: asset.contract.address,
-                                        tokenId: asset.tokenId
-                                    )   
-                                }
+            StaggeredGrid(
+                list: TestData.assets,
+                columns: viewModel.columns,
+                showsIndicators: false,
+                spacing: 10,
+                content: { asset in
+                    AssetCard(item: asset)
+                        .matchedGeometryEffect(id: asset.id, in: animation)
+                        .onTapGesture {
+                            viewModel.presentAssetSheet(
+                                contractAddress: asset.contract.address,
+                                tokenId: asset.tokenId
+                            )
+                        }
+                }
+            )
+            .padding(.horizontal)
+            .animation(.easeInOut, value: viewModel.columns)
+            .navigationTitle("Collection")
+            .toolbar(content: {
+                ToolbarItem(
+                    placement: .navigationBarLeading,
+                    content: {
+                        Button {
+                            // TODO
+                        } label: {
+                            Branding()
+                                .frame(width: 32, height: 32)
                         }
                     }
-                }
-                .navigationTitle("Collection")
-                .toolbar(content: {
-                    ToolbarItem(
-                        placement: .navigationBarLeading,
-                        content: {
-                            Button {
-                                // TODO
-                            } label: {
-                                Branding()
-                                    .frame(width: 32, height: 32)
-                            }
-                        }
-                    )
-                    ToolbarItem(
-                        placement: .navigationBarTrailing,
-                        content: {
-                            Button("Connect", action: { viewModel.presentConnectSheet() })
-                        }
-                    )
-                })
-                .onAppear {
-                    viewModel.load()
-                }
-                .sheet(isPresented: $viewModel.showingSheet) {
-                    switch viewModel.sheetContent {
-                    case .Connect:
-                        ConnectSheet()
-                    case .Asset(let contractAddress, let tokenId): AssetSheet(
-                            contractAddress: contractAddress,
-                            tokenId: tokenId
-                        )
-                        
+                )
+                ToolbarItem(
+                    placement: .navigationBarTrailing,
+                    content: {
+                        Button("Connect", action: { viewModel.presentConnectSheet() })
                     }
-                }
-                
+                )
+            })
+            .onAppear {
+                viewModel.load()
             }
-            
+            .sheet(isPresented: $viewModel.showingSheet) {
+                switch viewModel.sheetContent {
+                case .Connect:
+                    ConnectSheet()
+                case .Asset(let contractAddress, let tokenId): AssetSheet(
+                        contractAddress: contractAddress,
+                        tokenId: tokenId
+                    )
+                    
+                }
+            }
         }
     }
 }

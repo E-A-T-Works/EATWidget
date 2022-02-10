@@ -18,6 +18,8 @@ final class CollectionPageViewModel: ObservableObject {
     }
     
     // MARK: - Properties
+    
+    @Published private(set) var columns: Int = 2
 
     @Published private(set) var wallets: [Wallet] = []
     @Published private(set) var assets: [Asset] = []

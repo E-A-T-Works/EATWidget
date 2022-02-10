@@ -11,7 +11,7 @@
 
 import Foundation
 
-struct Contract: Identifiable {
+struct Contract: Identifiable, Hashable {
     let id: String
     
     let address: String
