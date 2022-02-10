@@ -13,7 +13,6 @@ struct CollectionPage: View {
     var body: some View {
         GeometryReader { geo in
             StaggeredGrid(
-//                list: TestData.assets,
                 list: viewModel.assets,
                 columns: viewModel.columns,
                 showsIndicators: false,

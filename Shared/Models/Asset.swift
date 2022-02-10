@@ -31,8 +31,10 @@ struct Asset: Identifiable, Hashable {
     let animationUrl: URL?
     let animationOriginalUrl: URL?
     
-    let contract: Contract
+    let tokenMetadata: URL?
     
+    let contract: Contract
+
     let deepLink: URL
 }
 
@@ -50,6 +52,7 @@ extension Asset: Decodable {
         case imageOriginalUrl = "image_original_url"
         case animationUrl = "animation_url"
         case animationOriginalUrl = "animation_original_url"
+        case tokenMetadata = "token_metadata"
         case contract = "asset_contract"
     }
     
@@ -76,6 +79,8 @@ extension Asset: Decodable {
         
         animationUrl = (try? URL(string: container.decode(String.self, forKey: .animationUrl))) ?? nil
         animationOriginalUrl = (try? URL(string: container.decode(String.self, forKey: .animationOriginalUrl))) ?? nil
+        
+        tokenMetadata = (try? URL(string: container.decode(String.self, forKey: .tokenMetadata))) ?? nil
         
         contract = try container.decode(Contract.self, forKey: .contract)
         

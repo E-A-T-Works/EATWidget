@@ -85,6 +85,9 @@ struct ConnectSheet: View {
 
 struct ConnectSheet_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectSheet()
+        NavigationView {
+            ConnectSheet()
+        }
+        
     }
 }

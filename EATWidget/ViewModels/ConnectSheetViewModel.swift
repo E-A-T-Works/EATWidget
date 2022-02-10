@@ -68,11 +68,8 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func submit() {
-        print("SUBMIT")
         do {
             try WalletStorage.shared.add(address: form.address, title: form.title)
-            
-            print("did it")
             
             self.shouldDismissView = true
         } catch {
