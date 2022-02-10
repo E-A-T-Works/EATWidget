@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -114,6 +115,11 @@
 		5C91BE2627B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2727B47BC3001074CE /* AssetSheet.swift */; };
 		5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */; };
+		5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
+		5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
+		5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
+		5CE9CFA327B57A5600F29938 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extension.swift */; };
+		5CE9CFA427B57A5900F29938 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +155,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -220,6 +227,7 @@
 		5C91BE2427B4754C001074CE /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		5C91BE2727B47BC3001074CE /* AssetSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheet.swift; sourceTree = "<group>"; };
 		5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
+		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +339,7 @@
 				5C63085427B2B52500AC2A24 /* Asset.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
+				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				5C91BE1227B44AE7001074CE /* AssetCard.swift */,
 				5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */,
 				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
+				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -659,6 +669,7 @@
 				5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
+				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */,
@@ -687,6 +698,7 @@
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
+				5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,12 +707,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6308B627B2DA0800AC2A24 /* Sequence+Extension.swift in Sources */,
+				5CE9CFA327B57A5600F29938 /* UIColor+Extension.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C6308B127B2D9FC00AC2A24 /* Asset.swift in Sources */,
 				5C6308B327B2DA0000AC2A24 /* AssetProvider.swift in Sources */,
 				5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */,
+				5CE9CFA427B57A5900F29938 /* UIImage+Extension.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
+				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
 				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
 				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
@@ -754,6 +769,7 @@
 				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 				5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */,
+				5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

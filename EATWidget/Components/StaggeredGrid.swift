@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct StaggeredGridColumn<T>: Identifiable {
+    let id: Int
+    var elements: [T]
+}
+
 struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     
     var content: (T) -> Content
@@ -17,7 +22,13 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     var showsIndicators: Bool
     var spacing: CGFloat
     
-    init(list: [T], columns: Int, showsIndicators: Bool, spacing: CGFloat, @ViewBuilder content: @escaping (T) -> Content) {
+    init(
+        list: [T],
+        columns: Int,
+        showsIndicators: Bool,
+        spacing: CGFloat,
+        @ViewBuilder content: @escaping (T) -> Content
+    ) {
         self.list = list
         self.columns = columns
         self.showsIndicators = showsIndicators
@@ -25,12 +36,13 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
         self.content = content
     }
     
-    func setupList() -> [[T]] {
-        var gridArray: [[T]] = Array(repeating: [], count: columns)
+    func setupColumns() -> [StaggeredGridColumn<T>] {
+        var columnArray: [StaggeredGridColumn] = (0...columns - 1).map { StaggeredGridColumn<T>(id: $0, elements: []) }
+        
         var currentIndex: Int = 0
         
         for object in list {
-            gridArray[currentIndex].append(object)
+            columnArray[currentIndex].elements.append(object)
             
             if currentIndex == (columns - 1) {
                 currentIndex = 0
@@ -39,22 +51,19 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
             }
         }
         
-        return gridArray
+        return columnArray
     }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: showsIndicators) {
             HStack(alignment: .top) {
-                
-                ForEach(setupList(), id: \.self) { column in
+                ForEach(setupColumns()) { column in
                     LazyVStack(spacing: spacing) {
-                        ForEach(column) { object in
+                        ForEach(column.elements) { object in
                             content(object)
                         }
                     }
                 }
-                
-                
             }
             .padding(.vertical)
         }

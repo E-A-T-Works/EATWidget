@@ -8,7 +8,7 @@
 //      https://matteomanferdini.com/codable/
 //
 
-import Foundation
+import SwiftUI
 
 struct Asset: Identifiable, Hashable {
     let id: String
@@ -18,7 +18,7 @@ struct Asset: Identifiable, Hashable {
     let title: String?
     let text: String?
     
-    let backgroundColor: String?
+    let backgroundColor: UIColor?
     
     let permalink: URL?
     let externalLink: URL?
@@ -63,7 +63,8 @@ extension Asset: Decodable {
         title = (try? container.decode(String.self, forKey: .title)) ?? nil
         text = (try? container.decode(String.self, forKey: .text)) ?? nil
         
-        backgroundColor = (try? container.decode(String.self, forKey: .backgroundColor)) ?? nil
+        let backgroundColorHex = (try? container.decode(String.self, forKey: .backgroundColor)) ?? nil
+        backgroundColor = backgroundColorHex != nil ? UIColor(hexString: backgroundColorHex) : UIColor.clear
         
         permalink = (try? URL(string: container.decode(String.self, forKey: .permalink))) ?? nil
         externalLink = (try? URL(string: container.decode(String.self, forKey: .externalLink))) ?? nil

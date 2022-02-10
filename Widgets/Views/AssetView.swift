@@ -17,7 +17,7 @@ struct AssetView: View {
     let tokenId: String
     let imageUrl: URL?
     let title: String?
-    let backgroundColor: String?
+    let backgroundColor: UIColor?
     
     let displayInfo: Bool
     
@@ -71,7 +71,7 @@ struct AssetView_Small: View {
     let tokenId: String
     let imageUrl: URL?
     let title: String?
-    let backgroundColor: String?
+    let backgroundColor: UIColor?
     
     let displayInfo: Bool
     
@@ -80,7 +80,7 @@ struct AssetView_Small: View {
         
         GeometryReader { geo in
             ZStack {
-                HexBackground(hexColor: backgroundColor)
+                Color(uiColor: backgroundColor ?? UIColor.clear)
                 
                 HStack {
                     VStack {
@@ -157,7 +157,7 @@ struct AssetView_Medium: View {
     let tokenId: String
     let imageUrl: URL?
     let title: String?
-    let backgroundColor: String?
+    let backgroundColor: UIColor?
     
     var body: some View {
         Text("Medium")
@@ -173,7 +173,7 @@ struct AssetView_Large: View {
     let tokenId: String
     let imageUrl: URL?
     let title: String?
-    let backgroundColor: String?
+    let backgroundColor: UIColor?
     
     var body: some View {
         Text("Large")

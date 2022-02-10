@@ -10,8 +10,6 @@ import SwiftUI
 struct CollectionPage: View {
     @StateObject private var viewModel = CollectionPageViewModel()
     
-    @Namespace var animation
-    
     var body: some View {
         GeometryReader { geo in
             StaggeredGrid(
@@ -22,7 +20,6 @@ struct CollectionPage: View {
                 spacing: 10,
                 content: { asset in
                     AssetCard(item: asset)
-                        .matchedGeometryEffect(id: asset.id, in: animation)
                         .onTapGesture {
                             viewModel.presentAssetSheet(
                                 contractAddress: asset.contract.address,
@@ -32,7 +29,6 @@ struct CollectionPage: View {
                 }
             )
             .padding([.horizontal], 10)
-            .animation(.easeInOut, value: viewModel.columns)
             .navigationTitle("Collection")
             .toolbar(content: {
                 ToolbarItem(

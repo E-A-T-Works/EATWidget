@@ -64,7 +64,42 @@ final class Theme {
     }
     
     
-    static func resolveColorsFromImage(imageUrl: URL?, preferredBackgroundColor: String?) {}
+    static func resolveColorsFromImage(imageUrl: URL?, preferredBackgroundColor: UIColor?) -> DerivedColors {
+        var backgroundColor: UIColor
+        var foregroundColor: UIColor
+        
+        if preferredBackgroundColor != nil {
+            backgroundColor = preferredBackgroundColor!
+            foregroundColor = backgroundColor.isDarkColor ? .white : .black
+            
+            return DerivedColors(
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor
+            )
+            
+        }
+        
+        if imageUrl == nil {
+            backgroundColor = .clear
+            foregroundColor = .black
+            
+            return DerivedColors(
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor
+            )
+        }
+        
+        let data = try? Data(contentsOf: imageUrl!)
+        let uiImage = UIImage(data: data!)
+        
+        backgroundColor = uiImage?.averageColor?.tint ?? .clear
+        foregroundColor = backgroundColor.isDarkColor ? .white : .black
+        
+        return DerivedColors(
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor
+        )
+    }
     
 }
 
