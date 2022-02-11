@@ -116,6 +116,19 @@ struct AssetSheet: View {
                     
                     
                     ///
+                    /// Author
+                    ///
+                    
+                    // TODO:
+                    
+                    ///
+                    /// Collection
+                    ///
+                    
+                    // TODO:
+                    
+                    
+                    ///
                     /// Description
                     ///
                     
@@ -133,11 +146,7 @@ struct AssetSheet: View {
                     }
                     
                     
-                    ///
-                    /// Author
-                    ///
-                    
-                    
+                   
                     
                     ///
                     /// Stats
