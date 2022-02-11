@@ -8,13 +8,37 @@
 import SwiftUI
 
 struct AssetSheetDetails: View {
+    
+    let contractAddress: String
+    let tokenId: String
+    let tokenStandard: String?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            TableItem(key: "Contract Address", value: contractAddress)
+            
+            TableItem(key: "Token ID", value: tokenId)
+            
+            if tokenStandard != nil {
+                TableItem(key: "Token Standard", value: tokenStandard!)
+            }
+            
+        }
+
     }
 }
 
 struct AssetSheetDetails_Previews: PreviewProvider {
     static var previews: some View {
-        AssetSheetDetails()
+        VStack{
+            AssetSheetDetails(
+                contractAddress: "0x00",
+                tokenId: "123",
+                tokenStandard: nil
+            )
+        }
+        .padding()
+        .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

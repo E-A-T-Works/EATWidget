@@ -27,7 +27,6 @@ struct Branding_Previews: PreviewProvider {
                 .frame(width: 64, height: 64)
                 .padding()
         }
-//        .background(.black)
         .previewLayout(PreviewLayout.sizeThatFits)
             
     }

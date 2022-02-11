@@ -20,25 +20,17 @@ struct AssetSheetHeader: View {
                     .fontWeight(.black)
                     .lineLimit(1)
                 
-                Text(collectionTitle ?? "--")
-                    .font(.system(.body, design: .monospaced))
-                    .fontWeight(.light)
-                    .lineLimit(1)
+                if collectionTitle != nil {
+                    Text(collectionTitle!)
+                        .font(.system(.body, design: .monospaced))
+                        .fontWeight(.light)
+                        .lineLimit(1)
+                }
             }
             
             Spacer()
             
-            HStack {
-                Image(uiImage: UIImage(named: "Eth")!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:12)
-                
-                Text("2.1")
-                    .font(.system(.body, design: .monospaced))
-                    .lineLimit(1)
-            }
-            
+            EthPrice()
         }
     }
 }
@@ -51,7 +43,6 @@ struct AssetSheetHeader_Previews: PreviewProvider {
                 collectionTitle: "Collection Title"
             )
         }
-        .padding()
         .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

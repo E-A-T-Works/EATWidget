@@ -33,6 +33,7 @@ struct URLButton: View {
                     
                     if title != nil {
                         Text(title!)
+                            .font(.system(.body, design: .monospaced))
                             .lineLimit(1)
                             .foregroundColor(
                                 colorScheme == .dark ? Color.white : Color.black
@@ -41,8 +42,8 @@ struct URLButton: View {
                 }
             }
         )
-            .buttonStyle(.bordered)
-            .padding(.horizontal, 6)
+        .buttonStyle(.bordered)
+        .padding(.horizontal, 6)
     }
 }
 

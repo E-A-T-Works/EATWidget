@@ -44,6 +44,16 @@
 		5C035EF027B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
 		5C035EF127B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
 		5C035EF227B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
+		5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
+		5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
+		5C035EF627B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
+		5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */; };
+		5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
+		5C366B0627B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
+		5C366B0727B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
+		5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
+		5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
+		5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -206,6 +216,10 @@
 		5C035EE927B6CAE700A11697 /* AssetSheetVisual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetVisual.swift; sourceTree = "<group>"; };
 		5C035EEB27B6D15900A11697 /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
 		5C035EEF27B6D17900A11697 /* Discord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Discord.png; sourceTree = "<group>"; };
+		5C035EF327B6D75E00A11697 /* EthPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthPrice.swift; sourceTree = "<group>"; };
+		5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPaymentToken.swift; sourceTree = "<group>"; };
+		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
+		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -392,12 +406,12 @@
 				5C63085427B2B52500AC2A24 /* Asset.swift */,
 				5C63085227B2B51E00AC2A24 /* Contract.swift */,
 				5C035ED227B5BA2600A11697 /* Collection.swift */,
+				5C035ED627B5DA2000A11697 /* PaymentToken.swift */,
 				5C035ECA27B5B9AD00A11697 /* Creator.swift */,
 				5C035ECE27B5B9E600A11697 /* User.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
-				5C035ED627B5DA2000A11697 /* PaymentToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,20 +485,21 @@
 		5C63086F27B2C4AD00AC2A24 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
+				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
 				5C63087227B2C57600AC2A24 /* WalletItem.swift */,
 				5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */,
 				5C63087027B2C4BC00AC2A24 /* AssetItem.swift */,
 				5C63087E27B2CBEE00AC2A24 /* AssetItem+Extensions.swift */,
 				5C91BE1227B44AE7001074CE /* AssetCard.swift */,
 				5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */,
+				5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */,
 				5C035EE927B6CAE700A11697 /* AssetSheetVisual.swift */,
 				5C035EE127B6C5E500A11697 /* AssetSheetActions.swift */,
 				5C035EDB27B6C5B800A11697 /* AssetSheetHeader.swift */,
 				5C035EDD27B6C5C600A11697 /* AssetSheetDescription.swift */,
 				5C035EE327B6C5F400A11697 /* AssetSheetCreator.swift */,
 				5C035EDF27B6C5CF00A11697 /* AssetSheetDetails.swift */,
-				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
-				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -579,8 +594,11 @@
 			children = (
 				5C63090027B2F72000AC2A24 /* URLImage.swift */,
 				5C035EE527B6C64E00A11697 /* URLButton.swift */,
+				5C366B0827B6FE5E00D9A0BE /* URLLink.swift */,
 				5C91BE1E27B47174001074CE /* BadgeBackground.swift */,
 				5C91BE2427B4754C001074CE /* Branding.swift */,
+				5C035EF327B6D75E00A11697 /* EthPrice.swift */,
+				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -755,6 +773,7 @@
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* AssetSheetVisual.swift in Sources */,
+				5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */,
 				5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */,
 				5C63086527B2C32E00AC2A24 /* AssetProvider.swift in Sources */,
 				5C035ECB27B5B9AD00A11697 /* Creator.swift in Sources */,
@@ -776,11 +795,14 @@
 				5C035ED727B5DA2000A11697 /* PaymentToken.swift in Sources */,
 				5C91BE1A27B468B0001074CE /* UIColor+Extension.swift in Sources */,
 				5C035ECF27B5B9E600A11697 /* User.swift in Sources */,
+				5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
+				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
+				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C035EE427B6C5F400A11697 /* AssetSheetCreator.swift in Sources */,
 				5C035EE627B6C64E00A11697 /* URLButton.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* AssetItem+Extensions.swift in Sources */,
@@ -796,12 +818,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6308B627B2DA0800AC2A24 /* Sequence+Extension.swift in Sources */,
+				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5CE9CFA327B57A5600F29938 /* UIColor+Extension.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C035ED827B5DA2000A11697 /* PaymentToken.swift in Sources */,
 				5C6308B127B2D9FC00AC2A24 /* Asset.swift in Sources */,
 				5C6308B327B2DA0000AC2A24 /* AssetProvider.swift in Sources */,
+				5C366B0627B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */,
 				5CE9CFA427B57A5900F29938 /* UIImage+Extension.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
@@ -820,6 +844,7 @@
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
 				5C91BE1027B43A27001074CE /* Theme.swift in Sources */,
 				5C035EE727B6C64E00A11697 /* URLButton.swift in Sources */,
+				5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,6 +853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */,
+				5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
 				5C6308DD27B2E3B600AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImage.swift in Sources */,
@@ -835,6 +861,7 @@
 				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
+				5C366B0727B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */,
 				5C91BE2627B4754C001074CE /* Branding.swift in Sources */,
@@ -868,6 +895,7 @@
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 				5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */,
 				5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */,
+				5C035EF627B6D75E00A11697 /* EthPrice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

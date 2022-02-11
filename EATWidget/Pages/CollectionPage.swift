@@ -14,6 +14,7 @@ struct CollectionPage: View {
         GeometryReader { geo in
             StaggeredGrid(
                 list: viewModel.assets,
+//                list: TestData.assets,
                 columns: viewModel.columns,
                 showsIndicators: false,
                 spacing: 10,

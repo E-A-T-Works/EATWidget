@@ -43,19 +43,16 @@ struct AssetCard: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(title ?? "Untitled")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .lineLimit(2)
-                    Text(tokenId)
-                        .font(.caption)
-                        .fontWeight(.light)
-                        .lineLimit(3)
+                        .font(.system(.body, design: .monospaced))
+                        .fontWeight(.black)
+                        .lineLimit(1)
                 }
                 Spacer()
             }
             .padding([.leading, .trailing], 4)
             .padding([.top, .bottom], 4)
         }
+        .padding([.bottom], 8)
         .onAppear(perform: resolveColors)
     }
 }

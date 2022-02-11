@@ -12,24 +12,26 @@ struct AssetItem: View {
     let contractAddress: String
     let tokenId: String
     let imageThumbnailUrl: URL?
+    
     let title: String?
     
     var body: some View {
         HStack {
             AsyncImage(url: imageThumbnailUrl){ image in
-                image.resizable()
+                image.resizable().aspectRatio(contentMode: .fit)
             } placeholder: {
                 ProgressView()
             }
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 50, height: 50)
+            .frame(width: 40, height: 40)
             
             VStack(alignment: .leading) {
                 Text(title ?? "Untitled")
-                HStack {
-                    Text(tokenId)
-                }
+                    .font(.system(.body, design: .monospaced))
+                    .fontWeight(.black)
+                    .lineLimit(1)
             }
+            
+            Spacer()
         }
     }
 }

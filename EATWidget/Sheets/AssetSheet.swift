@@ -29,154 +29,68 @@ struct AssetSheet: View {
                 }
             } else {
                 ScrollView {
+                    
                     AssetSheetVisual(
                         imageUrl: viewModel.imageUrl,
                         backgroundColor: viewModel.backgroundColor
                     )
                     .padding([.bottom], spacing)
-                    
+
                     AssetSheetActions(
                         list: viewModel.actionButtons
                     )
                     .padding([.bottom], spacing)
-                    
-                    ///
-                    /// Heading
-                    ///
-                    
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(viewModel.asset?.title ?? "Untitled")
-                                .lineLimit(1)
-                            
-                            if viewModel.asset?.collection != nil {
-                                Text(viewModel.asset?.collection!.title ?? "--")
-                                    .lineLimit(1)
-                            }
-                            
-                        }
-                        
-                        Spacer()
-                        
-                        HStack {
-                            Image(uiImage: UIImage(named: "Eth")!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width:12)
-                            
-                            Text("2.1")
-                        }
-                        
-                    }
-                    .padding([.bottom], spacing)
-                    .padding(.horizontal)
-                    
-                    ///
-                    /// Description
-                    ///
-                    
-                    if viewModel.asset?.text != nil {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text((viewModel.asset?.text!)!)
-                                    .font(.system(.body, design: .monospaced))
-                            }
-                        }
-                        .padding(.horizontal)
-                        
-                        Divider()
-                            .padding()
-                    }
-                    
-                    
-                    ///
-                    /// Author
-                    ///
-                    
-                    if viewModel.asset?.creator != nil {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(viewModel.asset?.creator!.user?.username ?? "--").font(.system(.body, design: .monospaced))
-                                
-                                Text(viewModel.asset?.creator!.address ?? "--")
 
-                            }
-                            Spacer()
-                        }
-                        .padding([.bottom], spacing)
-                        .padding(.horizontal)
-                        
-                        Divider()
-                            .padding()
-                    }
-
-
-                    ///
-                    /// Stats
-                    ///
                     
-                    VStack {
-                        HStack {
-                            Text("Contract Address")
-                                .lineLimit(1)
-                            
-                            Spacer()
-                            
-                            Text((viewModel.asset?.contract.address)!)
-                                .lineLimit(1)
-                        }
-                        
-                        HStack {
-                            Text("Token ID")
-                                .lineLimit(1)
-                            
-                            Spacer()
-                            
-                            Text((viewModel.asset?.tokenId)!)
-                                .lineLimit(1)
-                        }
-                        
-                        HStack {
-                            Text("Token Standard")
-                                .lineLimit(1)
-                            
-                            Spacer()
-                            
-                            Text((viewModel.asset?.tokenId)!)
-                                .lineLimit(1)
-                        }
-                    }
-                    .padding([.bottom], spacing)
-                    .padding(.horizontal)
-                    
-                    Divider()
-                        .padding()
-                    
-                    ///
-                    /// Metadata
-                    ///
-                    
-                    VStack {
-                        Link(
-                            destination: (viewModel.asset?.permalink!)!,
-                            label: {
-                                HStack{
-                                    Image(systemName: "link")
-                                    Text("Metadata")
-                                        .lineLimit(1)
-                                }
-                            }
+                    VStack(alignment: .leading) {
+                        AssetSheetHeader(
+                            assetTitle: viewModel.asset?.title,
+                            collectionTitle: viewModel.asset?.collection?.title
                         )
-                            .buttonStyle(.bordered)
-                            .padding(.horizontal, 6)
+                        .padding([.bottom], spacing)
+
+                        if viewModel.asset?.text != nil {
+                            AssetSheetDescription(
+                                text: (viewModel.asset?.text!)!
+                            )
+                            .padding([.bottom], spacing)
+                        }
+                        
+                        Divider().padding(.vertical)
+                        
+                        if viewModel.creator != nil {
+                            Text("Author TODO")
+                                .padding([.bottom], spacing)
+                            
+                            Divider().padding(.vertical)
+                        }
+
+
+                        AssetSheetDetails(
+                            contractAddress: viewModel.contract?.address ?? "--",
+                            tokenId: viewModel.asset?.tokenId  ?? "--",
+                            tokenStandard: viewModel.contract?.schemaName
+                        )
+                        .padding([.bottom], spacing)
+                        
+                
+                        if(viewModel.asset?.tokenMetadata != nil) {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                URLLink(
+                                    url: (viewModel.asset?.tokenMetadata!)!,
+                                    title: "Metadata"
+                                )
+                                Spacer()
+                            }
+                            .padding(.vertical)
+                        }
+                        
                     }
-                    
-                    
+                    .padding(.horizontal)
                 }
             
             }
-            
-            
 
             VStack {
                 HStack {
