@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Branding: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack{
-//            BadgeBackground()
             Image(
-                uiImage: UIImage(named: "Icon_Black")!
+                uiImage: UIImage(
+                    named: colorScheme == .dark ? "Icon_White" : "Icon_Black"
+                )!
             )
             .resizable()
             .aspectRatio(contentMode: .fit)

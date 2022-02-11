@@ -17,6 +17,7 @@ struct URLLink: View {
             destination: url,
             label: {
                 HStack{
+
                     Text(title)
                         .font(.system(.body, design: .monospaced))
                         .lineLimit(1)

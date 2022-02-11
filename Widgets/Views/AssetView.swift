@@ -110,33 +110,27 @@ struct AssetView_Small: View {
                     HStack(alignment: .top) {
                         Spacer()
                         VStack {
-                            Image(
-                                uiImage: UIImage(named: "Icon_Black")!
-                            )
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 32, height: 32)
-                            .cornerRadius(12)
-                            .padding([.top], 12)
-                            .padding([.trailing], 8)
+                            Branding()
+                                .frame(width: 32, height: 32)
+                                .padding([.top], 12)
+                                .padding([.trailing], 8)
                             
                             Spacer()
                         }
                     }
-
-
+                    
                     HStack(alignment: .bottom) {
-                        VStack(alignment: .leading) {
+                        VStack {
                             Spacer()
-                            VStack {
-                                Text("\(title ?? "Untitled")")
-                                    .font(.headline)
-                                    .lineLimit(1)
-                            }
-                            .padding([.bottom], 12)
-                            .padding([.leading, .trailing], 12)
-
+                            HeadingLockup(
+                                title: title,
+                                text: nil,
+                                fontStyle: .caption2
+                            )
                         }
+                        .padding(.horizontal)
+                        .padding(.bottom, 8)
+                        
                         Spacer()
                     }
 

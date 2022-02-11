@@ -11,7 +11,10 @@ struct AssetCard: View {
     let contractAddress: String
     let tokenId: String
     let imageUrl: URL?
-    let title: String?
+    
+    let assetTitle: String?
+    let collectionTitle: String?
+    
     let preferredBackgroundColor: UIColor?
     
     @State private var backgroundColor: Color = .clear
@@ -41,12 +44,12 @@ struct AssetCard: View {
             .background(backgroundColor)
             
             HStack {
-                VStack(alignment: .leading) {
-                    Text(title ?? "Untitled")
-                        .font(.system(.body, design: .monospaced))
-                        .fontWeight(.black)
-                        .lineLimit(1)
-                }
+                HeadingLockup(
+                    title: assetTitle,
+                    text: collectionTitle,
+                    fontStyle: .caption
+                )
+
                 Spacer()
             }
             .padding([.leading, .trailing], 4)
@@ -59,13 +62,18 @@ struct AssetCard: View {
 
 struct AssetCard_Previews: PreviewProvider {
     static var previews: some View {
-        AssetCard(
-            contractAddress: TestData.asset.contract.address,
-            tokenId: TestData.asset.tokenId,
-            imageUrl: TestData.asset.imageUrl!,
-            title: TestData.asset.title,
-            preferredBackgroundColor: TestData.asset.backgroundColor
-        )
+        VStack {
+            AssetCard(
+                contractAddress: TestData.asset.contract.address,
+                tokenId: TestData.asset.tokenId,
+                imageUrl: TestData.asset.imageUrl!,
+                assetTitle: TestData.asset.title,
+                collectionTitle: TestData.asset.collection?.title,
+                preferredBackgroundColor: TestData.asset.backgroundColor
+            )
+                .frame(width: 300)
+        }
         .padding()
+        .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

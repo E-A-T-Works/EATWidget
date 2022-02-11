@@ -33,8 +33,8 @@ struct AssetSheetDetails_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
             AssetSheetDetails(
-                contractAddress: "0x00",
-                tokenId: "123",
+                contractAddress: TestData.asset.contract.address,
+                tokenId: TestData.asset.tokenId,
                 tokenStandard: nil
             )
         }

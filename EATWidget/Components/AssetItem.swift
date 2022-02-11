@@ -13,7 +13,8 @@ struct AssetItem: View {
     let tokenId: String
     let imageThumbnailUrl: URL?
     
-    let title: String?
+    let assetTitle: String?
+    let collectionTitle: String?
     
     var body: some View {
         HStack {
@@ -24,11 +25,13 @@ struct AssetItem: View {
             }
             .frame(width: 40, height: 40)
             
-            VStack(alignment: .leading) {
-                Text(title ?? "Untitled")
-                    .font(.system(.body, design: .monospaced))
-                    .fontWeight(.black)
-                    .lineLimit(1)
+            HStack {
+                HeadingLockup(
+                    title: assetTitle,
+                    text: collectionTitle,
+                    fontStyle: .caption
+                )
+                Spacer()
             }
             
             Spacer()
@@ -43,11 +46,11 @@ struct AssetItem_Previews: PreviewProvider {
                 contractAddress: TestData.asset.contract.address,
                 tokenId: TestData.asset.tokenId,
                 imageThumbnailUrl: TestData.asset.imageThumbnailUrl!,
-                title: TestData.asset.title
+                assetTitle: TestData.asset.title,
+                collectionTitle: TestData.asset.collection?.title
             )
         }
-        .previewLayout(PreviewLayout.sizeThatFits)
         .padding()
-        
+        .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

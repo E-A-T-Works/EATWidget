@@ -12,7 +12,8 @@ extension AssetCard {
         contractAddress = item.contract.address
         tokenId = item.tokenId
         imageUrl = item.imageUrl
-        title = item.title
+        assetTitle = item.title
+        collectionTitle = item.collection?.title
         preferredBackgroundColor = item.backgroundColor
     }
 }

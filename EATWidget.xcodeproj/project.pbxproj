@@ -158,6 +158,10 @@
 		5C91BE2527B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2627B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2727B47BC3001074CE /* AssetSheet.swift */; };
+		5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */; };
+		5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */; };
+		5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */; };
+		5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */; };
 		5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */; };
 		5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
 		5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
@@ -289,6 +293,8 @@
 		5C91BE2127B471B3001074CE /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		5C91BE2427B4754C001074CE /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		5C91BE2727B47BC3001074CE /* AssetSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheet.swift; sourceTree = "<group>"; };
+		5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingLockup.swift; sourceTree = "<group>"; };
+		5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDismissButton.swift; sourceTree = "<group>"; };
 		5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -487,6 +493,7 @@
 			children = (
 				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
 				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
+				5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */,
 				5C63087227B2C57600AC2A24 /* WalletItem.swift */,
 				5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */,
 				5C63087027B2C4BC00AC2A24 /* AssetItem.swift */,
@@ -598,6 +605,7 @@
 				5C91BE1E27B47174001074CE /* BadgeBackground.swift */,
 				5C91BE2427B4754C001074CE /* Branding.swift */,
 				5C035EF327B6D75E00A11697 /* EthPrice.swift */,
+				5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */,
 				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
 			);
 			path = Components;
@@ -763,6 +771,7 @@
 				5C63091827B435E800AC2A24 /* URLImage.swift in Sources */,
 				5C035EE027B6C5CF00A11697 /* AssetSheetDetails.swift in Sources */,
 				5C035EDE27B6C5C600A11697 /* AssetSheetDescription.swift in Sources */,
+				5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C63085527B2B52500AC2A24 /* Asset.swift in Sources */,
 				5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */,
 				5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */,
@@ -771,6 +780,7 @@
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
+				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* AssetSheetVisual.swift in Sources */,
 				5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */,
@@ -840,6 +850,7 @@
 				5C035ECC27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */,
 				5C035ED427B5BA2600A11697 /* Collection.swift in Sources */,
+				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
 				5C91BE1027B43A27001074CE /* Theme.swift in Sources */,
@@ -861,6 +872,7 @@
 				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
+				5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C366B0727B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */,

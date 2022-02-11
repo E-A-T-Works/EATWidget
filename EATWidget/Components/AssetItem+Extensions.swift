@@ -10,6 +10,7 @@ extension AssetItem {
         contractAddress = item.contract.address
         tokenId = item.tokenId
         imageThumbnailUrl = item.imageThumbnailUrl
-        title = item.title
+        assetTitle = item.title
+        collectionTitle = item.collection?.title
     }
 }

@@ -14,19 +14,11 @@ struct AssetSheetHeader: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(assetTitle ?? "Untitled")
-                    .font(.system(.body, design: .monospaced))
-                    .fontWeight(.black)
-                    .lineLimit(1)
-                
-                if collectionTitle != nil {
-                    Text(collectionTitle!)
-                        .font(.system(.body, design: .monospaced))
-                        .fontWeight(.light)
-                        .lineLimit(1)
-                }
-            }
+            HeadingLockup(
+                title: assetTitle,
+                text: collectionTitle,
+                fontStyle: .callout
+            )
             
             Spacer()
             

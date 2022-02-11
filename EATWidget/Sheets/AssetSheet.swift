@@ -59,9 +59,13 @@ struct AssetSheet: View {
                         Divider().padding(.vertical)
                         
                         if viewModel.creator != nil {
-                            Text("Author TODO")
-                                .padding([.bottom], spacing)
-                            
+
+                            AssetSheetCreator(
+                                address: viewModel.creator?.address,
+                                username: viewModel.creator?.user?.username,
+                                imageUrl: viewModel.creator?.profileImageUrl
+                            )
+
                             Divider().padding(.vertical)
                         }
 
@@ -88,32 +92,16 @@ struct AssetSheet: View {
                         
                     }
                     .padding(.horizontal)
+                    .padding(.bottom, 10)
                 }
             
             }
-
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Button(
-                        action: {
-                            viewModel.dismiss()
-                        }, label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.black)
-                                
-                        }
-                    )
-                    .buttonStyle(.bordered)
-                    .frame(width: 30, height: 30)
-                    .cornerRadius(48)
-                    .padding()
-                }
-   
-                Spacer()
-            }
             
+            SheetDismissButton(
+                onTapFn: {
+                    viewModel.dismiss()
+                }
+            )
         }
         .ignoresSafeArea()
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
