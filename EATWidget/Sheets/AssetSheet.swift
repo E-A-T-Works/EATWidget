@@ -29,60 +29,16 @@ struct AssetSheet: View {
                 }
             } else {
                 ScrollView {
-                    
-                    ///
-                    /// Image
-                    ///
-                    
                     AssetSheetVisual(
                         imageUrl: viewModel.imageUrl,
                         backgroundColor: viewModel.backgroundColor
                     )
                     .padding([.bottom], spacing)
                     
-                    ///
-                    /// Actions
-                    ///
-                    
-                    VStack(alignment: .center) {
-                        HStack {
-                        
-                            Link(
-                                destination: (viewModel.asset?.permalink!)!,
-                                label: {
-                                    HStack{
-                                        Image(uiImage: UIImage(named: "opensea")!).resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width:24)
-                                        Text("OpenSea")
-                                            .lineLimit(1)
-                                    }
-                                }
-                            )
-                                .buttonStyle(.bordered)
-                                .padding(.horizontal, 6)
-                            
-                            Link(
-                                destination: (viewModel.asset?.permalink!)!,
-                                label: {
-                                    HStack{
-                                        Image(uiImage: UIImage(named: "etherscan")!).resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width:24)
-                                        Text("Etherscan")
-                                            .lineLimit(1)
-                                    }
-                                }
-                            )
-                                .buttonStyle(.bordered)
-                                .padding(.horizontal, 6)
-                               
-                        }
-                        
-
-                    }
+                    AssetSheetActions(
+                        list: viewModel.actionButtons
+                    )
                     .padding([.bottom], spacing)
-                    .padding(.horizontal)
                     
                     ///
                     /// Heading
@@ -103,7 +59,7 @@ struct AssetSheet: View {
                         Spacer()
                         
                         HStack {
-                            Image(uiImage: UIImage(named: "eth")!)
+                            Image(uiImage: UIImage(named: "Eth")!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width:12)

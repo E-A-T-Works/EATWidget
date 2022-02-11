@@ -18,7 +18,7 @@ struct URLButton: View {
 
     let url: URL
     let image: UIImage
-    let title: String
+    let title: String?
     
     let size: URLButtonSize = .Normal
     
@@ -31,11 +31,13 @@ struct URLButton: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width:24)
                     
-                    Text(title)
-                        .lineLimit(1)
-                        .foregroundColor(
-                            colorScheme == .dark ? Color.white : Color.black
-                        )
+                    if title != nil {
+                        Text(title!)
+                            .lineLimit(1)
+                            .foregroundColor(
+                                colorScheme == .dark ? Color.white : Color.black
+                            )
+                    }
                 }
             }
         )

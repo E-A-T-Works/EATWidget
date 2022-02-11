@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */; };
-		5C035EBF27B5A5C800A11697 /* eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* eth.png */; };
-		5C035EC027B5A5C800A11697 /* eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* eth.png */; };
-		5C035EC127B5A5C800A11697 /* eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* eth.png */; };
-		5C035EC427B5B43500A11697 /* opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* opensea.png */; };
-		5C035EC527B5B43500A11697 /* opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* opensea.png */; };
-		5C035EC627B5B43500A11697 /* opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* opensea.png */; };
-		5C035EC727B5B43500A11697 /* etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* etherscan.png */; };
-		5C035EC827B5B43500A11697 /* etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* etherscan.png */; };
-		5C035EC927B5B43500A11697 /* etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* etherscan.png */; };
+		5C035EBF27B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
+		5C035EC027B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
+		5C035EC127B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
+		5C035EC427B5B43500A11697 /* Opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* Opensea.png */; };
+		5C035EC527B5B43500A11697 /* Opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* Opensea.png */; };
+		5C035EC627B5B43500A11697 /* Opensea.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC227B5B43500A11697 /* Opensea.png */; };
+		5C035EC727B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
+		5C035EC827B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
+		5C035EC927B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
 		5C035ECB27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
 		5C035ECC27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
 		5C035ECD27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
@@ -38,6 +38,12 @@
 		5C035EE727B6C64E00A11697 /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EE527B6C64E00A11697 /* URLButton.swift */; };
 		5C035EE827B6C64E00A11697 /* URLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EE527B6C64E00A11697 /* URLButton.swift */; };
 		5C035EEA27B6CAE700A11697 /* AssetSheetVisual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EE927B6CAE700A11697 /* AssetSheetVisual.swift */; };
+		5C035EEC27B6D15900A11697 /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEB27B6D15900A11697 /* Twitter.png */; };
+		5C035EED27B6D15900A11697 /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEB27B6D15900A11697 /* Twitter.png */; };
+		5C035EEE27B6D15900A11697 /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEB27B6D15900A11697 /* Twitter.png */; };
+		5C035EF027B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
+		5C035EF127B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
+		5C035EF227B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -184,9 +190,9 @@
 
 /* Begin PBXFileReference section */
 		5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
-		5C035EBE27B5A5C800A11697 /* eth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eth.png; sourceTree = "<group>"; };
-		5C035EC227B5B43500A11697 /* opensea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opensea.png; sourceTree = "<group>"; };
-		5C035EC327B5B43500A11697 /* etherscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = etherscan.png; sourceTree = "<group>"; };
+		5C035EBE27B5A5C800A11697 /* Eth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eth.png; sourceTree = "<group>"; };
+		5C035EC227B5B43500A11697 /* Opensea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Opensea.png; sourceTree = "<group>"; };
+		5C035EC327B5B43500A11697 /* Etherscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Etherscan.png; sourceTree = "<group>"; };
 		5C035ECA27B5B9AD00A11697 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		5C035ECE27B5B9E600A11697 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5C035ED227B5BA2600A11697 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 		5C035EE327B6C5F400A11697 /* AssetSheetCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetCreator.swift; sourceTree = "<group>"; };
 		5C035EE527B6C64E00A11697 /* URLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLButton.swift; sourceTree = "<group>"; };
 		5C035EE927B6CAE700A11697 /* AssetSheetVisual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetVisual.swift; sourceTree = "<group>"; };
+		5C035EEB27B6D15900A11697 /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
+		5C035EEF27B6D17900A11697 /* Discord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Discord.png; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -369,9 +377,11 @@
 				5C63084D27B2B4A500AC2A24 /* Placeholder.png */,
 				5C63090A27B30FDD00AC2A24 /* Icon_Black.png */,
 				5C63090927B30FDD00AC2A24 /* Icon_White.png */,
-				5C035EBE27B5A5C800A11697 /* eth.png */,
-				5C035EC327B5B43500A11697 /* etherscan.png */,
-				5C035EC227B5B43500A11697 /* opensea.png */,
+				5C035EBE27B5A5C800A11697 /* Eth.png */,
+				5C035EC227B5B43500A11697 /* Opensea.png */,
+				5C035EC327B5B43500A11697 /* Etherscan.png */,
+				5C035EEB27B6D15900A11697 /* Twitter.png */,
+				5C035EEF27B6D17900A11697 /* Discord.png */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -679,13 +689,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
-				5C035EC427B5B43500A11697 /* opensea.png in Resources */,
-				5C035EC727B5B43500A11697 /* etherscan.png in Resources */,
+				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
+				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
+				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
 				5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */,
+				5C035EF027B6D17900A11697 /* Discord.png in Resources */,
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */,
-				5C035EBF27B5A5C800A11697 /* eth.png in Resources */,
+				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,11 +706,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C035EC027B5A5C800A11697 /* eth.png in Resources */,
-				5C035EC527B5B43500A11697 /* opensea.png in Resources */,
+				5C035EF127B6D17900A11697 /* Discord.png in Resources */,
+				5C035EC027B5A5C800A11697 /* Eth.png in Resources */,
+				5C035EC527B5B43500A11697 /* Opensea.png in Resources */,
 				5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */,
+				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
 				5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */,
-				5C035EC827B5B43500A11697 /* etherscan.png in Resources */,
+				5C035EC827B5B43500A11697 /* Etherscan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,11 +721,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */,
-				5C035EC627B5B43500A11697 /* opensea.png in Resources */,
+				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
 				5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */,
 				5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */,
-				5C035EC127B5A5C800A11697 /* eth.png in Resources */,
-				5C035EC927B5B43500A11697 /* etherscan.png in Resources */,
+				5C035EC127B5A5C800A11697 /* Eth.png in Resources */,
+				5C035EC927B5B43500A11697 /* Etherscan.png in Resources */,
+				5C035EF227B6D17900A11697 /* Discord.png in Resources */,
+				5C035EEE27B6D15900A11697 /* Twitter.png in Resources */,
 				5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */,
 				5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */,
 			);
