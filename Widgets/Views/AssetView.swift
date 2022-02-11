@@ -84,7 +84,7 @@ struct AssetView_Small: View {
                 
                 HStack {
                     VStack {
-                        URLImageView(url: imageUrl!)
+                        URLImage(url: imageUrl!)
                             .scaledToFill()
                             .frame(
                                 width: AssetView_Helpers.getImageSize(

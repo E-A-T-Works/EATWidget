@@ -18,6 +18,8 @@ final class AssetSheetViewModel: ObservableObject {
     @Published private(set) var loading: Bool = true
     @Published private(set) var asset: Asset? = nil
     
+    @Published private(set) var imageUrl: URL =  Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
+    
     @Published private(set) var backgroundColor: Color = .clear
     @Published private(set) var foregroundColor: Color = .black
     
@@ -46,6 +48,8 @@ final class AssetSheetViewModel: ObservableObject {
                 self.loading = true
                 
                 self.asset = try await AssetProvider.fetchAsset(contractAddress: contractAddress, tokenId: tokenId)
+                
+                resolveImageUrl()
                 resolveColors()
                 
                 self.loading = false
@@ -56,7 +60,17 @@ final class AssetSheetViewModel: ObservableObject {
 
     }
     
-    private func resolveColors()  {
+    private func resolveImageUrl() -> Void {
+        if(asset?.imageUrl != nil) {
+            self.imageUrl = (asset?.imageUrl!)!
+        } else if(asset?.imageThumbnailUrl != nil) {
+            self.imageUrl = (asset?.imageThumbnailUrl!)!
+        } else {
+            self.imageUrl = Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
+        }
+    }
+    
+    private func resolveColors() -> Void {
         let derivedColors = Theme.resolveColorsFromImage(
             imageUrl: asset?.imageUrl,
             preferredBackgroundColor: asset?.backgroundColor

@@ -1,5 +1,5 @@
 //
-//  URLImageView.swift
+//  URLImage.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct URLImageView: View {
+struct URLImage: View {
     let url: URL
 
     var body: some View {
@@ -22,11 +22,11 @@ struct URLImageView: View {
     }
 }
 
-struct URLImageView_Previews: PreviewProvider {
+struct URLImage_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack{
-                URLImageView(
+                URLImage(
                     url: URL(string: "https://lh3.googleusercontent.com/rVIk8-4HlQBMZBY6ZqWTiS2C3o35c8dckAua22XCoaveyOAOdpQJCyrh93ugKElLPSfTOnHZ838hYu2cjkRoWM8e")!
                 )
             }

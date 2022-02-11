@@ -34,14 +34,10 @@ struct AssetSheet: View {
                     /// Image
                     ///
                     
-                    CachedAsyncImage(url: viewModel.asset?.imageUrl){ image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .background(viewModel.backgroundColor)
-                    } placeholder: {
-                        ProgressView()
-                    }
+                    AssetSheetVisual(
+                        imageUrl: viewModel.imageUrl,
+                        backgroundColor: viewModel.backgroundColor
+                    )
                     .padding([.bottom], spacing)
                     
                     ///
@@ -95,8 +91,13 @@ struct AssetSheet: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(viewModel.asset?.title ?? "Untitled")
-                                .font(.title)
                                 .lineLimit(1)
+                            
+                            if viewModel.asset?.collection != nil {
+                                Text(viewModel.asset?.collection!.title ?? "--")
+                                    .lineLimit(1)
+                            }
+                            
                         }
                         
                         Spacer()
@@ -114,20 +115,6 @@ struct AssetSheet: View {
                     .padding([.bottom], spacing)
                     .padding(.horizontal)
                     
-                    
-                    ///
-                    /// Author
-                    ///
-                    
-                    // TODO:
-                    
-                    ///
-                    /// Collection
-                    ///
-                    
-                    // TODO:
-                    
-                    
                     ///
                     /// Description
                     ///
@@ -136,7 +123,7 @@ struct AssetSheet: View {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text((viewModel.asset?.text!)!)
-                                    .font(.body)
+                                    .font(.system(.body, design: .monospaced))
                             }
                         }
                         .padding(.horizontal)
@@ -146,8 +133,28 @@ struct AssetSheet: View {
                     }
                     
                     
-                   
+                    ///
+                    /// Author
+                    ///
                     
+                    if viewModel.asset?.creator != nil {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(viewModel.asset?.creator!.user?.username ?? "--").font(.system(.body, design: .monospaced))
+                                
+                                Text(viewModel.asset?.creator!.address ?? "--")
+
+                            }
+                            Spacer()
+                        }
+                        .padding([.bottom], spacing)
+                        .padding(.horizontal)
+                        
+                        Divider()
+                            .padding()
+                    }
+
+
                     ///
                     /// Stats
                     ///
@@ -254,10 +261,12 @@ struct AssetSheet: View {
 }
 
 struct AssetSheet_Previews: PreviewProvider {
+    static let asset = TestData.assets[1]
+    
     static var previews: some View {
         AssetSheet(
-            contractAddress: TestData.assets[0].contract.address,
-            tokenId: TestData.assets[0].tokenId
+            contractAddress: asset.contract.address,
+            tokenId: asset.tokenId
         )
     }
 }
