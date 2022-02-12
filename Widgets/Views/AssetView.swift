@@ -33,7 +33,8 @@ struct AssetView: View {
                 displayInfo: displayInfo,
                 scaleFactor: 0.72,
                 inset: 8,
-                fontStyle: .callout
+                brandingSize: 32.0,
+                fontStyle: .caption
             )
             
         case .systemMedium:
@@ -49,6 +50,7 @@ struct AssetView: View {
                 displayInfo: displayInfo,
                 scaleFactor: 0.80,
                 inset: 12,
+                brandingSize: 40.0,
                 fontStyle: .title2
             )
         @unknown default:
@@ -71,7 +73,10 @@ struct AssetViewContent: View {
     let displayInfo: Bool
     
     let scaleFactor: CGFloat
+    
     let inset: CGFloat
+    
+    let brandingSize: CGFloat
     let fontStyle: Font.TextStyle
     
     
@@ -83,7 +88,7 @@ struct AssetViewContent: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color(uiColor: backgroundColor ?? UIColor.clear)
+                Color(uiColor: backgroundColor ?? .clear)
                 
                 HStack {
                     VStack {
@@ -99,13 +104,14 @@ struct AssetViewContent: View {
                                     height: geo.size.height
                                 )
                             )
-//                            .background(.white)
-//                            .shadow(radius: 12)
-                            .cornerRadius(12)
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 12)
-//                                    .stroke(.black.opacity(0.1), lineWidth: 1)
-//                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(
+                                        .clear,
+                                        lineWidth: 1
+                                    )
+                                    .shadow(radius: 12)
+                            )
 
                         Spacer()
                     }
@@ -119,7 +125,7 @@ struct AssetViewContent: View {
                         Spacer()
                         VStack {
                             Branding()
-                                .frame(width: 40, height: 40)
+                                .frame(width: brandingSize, height: brandingSize)
                                 .padding(.top, inset)
                             
                             Spacer()
