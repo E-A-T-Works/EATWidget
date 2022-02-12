@@ -140,7 +140,10 @@ struct RandomAssetWidgetEntryView : View {
         case .Unsupported:
             UnsupportedView()
         case .Success:
-            AssetView(item: entry.data!, displayInfo: entry.displayInfo)
+            BasicAssetView(
+                item: entry.data!,
+                displayInfo: entry.displayInfo
+            )
         }
     }
 }

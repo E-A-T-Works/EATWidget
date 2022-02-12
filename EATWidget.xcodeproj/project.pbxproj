@@ -124,10 +124,10 @@
 		5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308EE27B2F12D00AC2A24 /* PlaceholderView.swift */; };
 		5C6308F127B2F14900AC2A24 /* UnconfiguredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F027B2F14900AC2A24 /* UnconfiguredView.swift */; };
 		5C6308F327B2F16E00AC2A24 /* NotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F227B2F16E00AC2A24 /* NotFoundView.swift */; };
-		5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F427B2F17E00AC2A24 /* AssetView.swift */; };
+		5C6308F527B2F17E00AC2A24 /* BasicAssetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F427B2F17E00AC2A24 /* BasicAssetView.swift */; };
 		5C6308F727B2F1FB00AC2A24 /* UnsupportedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F627B2F1FB00AC2A24 /* UnsupportedView.swift */; };
 		5C6308F927B2F23900AC2A24 /* WalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308F827B2F23900AC2A24 /* WalletsView.swift */; };
-		5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FA27B2F35B00AC2A24 /* AssetView+Extensions.swift */; };
+		5C6308FB27B2F35B00AC2A24 /* BasicAssetView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FA27B2F35B00AC2A24 /* BasicAssetView+Extensions.swift */; };
 		5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308FC27B2F3F400AC2A24 /* WalletsView+Extensions.swift */; };
 		5C63090127B2F72000AC2A24 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImage.swift */; };
 		5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
@@ -272,10 +272,10 @@
 		5C6308EE27B2F12D00AC2A24 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		5C6308F027B2F14900AC2A24 /* UnconfiguredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconfiguredView.swift; sourceTree = "<group>"; };
 		5C6308F227B2F16E00AC2A24 /* NotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundView.swift; sourceTree = "<group>"; };
-		5C6308F427B2F17E00AC2A24 /* AssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetView.swift; sourceTree = "<group>"; };
+		5C6308F427B2F17E00AC2A24 /* BasicAssetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAssetView.swift; sourceTree = "<group>"; };
 		5C6308F627B2F1FB00AC2A24 /* UnsupportedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedView.swift; sourceTree = "<group>"; };
 		5C6308F827B2F23900AC2A24 /* WalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsView.swift; sourceTree = "<group>"; };
-		5C6308FA27B2F35B00AC2A24 /* AssetView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetView+Extensions.swift"; sourceTree = "<group>"; };
+		5C6308FA27B2F35B00AC2A24 /* BasicAssetView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicAssetView+Extensions.swift"; sourceTree = "<group>"; };
 		5C6308FC27B2F3F400AC2A24 /* WalletsView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletsView+Extensions.swift"; sourceTree = "<group>"; };
 		5C63090027B2F72000AC2A24 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
@@ -556,8 +556,8 @@
 				5C6308F627B2F1FB00AC2A24 /* UnsupportedView.swift */,
 				5C6308F827B2F23900AC2A24 /* WalletsView.swift */,
 				5C6308FC27B2F3F400AC2A24 /* WalletsView+Extensions.swift */,
-				5C6308F427B2F17E00AC2A24 /* AssetView.swift */,
-				5C6308FA27B2F35B00AC2A24 /* AssetView+Extensions.swift */,
+				5C6308F427B2F17E00AC2A24 /* BasicAssetView.swift */,
+				5C6308FA27B2F35B00AC2A24 /* BasicAssetView+Extensions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -870,8 +870,8 @@
 				5C63090127B2F72000AC2A24 /* URLImage.swift in Sources */,
 				5C91BE1B27B468B0001074CE /* UIColor+Extension.swift in Sources */,
 				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
-				5C6308F527B2F17E00AC2A24 /* AssetView.swift in Sources */,
-				5C6308FB27B2F35B00AC2A24 /* AssetView+Extensions.swift in Sources */,
+				5C6308F527B2F17E00AC2A24 /* BasicAssetView.swift in Sources */,
+				5C6308FB27B2F35B00AC2A24 /* BasicAssetView+Extensions.swift in Sources */,
 				5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C366B0727B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
