@@ -12,7 +12,7 @@ import WidgetKit
 struct BasicAssetView: View {
     
     // MARK: Parameters
-    
+
     @Environment(\.widgetFamily) var family: WidgetFamily
     
     let contractAddress: String
@@ -27,61 +27,40 @@ struct BasicAssetView: View {
     // MARK: Content
     
     var body: some View {
-      
         GeometryReader { geo in
-            ZStack {
-                Color(uiColor: backgroundColor ?? .clear)
-                
-                VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        URLImage(url: imageUrl!)
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    URLImage(url: imageUrl!)
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(uiColor: backgroundColor ?? .clear))
 
-                        if displayInfo {
-                            Spacer()
-                            
-                            Branding()
-                                .frame(maxWidth: .infinity)
-                        }
-                        
-                    }
-                    
                     if displayInfo {
                         Spacer()
                         
-                        HeadingLockup(
-                            title: assetTitle ?? tokenId,
-                            text: collectionTitle,
-                            fontStyle: determineTextStyle()
-                        )
+                        Branding()
+                            .frame(maxWidth: .infinity)
                     }
-                   
+                    
                 }
-                .padding(determineInset())
+                
+                if displayInfo {
+                    Spacer()
+                    
+                    HeadingLockup(
+                        title: assetTitle ?? tokenId,
+                        text: collectionTitle,
+                        fontStyle: determineTextStyle()
+                    )
+                }
+               
             }
+            .padding(displayInfo ? 10 : 0)
         }
-        
     }
     
     // MARK: Helpers
-   
-    private func determineInset() -> CGFloat {
-        switch family {
-        case .systemSmall:
-            return displayInfo ? 10 : 0.0
-        case .systemMedium:
-            return displayInfo ? 10 : 0.0
-        case .systemLarge:
-            return displayInfo ? 12 : 0.0
-        case .systemExtraLarge:
-            return displayInfo ? 12 : 0.0
-        
-        @unknown default:
-            return 0.0
-        }
-    }
-    
+
     private func determineTextStyle() ->  Font.TextStyle {
         switch family {
         case .systemSmall:
