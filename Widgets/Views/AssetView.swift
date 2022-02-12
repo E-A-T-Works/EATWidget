@@ -24,37 +24,32 @@ struct AssetView: View {
     var body: some View {
         switch family {
         case .systemSmall:
-            AssetView_Small(
+            AssetViewContent(
                 contractAddress: contractAddress,
                 tokenId: tokenId,
                 imageUrl: imageUrl,
                 title: title,
                 backgroundColor: backgroundColor,
-                displayInfo: displayInfo
+                displayInfo: displayInfo,
+                scaleFactor: 0.72,
+                inset: 8,
+                fontStyle: .callout
             )
+            
         case .systemMedium:
-            AssetView_Medium(
+            Text("TODO")
+            
+        case .systemLarge, .systemExtraLarge:
+            AssetViewContent(
                 contractAddress: contractAddress,
                 tokenId: tokenId,
                 imageUrl: imageUrl,
                 title: title,
-                backgroundColor: backgroundColor
-            )
-        case .systemLarge:
-            AssetView_Large(
-                contractAddress: contractAddress,
-                tokenId: tokenId,
-                imageUrl: imageUrl,
-                title: title,
-                backgroundColor: backgroundColor
-            )
-        case .systemExtraLarge:
-            AssetView_Large(
-                contractAddress: contractAddress,
-                tokenId: tokenId,
-                imageUrl: imageUrl,
-                title: title,
-                backgroundColor: backgroundColor
+                backgroundColor: backgroundColor,
+                displayInfo: displayInfo,
+                scaleFactor: 0.80,
+                inset: 12,
+                fontStyle: .title2
             )
         @unknown default:
             UnsupportedView()
@@ -63,10 +58,10 @@ struct AssetView: View {
 }
 
 
-// MARK: Small
+// MARK: Generic Asset Widget View
 
-struct AssetView_Small: View {
-
+struct AssetViewContent: View {
+    
     let contractAddress: String
     let tokenId: String
     let imageUrl: URL?
@@ -75,9 +70,17 @@ struct AssetView_Small: View {
     
     let displayInfo: Bool
     
+    let scaleFactor: CGFloat
+    let inset: CGFloat
+    let fontStyle: Font.TextStyle
+    
+    
+    private func getImageSize(width: CGFloat, height: CGFloat) -> CGFloat {
+        let size = width > height ? width : height
+        return displayInfo ? size * scaleFactor : size
+    }
     
     var body: some View {
-        
         GeometryReader { geo in
             ZStack {
                 Color(uiColor: backgroundColor ?? UIColor.clear)
@@ -87,23 +90,28 @@ struct AssetView_Small: View {
                         URLImage(url: imageUrl!)
                             .scaledToFill()
                             .frame(
-                                width: AssetView_Helpers.getImageSize(
-                                    displayInfo: displayInfo,
+                                width: getImageSize(
                                     width: geo.size.width,
                                     height: geo.size.height
                                 ),
-                                height: AssetView_Helpers.getImageSize(
-                                    displayInfo: displayInfo,
+                                height: getImageSize(
                                     width: geo.size.width,
                                     height: geo.size.height
                                 )
                             )
+//                            .background(.white)
+//                            .shadow(radius: 12)
+                            .cornerRadius(12)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 12)
+//                                    .stroke(.black.opacity(0.1), lineWidth: 1)
+//                            )
 
                         Spacer()
                     }
                     Spacer()
                 }
-                .padding(displayInfo ? 8 : 0)
+                .padding(displayInfo ? inset : 0)
                 
                 if(displayInfo) {
 
@@ -111,9 +119,8 @@ struct AssetView_Small: View {
                         Spacer()
                         VStack {
                             Branding()
-                                .frame(width: 32, height: 32)
-                                .padding([.top], 12)
-                                .padding([.trailing], 8)
+                                .frame(width: 40, height: 40)
+                                .padding(.top, inset)
                             
                             Spacer()
                         }
@@ -125,11 +132,11 @@ struct AssetView_Small: View {
                             HeadingLockup(
                                 title: title,
                                 text: nil,
-                                fontStyle: .caption2
+                                fontStyle: fontStyle
                             )
                         }
                         .padding(.horizontal)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, inset)
                         
                         Spacer()
                     }
@@ -138,57 +145,10 @@ struct AssetView_Small: View {
 
             }
         }
-        
     }
 }
 
 
-// MARK: Medium
-
-struct AssetView_Medium: View {
-    
-    let contractAddress: String
-    let tokenId: String
-    let imageUrl: URL?
-    let title: String?
-    let backgroundColor: UIColor?
-    
-    var body: some View {
-        Text("Medium")
-    }
-}
-
-
-// MARK: Large
-
-struct AssetView_Large: View {
-    
-    let contractAddress: String
-    let tokenId: String
-    let imageUrl: URL?
-    let title: String?
-    let backgroundColor: UIColor?
-    
-    var body: some View {
-        Text("Large")
-    }
-}
-
-
-// MARK: Helpers
-
-final class AssetView_Helpers {
-    static func getScaleFactor(displayInfo: Bool) -> Double {
-        return displayInfo ? 0.72 : 1.0
-    }
-    
-    static func getImageSize(displayInfo: Bool, width: Double, height: Double) -> Double {
-        let scaleFactor = getScaleFactor(displayInfo: displayInfo)
-        let size = width > height ? width : height
-        
-        return size * scaleFactor
-    }
-}
 
 
 // MARK: Preview

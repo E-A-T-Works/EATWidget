@@ -54,7 +54,9 @@ struct AssetSheetCreator: View {
                 Image(uiImage: UIImage(systemName: "arrow.up.right")!)
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(
+                        colorScheme == .dark ? Color.white : Color.black
+                    )
                     .frame(
                         width: UIFont.preferredFont(
                             forTextStyle: .caption2
