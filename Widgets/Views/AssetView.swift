@@ -31,7 +31,7 @@ struct AssetView: View {
                 title: title,
                 backgroundColor: backgroundColor,
                 displayInfo: displayInfo,
-                scaleFactor: 0.72,
+                scaleFactor: 0.64,
                 inset: 8,
                 brandingSize: 32.0,
                 fontStyle: .caption
@@ -48,7 +48,7 @@ struct AssetView: View {
                 title: title,
                 backgroundColor: backgroundColor,
                 displayInfo: displayInfo,
-                scaleFactor: 0.80,
+                scaleFactor: 0.72,
                 inset: 12,
                 brandingSize: 40.0,
                 fontStyle: .title2
@@ -90,8 +90,8 @@ struct AssetViewContent: View {
             ZStack {
                 Color(uiColor: backgroundColor ?? .clear)
                 
-                HStack {
-                    VStack {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
                         URLImage(url: imageUrl!)
                             .scaledToFill()
                             .frame(
@@ -104,6 +104,7 @@ struct AssetViewContent: View {
                                     height: geo.size.height
                                 )
                             )
+                            .background(.white)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
                                     .stroke(
@@ -112,43 +113,31 @@ struct AssetViewContent: View {
                                     )
                                     .shadow(radius: 12)
                             )
-
-                        Spacer()
-                    }
-                    Spacer()
-                }
-                .padding(displayInfo ? inset : 0)
-                
-                if(displayInfo) {
-
-                    HStack(alignment: .top) {
-                        Spacer()
-                        VStack {
-                            Branding()
-                                .frame(width: brandingSize, height: brandingSize)
-                                .padding(.top, inset)
+                        
+                        if displayInfo {
+                            Spacer()
                             
-                            Spacer()
-                        }
-                    }
-                    
-                    HStack(alignment: .bottom) {
-                        VStack {
-                            Spacer()
                             HeadingLockup(
                                 title: title,
                                 text: nil,
                                 fontStyle: fontStyle
                             )
+                                .background(.green)
                         }
-                        .padding(.horizontal)
-                        .padding(.bottom, inset)
-                        
-                        Spacer()
                     }
 
+                    if displayInfo {
+                        Spacer()
+                        
+                        Branding()
+                            .background(.red)
+                            .frame(
+                                maxWidth: .infinity
+                            )
+                    }
+                   
                 }
-
+                .padding(displayInfo ? inset : 0)
             }
         }
     }
