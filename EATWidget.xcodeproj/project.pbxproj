@@ -143,6 +143,16 @@
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117027B9A2350021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117127B9A2360021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
+		5C84117327B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
+		5C84117427B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
+		5C84117527B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
+		5C84117727B9A6FE0021008E /* AssetSheetTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117627B9A6FE0021008E /* AssetSheetTraits.swift */; };
+		5C84117927B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
+		5C84117A27B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
+		5C84117B27B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
+		5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
+		5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
+		5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
@@ -288,6 +298,10 @@
 		5C63091327B407FC00AC2A24 /* WalletWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		5C84117227B9A5880021008E /* Trait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trait.swift; sourceTree = "<group>"; };
+		5C84117627B9A6FE0021008E /* AssetSheetTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetTraits.swift; sourceTree = "<group>"; };
+		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
+		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* AssetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCard.swift; sourceTree = "<group>"; };
 		5C91BE1427B44B5C001074CE /* AssetCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetCard+Extensions.swift"; sourceTree = "<group>"; };
@@ -417,6 +431,7 @@
 				5C63085227B2B51E00AC2A24 /* Contract.swift */,
 				5C035ED227B5BA2600A11697 /* Collection.swift */,
 				5C035ED627B5DA2000A11697 /* PaymentToken.swift */,
+				5C84117227B9A5880021008E /* Trait.swift */,
 				5C035ECA27B5B9AD00A11697 /* Creator.swift */,
 				5C035ECE27B5B9E600A11697 /* User.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
@@ -511,6 +526,7 @@
 				5C035EDD27B6C5C600A11697 /* AssetSheetDescription.swift */,
 				5C035EE327B6C5F400A11697 /* AssetSheetCreator.swift */,
 				5C035EDF27B6C5CF00A11697 /* AssetSheetDetails.swift */,
+				5C84117627B9A6FE0021008E /* AssetSheetTraits.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -612,6 +628,8 @@
 				5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */,
 				5C84116E27B9A1C40021008E /* SectionTitle.swift */,
 				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
+				5C84117827B9A9530021008E /* TraitBox.swift */,
+				5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -805,6 +823,7 @@
 				5C63088127B2CD8400AC2A24 /* ConnectSheetViewModel.swift in Sources */,
 				5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */,
 				5C035EDC27B6C5B800A11697 /* AssetSheetHeader.swift in Sources */,
+				5C84117927B9A9530021008E /* TraitBox.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* AssetItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* AssetSheetActions.swift in Sources */,
 				5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */,
@@ -817,6 +836,8 @@
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
+				5C84117327B9A5880021008E /* Trait.swift in Sources */,
+				5C84117727B9A6FE0021008E /* AssetSheetTraits.swift in Sources */,
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C035EE427B6C5F400A11697 /* AssetSheetCreator.swift in Sources */,
@@ -825,6 +846,7 @@
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
+				5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,6 +867,7 @@
 				5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */,
 				5CE9CFA427B57A5900F29938 /* UIImage+Extension.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
+				5C84117427B9A5880021008E /* Trait.swift in Sources */,
 				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
 				5C035ED027B5B9E600A11697 /* User.swift in Sources */,
 				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
@@ -854,9 +877,11 @@
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C84117127B9A2360021008E /* SectionTitle.swift in Sources */,
+				5C84117A27B9A9530021008E /* TraitBox.swift in Sources */,
 				5C035ECC27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */,
 				5C035ED427B5BA2600A11697 /* Collection.swift in Sources */,
+				5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
@@ -889,6 +914,7 @@
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
+				5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5C6308E827B2EB7400AC2A24 /* BasicAssetWidget.swift in Sources */,
 				5C63090E27B3202000AC2A24 /* RandomAssetWidget.swift in Sources */,
 				5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */,
@@ -901,12 +927,14 @@
 				5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */,
 				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,
 				5C035ED127B5B9E600A11697 /* User.swift in Sources */,
+				5C84117527B9A5880021008E /* Trait.swift in Sources */,
 				5C6308F727B2F1FB00AC2A24 /* UnsupportedView.swift in Sources */,
 				5C035EE827B6C64E00A11697 /* URLButton.swift in Sources */,
 				5C6308F327B2F16E00AC2A24 /* NotFoundView.swift in Sources */,
 				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
 				5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */,
 				5C035ED527B5BA2600A11697 /* Collection.swift in Sources */,
+				5C84117B27B9A9530021008E /* TraitBox.swift in Sources */,
 				5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */,
 				5C91BE1827B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,

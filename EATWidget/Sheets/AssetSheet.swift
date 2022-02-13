@@ -69,7 +69,17 @@ struct AssetSheet: View {
                             Divider().padding(.vertical)
                         }
 
-
+                        
+                        if !viewModel.traits.isEmpty {
+                         
+                            AssetSheetTraits(
+                                list: viewModel.traits
+                            )
+                            .padding([.bottom], spacing)
+                            
+                            Divider().padding(.vertical)
+                        }
+                        
                         AssetSheetDetails(
                             contractAddress: viewModel.contract?.address ?? "--",
                             tokenId: viewModel.asset?.tokenId  ?? "--",

@@ -55,7 +55,9 @@ struct CollectionPage: View {
             .sheet(isPresented: $viewModel.showingSheet) {
                 switch viewModel.sheetContent {
                 case .Connect:
-                    ConnectSheet()
+                    NavigationView {
+                        ConnectSheet()
+                    }
                 case .Asset(let contractAddress, let tokenId): AssetSheet(
                         contractAddress: contractAddress,
                         tokenId: tokenId

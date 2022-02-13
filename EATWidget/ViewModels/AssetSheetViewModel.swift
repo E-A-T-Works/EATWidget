@@ -19,12 +19,12 @@ final class AssetSheetViewModel: ObservableObject {
     
     @Published private(set) var asset: Asset? = nil
     @Published private(set) var contract: Contract? = nil
+    @Published private(set) var traits: [Trait] = []
     @Published private(set) var creator: Creator? = nil
     
     @Published private(set) var imageUrl: URL =  Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
     @Published private(set) var actionButtons: [AssetSheetActionButtons] = []
     @Published private(set) var paymentTokens: [PaymentToken] = []
-    
     
     @Published private(set) var backgroundColor: Color = .clear
     @Published private(set) var foregroundColor: Color = .black
@@ -60,6 +60,7 @@ final class AssetSheetViewModel: ObservableObject {
                 resolveActionButtons()
                 resolvePaymentTokens()
                 resolveContract()
+                resolveTraits()
                 resolveCreator()
                 
                 self.loading = false
@@ -129,6 +130,10 @@ final class AssetSheetViewModel: ObservableObject {
 
     private func resolveContract() -> Void {
         contract = asset?.contract
+    }
+    
+    private func resolveTraits() -> Void {
+        traits = asset?.traits ?? []
     }
     
     private func resolveCreator() -> Void {
