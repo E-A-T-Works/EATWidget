@@ -37,7 +37,9 @@ struct BasicAssetView: View {
                 contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
             )
         case .systemMedium:
-            UnsupportedView()
+            MediumBasicAssetView(
+                contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor
+            )
         case .systemLarge:
             LargeBasicAssetView(
                 contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
@@ -72,7 +74,7 @@ struct SmallBasicAssetView: View {
     // MARK: Content
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
 
                 URLImage(url: imageUrl!)
@@ -118,39 +120,49 @@ struct MediumBasicAssetView: View {
     let collectionTitle: String?
     let backgroundColor: UIColor?
     
-    let displayInfo: Bool
-    
     
     // MARK: Content
     
     var body: some View {
         GeometryReader { geo in
-         
-            VStack(alignment: .leading) {
+            HStack(alignment: .center, spacing: 0) {
                 ZStack {
                     Color(uiColor: backgroundColor ?? .clear)
                     URLImage(url: imageUrl!)
                         .scaledToFill()
-                        .frame(width: geo.size.width, height: geo.size.height - (displayInfo ? 30 + 2 * 16.0 : 0))
+                        .frame(width: geo.size.width * 0.5, height: geo.size.height)
                 }
                 
-                if displayInfo {
-                    HStack {
-                        HeadingLockup(
-                            title: assetTitle ?? tokenId,
-                            text: collectionTitle,
-                            size: 12
-                        )
+                ZStack {
+                
+                    VStack(alignment: .trailing, spacing: 0) {
+                        HStack {
+                            Spacer()
+                         
+                            Branding()
+                                .frame(width: 30, height: 30)
+                        }
 
                         Spacer()
-                    
-                        Branding()
-                            .frame(width: 30, height: 30)
                     }
-                    .padding(16.0)
+
+                    
+                    VStack(spacing: 0) {
+                        Spacer()
+                        
+                        HStack(spacing: 0) {
+                            HeadingLockup(
+                                title: assetTitle ?? tokenId,
+                                text: collectionTitle,
+                                size: 12
+                            )
+                        }
+                        
+                        Spacer()
+                    }
                 }
+                .padding(16)
             }
-            
         }
     }
 }
@@ -174,7 +186,7 @@ struct LargeBasicAssetView: View {
     var body: some View {
         GeometryReader { geo in
          
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 ZStack {
                     Color(uiColor: backgroundColor ?? .clear)
                     URLImage(url: imageUrl!)
@@ -196,6 +208,7 @@ struct LargeBasicAssetView: View {
                             .frame(width: 30, height: 30)
                     }
                     .padding(16.0)
+                    .frame(width: geo.size.width, height: 30 + 2 * 16.0)
                 }
             }
             
