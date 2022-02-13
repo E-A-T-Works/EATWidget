@@ -47,7 +47,7 @@ struct AssetCard: View {
                 HeadingLockup(
                     title: assetTitle,
                     text: collectionTitle,
-                    fontStyle: .caption
+                    size: 12
                 )
 
                 Spacer()

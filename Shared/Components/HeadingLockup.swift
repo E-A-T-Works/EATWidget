@@ -11,18 +11,18 @@ struct HeadingLockup: View {
     let title: String?
     let text: String?
     
-    let fontStyle: Font.TextStyle
+    let size: CGFloat
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(title ?? "Untitled")
-                .font(.system(fontStyle, design: .monospaced))
+                .font(.system(size: 12, design: .monospaced))
                 .fontWeight(.black)
                 .lineLimit(1)
             
             if text != nil {
                 Text(text!)
-                    .font(.system(fontStyle, design: .monospaced))
+                    .font(.system(size: 12, design: .monospaced))
                     .fontWeight(.light)
                     .lineLimit(1)
             }
@@ -36,7 +36,7 @@ struct HeadingLockup_Previews: PreviewProvider {
             HeadingLockup(
                 title: TestData.asset.title,
                 text: TestData.asset.collection?.title,
-                fontStyle: .caption
+                size: 12.0
             )
         }
         .padding()

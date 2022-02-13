@@ -13,9 +13,9 @@ struct URLImage: View {
 
     var body: some View {
         if let data = try? Data(contentsOf: url), let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
         } else {
             Image(systemName: "photo")
         }
