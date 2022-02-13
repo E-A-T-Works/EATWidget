@@ -13,7 +13,7 @@ struct AssetSheetDescription: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(text)
-                .font(.system(.callout, design: .monospaced))
+                .font(.system(size: 14, design: .monospaced))
                 .fontWeight(.light)
         }
     }

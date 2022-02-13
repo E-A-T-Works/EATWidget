@@ -84,8 +84,7 @@ struct SmallBasicAssetView: View {
                 if displayInfo {
                     Spacer()
                     
-                    Branding()
-                        .frame(width: 30, height: 30)
+                    Branding().frame(width: 24, height: 24)
                 }
             }
             
@@ -139,8 +138,7 @@ struct MediumBasicAssetView: View {
                         HStack {
                             Spacer()
                          
-                            Branding()
-                                .frame(width: 30, height: 30)
+                            Branding().frame(width: 24, height: 24)
                         }
 
                         Spacer()
@@ -205,7 +203,7 @@ struct LargeBasicAssetView: View {
                         Spacer()
                     
                         Branding()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 24, height: 24)
                     }
                     .padding(16.0)
                     .frame(width: geo.size.width, height: 30 + 2 * 16.0)

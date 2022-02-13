@@ -15,18 +15,17 @@ struct TableItem: View {
     var body: some View {
         HStack {
             Text("\(key):")
-                .font(.system(.callout, design: .monospaced))
+                .font(.system(size: 14, design: .monospaced))
                 .fontWeight(.bold)
                 .lineLimit(1)
             
             Spacer()
             
             Text(value)
-                .font(.system(.callout, design: .monospaced))
+                .font(.system(size: 14, design: .monospaced))
                 .fontWeight(.light)
                 .lineLimit(1)
         }
-        .padding(.vertical, 1)
     }
 }
 

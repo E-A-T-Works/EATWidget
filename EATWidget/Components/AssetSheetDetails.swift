@@ -15,16 +15,23 @@ struct AssetSheetDetails: View {
     
     var body: some View {
         
-        VStack {
-            TableItem(key: "Contract Address", value: contractAddress)
+        VStack(alignment: .leading) {
+        
+            SectionTitle(text: "Details")
             
-            TableItem(key: "Token ID", value: tokenId)
-            
-            if tokenStandard != nil {
-                TableItem(key: "Token Standard", value: tokenStandard!)
+            VStack {
+                TableItem(key: "Contract Address", value: contractAddress)
+                
+                TableItem(key: "Token ID", value: tokenId)
+                
+                if tokenStandard != nil {
+                    TableItem(key: "Token Standard", value: tokenStandard!)
+                }
+                
             }
-            
         }
+        
+        
 
     }
 }

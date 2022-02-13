@@ -83,7 +83,7 @@ struct AssetSheet: View {
                                 Spacer()
                                 URLLink(
                                     url: (viewModel.asset?.tokenMetadata!)!,
-                                    title: "Metadata"
+                                    title: "metadata"
                                 )
                                 Spacer()
                             }

@@ -17,59 +17,54 @@ struct AssetSheetCreator: View {
     let imageUrl: URL?
     
     var body: some View {
-        Button(action: {
-            if address == nil { return }
-            openURL(URL(string: "https://opensea.io/\(address!)")!)
-        }, label: {
-            HStack {
-                AsyncImage(url: imageUrl) { phase in
-                    if let image = phase.image {
-                        image
+        
+        VStack(alignment: .leading) {
+            SectionTitle(text: "About the artist")
+            
+            Button(action: {
+                if address == nil { return }
+                openURL(URL(string: "https://opensea.io/\(address!)")!)
+            }, label: {
+                HStack {
+                    AsyncImage(url: imageUrl) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } else if phase.error != nil {
+                            Image(
+                                uiImage: UIImage(named: "Placeholder")!
+                            )
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                    } else if phase.error != nil {
-                        Image(
-                            uiImage: UIImage(named: "Placeholder")!
-                        )
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
 
-                    } else {
-                        ProgressView()
+                        } else {
+                            ProgressView()
+                        }
                     }
+                    .frame(width: 28, height: 28)
+                    .cornerRadius(14)
+
+                    Text(username != nil ? "@\(username!)" : address ?? "Unknown")
+                        .font(.system(size: 14, design: .monospaced))
+                        .fontWeight(.bold)
+                        .foregroundColor(
+                            colorScheme == .dark ? Color.white : Color.black
+                        )
+                        .lineLimit(1)
+                    
+                    Spacer()
+                    
+                    Image(uiImage: UIImage(systemName: "arrow.up.right")!)
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(
+                            colorScheme == .dark ? Color.white : Color.black
+                        )
+                        .frame(width: 8, height: 8)
                 }
-                .frame(width: 40, height: 40)
-                .cornerRadius(20)
-
-                Text(username != nil ? "@\(username!)" : address ?? "Unknown")
-                    .font(.system(.body, design: .monospaced))
-                    .fontWeight(.bold)
-                    .foregroundColor(
-                        colorScheme == .dark ? Color.white : Color.black
-                    )
-                    .lineLimit(1)
-                
-                Spacer()
-                
-                Image(uiImage: UIImage(systemName: "arrow.up.right")!)
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(
-                        colorScheme == .dark ? Color.white : Color.black
-                    )
-                    .frame(
-                        width: UIFont.preferredFont(
-                            forTextStyle: .caption2
-                        ).pointSize,
-                        height: UIFont.preferredFont(
-                            forTextStyle: .caption2
-                        ).pointSize
-                    )
-            }
-            
-        })
-
-        
+            })
+        }
     }
 }
 

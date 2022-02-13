@@ -29,11 +29,11 @@ struct URLButton: View {
                 HStack{
                     Image(uiImage: image).resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width:24)
+                        .frame(width:24, height: 24)
                     
                     if title != nil {
                         Text(title!)
-                            .font(.system(.body, design: .monospaced))
+                            .font(.system(size: 16, design: .monospaced))
                             .lineLimit(1)
                             .foregroundColor(
                                 colorScheme == .dark ? Color.white : Color.black
@@ -42,7 +42,7 @@ struct URLButton: View {
                 }
             }
         )
-        .buttonStyle(.bordered)
+//        .buttonStyle(.bordered)
         .padding(.horizontal, 6)
     }
 }

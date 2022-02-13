@@ -19,21 +19,14 @@ struct URLLink: View {
                 HStack{
 
                     Text(title)
-                        .font(.system(.body, design: .monospaced))
+                        .font(.system(size: 14, design: .monospaced))
                         .lineLimit(1)
                         
                     Image(uiImage: UIImage(systemName: "arrow.up.right")!)
                         .resizable()
                         .renderingMode(.template)
                         .foregroundColor(.accentColor)
-                        .frame(
-                            width: UIFont.preferredFont(
-                                forTextStyle: .caption2
-                            ).pointSize,
-                            height: UIFont.preferredFont(
-                                forTextStyle: .caption2
-                            ).pointSize
-                        )
+                        .frame(width: 8, height: 8)
                 }
             }
         )

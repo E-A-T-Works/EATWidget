@@ -16,13 +16,13 @@ struct HeadingLockup: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title ?? "Untitled")
-                .font(.system(size: 12, design: .monospaced))
+                .font(.system(size: size, design: .monospaced))
                 .fontWeight(.black)
                 .lineLimit(1)
             
             if text != nil {
                 Text(text!)
-                    .font(.system(size: 12, design: .monospaced))
+                    .font(.system(size: size, design: .monospaced))
                     .fontWeight(.light)
                     .lineLimit(1)
             }

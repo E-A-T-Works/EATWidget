@@ -17,7 +17,7 @@ struct AssetSheetHeader: View {
             HeadingLockup(
                 title: assetTitle,
                 text: collectionTitle,
-                size: 12
+                size: 14
             )
             
             Spacer()
