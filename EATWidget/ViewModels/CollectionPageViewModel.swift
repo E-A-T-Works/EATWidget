@@ -58,7 +58,11 @@ final class CollectionPageViewModel: ObservableObject {
         
             do {
                 print("....")
-                try await APIAlchemyProvider.fetchNFTs(ownerAddress: "0x80a80978aa2f0147ede29409313c4955f1eecca0")
+                let p = try await APIAlchemyProvider.fetchNFTs(ownerAddress: "0x80a80978aa2f0147ede29409313c4955f1eecca0")
+                
+                print("GOTTT")
+                print(p)
+                print(p.count)
             } catch {
                 
             }

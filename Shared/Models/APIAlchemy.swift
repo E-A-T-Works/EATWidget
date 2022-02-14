@@ -26,8 +26,11 @@ extension APIAlchemyUri: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        raw = (try? URL(string: container.decode(String.self, forKey: .raw))) ?? nil
-        gateway = (try? URL(string: container.decode(String.self, forKey: .gateway))) ?? nil
+        let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
+        raw = rawString.isEmpty ? nil : URL(string: rawString)
+        
+        let gatewayString = (try? container.decode(String.self, forKey: .gateway)) ?? ""
+        gateway = gatewayString.isEmpty ? nil : URL(string: gatewayString)
     }
 }
 
@@ -89,7 +92,7 @@ extension APIAlchemyTokenId: Decodable {
 // MARK: Attribute
 
 struct APIAlchemyAttribute {
-    let traitType: String
+    let traitType: String?
     let value: String?
 }
 
@@ -102,12 +105,14 @@ extension APIAlchemyAttribute: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        traitType = try container.decode(String.self, forKey: .traitType)
+        traitType = (try? container.decode(String.self, forKey: .traitType)) ?? nil
         
         do {
             value = try String(container.decode(Int.self, forKey: .value))
         } catch DecodingError.typeMismatch {
             value = try container.decode(String.self, forKey: .value)
+        } catch {
+            value = nil
         }
     }
 }
@@ -189,8 +194,6 @@ struct APIAlchemyNFT {
     
     let media: [APIAlchemyMedia]
     let metadata: APIAlchemyMetadata?
-    
-    let timeLastUpdated: Date
 }
 
 extension APIAlchemyNFT: Decodable {
@@ -202,8 +205,6 @@ extension APIAlchemyNFT: Decodable {
         case tokenUri = "tokenUri"
         case media = "media"
         case metadata = "metadata"
-        case timeLastUpdated = "timeLastUpdated"
-        
     }
     
     init(from decoder: Decoder) throws {
@@ -220,8 +221,6 @@ extension APIAlchemyNFT: Decodable {
         media = try container.decode([APIAlchemyMedia].self, forKey: .media)
         
         metadata = (try? container.decode(APIAlchemyMetadata.self, forKey: .metadata)) ?? nil
-   
-        timeLastUpdated = try container.decode(Date.self, forKey: .timeLastUpdated)
     }
 }
 

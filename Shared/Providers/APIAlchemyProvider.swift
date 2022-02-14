@@ -10,27 +10,63 @@ import Foundation
 
 final class APIAlchemyProvider {
     static func fetchNFTs(ownerAddress: String) async throws -> [NFT] {
-        // TODO:
-        print("boop")
-        
-//        var components = URLComponents()
-//        components.scheme = "https"
-//        components.host = "rinkeby-api.opensea.io"
-//        components.path = "/api/v1/assets"
-//        components.queryItems = [
-//            URLQueryItem(name: "owner", value: ownerAddress),
-//            URLQueryItem(name: "offset", value: "0"),
-//            URLQueryItem(name: "limit", value: "25"),
-//            URLQueryItem(name: "order_direction", value: "desc")
-//       ]
-//
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
+        guard let key = apiKey, !key.isEmpty else {
+            print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
+            throw APIError.MissingKey
+        }
         
-        print("!!!!!!")
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "eth-mainnet.alchemyapi.io"
+        components.path = "/v2/\(key)/getNFTs"
+        components.queryItems = [
+            URLQueryItem(name: "owner", value: ownerAddress),
+            URLQueryItem(name: "withMetadata", value: "true")
+       ]
         
-        print("APIAlchemyProvider: fetchNFT: \(apiKey ?? "NOT FOUND")")
+        guard let url = components.url else {
+            throw APIError.InvalidUrl
+        }
         
-        return [NFT]()
+        do {
+            let request = APIRequest(url: url)
+            
+            let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
+
+            let list = response.ownedNfts.filter {
+                let media = $0.media.first
+                
+                if media == nil || media?.uri.raw == nil || media?.uri.gateway == nil {
+                    return false
+                }
+
+                return true
+            }.map { (item: APIAlchemyNFT) -> NFT in
+                return NFT(
+                    id: item.id.tokenId,
+                    address: item.contract.address,
+                    title: item.title,
+                    text: item.text,
+                    imageUrl: item.media.first?.uri.gateway,
+                    thumbnailUrl: nil,
+                    animationUrl: nil,
+                    externalURL: nil,
+                    creator: nil,
+                    traits: (item.metadata?.attributes ?? []).filter {
+                        $0.traitType != nil && $0.value != nil
+                    }.map { (attribute: APIAlchemyAttribute) -> NFTTrait in
+                        NFTTrait(key: attribute.traitType!, value: attribute.value!)
+                    }
+                )
+            }
+
+            return list
+        } catch {
+            print("⚠️ APIAlchemyProvider::fetchAssets: \(error)")
+            
+            throw APIError.BadResponse
+        }
     }
     
     static func fetchNFT(ownerAddress: String) async throws{

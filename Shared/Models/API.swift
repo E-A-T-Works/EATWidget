@@ -11,4 +11,5 @@ enum APIError: Error {
     case InvalidUrl
     case BadResponse
     case Unsupported
+    case MissingKey
 }

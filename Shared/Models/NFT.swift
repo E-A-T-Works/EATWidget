@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NFT: Hashable {
+struct NFT: Identifiable, Hashable {
     let id: String
     let address: String
     

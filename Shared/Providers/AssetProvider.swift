@@ -39,7 +39,6 @@ final class AssetProvider {
             
         } catch {
             print("⚠️ AssetProvider::fetchAssets: \(error)")
-            
             throw APIError.BadResponse
         }
         
