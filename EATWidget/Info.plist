@@ -6,10 +6,5 @@
 	<string>${API_KEY_ALCHEMY}</string>
 	<key>API_KEY_ETHERSCAN</key>
 	<string>${API_KEY_ETHERSCAN}</string>
-	<key>NSExtension</key>
-	<dict>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.widgetkit-extension</string>
-	</dict>
 </dict>
 </plist>

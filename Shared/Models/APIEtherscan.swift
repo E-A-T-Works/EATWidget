@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+struct EtherscanAccountBalanceResponse: Decodable {
+    let status: String
+    let message: String
+    let result: String
+}
+
+struct EtherscanAccountBalanceResultResponse: Decodable {
+    let account: String
+    let balance: String
+}
+
+struct EtherscanAccountMultiBalanceResponse: Decodable {
+    let status: String
+    let message: String
+    let result: [EtherscanAccountBalanceResultResponse]
+}

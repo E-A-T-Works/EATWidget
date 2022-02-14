@@ -17,18 +17,6 @@
 		5C035EC727B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
 		5C035EC827B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
 		5C035EC927B5B43500A11697 /* Etherscan.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EC327B5B43500A11697 /* Etherscan.png */; };
-		5C035ECB27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
-		5C035ECC27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
-		5C035ECD27B5B9AD00A11697 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECA27B5B9AD00A11697 /* Creator.swift */; };
-		5C035ECF27B5B9E600A11697 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECE27B5B9E600A11697 /* User.swift */; };
-		5C035ED027B5B9E600A11697 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECE27B5B9E600A11697 /* User.swift */; };
-		5C035ED127B5B9E600A11697 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ECE27B5B9E600A11697 /* User.swift */; };
-		5C035ED327B5BA2600A11697 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED227B5BA2600A11697 /* Collection.swift */; };
-		5C035ED427B5BA2600A11697 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED227B5BA2600A11697 /* Collection.swift */; };
-		5C035ED527B5BA2600A11697 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED227B5BA2600A11697 /* Collection.swift */; };
-		5C035ED727B5DA2000A11697 /* PaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED627B5DA2000A11697 /* PaymentToken.swift */; };
-		5C035ED827B5DA2000A11697 /* PaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED627B5DA2000A11697 /* PaymentToken.swift */; };
-		5C035ED927B5DA2000A11697 /* PaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035ED627B5DA2000A11697 /* PaymentToken.swift */; };
 		5C035EDC27B6C5B800A11697 /* AssetSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EDB27B6C5B800A11697 /* AssetSheetHeader.swift */; };
 		5C035EDE27B6C5C600A11697 /* AssetSheetDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EDD27B6C5C600A11697 /* AssetSheetDescription.swift */; };
 		5C035EE027B6C5CF00A11697 /* AssetSheetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EDF27B6C5CF00A11697 /* AssetSheetDetails.swift */; };
@@ -60,6 +48,18 @@
 		5C574CE327BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
 		5C574CE427BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
 		5C574CE527BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
+		5C574CE727BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
+		5C574CE827BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
+		5C574CE927BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
+		5C574CEB27BAF09500212FED /* APIAlchemyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */; };
+		5C574CEC27BAF09500212FED /* APIAlchemyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */; };
+		5C574CED27BAF09500212FED /* APIAlchemyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */; };
+		5C574CEF27BAF16300212FED /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEE27BAF16300212FED /* NFT.swift */; };
+		5C574CF027BAF16300212FED /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEE27BAF16300212FED /* NFT.swift */; };
+		5C574CF127BAF16300212FED /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CEE27BAF16300212FED /* NFT.swift */; };
+		5C574CF327BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
+		5C574CF427BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
+		5C574CF527BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -67,8 +67,6 @@
 		5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
 		5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
 		5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */; };
-		5C63085327B2B51E00AC2A24 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085227B2B51E00AC2A24 /* Contract.swift */; };
-		5C63085527B2B52500AC2A24 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085427B2B52500AC2A24 /* Asset.swift */; };
 		5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
 		5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */; };
@@ -93,8 +91,6 @@
 		5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */; };
 		5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084127B2B44900AC2A24 /* Persistence.swift */; };
 		5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
-		5C6308B027B2D9FA00AC2A24 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085227B2B51E00AC2A24 /* Contract.swift */; };
-		5C6308B127B2D9FC00AC2A24 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085427B2B52500AC2A24 /* Asset.swift */; };
 		5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
 		5C6308B327B2DA0000AC2A24 /* AssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086427B2C32E00AC2A24 /* AssetProvider.swift */; };
 		5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
@@ -112,9 +108,7 @@
 		5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */; };
 		5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084127B2B44900AC2A24 /* Persistence.swift */; };
 		5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
-		5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085227B2B51E00AC2A24 /* Contract.swift */; };
 		5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
-		5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085427B2B52500AC2A24 /* Asset.swift */; };
 		5C6308D927B2E3AE00AC2A24 /* AssetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086427B2C32E00AC2A24 /* AssetProvider.swift */; };
 		5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
@@ -149,9 +143,6 @@
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117027B9A2350021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117127B9A2360021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
-		5C84117327B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
-		5C84117427B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
-		5C84117527B9A5880021008E /* Trait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117227B9A5880021008E /* Trait.swift */; };
 		5C84117727B9A6FE0021008E /* AssetSheetTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117627B9A6FE0021008E /* AssetSheetTraits.swift */; };
 		5C84117927B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
 		5C84117A27B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
@@ -226,10 +217,6 @@
 		5C035EBE27B5A5C800A11697 /* Eth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eth.png; sourceTree = "<group>"; };
 		5C035EC227B5B43500A11697 /* Opensea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Opensea.png; sourceTree = "<group>"; };
 		5C035EC327B5B43500A11697 /* Etherscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Etherscan.png; sourceTree = "<group>"; };
-		5C035ECA27B5B9AD00A11697 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
-		5C035ECE27B5B9E600A11697 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5C035ED227B5BA2600A11697 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		5C035ED627B5DA2000A11697 /* PaymentToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentToken.swift; sourceTree = "<group>"; };
 		5C035EDB27B6C5B800A11697 /* AssetSheetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetHeader.swift; sourceTree = "<group>"; };
 		5C035EDD27B6C5C600A11697 /* AssetSheetDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetDescription.swift; sourceTree = "<group>"; };
 		5C035EDF27B6C5CF00A11697 /* AssetSheetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetDetails.swift; sourceTree = "<group>"; };
@@ -245,6 +232,11 @@
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
 		5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemy.swift; sourceTree = "<group>"; };
 		5C574CE227BAEB3F00212FED /* APIOpensea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpensea.swift; sourceTree = "<group>"; };
+		5C574CE627BAF00E00212FED /* APIEtherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEtherscan.swift; sourceTree = "<group>"; };
+		5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemyProvider.swift; sourceTree = "<group>"; };
+		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
+		5C574CF227BAF44D00212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		5C574CFA27BAF81500212FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -253,8 +245,6 @@
 		5C63084427B2B44900AC2A24 /* EATWidget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EATWidget.xcdatamodel; sourceTree = "<group>"; };
 		5C63084D27B2B4A500AC2A24 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
-		5C63085227B2B51E00AC2A24 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
-		5C63085427B2B52500AC2A24 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		5C63085727B2B5B000AC2A24 /* sample-nft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-nft.json"; sourceTree = "<group>"; };
 		5C63085927B2B5BE00AC2A24 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		5C63085D27B2B5FD00AC2A24 /* Sequence+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extension.swift"; sourceTree = "<group>"; };
@@ -306,7 +296,6 @@
 		5C63091327B407FC00AC2A24 /* WalletWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
-		5C84117227B9A5880021008E /* Trait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trait.swift; sourceTree = "<group>"; };
 		5C84117627B9A6FE0021008E /* AssetSheetTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSheetTraits.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
 		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
@@ -380,6 +369,7 @@
 		5C63083727B2B44800AC2A24 /* EATWidget */ = {
 			isa = PBXGroup;
 			children = (
+				5C574CFA27BAF81500212FED /* Info.plist */,
 				5C63088427B2D34200AC2A24 /* EATWidget.entitlements */,
 				5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */,
 				5C63091A27B4378D00AC2A24 /* ContentView.swift */,
@@ -407,6 +397,7 @@
 				5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */,
 				5C63084127B2B44900AC2A24 /* Persistence.swift */,
 				5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */,
+				5C574CF227BAF44D00212FED /* Secrets.xcconfig */,
 				5C63085127B2B51400AC2A24 /* Models */,
 				5C63086327B2C31900AC2A24 /* Providers */,
 				5C63086827B2C3E200AC2A24 /* Storage */,
@@ -435,16 +426,11 @@
 		5C63085127B2B51400AC2A24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C63085427B2B52500AC2A24 /* Asset.swift */,
-				5C63085227B2B51E00AC2A24 /* Contract.swift */,
-				5C035ED227B5BA2600A11697 /* Collection.swift */,
-				5C035ED627B5DA2000A11697 /* PaymentToken.swift */,
-				5C84117227B9A5880021008E /* Trait.swift */,
-				5C035ECA27B5B9AD00A11697 /* Creator.swift */,
-				5C035ECE27B5B9E600A11697 /* User.swift */,
+				5C574CEE27BAF16300212FED /* NFT.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
 				5C574CE227BAEB3F00212FED /* APIOpensea.swift */,
+				5C574CE627BAF00E00212FED /* APIEtherscan.swift */,
 				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
 			);
@@ -478,6 +464,7 @@
 			children = (
 				5C63086427B2C32E00AC2A24 /* AssetProvider.swift */,
 				5C63090F27B337F700AC2A24 /* DataProvider.swift */,
+				5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -757,6 +744,7 @@
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */,
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
+				5C574CF327BAF44D00212FED /* Secrets.xcconfig in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,6 +759,7 @@
 				5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */,
 				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
 				5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */,
+				5C574CF427BAF44D00212FED /* Secrets.xcconfig in Resources */,
 				5C035EC827B5B43500A11697 /* Etherscan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +775,7 @@
 				5C035EC127B5A5C800A11697 /* Eth.png in Resources */,
 				5C035EC927B5B43500A11697 /* Etherscan.png in Resources */,
 				5C035EF227B6D17900A11697 /* Discord.png in Resources */,
+				5C574CF527BAF44D00212FED /* Secrets.xcconfig in Resources */,
 				5C035EEE27B6D15900A11697 /* Twitter.png in Resources */,
 				5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */,
 				5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */,
@@ -806,11 +796,12 @@
 				5C035EE027B6C5CF00A11697 /* AssetSheetDetails.swift in Sources */,
 				5C035EDE27B6C5C600A11697 /* AssetSheetDescription.swift in Sources */,
 				5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
-				5C63085527B2B52500AC2A24 /* Asset.swift in Sources */,
 				5C91BE2827B47BC3001074CE /* AssetSheet.swift in Sources */,
+				5C574CEB27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C91BE2227B471B3001074CE /* HexagonParameters.swift in Sources */,
+				5C574CE727BAF00E00212FED /* APIEtherscan.swift in Sources */,
+				5C574CEF27BAF16300212FED /* NFT.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extension.swift in Sources */,
-				5C035ED327B5BA2600A11697 /* Collection.swift in Sources */,
 				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
@@ -821,9 +812,7 @@
 				5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */,
 				5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */,
 				5C63086527B2C32E00AC2A24 /* AssetProvider.swift in Sources */,
-				5C035ECB27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C63084227B2B44900AC2A24 /* Persistence.swift in Sources */,
-				5C63085327B2B51E00AC2A24 /* Contract.swift in Sources */,
 				5C91BE1327B44AE7001074CE /* AssetCard.swift in Sources */,
 				5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */,
 				5C63086727B2C34900AC2A24 /* API.swift in Sources */,
@@ -839,16 +828,13 @@
 				5C63087127B2C4BC00AC2A24 /* AssetItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* AssetSheetActions.swift in Sources */,
 				5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */,
-				5C035ED727B5DA2000A11697 /* PaymentToken.swift in Sources */,
 				5C91BE1A27B468B0001074CE /* UIColor+Extension.swift in Sources */,
-				5C035ECF27B5B9E600A11697 /* User.swift in Sources */,
 				5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
-				5C84117327B9A5880021008E /* Trait.swift in Sources */,
 				5C84117727B9A6FE0021008E /* AssetSheetTraits.swift in Sources */,
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
@@ -873,28 +859,24 @@
 				5CE9CFA327B57A5600F29938 /* UIColor+Extension.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
-				5C035ED827B5DA2000A11697 /* PaymentToken.swift in Sources */,
-				5C6308B127B2D9FC00AC2A24 /* Asset.swift in Sources */,
+				5C574CF027BAF16300212FED /* NFT.swift in Sources */,
 				5C6308B327B2DA0000AC2A24 /* AssetProvider.swift in Sources */,
 				5C366B0627B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */,
 				5CE9CFA427B57A5900F29938 /* UIImage+Extension.swift in Sources */,
+				5C574CE827BAF00E00212FED /* APIEtherscan.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
-				5C84117427B9A5880021008E /* Trait.swift in Sources */,
 				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
-				5C035ED027B5B9E600A11697 /* User.swift in Sources */,
 				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
 				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
-				5C6308B027B2D9FA00AC2A24 /* Contract.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C84117127B9A2360021008E /* SectionTitle.swift in Sources */,
 				5C84117A27B9A9530021008E /* TraitBox.swift in Sources */,
-				5C035ECC27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */,
-				5C035ED427B5BA2600A11697 /* Collection.swift in Sources */,
 				5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
+				5C574CEC27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
@@ -909,6 +891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C574CE927BAF00E00212FED /* APIEtherscan.swift in Sources */,
 				5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C6308E627B2EA5C00AC2A24 /* Entry.swift in Sources */,
@@ -925,6 +908,7 @@
 				5C91BE2627B4754C001074CE /* Branding.swift in Sources */,
 				5C84117027B9A2350021008E /* SectionTitle.swift in Sources */,
 				5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */,
+				5C574CED27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
@@ -933,24 +917,18 @@
 				5C63090E27B3202000AC2A24 /* RandomAssetWidget.swift in Sources */,
 				5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */,
 				5C6308F127B2F14900AC2A24 /* UnconfiguredView.swift in Sources */,
-				5C035ECD27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C91BE1127B43A27001074CE /* Theme.swift in Sources */,
 				5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C6308F927B2F23900AC2A24 /* WalletsView.swift in Sources */,
-				5C035ED927B5DA2000A11697 /* PaymentToken.swift in Sources */,
 				5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */,
-				5C6308D827B2E3AC00AC2A24 /* Asset.swift in Sources */,
+				5C574CF127BAF16300212FED /* NFT.swift in Sources */,
 				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,
-				5C035ED127B5B9E600A11697 /* User.swift in Sources */,
-				5C84117527B9A5880021008E /* Trait.swift in Sources */,
 				5C6308F727B2F1FB00AC2A24 /* UnsupportedView.swift in Sources */,
 				5C035EE827B6C64E00A11697 /* URLButton.swift in Sources */,
 				5C6308F327B2F16E00AC2A24 /* NotFoundView.swift in Sources */,
 				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
 				5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */,
-				5C035ED527B5BA2600A11697 /* Collection.swift in Sources */,
 				5C84117B27B9A9530021008E /* TraitBox.swift in Sources */,
-				5C6308D627B2E3A800AC2A24 /* Contract.swift in Sources */,
 				5C91BE1827B45FA0001074CE /* UIImage+Extension.swift in Sources */,
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
 				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
@@ -981,6 +959,7 @@
 /* Begin XCBuildConfiguration section */
 		5C63084627B2B44900AC2A24 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1042,6 +1021,7 @@
 		};
 		5C63084727B2B44900AC2A24 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1108,6 +1088,7 @@
 				DEVELOPMENT_TEAM = L82FEU85S2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EATWidget/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1139,6 +1120,7 @@
 				DEVELOPMENT_TEAM = L82FEU85S2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EATWidget/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

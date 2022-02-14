@@ -52,29 +52,42 @@ final class CollectionPageViewModel: ObservableObject {
     }
 
     func load() {
+        
+        
         Task {
+        
             do {
-                self.assetsByWallet = try await self.wallets.asyncMap { wallet -> [String: [Asset]] in
-                    let address = wallet.address!
-                    let assets = try await AssetProvider.fetchAssets(ownerAddress: address)
-                    
-                    return [address: assets]
-                }
-                .flatMap { $0 }
-                .reduce([String:[Asset]]()) { acc, curr in
-                    var nextDict = acc
-                    nextDict.updateValue(curr.value, forKey: curr.key)
-                    return nextDict
-                }
-                
-                self.assets = self.assetsByWallet.reduce(into: []) {  acc, curr in
-                    acc += curr.value
-                }
-
+                print("....")
+                try await APIAlchemyProvider.fetchNFTs(ownerAddress: "0x80a80978aa2f0147ede29409313c4955f1eecca0")
             } catch {
-                print("⚠️ (CanvasPageViewModel)::load() \(error)")
+                
             }
         }
+        
+        
+//        Task {
+//            do {
+//                self.assetsByWallet = try await self.wallets.asyncMap { wallet -> [String: [Asset]] in
+//                    let address = wallet.address!
+//                    let assets = try await AssetProvider.fetchAssets(ownerAddress: address)
+//
+//                    return [address: assets]
+//                }
+//                .flatMap { $0 }
+//                .reduce([String:[Asset]]()) { acc, curr in
+//                    var nextDict = acc
+//                    nextDict.updateValue(curr.value, forKey: curr.key)
+//                    return nextDict
+//                }
+//
+//                self.assets = self.assetsByWallet.reduce(into: []) {  acc, curr in
+//                    acc += curr.value
+//                }
+//
+//            } catch {
+//                print("⚠️ (CanvasPageViewModel)::load() \(error)")
+//            }
+//        }
     }
 }
 
