@@ -60,6 +60,9 @@
 		5C574CF327BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
 		5C574CF427BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
 		5C574CF527BAF44D00212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */; };
+		5C574D0027BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
+		5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
+		5C574D0227BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -237,6 +240,7 @@
 		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		5C574CF227BAF44D00212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		5C574CFA27BAF81500212FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5C574CFF27BAFA4000212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -397,13 +401,13 @@
 				5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */,
 				5C63084127B2B44900AC2A24 /* Persistence.swift */,
 				5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */,
-				5C574CF227BAF44D00212FED /* Secrets.xcconfig */,
 				5C63085127B2B51400AC2A24 /* Models */,
 				5C63086327B2C31900AC2A24 /* Providers */,
 				5C63086827B2C3E200AC2A24 /* Storage */,
 				5C63091727B435D400AC2A24 /* Components */,
 				5C63085C27B2B5EC00AC2A24 /* Utils */,
 				5C63085627B2B58B00AC2A24 /* Testing */,
+				5C574CFF27BAFA4000212FED /* Secrets.xcconfig */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -736,6 +740,7 @@
 			files = (
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
+				5C574D0027BAFA4000212FED /* Secrets.xcconfig in Resources */,
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
@@ -755,6 +760,7 @@
 			files = (
 				5C035EF127B6D17900A11697 /* Discord.png in Resources */,
 				5C035EC027B5A5C800A11697 /* Eth.png in Resources */,
+				5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */,
 				5C035EC527B5B43500A11697 /* Opensea.png in Resources */,
 				5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */,
 				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
@@ -776,6 +782,7 @@
 				5C035EC927B5B43500A11697 /* Etherscan.png in Resources */,
 				5C035EF227B6D17900A11697 /* Discord.png in Resources */,
 				5C574CF527BAF44D00212FED /* Secrets.xcconfig in Resources */,
+				5C574D0227BAFA4000212FED /* Secrets.xcconfig in Resources */,
 				5C035EEE27B6D15900A11697 /* Twitter.png in Resources */,
 				5C63090627B30DFD00AC2A24 /* Placeholder.png in Resources */,
 				5C6308CA27B2E0C900AC2A24 /* Assets.xcassets in Resources */,
@@ -959,7 +966,7 @@
 /* Begin XCBuildConfiguration section */
 		5C63084627B2B44900AC2A24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */;
+			baseConfigurationReference = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1021,7 +1028,7 @@
 		};
 		5C63084727B2B44900AC2A24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C574CF227BAF44D00212FED /* Secrets.xcconfig */;
+			baseConfigurationReference = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
