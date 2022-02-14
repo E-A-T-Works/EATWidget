@@ -54,6 +54,12 @@
 		5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
 		5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
 		5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
+		5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
+		5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
+		5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
+		5C574CE327BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
+		5C574CE427BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
+		5C574CE527BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -237,6 +243,8 @@
 		5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPaymentToken.swift; sourceTree = "<group>"; };
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
+		5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemy.swift; sourceTree = "<group>"; };
+		5C574CE227BAEB3F00212FED /* APIOpensea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpensea.swift; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -435,6 +443,8 @@
 				5C035ECA27B5B9AD00A11697 /* Creator.swift */,
 				5C035ECE27B5B9E600A11697 /* User.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
+				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
+				5C574CE227BAEB3F00212FED /* APIOpensea.swift */,
 				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
 			);
@@ -792,6 +802,7 @@
 				5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */,
 				5C63085E27B2B5FD00AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImage.swift in Sources */,
+				5C574CE327BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5C035EE027B6C5CF00A11697 /* AssetSheetDetails.swift in Sources */,
 				5C035EDE27B6C5C600A11697 /* AssetSheetDescription.swift in Sources */,
 				5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
@@ -805,6 +816,7 @@
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
+				5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* AssetSheetVisual.swift in Sources */,
 				5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */,
 				5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */,
@@ -857,6 +869,7 @@
 			files = (
 				5C6308B627B2DA0800AC2A24 /* Sequence+Extension.swift in Sources */,
 				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
+				5C574CE427BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5CE9CFA327B57A5600F29938 /* UIColor+Extension.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
@@ -885,6 +898,7 @@
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
+				5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C91BE1027B43A27001074CE /* Theme.swift in Sources */,
 				5C035EE727B6C64E00A11697 /* URLButton.swift in Sources */,
 				5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */,
@@ -921,6 +935,7 @@
 				5C6308F127B2F14900AC2A24 /* UnconfiguredView.swift in Sources */,
 				5C035ECD27B5B9AD00A11697 /* Creator.swift in Sources */,
 				5C91BE1127B43A27001074CE /* Theme.swift in Sources */,
+				5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C6308F927B2F23900AC2A24 /* WalletsView.swift in Sources */,
 				5C035ED927B5DA2000A11697 /* PaymentToken.swift in Sources */,
 				5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */,
@@ -940,6 +955,7 @@
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
 				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
 				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,
+				5C574CE527BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 				5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */,
 				5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */,
