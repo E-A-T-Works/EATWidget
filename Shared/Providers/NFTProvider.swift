@@ -27,8 +27,7 @@ final class NFTProvider {
                 filterOutUnsupported: filterOutUnsupported
             )
         }
-        
-        
+
         if syncCache {
             //
             // Update the cached Options

@@ -8,19 +8,16 @@
 import Foundation
 import Combine
 
+enum CollectionSheetContent {
+    case ConnectForm
+    case NFTDetails(contractAddress: String, tokenId: String)
+    case MailForm(data: ComposeMailData)
+}
 
 @MainActor
 final class CollectionPageViewModel: ObservableObject {
     
-    enum SheetContent {
-        case ConnectForm
-        case NFTDetails(contractAddress: String, tokenId: String)
-    }
-    
     // MARK: - Properties
-    
-    
-    
     @Published private(set) var loading: Bool = true
     
     @Published private(set) var columns: Int = 2
@@ -30,9 +27,9 @@ final class CollectionPageViewModel: ObservableObject {
     
     @Published private(set) var listByWallet: [String:[NFT]] = [:]
     
-    @Published var sheetContent: SheetContent = .ConnectForm
+    @Published var sheetContent: CollectionSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
-
+    
     private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
@@ -52,6 +49,18 @@ final class CollectionPageViewModel: ObservableObject {
     
     func presentAssetSheet(contractAddress: String, tokenId: String) {
         sheetContent = .NFTDetails(contractAddress: contractAddress, tokenId: tokenId)
+        showingSheet.toggle()
+    }
+    
+    func presentMailFormSheet() {
+        sheetContent = .MailForm(
+            data: ComposeMailData(
+                subject: "[BETA:EATWidget] - App Feedback",
+                recipients: ["adrian@eatworks.xyz"],
+                message: "Thank you for sharing your feedback, let us know what we can improve...",
+                attachments: []
+            )
+        )
         showingSheet.toggle()
     }
 

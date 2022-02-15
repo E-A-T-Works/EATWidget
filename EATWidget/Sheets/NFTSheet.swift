@@ -28,6 +28,7 @@ struct NFTSheet: View {
                     
                     NFTVisual(
                         imageUrl: viewModel.imageUrl,
+                        animationUrl: nil,
                         backgroundColor: viewModel.backgroundColor
                     )
                     .padding([.bottom], spacing)

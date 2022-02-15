@@ -33,6 +33,7 @@ final class APIAlchemyProvider {
             let request = APIRequest(url: url)
             
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
+            
 
             let list = response.ownedNfts.filter {
                 if !filterOutUnsupported {
@@ -50,8 +51,8 @@ final class APIAlchemyProvider {
                     title: item.title,
                     text: item.text,
                     imageUrl: item.media.first?.uri.gateway,
-                    thumbnailUrl: nil,
-                    animationUrl: nil,
+                    thumbnailUrl: item.metadata?.thumbnailUrl,
+                    animationUrl: item.metadata?.animationUrl,
                     externalURL: nil,
                     creator: nil,
                     collection: nil,
@@ -61,6 +62,10 @@ final class APIAlchemyProvider {
                         NFTTrait(key: attribute.traitType!, value: attribute.value!)
                     }
                 )
+            }
+            
+            for item in list {
+                print([item.address, item.imageUrl ?? "IDK", item.animationUrl ?? "IDK"])
             }
 
             return list

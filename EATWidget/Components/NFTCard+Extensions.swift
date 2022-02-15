@@ -11,7 +11,8 @@ extension NFTCard {
     init(item: NFT) {
         address = item.address
         tokenId = item.tokenId
-        imageUrl = item.imageUrl
+        imageUrl = item.imageUrl!
+        animationUrl = item.animationUrl
         title = item.title
         text = item.collection?.title
         preferredBackgroundColor = nil

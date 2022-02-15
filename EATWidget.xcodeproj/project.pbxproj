@@ -152,6 +152,8 @@
 		5C828CF127BC313D009D92D6 /* UnsupportedNFTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */; };
 		5C828CF327BC3265009D92D6 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF227BC3265009D92D6 /* ViewLoader.swift */; };
 		5C828CF527BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */; };
+		5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF927BC4178009D92D6 /* EmailHelpers.swift */; };
+		5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */; };
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117027B9A2350021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117127B9A2360021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
@@ -316,6 +318,8 @@
 		5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedNFTItem.swift; sourceTree = "<group>"; };
 		5C828CF227BC3265009D92D6 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnsupportedNFTItem+Extensions.swift"; sourceTree = "<group>"; };
+		5C828CF927BC4178009D92D6 /* EmailHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelpers.swift; sourceTree = "<group>"; };
+		5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		5C84117627B9A6FE0021008E /* TraitGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitGrid.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				5C63086D27B2C48B00AC2A24 /* ViewModels */,
 				5C63086C27B2C48000AC2A24 /* Sheets */,
 				5C63086B27B2C47600AC2A24 /* Pages */,
+				5C828CF627BC3AA3009D92D6 /* Utils */,
 				5C63083E27B2B44900AC2A24 /* Preview Content */,
 			);
 			path = EATWidget;
@@ -554,6 +559,7 @@
 				5C035EDF27B6C5CF00A11697 /* NFTDetails.swift */,
 				5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */,
 				5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */,
+				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -660,6 +666,14 @@
 				5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		5C828CF627BC3AA3009D92D6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5C828CF927BC4178009D92D6 /* EmailHelpers.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -875,7 +889,9 @@
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C035EE427B6C5F400A11697 /* CreatorItem.swift in Sources */,
+				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
 				5C035EE627B6C64E00A11697 /* URLButton.swift in Sources */,
+				5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* NFTItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,

@@ -83,11 +83,11 @@ struct ConnectSheet: View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    print("BOOP")
+                                    viewModel.presentMailFormSheet()
                                 }, label: {
                                     Text("Contact")
                                 })
-                          }
+                            }
                         }
                     }
                 }
@@ -107,6 +107,14 @@ struct ConnectSheet: View {
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             if shouldDismiss {
                 self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .sheet(isPresented: $viewModel.showingSheet) {
+            switch viewModel.sheetContent {
+            case .MailForm(let data):
+                MailView(data: data) { result in
+                    print(result)
+                }
             }
         }
     }

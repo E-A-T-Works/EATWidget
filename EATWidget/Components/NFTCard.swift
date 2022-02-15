@@ -11,45 +11,25 @@ struct NFTCard: View {
     let address: String
     let tokenId: String
 
-    let imageUrl: URL?
+    let imageUrl: URL
+    let animationUrl: URL?
     
     let title: String?
     let text: String?
     
     let preferredBackgroundColor: UIColor?
-    
-    // MARK: Color resolvers
-    
-//    @State private var backgroundColor: Color = .clear
-//
-//    private func resolveColors()  {
-//        let derivedColors = Theme.resolveColorsFromImage(
-//            imageUrl: imageUrl,
-//            preferredBackgroundColor: preferredBackgroundColor
-//        )
-//        backgroundColor = Color(uiColor: derivedColors.backgroundColor)
-//    }
-    
+
     // MARK: Body
     
     var body: some View {
         VStack {
-            CachedAsyncImage(url: imageUrl, urlCache: .imageCache){ phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } else if phase.error != nil {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } else {
-                    Image(uiImage: UIImage(named: "Placeholder")!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
             
+            NFTVisual(
+                imageUrl: imageUrl,
+                animationUrl: animationUrl,
+                backgroundColor: Color.clear
+            )
+                        
             HStack {
                 HeadingLockup(
                     title: title,
@@ -72,7 +52,8 @@ struct NFTCard_Previews: PreviewProvider {
             NFTCard(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.tokenId,
-                imageUrl: TestData.nft.imageUrl,
+                imageUrl: TestData.nft.imageUrl!,
+                animationUrl: TestData.nft.animationUrl,
                 title: TestData.nft.title,
                 text: TestData.nft.text,
                 preferredBackgroundColor: nil

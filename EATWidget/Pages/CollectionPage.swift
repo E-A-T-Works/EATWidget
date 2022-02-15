@@ -63,12 +63,19 @@ struct CollectionPage: View {
                 NavigationView {
                     ConnectSheet()
                 }
-            case .NFTDetails(let contractAddress, let tokenId): NFTSheet(
+                
+            case .NFTDetails(let contractAddress, let tokenId):
+                NFTSheet(
                     contractAddress: contractAddress,
                     tokenId: tokenId
                 )
                 
+            case .MailForm(let data):
+                MailView(data: data) { result in
+                    print(result)
+                }
             }
+            
         }
     }
     
