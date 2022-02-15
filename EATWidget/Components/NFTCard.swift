@@ -20,21 +20,21 @@ struct NFTCard: View {
     
     // MARK: Color resolvers
     
-    @State private var backgroundColor: Color = .clear
-    
-    private func resolveColors()  {
-        let derivedColors = Theme.resolveColorsFromImage(
-            imageUrl: imageUrl,
-            preferredBackgroundColor: preferredBackgroundColor
-        )
-        backgroundColor = Color(uiColor: derivedColors.backgroundColor)
-    }
+//    @State private var backgroundColor: Color = .clear
+//
+//    private func resolveColors()  {
+//        let derivedColors = Theme.resolveColorsFromImage(
+//            imageUrl: imageUrl,
+//            preferredBackgroundColor: preferredBackgroundColor
+//        )
+//        backgroundColor = Color(uiColor: derivedColors.backgroundColor)
+//    }
     
     // MARK: Body
     
     var body: some View {
         VStack {
-            CachedAsyncImage(url: imageUrl){ phase in
+            CachedAsyncImage(url: imageUrl, urlCache: .imageCache){ phase in
                 if let image = phase.image {
                     image
                         .resizable()
@@ -42,11 +42,13 @@ struct NFTCard: View {
                 } else if phase.error != nil {
                     Image(systemName: "photo")
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                 } else {
-                    ProgressView()
+                    Image(uiImage: UIImage(named: "Placeholder")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 }
             }
-            .background(backgroundColor)
             
             HStack {
                 HeadingLockup(
@@ -61,7 +63,6 @@ struct NFTCard: View {
             .padding([.top, .bottom], 4)
         }
         .padding([.bottom], 8)
-        .onAppear(perform: resolveColors)
     }
 }
 

@@ -11,62 +11,71 @@ struct CollectionPage: View {
     @StateObject private var viewModel = CollectionPageViewModel()
     
     var body: some View {
-        GeometryReader { geo in
-            StaggeredGrid(
-                list: viewModel.list,
-//                list: [TestData.nft],
-                columns: viewModel.columns,
-                showsIndicators: false,
-                spacing: 10,
-                content: { item in
-                    NFTCard(item: item)
-                        .onTapGesture {
-                            viewModel.presentAssetSheet(
-                                contractAddress: item.address,
-                                tokenId: item.tokenId
-                            )
-                        }
+        ZStack {
+            if viewModel.loading {
+                VStack {
+                    ProgressView()
+                        .padding(4)
+                    Text("Loading...").opacity(0.72)
+                }
+            }else{
+                StaggeredGrid(
+                    list: viewModel.list,
+                    columns: viewModel.columns,
+                    showsIndicators: false,
+                    spacing: 10,
+                    lazy: false,
+                    content: { item in
+                        NFTCard(item: item)
+                            .onTapGesture {
+                                viewModel.presentAssetSheet(
+                                    contractAddress: item.address,
+                                    tokenId: item.tokenId
+                                )
+                            }
+                    }
+                )
+                .padding([.horizontal], 10)
+            }
+        }
+        .navigationTitle("Collection")
+        .toolbar(content: {
+            ToolbarItem(
+                placement: .navigationBarLeading,
+                content: {
+                    Button {
+                        // TODO
+                    } label: {
+                        Branding()
+                            .frame(width: 32, height: 32)
+                    }
                 }
             )
-            .padding([.horizontal], 10)
-            .navigationTitle("Collection")
-            .toolbar(content: {
-                ToolbarItem(
-                    placement: .navigationBarLeading,
-                    content: {
-                        Button {
-                            // TODO
-                        } label: {
-                            Branding()
-                                .frame(width: 32, height: 32)
-                        }
-                    }
-                )
-                ToolbarItem(
-                    placement: .navigationBarTrailing,
-                    content: {
-                        Button("Connect", action: { viewModel.presentConnectSheet() })
-                    }
-                )
-            })
-            .onAppear {
-                viewModel.load()
-            }
-            .sheet(isPresented: $viewModel.showingSheet) {
-                switch viewModel.sheetContent {
-                case .ConnectForm:
-                    NavigationView {
-                        ConnectSheet()
-                    }
-                case .NFTDetails(let contractAddress, let tokenId): NFTSheet(
-                        contractAddress: contractAddress,
-                        tokenId: tokenId
-                    )
-                    
+            ToolbarItem(
+                placement: .navigationBarTrailing,
+                content: {
+                    Button("Connect", action: { viewModel.presentConnectSheet() })
                 }
+            )
+        })
+        .onAppear {
+            viewModel.load()
+        }
+        .sheet(isPresented: $viewModel.showingSheet) {
+            switch viewModel.sheetContent {
+            case .ConnectForm:
+                NavigationView {
+                    ConnectSheet()
+                }
+            case .NFTDetails(let contractAddress, let tokenId): NFTSheet(
+                    contractAddress: contractAddress,
+                    tokenId: tokenId
+                )
+                
             }
         }
     }
+    
 }
 
 

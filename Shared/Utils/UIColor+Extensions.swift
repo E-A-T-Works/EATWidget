@@ -1,5 +1,5 @@
 //
-//  UIColor+Extension.swift
+//  UIColor+Extensions.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/9/22.

@@ -19,6 +19,8 @@ final class CollectionPageViewModel: ObservableObject {
     
     // MARK: - Properties
     
+    @Published private(set) var loading: Bool = true
+    
     @Published private(set) var columns: Int = 2
 
     @Published private(set) var wallets: [Wallet] = []
@@ -54,10 +56,11 @@ final class CollectionPageViewModel: ObservableObject {
     func load() {
         Task {
             do {
+                self.loading = true
+                
                 self.listByWallet = try await self.wallets.asyncMap { wallet -> [String: [NFT]] in
                     let address = wallet.address!
                     let list = try await NFTProvider.fetchNFTs(ownerAddress: address)
-
                     return [address: list]
                 }
                 .flatMap { $0 }
@@ -70,9 +73,12 @@ final class CollectionPageViewModel: ObservableObject {
                 self.list = self.listByWallet.reduce(into: []) {  acc, curr in
                     acc += curr.value
                 }
+                
+                self.loading = false
 
             } catch {
                 print("⚠️ (CanvasPageViewModel)::load() \(error)")
+                self.loading = false
             }
         }
     }

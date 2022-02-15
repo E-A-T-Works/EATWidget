@@ -89,8 +89,17 @@ final class Theme {
             )
         }
         
-        let data = try? Data(contentsOf: imageUrl!)
-        let uiImage = UIImage(data: data!)
+        guard let data = try? Data(contentsOf: imageUrl!) else {
+            backgroundColor = .clear
+            foregroundColor = .black
+            
+            return DerivedColors(
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor
+            )
+        }
+        
+        let uiImage = UIImage(data: data)
         
         backgroundColor = uiImage?.averageColor?.tint ?? .clear
         foregroundColor = backgroundColor.isDarkColor ? .white : .black

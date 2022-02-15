@@ -1,5 +1,5 @@
 //
-//  UIImage+Extension.swift
+//  UIImage+Extensions.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/9/22.

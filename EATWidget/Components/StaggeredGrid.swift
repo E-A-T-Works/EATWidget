@@ -22,17 +22,21 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     var showsIndicators: Bool
     var spacing: CGFloat
     
+    let lazy: Bool
+    
     init(
         list: [T],
         columns: Int,
         showsIndicators: Bool,
         spacing: CGFloat,
+        lazy: Bool,
         @ViewBuilder content: @escaping (T) -> Content
     ) {
         self.list = list
         self.columns = columns
         self.showsIndicators = showsIndicators
         self.spacing = spacing
+        self.lazy = lazy
         self.content = content
     }
     
@@ -58,9 +62,18 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
         ScrollView(.vertical, showsIndicators: showsIndicators) {
             HStack(alignment: .top) {
                 ForEach(setupColumns()) { column in
-                    LazyVStack(spacing: spacing) {
-                        ForEach(column.elements) { object in
-                            content(object)
+                    
+                    if lazy {
+                        LazyVStack(spacing: spacing) {
+                            ForEach(column.elements) { object in
+                                content(object)
+                            }
+                        }
+                    } else {
+                        VStack(spacing: spacing) {
+                            ForEach(column.elements) { object in
+                                content(object)
+                            }
                         }
                     }
                 }
