@@ -25,24 +25,7 @@ final class DynamicIntentHelpers {
         return INObjectCollection(items: items)
     }
     
-    static func provideNFTOptionsCollection(walletId: String?) async throws -> INObjectCollection<NFTINO> {
-        let wallets = WalletStorage.shared.fetch()
-
-        var wallet: Wallet?
-        if walletId != nil {
-            wallet = wallets.first { $0.id == walletId } ?? wallets.first
-        }else{
-            wallet = wallets.first
-        }
-        
-        let address = wallet?.address
-        
-        if address == nil {
-            return INObjectCollection(items: [NFTINO]())
-        }
-        
-        let options = NFTOptionStorage.shared.fetch()
-        
+    static func provideNFTOptionsCollection(ownerAddress: String?) async throws -> INObjectCollection<NFTINO> {
         ///
         /// TODO: There is something broken with how iOS renders
         /// the image on the Widget Intent Controller
@@ -53,8 +36,10 @@ final class DynamicIntentHelpers {
         /// ref: https://github.com/hackenbacker/FictionalCard/issues/1
         ///
         
+        let options = NFTOptionStorage.shared.fetch()
+        
         let items: [NFTINO] = options.filter { item in
-            item.wallet?.address == address
+            ownerAddress == nil ? true : item.wallet?.address == ownerAddress
         }.map { item in
             return NFTINO(
                 identifier: item.identifier,

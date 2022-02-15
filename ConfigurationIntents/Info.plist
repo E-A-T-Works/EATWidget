@@ -17,6 +17,7 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>BasicNFTOptionsIntent</string>
+				<string>GalleryNFTOptionsIntent</string>
 				<string>RandomNFTOptionsIntent</string>
 				<string>WalletOptionsIntent</string>
 			</array>

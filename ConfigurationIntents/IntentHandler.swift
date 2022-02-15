@@ -57,7 +57,7 @@ extension IntentHandler: BasicNFTOptionsIntentHandling {
     func provideNFTOptionsCollection(for intent: BasicNFTOptionsIntent) async throws -> INObjectCollection<NFTINO> {
         
         do {
-            return try await DynamicIntentHelpers.provideNFTOptionsCollection(walletId: intent.Wallet?.identifier)
+            return try await DynamicIntentHelpers.provideNFTOptionsCollection(ownerAddress: intent.Wallet?.identifier)
         } catch {
             print("⚠️ (IntentHandler:BasicNFTOptionsIntentHandling)::provideNFTOptionsCollection() \(error)")
             return INObjectCollection(items: [NFTINO]())
@@ -77,6 +77,22 @@ extension IntentHandler: RandomNFTOptionsIntentHandling {
         } catch {
             print("⚠️ (IntentHandler:RandomNFTOptionsIntentHandling)::provideWalletOptionsCollection() \(error)")
             return INObjectCollection(items: [WalletINO]())
+        }
+        
+    }
+}
+
+
+// MARK: GalleryNFTOptions
+
+extension IntentHandler: GalleryNFTOptionsIntentHandling {
+    func provideNFTOptionsCollection(for intent: GalleryNFTOptionsIntent) async throws -> INObjectCollection<NFTINO> {
+        
+        do {
+            return try await DynamicIntentHelpers.provideNFTOptionsCollection(ownerAddress: nil)
+        } catch {
+            print("⚠️ (IntentHandler:GalleryNFTOptionsIntentHandling)::provideNFTOptionsCollection() \(error)")
+            return INObjectCollection(items: [NFTINO]())
         }
         
     }
