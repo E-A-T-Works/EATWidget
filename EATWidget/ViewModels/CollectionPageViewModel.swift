@@ -19,6 +19,8 @@ final class CollectionPageViewModel: ObservableObject {
     
     // MARK: - Properties
     
+    
+    
     @Published private(set) var loading: Bool = true
     
     @Published private(set) var columns: Int = 2
