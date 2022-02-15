@@ -14,10 +14,35 @@ enum DataStrategies {
 
 final class NFTProvider {
     static func fetchNFTs(ownerAddress: String, strategy: DataStrategies = .Alchemy) async throws -> [NFT] {
+        
+        var list: [NFT] = [NFT]()
+        
+        //
+        // Fetch
+        //
         switch strategy {
         case .Alchemy:
-            return try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
+            list = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
         }
+        
+        //
+        // Update the cached Options
+        //
+        let wallets = WalletStorage.shared.fetch()
+        guard let wallet = (wallets.first { $0.address == ownerAddress }) else {
+            return list
+        }
+    
+        do {
+            try NFTOptionStorage.shared.syncWithNFTs(wallet: wallet, list: list)
+        } catch {
+            print("⚠️ NFTProvider::fetchNFTs::sync: \(error)")
+        }
+        
+        //
+        // Return data
+        //
+        return list
     }
     
     
@@ -37,7 +62,7 @@ final class NFTProvider {
             return items[randomIndex]
         
         } catch {
-            print("⚠️ AssetProvider::fetchRandomNFT: \(error)")
+            print("⚠️ NFTProvider::fetchRandomNFT: \(error)")
             
             throw APIError.BadResponse
         }

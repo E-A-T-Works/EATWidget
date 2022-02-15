@@ -149,6 +149,9 @@
 		5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091327B407FC00AC2A24 /* WalletWidget.swift */; };
 		5C63091827B435E800AC2A24 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImage.swift */; };
 		5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091A27B4378D00AC2A24 /* ContentView.swift */; };
+		5C6F5A5227BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */; };
+		5C6F5A5327BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */; };
+		5C6F5A5427BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */; };
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117027B9A2350021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117127B9A2360021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
@@ -309,6 +312,7 @@
 		5C63090F27B337F700AC2A24 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		5C63091327B407FC00AC2A24 /* WalletWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTOptionStorage.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
 		5C84117627B9A6FE0021008E /* TraitGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitGrid.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
@@ -489,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */,
+				5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				5C63087F27B2CBEE00AC2A24 /* NFTItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
+				5C6F5A5227BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 				5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */,
@@ -894,6 +900,7 @@
 				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
 				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
+				5C6F5A5327BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */,
 				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
@@ -938,6 +945,7 @@
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
+				5C6F5A5427BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */,
 				5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5C6308E827B2EB7400AC2A24 /* BasicNFTWidget.swift in Sources */,
 				5C63090E27B3202000AC2A24 /* RandomNFTWidget.swift in Sources */,

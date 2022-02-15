@@ -182,17 +182,19 @@ struct LargeBasicNFTView: View {
     // MARK: Content
     
     var body: some View {
-        GeometryReader { geo in
-         
-            VStack(alignment: .leading, spacing: 0) {
-                ZStack {
-                    Color(uiColor: backgroundColor ?? .clear)
+        ZStack {
+            ZStack {
+                Color(uiColor: backgroundColor ?? .clear)
+                ZStack{
                     URLImage(url: imageUrl!)
-                        .scaledToFill()
-                        .frame(width: geo.size.width, height: geo.size.height - (displayInfo ? 30 + 2 * 16.0 : 0))
+                        .aspectRatio(1, contentMode: .fill)
                 }
-                
-                if displayInfo {
+            }
+            
+            if displayInfo {
+                VStack(alignment: .leading, spacing: 0) {
+                    Spacer()
+                    
                     HStack {
                         HeadingLockup(
                             title: assetTitle ?? tokenId,
@@ -205,11 +207,11 @@ struct LargeBasicNFTView: View {
                         Branding()
                             .frame(width: 24, height: 24)
                     }
-                    .padding(16.0)
-                    .frame(width: geo.size.width, height: 30 + 2 * 16.0)
+                    .padding(.vertical, 16.0)
+                    .padding(.horizontal, 24.0)
+                    .background(.white)
                 }
             }
-            
         }
     }
 }
