@@ -49,3 +49,16 @@ struct NFTTrait: Hashable {
     let key: String
     let value: String
 }
+
+
+
+
+extension NFT {
+    var isSupported: Bool {
+        if self.imageUrl == nil {
+            return false
+        }
+        
+        return true
+    }
+}

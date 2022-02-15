@@ -9,7 +9,7 @@ import Foundation
 
 
 final class APIAlchemyProvider {
-    static func fetchNFTs(ownerAddress: String) async throws -> [NFT] {
+    static func fetchNFTs(ownerAddress: String, filterOutUnsupported: Bool = true) async throws -> [NFT] {
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
         guard let key = apiKey, !key.isEmpty else {
             print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
@@ -35,13 +35,12 @@ final class APIAlchemyProvider {
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
 
             let list = response.ownedNfts.filter {
-                let media = $0.media.first
-                
-                if media == nil || media?.uri.raw == nil || media?.uri.gateway == nil {
-                    return false
+                if !filterOutUnsupported {
+                    return true
                 }
-
-                return true
+                
+                return $0.isSupported
+                
             }.map { (item: APIAlchemyNFT) -> NFT in
                 return NFT(
                     id: "\(item.contract.address)/\(item.id.tokenId)",

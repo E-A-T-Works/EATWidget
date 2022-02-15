@@ -228,6 +228,20 @@ extension APIAlchemyNFT: Decodable {
     }
 }
 
+
+extension APIAlchemyNFT {
+    var isSupported: Bool {
+        guard let media = self.media.first else {
+            return false
+        }
+        
+        if media.uri.raw == nil || media.uri.gateway == nil {
+            return false
+        }
+        return true
+    }
+}
+
 // MARK: API Response
 
 struct APIAlchemyGetNFTsResponse {

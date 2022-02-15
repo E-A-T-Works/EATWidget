@@ -12,14 +12,14 @@ struct NFTItem: View {
     let address: String
     let tokenId: String
 
-    let imageThumbnailUrl: URL?
+    let thumbnailUrl: URL?
     
     let title: String?
     let text: String?
     
     var body: some View {
         HStack {
-            CachedAsyncImage(url: imageThumbnailUrl){ phase in
+            CachedAsyncImage(url: thumbnailUrl){ phase in
                 if let image = phase.image {
                     image
                         .resizable()
@@ -27,8 +27,11 @@ struct NFTItem: View {
                 } else if phase.error != nil {
                     Image(systemName: "photo")
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                 } else {
-                    ProgressView()
+                    Image(uiImage: UIImage(named: "Placeholder")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 }
             }
             .frame(width: 40, height: 40)
@@ -53,7 +56,7 @@ struct NFTItem_Previews: PreviewProvider {
             NFTItem(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.id,
-                imageThumbnailUrl: TestData.nft.imageUrl,
+                thumbnailUrl: TestData.nft.thumbnailUrl ?? TestData.nft.imageUrl,
                 title: TestData.nft.title,
                 text: TestData.nft.text
             )

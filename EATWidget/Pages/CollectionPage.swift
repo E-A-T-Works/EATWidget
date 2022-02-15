@@ -13,11 +13,7 @@ struct CollectionPage: View {
     var body: some View {
         ZStack {
             if viewModel.loading {
-                VStack {
-                    ProgressView()
-                        .padding(4)
-                    Text("Loading...").opacity(0.72)
-                }
+                ViewLoader()
             }else{
                 StaggeredGrid(
                     list: viewModel.list,

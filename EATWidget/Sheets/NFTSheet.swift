@@ -22,11 +22,7 @@ struct NFTSheet: View {
         ZStack {
 
             if viewModel.loading {
-                VStack {
-                    ProgressView()
-                        .padding(4)
-                    Text("Loading...").opacity(0.72)
-                }
+                ViewLoader()
             } else {
                 ScrollView {
                     

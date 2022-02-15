@@ -44,24 +44,53 @@ struct ConnectSheet: View {
                         .focused($titleIsFocused)
                 }
                 
-                Button(
-                    "Preview NFTs",
-                    action: {
-                        addressIsFocused = false
-                        titleIsFocused = false
+                Section {
+                    Button(
+                        "Load NFTs",
+                        action: {
+                            addressIsFocused = false
+                            titleIsFocused = false
+                            
+                            viewModel.load()
+                        }
+                    )
+                }
+                
+                if viewModel.ready {
+                    if viewModel.loading {
+                        ViewLoader()
+                    } else {
+                        if !viewModel.unsupported.isEmpty {
+                            Section(header: Text("NFTs")) {
+                                ForEach(viewModel.supported) { item in
+                                    NFTItem(item: item)
+                                }
+                            }
+                        }
                         
-                        viewModel.load()
-                    }
-                ).disabled(!viewModel.form.isValid)
-
-                if !viewModel.preview.isEmpty {
-                    Section(header: Text("Preview")) {
-                        ForEach(viewModel.preview) { item in
-                            NFTItem(item: item)
+                        if !viewModel.unsupported.isEmpty {
+                            Section(header: Text("Unsupported")) {
+                                ForEach(viewModel.unsupported) { item in
+                                    UnsupportedNFTItem(item: item)
+                                }
+                            }
+                        }
+                        
+                        Section {
+                            HStack {
+                                Text("Not seeing your NFTs?")
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    print("BOOP")
+                                }, label: {
+                                    Text("Contact")
+                                })
+                          }
                         }
                     }
                 }
-
             }
         }
         .navigationTitle("Connect")

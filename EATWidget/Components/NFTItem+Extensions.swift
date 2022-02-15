@@ -9,7 +9,7 @@ extension NFTItem {
     init(item: NFT) {
         address = item.address
         tokenId = item.tokenId
-        imageThumbnailUrl = item.thumbnailUrl
+        thumbnailUrl = item.thumbnailUrl ?? item.imageUrl
         title = item.title
         text = item.collection?.title
     }

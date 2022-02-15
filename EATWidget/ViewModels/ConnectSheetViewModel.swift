@@ -24,8 +24,13 @@ final class ConnectSheetViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var form: ConnectFormState
-    @Published var canAddWallet: Bool = false
-    @Published var preview: [NFT] = []
+    @Published private(set) var canAddWallet: Bool = false
+    
+    @Published private(set) var ready: Bool = true
+    @Published private(set) var loading: Bool = false
+    
+    @Published private(set) var supported: [NFT] = []
+    @Published private(set) var unsupported: [NFT] = []
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -57,19 +62,41 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func load() {
+        ready = true
+
         Task {
             do {
-                self.preview = try await NFTProvider.fetchNFTs(ownerAddress: form.address)
-                self.canAddWallet = !self.preview.isEmpty
+                self.loading = true
+                
+                let results = try await NFTProvider.fetchNFTs(
+                    ownerAddress: form.address,
+                    strategy: .Alchemy,
+                    syncCache: false,
+                    filterOutUnsupported: false
+                )
+                
+                for item in results {
+                    print([item.address, item.imageUrl ?? "IDK"])
+                }
+                
+                self.supported = results.filter { $0.isSupported }
+                self.unsupported = results.filter { !$0.isSupported }
+                
+                self.loading = false
+                
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::load() \(error)")
+                self.loading = false
             }
         }
     }
     
     func submit() {
         do {
-            try WalletStorage.shared.add(address: form.address, title: form.title)
+            try WalletStorage.shared.add(
+                address: form.address,
+                title: form.title
+            )
             
             self.shouldDismissView = true
         } catch {
