@@ -18,9 +18,9 @@ struct NFTVisual: View {
 
     var body: some View {
         ZStack {
-            if animationUrl != nil {
-                LoopingPlayer(animationUrl: animationUrl!)
-            } else {
+//            if animationUrl != nil {
+//                LoopingPlayer(animationUrl: animationUrl!)
+//            } else {
                 CachedAsyncImage(url: imageUrl, urlCache: .imageCache){ phase in
                     if let image = phase.image {
                         image
@@ -37,7 +37,7 @@ struct NFTVisual: View {
                     }
                 }
                 .background(backgroundColor)
-            }
+//            }
         }
     }
 }

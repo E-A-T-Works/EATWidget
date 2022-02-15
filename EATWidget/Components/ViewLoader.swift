@@ -12,8 +12,9 @@ struct ViewLoader: View {
         VStack {
             ProgressView()
             Text("Loading...")
-                .font(.caption)
+                .font(.system(size: 12, design: .monospaced))
                 .opacity(0.72)
+                .padding(.vertical, 8)
         }
     }
 }

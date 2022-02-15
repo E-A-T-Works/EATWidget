@@ -19,12 +19,12 @@ struct TraitBox: View {
                 
                 VStack {
                     Text(key ?? "--")
-                        .font(.system(size: 8, design: .monospaced))
+                        .font(.system(size: 10, design: .monospaced))
                         .fontWeight(.bold)
                         .lineLimit(1)
                     
                     Text(value ?? "--")
-                        .font(.system(size: 8, design: .monospaced))
+                        .font(.system(size: 10, design: .monospaced))
                         .fontWeight(.light)
                         .lineLimit(1)
                 }
