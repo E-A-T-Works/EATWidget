@@ -40,42 +40,42 @@ extension IntentHandler: WalletOptionsIntentHandling {
     }
 }
 
-// MARK: BasicAssetOptions
+// MARK: BasicNFTOptions
 
-extension IntentHandler: BasicAssetOptionsIntentHandling {
-    func provideWalletOptionsCollection(for intent: BasicAssetOptionsIntent) async throws -> INObjectCollection<WalletINO> {
+extension IntentHandler: BasicNFTOptionsIntentHandling {
+    func provideWalletOptionsCollection(for intent: BasicNFTOptionsIntent) async throws -> INObjectCollection<WalletINO> {
         
         do {
             return try await DynamicIntentHelpers.provideWalletOptionsCollection()
         } catch {
-            print("⚠️ (IntentHandler:BasicAssetOptionsIntentHandling)::provideWalletOptionsCollection() \(error)")
+            print("⚠️ (IntentHandler:BasicNFTOptionsIntentHandling)::provideWalletOptionsCollection() \(error)")
             return INObjectCollection(items: [WalletINO]())
         }
         
     }
     
-    func provideAssetOptionsCollection(for intent: BasicAssetOptionsIntent) async throws -> INObjectCollection<AssetINO> {
+    func provideNFTOptionsCollection(for intent: BasicNFTOptionsIntent) async throws -> INObjectCollection<NFTINO> {
         
         do {
-            return try await DynamicIntentHelpers.provideAssetOptionsCollection(walletId: intent.Wallet?.identifier)
+            return try await DynamicIntentHelpers.provideNFTOptionsCollection(walletId: intent.Wallet?.identifier)
         } catch {
-            print("⚠️ (IntentHandler:BasicAssetOptionsIntentHandling)::provideAssetOptionsCollection() \(error)")
-            return INObjectCollection(items: [AssetINO]())
+            print("⚠️ (IntentHandler:BasicNFTOptionsIntentHandling)::provideNFTOptionsCollection() \(error)")
+            return INObjectCollection(items: [NFTINO]())
         }
         
     }
 }
 
 
-// MARK: RandomAssetOptions
+// MARK: RandomNFTOptions
 
-extension IntentHandler: RandomAssetOptionsIntentHandling {
-    func provideWalletOptionsCollection(for intent: RandomAssetOptionsIntent) async throws -> INObjectCollection<WalletINO> {
+extension IntentHandler: RandomNFTOptionsIntentHandling {
+    func provideWalletOptionsCollection(for intent: RandomNFTOptionsIntent) async throws -> INObjectCollection<WalletINO> {
         
         do {
             return try await DynamicIntentHelpers.provideWalletOptionsCollection()
         } catch {
-            print("⚠️ (IntentHandler:RandomAssetOptionsIntentHandling)::provideWalletOptionsCollection() \(error)")
+            print("⚠️ (IntentHandler:RandomNFTOptionsIntentHandling)::provideWalletOptionsCollection() \(error)")
             return INObjectCollection(items: [WalletINO]())
         }
         

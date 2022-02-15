@@ -137,7 +137,7 @@
 			<key>INIntentLastParameterTag</key>
 			<integer>6</integer>
 			<key>INIntentName</key>
-			<string>BasicAssetOptions</string>
+			<string>BasicNFTOptions</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -187,9 +187,9 @@
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
 					<key>INIntentParameterName</key>
-					<string>Asset</string>
+					<string>NFT</string>
 					<key>INIntentParameterObjectType</key>
-					<string>AssetINO</string>
+					<string>NFTINO</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
 					<string>Qp9xEZ</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -283,7 +283,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Basic Asset Options</string>
+			<string>Basic NFT Options</string>
 			<key>INIntentTitleID</key>
 			<string>eae0By</string>
 			<key>INIntentType</key>
@@ -303,7 +303,7 @@
 			<key>INIntentLastParameterTag</key>
 			<integer>4</integer>
 			<key>INIntentName</key>
-			<string>RandomAssetOptions</string>
+			<string>RandomNFTOptions</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -405,7 +405,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Random Asset Options</string>
+			<string>Random NFT Options</string>
 			<key>INIntentTitleID</key>
 			<string>U56qdY</string>
 			<key>INIntentType</key>
@@ -418,7 +418,7 @@
 	<array>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Wallet INO</string>
+			<string>Wallet</string>
 			<key>INTypeDisplayNameID</key>
 			<string>qCVO7h</string>
 			<key>INTypeLastPropertyTag</key>
@@ -481,13 +481,13 @@
 		</dict>
 		<dict>
 			<key>INTypeDisplayName</key>
-			<string>Asset INO</string>
+			<string>NFT</string>
 			<key>INTypeDisplayNameID</key>
 			<string>rfRIQw</string>
 			<key>INTypeLastPropertyTag</key>
 			<integer>99</integer>
 			<key>INTypeName</key>
-			<string>AssetINO</string>
+			<string>NFTINO</string>
 			<key>INTypeProperties</key>
 			<array>
 				<dict>

@@ -1,5 +1,5 @@
 //
-//  RandomAssetWidget.swift
+//  RandomNFTWidget.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -8,11 +8,11 @@
 import WidgetKit
 import SwiftUI
 
-struct RandomAssetWidgetProvider: IntentTimelineProvider {
+struct RandomNFTWidgetProvider: IntentTimelineProvider {
     func placeholder(
         in context: Context
-    ) -> RandomAssetWidgetEntry {
-        return RandomAssetWidgetEntry(
+    ) -> RandomNFTWidgetEntry {
+        return RandomNFTWidgetEntry(
             date: Date(),
             kind: .Placeholder,
             displayInfo: false,
@@ -21,12 +21,12 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
     }
     
     func getSnapshot(
-        for configuration: RandomAssetOptionsIntent,
+        for configuration: RandomNFTOptionsIntent,
         in context: Context,
-        completion: @escaping (RandomAssetWidgetEntry) -> Void
+        completion: @escaping (RandomNFTWidgetEntry) -> Void
     ) {
         completion(
-            RandomAssetWidgetEntry(
+            RandomNFTWidgetEntry(
                 date: Date(),
                 kind: .Placeholder,
                 displayInfo: false,
@@ -36,9 +36,9 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
     }
     
     func getTimeline(
-        for configuration: RandomAssetOptionsIntent,
+        for configuration: RandomNFTOptionsIntent,
         in context: Context,
-        completion: @escaping (Timeline<RandomAssetWidgetEntry>) -> Void
+        completion: @escaping (Timeline<RandomNFTWidgetEntry>) -> Void
     ) {
         //
         //  Parse intent configuration
@@ -56,7 +56,7 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
         if wallets.isEmpty {
             let timeline = Timeline(
                 entries: [
-                    RandomAssetWidgetEntry(
+                    RandomNFTWidgetEntry(
                         date: Date(),
                         kind: .Unconfigured,
                         displayInfo: false,
@@ -79,15 +79,15 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
         
         Task {
             do {
-                let asset = try await AssetProvider.fetchRandomAsset(ownerAddress: ownerAddress!)
+                let data = try await NFTProvider.fetchRandomNFT(ownerAddress: ownerAddress!)
                 
                 let timeline = Timeline(
                     entries: [
-                        RandomAssetWidgetEntry(
+                        RandomNFTWidgetEntry(
                             date: Date(),
                             kind: .Success,
                             displayInfo: displayInfo,
-                            data: asset
+                            data: data
                         )
                     ],
                     policy: .after(Calendar.current.date(byAdding: .hour, value: 1, to: Date())!)
@@ -96,11 +96,11 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
                 return
                 
             } catch {
-                print("⚠️ RandomAssetWidget::getTimeline: \(error)")
+                print("⚠️ RandomNFTWidget::getTimeline: \(error)")
                 
                 let timeline = Timeline(
                     entries: [
-                        RandomAssetWidgetEntry(
+                        RandomNFTWidgetEntry(
                             date: Date(),
                             kind: .NotFound,
                             displayInfo: false,
@@ -118,16 +118,16 @@ struct RandomAssetWidgetProvider: IntentTimelineProvider {
 }
 
 
-struct RandomAssetWidgetEntry: TimelineEntry {
+struct RandomNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: Asset?
+    let data: NFT?
 }
 
 
-struct RandomAssetWidgetEntryView : View {
-    var entry: RandomAssetWidgetProvider.Entry
+struct RandomNFTWidgetEntryView : View {
+    var entry: RandomNFTWidgetProvider.Entry
     
     var body: some View {
         switch entry.kind {
@@ -140,7 +140,7 @@ struct RandomAssetWidgetEntryView : View {
         case .Unsupported:
             UnsupportedView()
         case .Success:
-            BasicAssetView(
+            BasicNFTView(
                 item: entry.data!,
                 displayInfo: entry.displayInfo
             )
@@ -149,16 +149,16 @@ struct RandomAssetWidgetEntryView : View {
 }
 
 
-struct RandomAssetWidget: Widget {
-    let kind: String = "RandomAssetWidget"
+struct RandomNFTWidget: Widget {
+    let kind: String = "RandomNFTWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
-            intent: RandomAssetOptionsIntent.self,
-            provider: RandomAssetWidgetProvider()
+            intent: RandomNFTOptionsIntent.self,
+            provider: RandomNFTWidgetProvider()
         ) { entry in
-            RandomAssetWidgetEntryView(entry: entry)
+            RandomNFTWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Random NFT")
         .description("View a random NFT from your collection.")

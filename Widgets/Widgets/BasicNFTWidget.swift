@@ -1,5 +1,5 @@
 //
-//  BasicAssetWidget.swift
+//  BasicNFTWidget.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -8,12 +8,12 @@
 import WidgetKit
 import SwiftUI
 
-struct BasicAssetWidgetProvider: IntentTimelineProvider {
+struct BasicNFTWidgetProvider: IntentTimelineProvider {
     
     func placeholder(
         in context: Context
-    ) -> BasicAssetWidgetEntry {
-        return BasicAssetWidgetEntry(
+    ) -> BasicNFTWidgetEntry {
+        return BasicNFTWidgetEntry(
             date: Date(),
             kind: .Placeholder,
             displayInfo: false,
@@ -22,12 +22,12 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
     }
     
     func getSnapshot(
-        for configuration: BasicAssetOptionsIntent,
+        for configuration: BasicNFTOptionsIntent,
         in context: Context,
-        completion: @escaping (BasicAssetWidgetEntry) -> Void
+        completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
         completion(
-            BasicAssetWidgetEntry(
+            BasicNFTWidgetEntry(
                 date: Date(),
                 kind: .Placeholder,
                 displayInfo: false,
@@ -37,15 +37,15 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
     }
     
     func getTimeline(
-        for configuration: BasicAssetOptionsIntent,
+        for configuration: BasicNFTOptionsIntent,
         in context: Context,
-        completion: @escaping (Timeline<BasicAssetWidgetEntry>) -> Void
+        completion: @escaping (Timeline<BasicNFTWidgetEntry>) -> Void
     ) {
         //
         //  Parse intent configuration
         //
         
-        let identifier = configuration.Asset?.identifier
+        let identifier = configuration.NFT?.identifier
         let contractAddress = identifier?.components(separatedBy: "/").first
         let tokenId = identifier?.components(separatedBy: "/").last
         
@@ -55,7 +55,7 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
             
             let timeline = Timeline(
                 entries: [
-                    BasicAssetWidgetEntry(
+                    BasicNFTWidgetEntry(
                         date: Date(),
                         kind: .Unconfigured,
                         displayInfo: false,
@@ -74,15 +74,15 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
         
         Task {
             do {
-                let asset = try await AssetProvider.fetchAsset(contractAddress: contractAddress!, tokenId: tokenId!)
+                let data = try await NFTProvider.fetchNFT(contractAddress: contractAddress!, tokenId: tokenId!)
                 
                 let timeline = Timeline(
                     entries: [
-                        BasicAssetWidgetEntry(
+                        BasicNFTWidgetEntry(
                             date: Date(),
                             kind: .Success,
                             displayInfo: displayInfo,
-                            data: asset
+                            data: data
                         )
                     ],
                     policy: .never
@@ -91,11 +91,11 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
                 return
                 
             } catch {
-                print("⚠️ BasicAssetWidget::getTimeline: \(error)")
+                print("⚠️ BasicNFTWidget::getTimeline: \(error)")
                 
                 let timeline = Timeline(
                     entries: [
-                        BasicAssetWidgetEntry(
+                        BasicNFTWidgetEntry(
                             date: Date(),
                             kind: .NotFound,
                             displayInfo: false,
@@ -113,16 +113,16 @@ struct BasicAssetWidgetProvider: IntentTimelineProvider {
 }
 
 
-struct BasicAssetWidgetEntry: TimelineEntry {
+struct BasicNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: Asset?
+    let data: NFT?
 }
 
 
-struct BasicAssetWidgetEntryView : View {
-    var entry: BasicAssetWidgetProvider.Entry
+struct BasicNFTWidgetEntryView : View {
+    var entry: BasicNFTWidgetProvider.Entry
     
     var body: some View {
         switch entry.kind {
@@ -135,7 +135,7 @@ struct BasicAssetWidgetEntryView : View {
         case .Unsupported:
             UnsupportedView()
         case .Success:
-            BasicAssetView(
+            BasicNFTView(
                 item: entry.data!,
                 displayInfo: entry.displayInfo
             )
@@ -144,16 +144,16 @@ struct BasicAssetWidgetEntryView : View {
 }
 
 
-struct BasicAssetWidget: Widget {
-    let kind: String = "BasicAssetWidget"
+struct BasicNFTWidget: Widget {
+    let kind: String = "BasicNFTWidget"
     
     var body: some WidgetConfiguration {
         IntentConfiguration(
             kind: kind,
-            intent: BasicAssetOptionsIntent.self,
-            provider: BasicAssetWidgetProvider()
+            intent: BasicNFTOptionsIntent.self,
+            provider: BasicNFTWidgetProvider()
         ) { entry in
-            BasicAssetWidgetEntryView(entry: entry)
+            BasicNFTWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("NFT")
         .description("Choose an NFT to display.")

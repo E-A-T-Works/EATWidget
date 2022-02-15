@@ -1,30 +1,30 @@
 //
-//  AssetView+Extensions.swift
+//  NFTView+Extensions.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
 //
 
-extension BasicAssetView {
-    init(item: Asset, displayInfo: Bool) {
-        contractAddress = item.contract.address
+extension BasicNFTView {
+    init(item: NFT, displayInfo: Bool) {
+        contractAddress = item.address
         tokenId = item.tokenId
         imageUrl = item.imageUrl
         assetTitle = item.title
         collectionTitle = item.collection?.title
-        backgroundColor = item.backgroundColor
+        backgroundColor = nil
         self.displayInfo = displayInfo
     }
 }
 
-extension BasicAssetView {
-    init(item: Asset) {
-        contractAddress = item.contract.address
+extension BasicNFTView {
+    init(item: NFT) {
+        contractAddress = item.address
         tokenId = item.tokenId
         imageUrl = item.imageUrl
         assetTitle = item.title
         collectionTitle = item.collection?.title
-        backgroundColor = item.backgroundColor
+        backgroundColor = nil
         displayInfo = false
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AssetView.swift
+//  NFTView.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 
-struct BasicAssetView: View {
+struct BasicNFTView: View {
     
     // MARK: Parameters
 
@@ -33,15 +33,15 @@ struct BasicAssetView: View {
     var body: some View {
         switch family {
         case .systemSmall:
-            SmallBasicAssetView(
+            SmallBasicNFTView(
                 contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
             )
         case .systemMedium:
-            MediumBasicAssetView(
+            MediumBasicNFTView(
                 contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor
             )
         case .systemLarge:
-            LargeBasicAssetView(
+            LargeBasicNFTView(
                 contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
             )
         case .systemExtraLarge:
@@ -54,7 +54,7 @@ struct BasicAssetView: View {
 
 
 
-struct SmallBasicAssetView: View {
+struct SmallBasicNFTView: View {
     
     // MARK: Parameters
 
@@ -108,7 +108,7 @@ struct SmallBasicAssetView: View {
     }
 }
 
-struct MediumBasicAssetView: View {
+struct MediumBasicNFTView: View {
     
     // MARK: Parameters
 
@@ -165,7 +165,7 @@ struct MediumBasicAssetView: View {
     }
 }
 
-struct LargeBasicAssetView: View {
+struct LargeBasicNFTView: View {
     
     // MARK: Parameters
 
@@ -216,17 +216,17 @@ struct LargeBasicAssetView: View {
 
 
 
-struct BasicAssetView_Previews: PreviewProvider {
+struct BasicNFTView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack{
-                BasicAssetView(
-                    contractAddress: TestData.asset.contract.address,
-                    tokenId: TestData.asset.tokenId,
-                    imageUrl: TestData.asset.imageUrl,
-                    assetTitle: TestData.asset.title,
-                    collectionTitle: TestData.asset.collection?.title,
-                    backgroundColor: TestData.asset.backgroundColor,
+                BasicNFTView(
+                    contractAddress: TestData.nft.address,
+                    tokenId: TestData.nft.tokenId,
+                    imageUrl: TestData.nft.imageUrl,
+                    assetTitle: TestData.nft.title,
+                    collectionTitle: TestData.nft.collection?.title,
+                    backgroundColor: nil,
                     displayInfo: false
                 )
             }
@@ -235,13 +235,13 @@ struct BasicAssetView_Previews: PreviewProvider {
             )
 
             VStack{
-                BasicAssetView(
-                    contractAddress: TestData.asset.contract.address,
-                    tokenId: TestData.asset.tokenId,
-                    imageUrl: TestData.asset.imageUrl,
-                    assetTitle: TestData.asset.title,
-                    collectionTitle: TestData.asset.collection?.title,
-                    backgroundColor: TestData.asset.backgroundColor,
+                BasicNFTView(
+                    contractAddress: TestData.nft.address,
+                    tokenId: TestData.nft.tokenId,
+                    imageUrl: TestData.nft.imageUrl,
+                    assetTitle: TestData.nft.title,
+                    collectionTitle: TestData.nft.collection?.title,
+                    backgroundColor: nil,
                     displayInfo: true
                 )
             }
@@ -251,13 +251,13 @@ struct BasicAssetView_Previews: PreviewProvider {
             
             
             VStack{
-                BasicAssetView(
-                    contractAddress: TestData.asset.contract.address,
-                    tokenId: TestData.asset.tokenId,
-                    imageUrl: TestData.asset.imageUrl,
-                    assetTitle: TestData.asset.title,
-                    collectionTitle: TestData.asset.collection?.title,
-                    backgroundColor: TestData.asset.backgroundColor,
+                BasicNFTView(
+                    contractAddress: TestData.nft.address,
+                    tokenId: TestData.nft.tokenId,
+                    imageUrl: TestData.nft.imageUrl,
+                    assetTitle: TestData.nft.title,
+                    collectionTitle: TestData.nft.collection?.title,
+                    backgroundColor: nil,
                     displayInfo: true
                 )
             }
@@ -266,13 +266,13 @@ struct BasicAssetView_Previews: PreviewProvider {
             )
 
             VStack{
-                BasicAssetView(
-                    contractAddress: TestData.asset.contract.address,
-                    tokenId: TestData.asset.tokenId,
-                    imageUrl: TestData.asset.imageUrl,
-                    assetTitle: TestData.asset.title,
-                    collectionTitle: TestData.asset.collection?.title,
-                    backgroundColor: TestData.asset.backgroundColor,
+                BasicNFTView(
+                    contractAddress: TestData.nft.address,
+                    tokenId: TestData.nft.tokenId,
+                    imageUrl: TestData.nft.imageUrl,
+                    assetTitle: TestData.nft.title,
+                    collectionTitle: TestData.nft.collection?.title,
+                    backgroundColor: nil,
                     displayInfo: true
                 )
             }

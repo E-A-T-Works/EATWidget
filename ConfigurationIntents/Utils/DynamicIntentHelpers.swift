@@ -25,7 +25,7 @@ final class DynamicIntentHelpers {
         return INObjectCollection(items: items)
     }
     
-    static func provideAssetOptionsCollection(walletId: String?) async throws -> INObjectCollection<AssetINO> {
+    static func provideNFTOptionsCollection(walletId: String?) async throws -> INObjectCollection<NFTINO> {
         let wallets = WalletStorage.shared.fetch()
         
         var wallet: Wallet?
@@ -38,12 +38,12 @@ final class DynamicIntentHelpers {
         let address = wallet?.address
         
         if address == nil {
-            return INObjectCollection(items: [AssetINO]())
+            return INObjectCollection(items: [NFTINO]())
         }
         
         do {
             
-            let assets = try await AssetProvider.fetchAssets(ownerAddress: address!)
+            let list = try await NFTProvider.fetchNFTs(ownerAddress: address!)
          
             ///
             /// TODO: There is something broken with how iOS renders
@@ -54,20 +54,20 @@ final class DynamicIntentHelpers {
             /// ref: https://github.com/hackenbacker/FictionalCard/issues/1
             ///
             
-            let items: [AssetINO] = assets.map { asset in
-                return AssetINO(
-                    identifier: "\(asset.contract.address)/\(asset.tokenId)",
-                    display: asset.title ?? asset.tokenId,
-                    subtitle: asset.contract.address,
-                    image: asset.imageThumbnailUrl != nil ? INImage(url: asset.imageThumbnailUrl!) : INImage(named: "Placeholder")
+            let items: [NFTINO] = list.map { item in
+                return NFTINO(
+                    identifier: item.id,
+                    display: item.title ?? item.tokenId,
+                    subtitle: nil,
+                    image: item.thumbnailUrl != nil ? INImage(url: item.thumbnailUrl!) : INImage(named: "Placeholder")
                 )
             }
             
             return INObjectCollection(items: items)
             
         } catch {
-            print("⚠️ (DynamicIntentHelpers)::getAssets() \(error)")
-            return INObjectCollection(items: [AssetINO]())
+            print("⚠️ (DynamicIntentHelpers)::provideNFTOptionsCollection() \(error)")
+            return INObjectCollection(items: [NFTINO]())
         }
     }
 }

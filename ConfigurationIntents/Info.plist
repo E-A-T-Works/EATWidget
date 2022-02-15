@@ -16,8 +16,8 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>BasicAssetOptionsIntent</string>
-				<string>RandomAssetOptionsIntent</string>
+				<string>BasicNFTOptionsIntent</string>
+				<string>RandomNFTOptionsIntent</string>
 				<string>WalletOptionsIntent</string>
 			</array>
 		</dict>
