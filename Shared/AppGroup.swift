@@ -8,7 +8,7 @@
 import Foundation
 
 public enum AppGroup: String {
-  case base = "group.akropoint.EATWidget"
+  case base = "group.eatworks.EATWidget"
 
   public var containerURL: URL {
     switch self {

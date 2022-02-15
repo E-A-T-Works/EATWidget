@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.akropoint.EATWidget</string>
+		<string>group.eatworks.EATWidget</string>
 	</array>
 </dict>
 </plist>
