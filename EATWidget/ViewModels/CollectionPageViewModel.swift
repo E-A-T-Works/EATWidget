@@ -13,8 +13,8 @@ import Combine
 final class CollectionPageViewModel: ObservableObject {
     
     enum SheetContent {
-        case Connect
-        case Asset(contractAddress: String, tokenId: String)
+        case ConnectForm
+        case NFTDetails(contractAddress: String, tokenId: String)
     }
     
     // MARK: - Properties
@@ -22,11 +22,11 @@ final class CollectionPageViewModel: ObservableObject {
     @Published private(set) var columns: Int = 2
 
     @Published private(set) var wallets: [Wallet] = []
-    @Published private(set) var assets: [Asset] = []
+    @Published private(set) var list: [NFT] = []
     
-    @Published private(set) var assetsByWallet: [String:[Asset]] = [:]
+    @Published private(set) var listByWallet: [String:[NFT]] = [:]
     
-    @Published var sheetContent: SheetContent = .Connect
+    @Published var sheetContent: SheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
 
     private var cancellable: AnyCancellable?
@@ -42,56 +42,39 @@ final class CollectionPageViewModel: ObservableObject {
     // MARK: - Public Methods
     
     func presentConnectSheet() {
-        sheetContent = .Connect
+        sheetContent = .ConnectForm
         showingSheet.toggle()
     }
     
     func presentAssetSheet(contractAddress: String, tokenId: String) {
-        sheetContent = .Asset(contractAddress: contractAddress, tokenId: tokenId)
+        sheetContent = .NFTDetails(contractAddress: contractAddress, tokenId: tokenId)
         showingSheet.toggle()
     }
 
     func load() {
-        
-        
         Task {
-        
             do {
-                print("....")
-                let p = try await APIAlchemyProvider.fetchNFTs(ownerAddress: "0x80a80978aa2f0147ede29409313c4955f1eecca0")
-                
-                print("GOTTT")
-                print(p)
-                print(p.count)
+                self.listByWallet = try await self.wallets.asyncMap { wallet -> [String: [NFT]] in
+                    let address = wallet.address!
+                    let list = try await NFTProvider.fetchNFTs(ownerAddress: address)
+
+                    return [address: list]
+                }
+                .flatMap { $0 }
+                .reduce([String:[NFT]]()) { acc, curr in
+                    var nextDict = acc
+                    nextDict.updateValue(curr.value, forKey: curr.key)
+                    return nextDict
+                }
+
+                self.list = self.listByWallet.reduce(into: []) {  acc, curr in
+                    acc += curr.value
+                }
+
             } catch {
-                
+                print("⚠️ (CanvasPageViewModel)::load() \(error)")
             }
         }
-        
-        
-//        Task {
-//            do {
-//                self.assetsByWallet = try await self.wallets.asyncMap { wallet -> [String: [Asset]] in
-//                    let address = wallet.address!
-//                    let assets = try await AssetProvider.fetchAssets(ownerAddress: address)
-//
-//                    return [address: assets]
-//                }
-//                .flatMap { $0 }
-//                .reduce([String:[Asset]]()) { acc, curr in
-//                    var nextDict = acc
-//                    nextDict.updateValue(curr.value, forKey: curr.key)
-//                    return nextDict
-//                }
-//
-//                self.assets = self.assetsByWallet.reduce(into: []) {  acc, curr in
-//                    acc += curr.value
-//                }
-//
-//            } catch {
-//                print("⚠️ (CanvasPageViewModel)::load() \(error)")
-//            }
-//        }
     }
 }
 

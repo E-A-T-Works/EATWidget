@@ -1,5 +1,5 @@
 //
-//  AssetSheetDetails.swift
+//  NFTDetails.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/11/22.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AssetSheetDetails: View {
+struct NFTDetails: View {
     
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let tokenStandard: String?
+    let standard: String?
     
     var body: some View {
         
@@ -20,12 +20,12 @@ struct AssetSheetDetails: View {
             SectionTitle(text: "Details")
             
             VStack {
-                TableItem(key: "Contract Address", value: contractAddress)
+                TableItem(key: "Contract Address", value: address)
                 
                 TableItem(key: "Token ID", value: tokenId)
                 
-                if tokenStandard != nil {
-                    TableItem(key: "Token Standard", value: tokenStandard!)
+                if standard != nil {
+                    TableItem(key: "Token Standard", value: standard!)
                 }
                 
             }
@@ -36,13 +36,13 @@ struct AssetSheetDetails: View {
     }
 }
 
-struct AssetSheetDetails_Previews: PreviewProvider {
+struct NFTDetails_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            AssetSheetDetails(
-                contractAddress: TestData.asset.contract.address,
-                tokenId: TestData.asset.tokenId,
-                tokenStandard: nil
+            NFTDetails(
+                address: TestData.nft.address,
+                tokenId: TestData.nft.tokenId,
+                standard: TestData.nft.standard
             )
         }
         .padding()

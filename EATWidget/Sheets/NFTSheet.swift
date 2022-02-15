@@ -1,5 +1,5 @@
 //
-//  AssetSheet.swift
+//  NFTSheet.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/9/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AssetSheet: View {
+struct NFTSheet: View {
     
     let contractAddress: String
     let tokenId: String
@@ -16,7 +16,7 @@ struct AssetSheet: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject private var viewModel = AssetSheetViewModel()
+    @StateObject private var viewModel = NFTSheetViewModel()
     
     var body: some View {
         ZStack {
@@ -30,69 +30,56 @@ struct AssetSheet: View {
             } else {
                 ScrollView {
                     
-                    AssetSheetVisual(
+                    NFTVisual(
                         imageUrl: viewModel.imageUrl,
                         backgroundColor: viewModel.backgroundColor
                     )
                     .padding([.bottom], spacing)
 
-                    AssetSheetActions(
+                    ActionRow(
                         list: viewModel.actionButtons
                     )
                     .padding([.bottom], spacing)
-
                     
                     VStack(alignment: .leading) {
-                        AssetSheetHeader(
-                            assetTitle: viewModel.asset?.title,
-                            collectionTitle: viewModel.asset?.collection?.title
+                        NFTHeader(
+                            title: viewModel.nft?.title,
+                            text: viewModel.nft?.collection?.title
                         )
                         .padding([.bottom], spacing)
 
-                        if viewModel.asset?.text != nil {
-                            AssetSheetDescription(
-                                text: (viewModel.asset?.text!)!
-                            )
-                            .padding([.bottom], spacing)
+                        if viewModel.nft?.text != nil {
+                            NFTDescription(text: viewModel.nft!.text!)
+                                .padding([.bottom], spacing)
                         }
                         
                         Divider().padding(.vertical)
-                        
+
                         if viewModel.creator != nil {
-
-                            AssetSheetCreator(
-                                address: viewModel.creator?.address,
-                                username: viewModel.creator?.user?.username,
-                                imageUrl: viewModel.creator?.profileImageUrl
-                            )
-
+                            CreatorItem(item: viewModel.creator!)
+                                .padding([.bottom], spacing)
                             Divider().padding(.vertical)
                         }
-
                         
                         if !viewModel.traits.isEmpty {
-                         
-                            AssetSheetTraits(
-                                list: viewModel.traits
-                            )
-                            .padding([.bottom], spacing)
-                            
+                            TraitGrid(list: viewModel.traits)
+                                .padding([.bottom], spacing)
                             Divider().padding(.vertical)
                         }
                         
-                        AssetSheetDetails(
-                            contractAddress: viewModel.contract?.address ?? "--",
-                            tokenId: viewModel.asset?.tokenId  ?? "--",
-                            tokenStandard: viewModel.contract?.schemaName
+                        NFTDetails(
+                            address: viewModel.nft?.address ?? "--",
+                            tokenId: viewModel.nft?.tokenId ?? "--",
+                            standard: viewModel.nft?.standard
                         )
-                        .padding([.bottom], spacing)
+                            .padding([.bottom], spacing)
                         
                 
-                        if(viewModel.asset?.tokenMetadata != nil) {
+                        if(viewModel.nft?.externalURL != nil) {
                             HStack(alignment: .center) {
                                 Spacer()
                                 URLLink(
-                                    url: (viewModel.asset?.tokenMetadata!)!,
+                                    url: viewModel.nft!.externalURL!,
                                     title: "metadata"
                                 )
                                 Spacer()
@@ -128,13 +115,11 @@ struct AssetSheet: View {
     }
 }
 
-struct AssetSheet_Previews: PreviewProvider {
-    static let asset = TestData.assets[1]
-    
+struct NFTSheet_Previews: PreviewProvider {
     static var previews: some View {
-        AssetSheet(
-            contractAddress: asset.contract.address,
-            tokenId: asset.tokenId
+        NFTSheet(
+            contractAddress: TestData.nft.address,
+            tokenId: TestData.nft.tokenId
         )
     }
 }

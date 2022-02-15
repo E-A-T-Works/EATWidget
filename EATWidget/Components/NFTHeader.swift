@@ -1,5 +1,5 @@
 //
-//  AssetSheetHeader.swift
+//  NFTHeader.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/11/22.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct AssetSheetHeader: View {
+struct NFTHeader: View {
     
-    let assetTitle: String?
-    let collectionTitle: String?
+    let title: String?
+    let text: String?
     
     var body: some View {
         HStack {
             HeadingLockup(
-                title: assetTitle,
-                text: collectionTitle,
+                title: title,
+                text: text,
                 size: 14
             )
             
@@ -27,12 +27,12 @@ struct AssetSheetHeader: View {
     }
 }
 
-struct AssetSheetHeader_Previews: PreviewProvider {
+struct NFTHeader_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetSheetHeader(
-                assetTitle: "Asset Title",
-                collectionTitle: "Collection Title"
+            NFTHeader(
+                title: "Asset Title",
+                text: "Collection Title"
             )
         }
         .previewLayout(PreviewLayout.sizeThatFits)

@@ -1,5 +1,5 @@
 //
-//  AssetSheetTraits.swift
+//  TraitGrid.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/13/22.
@@ -7,23 +7,29 @@
 
 import SwiftUI
 
-struct AssetSheetTraits: View {
+struct TraitGrid: View {
     
-    let list: [Trait]
+    let list: [NFTTrait]
     
-    let size: CGFloat = 124
+    let size: CGFloat = 120
     let spacing: CGFloat = 10
     
-    var columns: [GridItem] {
-        Array(repeating: .init(.fixed(size), spacing: spacing, alignment: .center), count: 3)
-    }
+    
 
     
     var body: some View {
+        
         VStack(alignment: .leading) {
             SectionTitle(text: "Traits")
             
-            LazyVGrid(columns: columns, spacing: 10) {
+            LazyVGrid(
+                columns: Array(
+                    repeating: .init(
+                        .fixed(size), spacing: spacing, alignment: .center
+                    ), count: 3
+                ),
+                spacing: spacing
+            ) {
                 ForEach(list, id: \.self) { trait in
                     TraitBox(item: trait)
                         .frame(width: size, height: size, alignment: .center)
@@ -33,11 +39,11 @@ struct AssetSheetTraits: View {
     }
 }
 
-struct AssetSheetTraits_Previews: PreviewProvider {
+struct TraitGrid_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetSheetTraits(
-                list: TestData.asset.traits!
+            TraitGrid(
+                list: TestData.nft.traits ?? []
             )
         }
         .padding()

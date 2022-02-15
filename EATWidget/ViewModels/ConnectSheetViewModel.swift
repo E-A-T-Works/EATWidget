@@ -25,7 +25,7 @@ final class ConnectSheetViewModel: ObservableObject {
     
     @Published var form: ConnectFormState
     @Published var canAddWallet: Bool = false
-    @Published var assets: [Asset] = []
+    @Published var preview: [NFT] = []
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -59,8 +59,8 @@ final class ConnectSheetViewModel: ObservableObject {
     func load() {
         Task {
             do {
-                self.assets = try await AssetProvider.fetchAssets(ownerAddress: form.address)
-                self.canAddWallet = !self.assets.isEmpty
+                self.preview = try await NFTProvider.fetchNFTs(ownerAddress: form.address)
+                self.canAddWallet = !self.preview.isEmpty
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::load() \(error)")
             }

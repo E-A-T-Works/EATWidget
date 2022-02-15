@@ -1,5 +1,5 @@
 //
-//  AssetSheetViewModel.swift
+//  NFTSheetViewModel.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -11,19 +11,21 @@ import Combine
 
 
 @MainActor
-final class AssetSheetViewModel: ObservableObject {
+final class NFTSheetViewModel: ObservableObject {
     
     // MARK: - Properties
 
     @Published private(set) var loading: Bool = true
     
-    @Published private(set) var asset: Asset? = nil
-    @Published private(set) var contract: Contract? = nil
-    @Published private(set) var traits: [Trait] = []
-    @Published private(set) var creator: Creator? = nil
+    @Published private(set) var nft: NFT? = nil
+    
+    @Published private(set) var creator: NFTCreator? = nil
+    @Published private(set) var collection: NFTCollection? = nil
+    @Published private(set) var traits: [NFTTrait] = []
+    
     
     @Published private(set) var imageUrl: URL =  Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
-    @Published private(set) var actionButtons: [AssetSheetActionButtons] = []
+    @Published private(set) var actionButtons: [ActionRowButton] = []
     @Published private(set) var paymentTokens: [PaymentToken] = []
     
     @Published private(set) var backgroundColor: Color = .clear
@@ -53,13 +55,13 @@ final class AssetSheetViewModel: ObservableObject {
             do {
                 self.loading = true
                 
-                self.asset = try await AssetProvider.fetchAsset(contractAddress: contractAddress, tokenId: tokenId)
+                self.nft = try await NFTProvider.fetchNFT(contractAddress: contractAddress, tokenId: tokenId)
                 
                 resolveImageUrl()
                 resolveColors()
                 resolveActionButtons()
                 resolvePaymentTokens()
-                resolveContract()
+                resolveCollection()
                 resolveTraits()
                 resolveCreator()
                 
@@ -72,72 +74,70 @@ final class AssetSheetViewModel: ObservableObject {
     }
     
     private func resolveImageUrl() -> Void {
-        if(asset?.imageUrl != nil) {
-            self.imageUrl = (asset?.imageUrl!)!
-        } else if(asset?.imageThumbnailUrl != nil) {
-            self.imageUrl = (asset?.imageThumbnailUrl!)!
-        } else {
-            self.imageUrl = Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
-        }
+        imageUrl = nft?.imageUrl ?? nft?.thumbnailUrl ?? Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
     }
     
     private func resolveColors() -> Void {
         let derivedColors = Theme.resolveColorsFromImage(
-            imageUrl: asset?.imageUrl,
-            preferredBackgroundColor: asset?.backgroundColor
+            imageUrl: nft?.imageUrl,
+            preferredBackgroundColor: nil
         )
         backgroundColor = Color(uiColor: derivedColors.backgroundColor)
         foregroundColor = Color(uiColor: derivedColors.foregroundColor)
     }
     
     private func resolveActionButtons() -> Void {
-        var buttonsToSet = [AssetSheetActionButtons]()
+        var buttonsToSet = [ActionRowButton]()
         
-        if asset?.permalink != nil {
-            buttonsToSet.append(
-                AssetSheetActionButtons(
-                    target: .Opensea,
-                    url: (asset?.permalink!)!
-                )
-            )
+        if nft == nil {
+            actionButtons = buttonsToSet
+            return
         }
         
-        if asset?.collection?.twitterUrl != nil {
-            buttonsToSet.append(
-                AssetSheetActionButtons(
-                    target: .Twitter,
-                    url: (asset?.collection?.twitterUrl!)!
-                )
+        buttonsToSet.append(
+            ActionRowButton(
+                target: .Opensea,
+                url: URL(string: "https://opensea.io/assets/\(nft!.address)/\(nft!.tokenId)")!
             )
-        }
+        )
+    
         
-        if asset?.collection?.discordUrl != nil {
-            buttonsToSet.append(
-                AssetSheetActionButtons(
-                    target: .Discord,
-                    url: (asset?.collection?.discordUrl!)!
-                )
-            )
-        }
+//        if nft?.collection?.twitterUrl != nil {
+//            buttonsToSet.append(
+//                ActionRowButton(
+//                    target: .Twitter,
+//                    url: (nft?.collection?.twitterUrl!)!
+//                )
+//            )
+//        }
+//
+//        if nft?.collection?.discordUrl != nil {
+//            buttonsToSet.append(
+//                ActionRowButton(
+//                    target: .Discord,
+//                    url: (nft?.collection?.discordUrl!)!
+//                )
+//            )
+//        }
         
         
         actionButtons = buttonsToSet
     }
     
     private func resolvePaymentTokens() -> Void {
-        paymentTokens = asset?.collection?.paymentTokens ?? []
+        paymentTokens = []
     }
 
-    private func resolveContract() -> Void {
-        contract = asset?.contract
+    private func resolveCollection() -> Void {
+        collection = nft?.collection
     }
     
     private func resolveTraits() -> Void {
-        traits = asset?.traits ?? []
+        traits = nft?.traits ?? []
     }
     
     private func resolveCreator() -> Void {
-        creator = asset?.creator
+        creator = nft?.creator
     }
 
 }

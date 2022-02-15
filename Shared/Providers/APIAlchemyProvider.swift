@@ -44,8 +44,10 @@ final class APIAlchemyProvider {
                 return true
             }.map { (item: APIAlchemyNFT) -> NFT in
                 return NFT(
-                    id: item.id.tokenId,
+                    id: "\(item.contract.address)/\(item.id.tokenId)",
                     address: item.contract.address,
+                    tokenId: item.id.tokenId,
+                    standard: item.id.tokenMetadata.tokenType,
                     title: item.title,
                     text: item.text,
                     imageUrl: item.media.first?.uri.gateway,
@@ -53,6 +55,7 @@ final class APIAlchemyProvider {
                     animationUrl: nil,
                     externalURL: nil,
                     creator: nil,
+                    collection: nil,
                     traits: (item.metadata?.attributes ?? []).filter {
                         $0.traitType != nil && $0.value != nil
                     }.map { (attribute: APIAlchemyAttribute) -> NFTTrait in
@@ -63,16 +66,60 @@ final class APIAlchemyProvider {
 
             return list
         } catch {
-            print("⚠️ APIAlchemyProvider::fetchAssets: \(error)")
+            print("⚠️ APIAlchemyProvider::fetchNFTs: \(error)")
             
             throw APIError.BadResponse
         }
     }
     
-    static func fetchNFT(ownerAddress: String) async throws{
-        // TODO:
+    static func fetchNFT(contractAddress: String, tokenId: String) async throws -> NFT? {
+        let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
+        guard let key = apiKey, !key.isEmpty else {
+            print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
+            throw APIError.MissingKey
+        }
         
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "eth-mainnet.alchemyapi.io"
+        components.path = "/v2/\(key)/getNFTMetadata"
+        components.queryItems = [
+            URLQueryItem(name: "contractAddress", value: contractAddress),
+            URLQueryItem(name: "tokenId", value: tokenId),
+       ]
+        
+        guard let url = components.url else {
+            throw APIError.InvalidUrl
+        }
+        
+        do {
+            let request = APIRequest(url: url)
+            
+            let item = try await request.perform(ofType: APIAlchemyNFT.self)
 
-        
+            return NFT(
+                id: "\(item.contract.address)/\(item.id.tokenId)",
+                address: item.contract.address,
+                tokenId: item.id.tokenId,
+                standard: item.id.tokenMetadata.tokenType,
+                title: item.title,
+                text: item.text,
+                imageUrl: item.media.first?.uri.gateway,
+                thumbnailUrl: nil,
+                animationUrl: nil,
+                externalURL: item.tokenUri.gateway,
+                creator: nil,
+                collection: nil,
+                traits: (item.metadata?.attributes ?? []).filter {
+                    $0.traitType != nil && $0.value != nil
+                }.map { (attribute: APIAlchemyAttribute) -> NFTTrait in
+                    NFTTrait(key: attribute.traitType!, value: attribute.value!)
+                }
+            )
+        } catch {
+            print("⚠️ APIAlchemyProvider::fetchNFT: \(error)")
+            
+            throw APIError.BadResponse
+        }
     }
 }

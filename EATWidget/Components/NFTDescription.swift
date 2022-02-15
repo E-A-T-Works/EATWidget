@@ -1,5 +1,5 @@
 //
-//  AssetSheetDescription.swift
+//  NFTDescription.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/11/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AssetSheetDescription: View {
+struct NFTDescription: View {
     let text: String
     
     var body: some View {
@@ -19,10 +19,10 @@ struct AssetSheetDescription: View {
     }
 }
 
-struct AssetSheetDescription_Previews: PreviewProvider {
+struct NFTDescription_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetSheetDescription(
+            NFTDescription(
                 text: "Hello world how are you?"
             )
         }

@@ -1,5 +1,5 @@
 //
-//  AssetCard.swift
+//  NFTCard.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/9/22.
@@ -7,15 +7,18 @@
 
 import SwiftUI
 
-struct AssetCard: View {
-    let contractAddress: String
+struct NFTCard: View {
+    let address: String
     let tokenId: String
+
     let imageUrl: URL?
     
-    let assetTitle: String?
-    let collectionTitle: String?
+    let title: String?
+    let text: String?
     
     let preferredBackgroundColor: UIColor?
+    
+    // MARK: Color resolvers
     
     @State private var backgroundColor: Color = .clear
     
@@ -26,6 +29,8 @@ struct AssetCard: View {
         )
         backgroundColor = Color(uiColor: derivedColors.backgroundColor)
     }
+    
+    // MARK: Body
     
     var body: some View {
         VStack {
@@ -45,8 +50,8 @@ struct AssetCard: View {
             
             HStack {
                 HeadingLockup(
-                    title: assetTitle,
-                    text: collectionTitle,
+                    title: title,
+                    text: text,
                     size: 12
                 )
 
@@ -60,16 +65,16 @@ struct AssetCard: View {
     }
 }
 
-struct AssetCard_Previews: PreviewProvider {
+struct NFTCard_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetCard(
-                contractAddress: TestData.asset.contract.address,
-                tokenId: TestData.asset.tokenId,
-                imageUrl: TestData.asset.imageUrl!,
-                assetTitle: TestData.asset.title,
-                collectionTitle: TestData.asset.collection?.title,
-                preferredBackgroundColor: TestData.asset.backgroundColor
+            NFTCard(
+                address: TestData.nft.address,
+                tokenId: TestData.nft.tokenId,
+                imageUrl: TestData.nft.imageUrl,
+                title: TestData.nft.title,
+                text: TestData.nft.text,
+                preferredBackgroundColor: nil
             )
                 .frame(width: 300)
         }

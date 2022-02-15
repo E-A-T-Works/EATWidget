@@ -54,10 +54,10 @@ struct ConnectSheet: View {
                     }
                 ).disabled(!viewModel.form.isValid)
 
-                if !viewModel.assets.isEmpty {
+                if !viewModel.preview.isEmpty {
                     Section(header: Text("Preview")) {
-                        ForEach(viewModel.assets) { asset in
-                            AssetItem(item: asset)
+                        ForEach(viewModel.preview) { item in
+                            NFTItem(item: item)
                         }
                     }
                 }

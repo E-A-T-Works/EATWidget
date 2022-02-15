@@ -1,5 +1,5 @@
 //
-//  AssetSheetActions.swift
+//  ActionRow.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/11/22.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-enum AssetSheetActionButtonTarget {
+enum ActionRowButtonTarget {
     case Opensea
     case Etherscan
     case Twitter
     case Discord
 }
 
-struct AssetSheetActionButtons {
-    let target: AssetSheetActionButtonTarget
+struct ActionRowButton {
+    let target: ActionRowButtonTarget
     let url: URL
     
     var image: UIImage {
@@ -45,9 +45,9 @@ struct AssetSheetActionButtons {
     }
 }
 
-struct AssetSheetActions: View {
+struct ActionRow: View {
     
-    let list: [AssetSheetActionButtons]
+    let list: [ActionRowButton]
     
     private func hideText() -> Bool {
         return list.count > 2
@@ -68,27 +68,27 @@ struct AssetSheetActions: View {
     }
 }
 
-struct AssetSheetActions_Previews: PreviewProvider {
+struct ActionRow_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetSheetActions(
+            ActionRow(
                 list: [
-                    AssetSheetActionButtons(
+                    ActionRowButton(
                         target: .Opensea,
                         url: URL(string: "https://google.com")!
                     ),
                     
-                    AssetSheetActionButtons(
+                    ActionRowButton(
                         target: .Etherscan,
                         url: URL(string: "https://google.com")!
                     ),
 
-                    AssetSheetActionButtons(
+                    ActionRowButton(
                         target: .Twitter,
                         url: URL(string: "https://google.com")!
                     ),
                     
-                    AssetSheetActionButtons(
+                    ActionRowButton(
                         target: .Discord,
                         url: URL(string: "https://google.com")!
                     )

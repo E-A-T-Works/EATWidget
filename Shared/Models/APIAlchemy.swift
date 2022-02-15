@@ -188,7 +188,7 @@ struct APIAlchemyNFT {
     let id: APIAlchemyTokenId
     
     let title: String
-    let text: String
+    let text: String?
     
     let tokenUri: APIAlchemyUri
     
@@ -213,8 +213,10 @@ extension APIAlchemyNFT: Decodable {
         contract = try container.decode(APIAlchemyContract.self, forKey: .contract)
         id = try container.decode(APIAlchemyTokenId.self, forKey: .id)
         
-        title = try container.decode(String.self, forKey: .title)
-        text = try container.decode(String.self, forKey: .text)
+        let rawTitle = try container.decode(String.self, forKey: .title)
+        title = rawTitle.isEmpty ? id.tokenId : rawTitle
+        
+        text = (try? container.decode(String.self, forKey: .text)) ?? nil
         
         tokenUri = try container.decode(APIAlchemyUri.self, forKey: .tokenUri)
         

@@ -8,8 +8,8 @@
 import Foundation
 
 extension TraitBox {
-    init(item: Trait) {
-        key = item.traitType
+    init(item: NFTTrait) {
+        key = item.key
         value = item.value
     }
 }

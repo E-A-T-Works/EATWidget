@@ -13,17 +13,17 @@ struct CollectionPage: View {
     var body: some View {
         GeometryReader { geo in
             StaggeredGrid(
-                list: viewModel.assets,
-//                list: TestData.assets,
+                list: viewModel.list,
+//                list: [TestData.nft],
                 columns: viewModel.columns,
                 showsIndicators: false,
                 spacing: 10,
-                content: { asset in
-                    AssetCard(item: asset)
+                content: { item in
+                    NFTCard(item: item)
                         .onTapGesture {
                             viewModel.presentAssetSheet(
-                                contractAddress: asset.contract.address,
-                                tokenId: asset.tokenId
+                                contractAddress: item.address,
+                                tokenId: item.tokenId
                             )
                         }
                 }
@@ -54,11 +54,11 @@ struct CollectionPage: View {
             }
             .sheet(isPresented: $viewModel.showingSheet) {
                 switch viewModel.sheetContent {
-                case .Connect:
+                case .ConnectForm:
                     NavigationView {
                         ConnectSheet()
                     }
-                case .Asset(let contractAddress, let tokenId): AssetSheet(
+                case .NFTDetails(let contractAddress, let tokenId): NFTSheet(
                         contractAddress: contractAddress,
                         tokenId: tokenId
                     )

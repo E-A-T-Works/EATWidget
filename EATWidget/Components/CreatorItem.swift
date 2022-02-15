@@ -1,5 +1,5 @@
 //
-//  AssetSheetCreator.swift
+//  CreatorItem.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/11/22.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AssetSheetCreator: View {
+struct CreatorItem: View {
     
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
     
     let address: String?
-    let username: String?
+    let title: String?
     let imageUrl: URL?
     
     var body: some View {
@@ -45,7 +45,7 @@ struct AssetSheetCreator: View {
                     .frame(width: 28, height: 28)
                     .cornerRadius(14)
 
-                    Text(username != nil ? "@\(username!)" : address ?? "Unknown")
+                    Text(title != nil ? "@\(title!)" : address ?? "Unknown")
                         .font(.system(size: 14, design: .monospaced))
                         .fontWeight(.bold)
                         .foregroundColor(
@@ -68,12 +68,12 @@ struct AssetSheetCreator: View {
     }
 }
 
-struct AssetSheetCreator_Previews: PreviewProvider {
+struct CreatorItem_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            AssetSheetCreator(
+            CreatorItem(
                 address: "0x000",
-                username: "adrian",
+                title: "adrian",
                 imageUrl: nil
             )
         }
