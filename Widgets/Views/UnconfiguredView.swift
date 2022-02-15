@@ -10,7 +10,13 @@ import WidgetKit
 
 struct UnconfiguredView: View {
     var body: some View {
-        Text("Unconfigured")
+        VStack{
+            Branding().frame(width: 40, height: 40, alignment: .center)
+            Text("Connect a wallet to continue")
+                .font(.system(size: 12, design: .monospaced))
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 

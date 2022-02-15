@@ -12,6 +12,8 @@
 import SwiftUI
 
 struct NFTVisual: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let imageUrl: URL
     let animationUrl: URL?
     let backgroundColor: Color
@@ -27,11 +29,11 @@ struct NFTVisual: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     } else if phase.error != nil {
-                        Image(systemName: "photo")
+                        Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     } else {
-                        Image(uiImage: UIImage(named: "Placeholder")!)
+                        Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }

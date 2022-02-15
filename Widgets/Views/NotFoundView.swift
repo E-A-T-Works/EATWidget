@@ -10,7 +10,13 @@ import WidgetKit
 
 struct NotFoundView: View {
     var body: some View {
-        Text("Not Found")
+        VStack{
+            Branding().frame(width: 40, height: 40, alignment: .center)
+            Text("Trouble loading NFT")
+                .font(.system(size: 12, design: .monospaced))
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 

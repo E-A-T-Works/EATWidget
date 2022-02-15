@@ -212,9 +212,6 @@
 		5CBC06B627BC5BC300C2CADD /* eat-w-b-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069527BC5BC200C2CADD /* eat-w-b-0.png */; };
 		5CBC06B727BC5BC300C2CADD /* eat-w-b-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069527BC5BC200C2CADD /* eat-w-b-0.png */; };
 		5CBC06B827BC5BC300C2CADD /* eat-w-b-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069527BC5BC200C2CADD /* eat-w-b-0.png */; };
-		5CBC06B927BC5BC300C2CADD /* eat-b-w-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069627BC5BC200C2CADD /* eat-b-w-7.png */; };
-		5CBC06BA27BC5BC300C2CADD /* eat-b-w-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069627BC5BC200C2CADD /* eat-b-w-7.png */; };
-		5CBC06BB27BC5BC300C2CADD /* eat-b-w-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069627BC5BC200C2CADD /* eat-b-w-7.png */; };
 		5CBC06BC27BC5BC300C2CADD /* eat-w-b-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069727BC5BC200C2CADD /* eat-w-b-5.png */; };
 		5CBC06BD27BC5BC300C2CADD /* eat-w-b-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069727BC5BC200C2CADD /* eat-w-b-5.png */; };
 		5CBC06BE27BC5BC300C2CADD /* eat-w-b-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC069727BC5BC200C2CADD /* eat-w-b-5.png */; };
@@ -388,7 +385,6 @@
 		5CBC069327BC5BC200C2CADD /* eat-w-b-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-4.png"; sourceTree = "<group>"; };
 		5CBC069427BC5BC200C2CADD /* eat-w-b-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-3.png"; sourceTree = "<group>"; };
 		5CBC069527BC5BC200C2CADD /* eat-w-b-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-0.png"; sourceTree = "<group>"; };
-		5CBC069627BC5BC200C2CADD /* eat-b-w-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-7.png"; sourceTree = "<group>"; };
 		5CBC069727BC5BC200C2CADD /* eat-w-b-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-5.png"; sourceTree = "<group>"; };
 		5CBC069827BC5BC300C2CADD /* eat-b-w-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-4.png"; sourceTree = "<group>"; };
 		5CBC069927BC5BC300C2CADD /* eat-w-b-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-1.png"; sourceTree = "<group>"; };
@@ -505,7 +501,6 @@
 				5CBC069827BC5BC300C2CADD /* eat-b-w-4.png */,
 				5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */,
 				5CBC069027BC5BC200C2CADD /* eat-b-w-6.png */,
-				5CBC069627BC5BC200C2CADD /* eat-b-w-7.png */,
 				5CBC069527BC5BC200C2CADD /* eat-w-b-0.png */,
 				5CBC069927BC5BC300C2CADD /* eat-w-b-1.png */,
 				5CBC069227BC5BC200C2CADD /* eat-w-b-2.png */,
@@ -862,7 +857,6 @@
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
 				5CBC06B327BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
-				5CBC06B927BC5BC300C2CADD /* eat-b-w-7.png in Resources */,
 				5CBC06BF27BC5BC300C2CADD /* eat-b-w-4.png in Resources */,
 				5CBC06A727BC5BC300C2CADD /* eat-b-w-6.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
@@ -909,7 +903,6 @@
 				5CBC06B727BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
 				5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */,
 				5CBC06B127BC5BC300C2CADD /* eat-w-b-4.png in Resources */,
-				5CBC06BA27BC5BC300C2CADD /* eat-b-w-7.png in Resources */,
 				5C035EC827B5B43500A11697 /* Etherscan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -931,7 +924,6 @@
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-6.png in Resources */,
 				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
-				5CBC06BB27BC5BC300C2CADD /* eat-b-w-7.png in Resources */,
 				5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */,
 				5CBC069D27BC5BC300C2CADD /* eat-b-w-5.png in Resources */,
 				5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */,

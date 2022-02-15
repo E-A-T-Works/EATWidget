@@ -33,7 +33,7 @@ struct CreatorItem: View {
                                 .aspectRatio(contentMode: .fit)
                         } else if phase.error != nil {
                             Image(
-                                uiImage: UIImage(named: "Placeholder")!
+                                uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!
                             )
                             .resizable()
                             .aspectRatio(contentMode: .fit)

@@ -10,7 +10,13 @@ import WidgetKit
 
 struct PlaceholderView: View {
     var body: some View {
-        Text("Placeholder")
+        VStack{
+            Branding().frame(width: 40, height: 40, alignment: .center)
+            Text("e·a·t")
+                .font(.system(size: 12, design: .monospaced))
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 

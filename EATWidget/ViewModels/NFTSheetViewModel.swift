@@ -74,7 +74,7 @@ final class NFTSheetViewModel: ObservableObject {
     }
     
     private func resolveImageUrl() -> Void {
-        imageUrl = nft?.imageUrl ?? nft?.thumbnailUrl ?? Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
+        imageUrl = nft?.imageUrl ?? nft?.thumbnailUrl ?? Bundle.main.url(forResource: "eat-b-w-0", withExtension: "png")!
     }
     
     private func resolveColors() -> Void {

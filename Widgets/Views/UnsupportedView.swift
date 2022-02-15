@@ -10,7 +10,13 @@ import WidgetKit
 
 struct UnsupportedView: View {
     var body: some View {
-        Text("Unsupported")
+        VStack{
+            Branding().frame(width: 40, height: 40, alignment: .center)
+            Text("Unsupported NFT")
+                .font(.system(size: 12, design: .monospaced))
+                .multilineTextAlignment(.center)
+                .padding()
+        }
     }
 }
 
