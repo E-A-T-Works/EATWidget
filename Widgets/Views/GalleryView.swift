@@ -53,10 +53,19 @@ struct MediumGalleryView: View {
     let inset: CGFloat = 16
     
     var body: some View {
-        ZStack {
-            HStack {
+        if(list.count == 1) {
+            MediumBasicNFTView(
+                contractAddress: list[0].contractAddress,
+                tokenId: list[0].tokenId,
+                imageUrl: list[0].imageUrl,
+                assetTitle: list[0].assetTitle,
+                collectionTitle: list[0].collectionTitle,
+                backgroundColor: nil
+            )
+        } else if(list.count == 2) {
+            HStack(alignment: .center, spacing: 0) {
                 ForEach(list, id: \.tokenId) { item in
-                    VStack {
+                    VStack(spacing: 0) {
                         SmallBasicNFTView(
                             contractAddress: item.contractAddress,
                             tokenId: item.tokenId,
@@ -66,20 +75,40 @@ struct MediumGalleryView: View {
                             backgroundColor: item.backgroundColor,
                             displayInfo: false
                         )
+                        .padding()
                     }
                 }
             }
-            .padding(.horizontal, inset)
-            .padding(.top, 24)
-            .padding(.bottom, 0)
-            
-            VStack {
+
+        } else {
+            ZStack {
                 HStack {
-                    Branding()
-                        .frame(width: 24, height: 24)
-                        .padding(inset / 3)
+                    ForEach(list, id: \.tokenId) { item in
+                        VStack {
+                            SmallBasicNFTView(
+                                contractAddress: item.contractAddress,
+                                tokenId: item.tokenId,
+                                imageUrl: item.imageUrl,
+                                assetTitle: item.assetTitle,
+                                collectionTitle: item.collectionTitle,
+                                backgroundColor: item.backgroundColor,
+                                displayInfo: false
+                            )
+                        }
+                    }
                 }
-                Spacer()
+                .padding(.horizontal, inset)
+                .padding(.top, 24)
+                .padding(.bottom, 0)
+                
+                VStack {
+                    HStack {
+                        Branding()
+                            .frame(width: 24, height: 24)
+                            .padding()
+                    }
+                    Spacer()
+                }
             }
         }
     }
