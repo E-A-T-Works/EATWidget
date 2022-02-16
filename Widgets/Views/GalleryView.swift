@@ -1,5 +1,5 @@
 //
-//  GalleryNFTView.swift
+//  GalleryView.swift
 //  WidgetsExtension
 //
 //  Created by Adrian Vatchinsky on 2/15/22.
@@ -8,7 +8,8 @@
 import SwiftUI
 import WidgetKit
 
-struct GalleryNFTItem {
+
+struct GalleryItem {
     let contractAddress: String
     let tokenId: String
     let imageUrl: URL?
@@ -18,12 +19,13 @@ struct GalleryNFTItem {
 }
 
 
-struct GalleryNFTView: View {
+struct GalleryView: View {
     // MARK: Parameters
 
     @Environment(\.widgetFamily) var family: WidgetFamily
     
-    let list: [GalleryNFTItem]
+    let list: [GalleryItem]
+
     
     // MARK: Content
     
@@ -33,9 +35,9 @@ struct GalleryNFTView: View {
         case .systemSmall:
             UnsupportedView()
         case .systemMedium:
-            MediumGalleryNFTView(list: list)
+            MediumGalleryView(list: list)
         case .systemLarge:
-            LargeGalleryNFTView(list: list)
+            UnsupportedView()
         case .systemExtraLarge:
             UnsupportedView()
         @unknown default:
@@ -45,8 +47,8 @@ struct GalleryNFTView: View {
     }
 }
 
-struct MediumGalleryNFTView: View {
-    let list: [GalleryNFTItem]
+struct MediumGalleryView: View {
+    let list: [GalleryItem]
     
     let inset: CGFloat = 16
     
@@ -64,12 +66,6 @@ struct MediumGalleryNFTView: View {
                             backgroundColor: item.backgroundColor,
                             displayInfo: false
                         )
-                        
-                        HeadingLockup(
-                            title: item.assetTitle ?? "Untitled",
-                            text: nil,
-                            size: 12
-                        )
                     }
                 }
             }
@@ -81,7 +77,7 @@ struct MediumGalleryNFTView: View {
                 HStack {
                     Branding()
                         .frame(width: 24, height: 24)
-                        .padding(inset / 2)
+                        .padding(inset / 3)
                 }
                 Spacer()
             }
@@ -90,41 +86,22 @@ struct MediumGalleryNFTView: View {
 }
 
 
-struct LargeGalleryNFTView: View {
-    let list: [GalleryNFTItem]
-    
-    var body: some View {
-        Text("TODO")
-    }
-}
 
 
-//struct GalleryNFTRowView: View {}
-
-struct GalleryNFTView_Previews: PreviewProvider {
+struct GalleryNiew_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack{
-                GalleryNFTView(
+                GalleryView(
                     list: Array(
                         repeating: .init(contractAddress: TestData.nft.address, tokenId: TestData.nft.tokenId, imageUrl: TestData.nft.imageUrl, assetTitle: TestData.nft.title, collectionTitle: TestData.nft.collection?.title, backgroundColor: nil),
-                        count: 2
+                        count: 4
                     )
                 )
             }.previewContext(
                 WidgetPreviewContext(family: .systemMedium)
             )
-            
-            VStack{
-                GalleryNFTView(
-                    list: Array(
-                        repeating: .init(contractAddress: TestData.nft.address, tokenId: TestData.nft.tokenId, imageUrl: TestData.nft.imageUrl, assetTitle: TestData.nft.title, collectionTitle: TestData.nft.collection?.title, backgroundColor: nil),
-                        count: 6
-                    )
-                )
-            }.previewContext(
-                WidgetPreviewContext(family: .systemLarge)
-            )
+
         }
     }
 }

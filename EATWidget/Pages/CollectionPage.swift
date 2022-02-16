@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CollectionPage: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @StateObject private var viewModel = CollectionPageViewModel()
     
     var body: some View {
@@ -32,6 +34,29 @@ struct CollectionPage: View {
                     }
                 )
                 .padding([.horizontal], 10)
+                
+                
+                // Contact
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            viewModel.presentMailFormSheet()
+                        }, label: {
+                            Text("Share Feedback")
+                                .font(.system(size: 14, design: .monospaced))
+                                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
+                                .padding(8)
+                        })
+                            .background(colorScheme == .dark ? Color.white : Color.black)
+                            .shadow(radius: 2)
+                            .padding()
+                            
+                    }
+                }
             }
         }
         .navigationTitle("Collection")
@@ -40,7 +65,7 @@ struct CollectionPage: View {
                 placement: .navigationBarLeading,
                 content: {
                     Button {
-                        // TODO
+                        // TODO: Think of what this does
                     } label: {
                         Branding()
                             .frame(width: 32, height: 32)
@@ -72,7 +97,7 @@ struct CollectionPage: View {
                 
             case .MailForm(let data):
                 MailView(data: data) { result in
-                    print(result)
+                    print()
                 }
             }
             

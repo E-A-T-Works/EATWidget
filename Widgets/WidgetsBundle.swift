@@ -16,5 +16,6 @@ struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
         BasicNFTWidget()
         RandomNFTWidget()
+        GalleryWidget()
     }
 }

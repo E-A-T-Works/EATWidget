@@ -83,10 +83,10 @@ extension IntentHandler: RandomNFTOptionsIntentHandling {
 }
 
 
-// MARK: GalleryNFTOptions
+// MARK: GalleryOptions
 
-extension IntentHandler: GalleryNFTOptionsIntentHandling {
-    func provideNFTOptionsCollection(for intent: GalleryNFTOptionsIntent) async throws -> INObjectCollection<NFTINO> {
+extension IntentHandler: GalleryOptionsIntentHandling {
+    func provideNFTOptionsCollection(for intent: GalleryOptionsIntent) async throws -> INObjectCollection<NFTINO> {
         
         do {
             return try await DynamicIntentHelpers.provideNFTOptionsCollection(ownerAddress: nil)

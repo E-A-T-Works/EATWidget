@@ -113,7 +113,7 @@ struct ConnectSheet: View {
             switch viewModel.sheetContent {
             case .MailForm(let data):
                 MailView(data: data) { result in
-                    print(result)
+                    print()
                 }
             }
         }

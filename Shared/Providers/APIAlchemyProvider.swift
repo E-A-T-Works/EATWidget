@@ -63,10 +63,6 @@ final class APIAlchemyProvider {
                     }
                 )
             }
-            
-            for item in list {
-                print([item.address, item.imageUrl ?? "IDK", item.animationUrl ?? "IDK"])
-            }
 
             return list
         } catch {

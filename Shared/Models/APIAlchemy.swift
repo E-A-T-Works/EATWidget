@@ -24,7 +24,7 @@ extension APIAlchemyUri: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let ALLOWED_EXTENSIONS = ["png"]
+        let ALLOWED_EXTENSIONS = ["png", "jpg"]
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         

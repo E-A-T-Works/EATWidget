@@ -12,25 +12,15 @@
         <attribute name="tokenId" optional="YES" attributeType="String"/>
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Wallet" inverseName="cachedNFT" inverseEntity="Wallet"/>
     </entity>
-    <entity name="NFTOption" representedClassName="NFTOption" syncable="YES" codeGenerationType="class">
-        <attribute name="display" optional="YES" attributeType="String"/>
-        <attribute name="identifier" optional="YES" attributeType="String"/>
-        <attribute name="imageUrl" optional="YES" attributeType="URI"/>
-        <attribute name="subtitle" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Wallet" inverseName="nftOptions" inverseEntity="Wallet"/>
-    </entity>
     <entity name="Wallet" representedClassName="Wallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="String" defaultValueString=""/>
         <attribute name="id" attributeType="String" defaultValueString=""/>
         <attribute name="timestamp" attributeType="Date" defaultDateTimeInterval="666028020" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="cachedNFT" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="wallet" inverseEntity="CachedNFT"/>
-        <relationship name="nftOptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NFTOption" inverseName="wallet" inverseEntity="NFTOption"/>
     </entity>
     <elements>
-        <element name="NFTOption" positionX="-63" positionY="18" width="128" height="133"/>
-        <element name="Wallet" positionX="-313.3203125" positionY="6.828125" width="113.4140625" height="133"/>
+        <element name="Wallet" positionX="-313.3203125" positionY="6.828125" width="113.4140625" height="118"/>
         <element name="CachedNFT" positionX="-63.19140625" positionY="174.79296875" width="128" height="193"/>
     </elements>
 </model>

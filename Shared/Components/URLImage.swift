@@ -12,6 +12,7 @@ struct URLImage: View {
     let url: URL
 
     var body: some View {
+        // TODO: This causes a memory leak
         if let data = try? Data(contentsOf: url), let uiImage = UIImage(data: data) {
                 Image(uiImage: uiImage)
                     .resizable()

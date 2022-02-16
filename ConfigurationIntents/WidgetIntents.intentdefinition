@@ -301,7 +301,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>4</integer>
+			<integer>11</integer>
 			<key>INIntentName</key>
 			<string>RandomNFTOptions</string>
 			<key>INIntentParameters</key>
@@ -425,7 +425,7 @@
 			<key>INIntentLastParameterTag</key>
 			<integer>6</integer>
 			<key>INIntentName</key>
-			<string>GalleryNFTOptions</string>
+			<string>GalleryOptions</string>
 			<key>INIntentParameters</key>
 			<array>
 				<dict>
@@ -486,26 +486,6 @@
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>There are ${count} options matching ‘${NFT}’.</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>ZEvNyS</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>DisambiguationIntroduction</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>Just to confirm, you wanted ‘${NFT}’?</string>
-							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>Z8mtKn</string>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Confirmation</string>
-						</dict>
 					</array>
 					<key>INIntentParameterSupportsDynamicEnumeration</key>
 					<true/>
@@ -515,50 +495,6 @@
 					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Object</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Display Info</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>k8NtkE</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>2</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>Hide</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>ujDh1H</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>Show</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>w4l5qB</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>DisplayInfo</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>3</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
@@ -578,7 +514,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Gallery NFT Options</string>
+			<string>Gallery Options</string>
 			<key>INIntentTitleID</key>
 			<string>W2q9Wd</string>
 			<key>INIntentType</key>

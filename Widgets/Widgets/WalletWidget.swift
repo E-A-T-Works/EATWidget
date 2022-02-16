@@ -72,8 +72,6 @@ struct WalletWidgetProvider: IntentTimelineProvider {
                 let data = try await walletsToRender.asyncMap { wallet -> WalletWidgetData in
                     let address = wallet?.address
                     
-                    print("ABOUT TO PULL \(address!)")
-                    
                     let balance = try await DataProvider.fetchWalletBalance(address: address!)
                     
                     return WalletWidgetData(
