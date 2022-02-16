@@ -30,7 +30,7 @@ struct URLImage_Previews: PreviewProvider {
         Group {
             VStack{
                 URLImage(
-                    url: URL(string: "https://lh3.googleusercontent.com/rVIk8-4HlQBMZBY6ZqWTiS2C3o35c8dckAua22XCoaveyOAOdpQJCyrh93ugKElLPSfTOnHZ838hYu2cjkRoWM8e")!
+                    url: URL(string: "https://nfts.superplastic.co/images/3372.png")!
                 )
             }
             .previewContext(

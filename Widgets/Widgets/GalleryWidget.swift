@@ -26,32 +26,38 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         completion: @escaping (GalleryWidgetEntry) -> Void
     ) {
 
-        let cached = CachedNFTStorage.shared.fetch()
+//        let cached = CachedNFTStorage.shared.fetch()
+//
+//        if cached.isEmpty {
+//            completion(
+//                GalleryWidgetEntry(
+//                    date: Date(),
+//                    kind: .Unconfigured,
+//                    data: nil
+//                )
+//            )
+//        }
+//
+//        var data: [CachedNFT] = [CachedNFT]()
+//        for _ in 0..<4 { data.append(cached.randomElement()!) }
+//
+//        completion(
+//            GalleryWidgetEntry(
+//                date: Date(),
+//                kind: .Success,
+//                data: data
+//            )
+//        )
+//        return
         
-        if cached.isEmpty {
-            completion(
-                GalleryWidgetEntry(
-                    date: Date(),
-                    kind: .Unconfigured,
-                    data: nil
-                )
-            )
-        }
-        
-        var data: [CachedNFT] = [CachedNFT]()
-        for _ in 0..<4 { data.append(cached.randomElement()!) }
         
         completion(
             GalleryWidgetEntry(
                 date: Date(),
-                kind: .Success,
-                data: data
+                kind: .Placeholder,
+                data: nil
             )
         )
-        return
-        
-
-        
     }
     
     func getTimeline(
