@@ -105,6 +105,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 self.supported = results.filter { $0.isSupported }
                 self.unsupported = results.filter { !$0.isSupported }
                 
+                self.canAddWallet = !self.supported.isEmpty
                 self.loading = false
                 
             } catch {

@@ -86,7 +86,10 @@ struct CollectionPage: View {
             switch viewModel.sheetContent {
             case .ConnectForm:
                 NavigationView {
-                    ConnectSheet()
+                    ConnectSheet().onDisappear {
+                        // TODO: This has to be smarter
+                        viewModel.load()
+                    }
                 }
                 
             case .NFTDetails(let contractAddress, let tokenId):
