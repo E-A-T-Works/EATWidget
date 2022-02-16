@@ -26,14 +26,29 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
+        guard let data = CachedNFTStorage.shared.fetch().randomElement() else {
+            completion(
+                BasicNFTWidgetEntry(
+                    date: Date(),
+                    kind: .Placeholder,
+                    displayInfo: false,
+                    data: nil
+                )
+            )
+            return
+            
+        }
+        
         completion(
             BasicNFTWidgetEntry(
                 date: Date(),
-                kind: .Placeholder,
-                displayInfo: false,
-                data: nil
+                kind: .Success,
+                displayInfo: [true, false].randomElement()!,
+                data: data
             )
         )
+        return
+        
     }
     
     func getTimeline(
@@ -72,43 +87,38 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        Task {
-            do {
-                let data = try await NFTProvider.fetchNFT(contractAddress: contractAddress!, tokenId: tokenId!)
-                
-                let timeline = Timeline(
-                    entries: [
-                        BasicNFTWidgetEntry(
-                            date: Date(),
-                            kind: .Success,
-                            displayInfo: displayInfo,
-                            data: data
-                        )
-                    ],
-                    policy: .never
-                )
-                completion(timeline)
-                return
-                
-            } catch {
-                print("⚠️ BasicNFTWidget::getTimeline: \(error)")
-                
-                let timeline = Timeline(
-                    entries: [
-                        BasicNFTWidgetEntry(
-                            date: Date(),
-                            kind: .NotFound,
-                            displayInfo: false,
-                            data: nil
-                        )
-                    ],
-                    policy: .never
-                )
-                completion(timeline)
-                return
-            }
+        let options = CachedNFTStorage.shared.fetch()
+        
+        guard let data = (options.first { $0.address == contractAddress && $0.tokenId == tokenId }) else {
+            let timeline = Timeline(
+                entries: [
+                    BasicNFTWidgetEntry(
+                        date: Date(),
+                        kind: .NotFound,
+                        displayInfo: false,
+                        data: nil
+                    )
+                ],
+                policy: .never
+            )
+            completion(timeline)
+            return
             
         }
+        
+        let timeline = Timeline(
+            entries: [
+                BasicNFTWidgetEntry(
+                    date: Date(),
+                    kind: .Success,
+                    displayInfo: displayInfo,
+                    data: data
+                )
+            ],
+            policy: .never
+        )
+        completion(timeline)
+        return
     }
 }
 
@@ -117,7 +127,7 @@ struct BasicNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: NFT?
+    let data: CachedNFT?
 }
 
 

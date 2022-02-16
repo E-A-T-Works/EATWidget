@@ -36,16 +36,17 @@ final class DynamicIntentHelpers {
         /// ref: https://github.com/hackenbacker/FictionalCard/issues/1
         ///
         
-        let options = NFTOptionStorage.shared.fetch()
+        let options = CachedNFTStorage.shared.fetch()
         
         let items: [NFTINO] = options.filter { item in
             ownerAddress == nil ? true : item.wallet?.address == ownerAddress
         }.map { item in
             return NFTINO(
-                identifier: item.identifier,
-                display: item.display ?? "Untitled",
-                subtitle: item.subtitle,
-                image: item.imageUrl != nil ? INImage(url: item.imageUrl!) : nil
+                identifier: "\(item.address!)/\(item.tokenId!)",
+                display: (item.title ?? item.tokenId)!,
+                subtitle: nil,
+//                image: item.imageUrl != nil ? INImage(url: item.imageUrl!) : nil
+                image: nil
             )
         }
 

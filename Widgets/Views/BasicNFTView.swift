@@ -166,6 +166,8 @@ struct MediumBasicNFTView: View {
 }
 
 struct LargeBasicNFTView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     
     // MARK: Parameters
 
@@ -209,7 +211,7 @@ struct LargeBasicNFTView: View {
                     }
                     .padding(.vertical, 16.0)
                     .padding(.horizontal, 24.0)
-                    .background(.white)
+                    .background(colorScheme == .dark ? .black : .white)
                 }
             }
         }

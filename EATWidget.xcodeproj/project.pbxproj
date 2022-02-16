@@ -69,6 +69,9 @@
 		5C574D0027BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0227BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
+		5C60F05627BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
+		5C60F05727BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
+		5C60F05827BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
 		5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */; };
 		5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083C27B2B44900AC2A24 /* Assets.xcassets */; };
 		5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C63083F27B2B44900AC2A24 /* Preview Assets.xcassets */; };
@@ -299,6 +302,7 @@
 		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		5C574CFA27BAF81500212FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C574CFF27BAFA4000212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedNFTStorage.swift; sourceTree = "<group>"; };
 		5C63083527B2B44800AC2A24 /* EATWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EATWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C63083827B2B44800AC2A24 /* EATWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EATWidgetApp.swift; sourceTree = "<group>"; };
 		5C63083C27B2B44900AC2A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 			children = (
 				5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */,
 				5C6F5A5127BC194F00F04FD1 /* NFTOptionStorage.swift */,
+				5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
+				5C60F05627BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* NFTVisual.swift in Sources */,
@@ -1038,6 +1044,7 @@
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
 				5C6F5A5327BC194F00F04FD1 /* NFTOptionStorage.swift in Sources */,
 				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
+				5C60F05727BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C84117127B9A2360021008E /* SectionTitle.swift in Sources */,
@@ -1061,6 +1068,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C574CE927BAF00E00212FED /* APIEtherscan.swift in Sources */,
+				5C60F05827BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C6308E627B2EA5C00AC2A24 /* WidgetEntry.swift in Sources */,
@@ -1255,7 +1263,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1287,7 +1295,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;

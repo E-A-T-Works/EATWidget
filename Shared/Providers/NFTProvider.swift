@@ -38,7 +38,7 @@ final class NFTProvider {
             }
         
             do {
-                try NFTOptionStorage.shared.syncWithNFTs(wallet: wallet, list: list)
+                try CachedNFTStorage.shared.syncWithNFTs(wallet: wallet, list: list)
             } catch {
                 print("⚠️ NFTProvider::fetchNFTs::sync: \(error)")
             }

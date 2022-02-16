@@ -78,7 +78,7 @@ struct ConnectSheet: View {
                         
                         Section {
                             HStack {
-                                Text("Not seeing your NFTs?")
+                                Text("Not seeing your NFT?")
                                 
                                 Spacer()
                                 
