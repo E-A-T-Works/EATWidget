@@ -6,5 +6,7 @@
 	<string>${API_KEY_ALCHEMY}</string>
 	<key>API_KEY_ETHERSCAN</key>
 	<string>${API_KEY_ETHERSCAN}</string>
+	<key>WALLET_CONNECT_PROJECT_ID</key>
+	<string>${WALLET_CONNECT_PROJECT_ID}</string>
 </dict>
 </plist>
