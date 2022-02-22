@@ -10,7 +10,12 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="tokenId" optional="YES" attributeType="String"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTImage" inverseName="nft" inverseEntity="NFTImage"/>
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Wallet" inverseName="cachedNFT" inverseEntity="Wallet"/>
+    </entity>
+    <entity name="NFTImage" representedClassName="NFTImage" syncable="YES" codeGenerationType="class">
+        <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="nft" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="image" inverseEntity="CachedNFT"/>
     </entity>
     <entity name="Wallet" representedClassName="Wallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="String" defaultValueString=""/>
@@ -20,7 +25,8 @@
         <relationship name="cachedNFT" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="wallet" inverseEntity="CachedNFT"/>
     </entity>
     <elements>
+        <element name="CachedNFT" positionX="-63.19140625" positionY="174.79296875" width="128" height="208"/>
         <element name="Wallet" positionX="-313.3203125" positionY="6.828125" width="113.4140625" height="118"/>
-        <element name="CachedNFT" positionX="-63.19140625" positionY="174.79296875" width="128" height="193"/>
+        <element name="NFTImage" positionX="195.890625" positionY="120.71484375" width="128" height="73"/>
     </elements>
 </model>

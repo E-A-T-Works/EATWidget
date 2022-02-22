@@ -9,7 +9,7 @@ import Foundation
 
 
 final class APIAlchemyProvider {
-    static func fetchNFTs(ownerAddress: String, filterOutUnsupported: Bool = true) async throws -> [NFT] {
+    static func fetchNFTs(ownerAddress: String) async throws -> [NFT] {
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
         guard let key = apiKey, !key.isEmpty else {
             print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
@@ -34,23 +34,17 @@ final class APIAlchemyProvider {
             
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
             
-
             let list = response.ownedNfts.filter {
-                if !filterOutUnsupported {
-                    return true
-                }
-                
-                return $0.isSupported
-                
+                $0.isSupported
             }.map { (item: APIAlchemyNFT) -> NFT in
-                return NFT(
+                NFT(
                     id: "\(item.contract.address)/\(item.id.tokenId)",
                     address: item.contract.address,
                     tokenId: item.id.tokenId,
                     standard: item.id.tokenMetadata.tokenType,
                     title: item.title,
                     text: item.text,
-                    imageUrl: item.media.first?.uri.gateway,
+                    imageUrl: item.media.first?.gateway,
                     thumbnailUrl: item.metadata?.thumbnailUrl,
                     animationUrl: item.metadata?.animationUrl,
                     externalURL: nil,
@@ -104,7 +98,7 @@ final class APIAlchemyProvider {
                 standard: item.id.tokenMetadata.tokenType,
                 title: item.title,
                 text: item.text,
-                imageUrl: item.media.first?.uri.gateway,
+                imageUrl: item.media.first?.gateway,
                 thumbnailUrl: nil,
                 animationUrl: nil,
                 externalURL: item.tokenUri.gateway,

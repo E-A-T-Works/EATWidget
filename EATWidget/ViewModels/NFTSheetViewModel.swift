@@ -26,7 +26,7 @@ final class NFTSheetViewModel: ObservableObject {
     
     @Published private(set) var imageUrl: URL =  Bundle.main.url(forResource: "Placeholder", withExtension: "png")!
     @Published private(set) var actionButtons: [ActionRowButton] = []
-    @Published private(set) var paymentTokens: [PaymentToken] = []
+    @Published private(set) var paymentTokens: [String] = []
     
     @Published private(set) var backgroundColor: Color = .clear
     @Published private(set) var foregroundColor: Color = .black

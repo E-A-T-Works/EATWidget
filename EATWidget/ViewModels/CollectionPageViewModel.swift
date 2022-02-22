@@ -21,6 +21,9 @@ final class CollectionPageViewModel: ObservableObject {
     @Published private(set) var loading: Bool = true
     
     @Published private(set) var columns: Int = 2
+    
+    
+    @Published private(set) var test: [CachedNFT] = []
 
     @Published private(set) var wallets: [Wallet] = []
     @Published private(set) var list: [NFT] = []
@@ -65,33 +68,38 @@ final class CollectionPageViewModel: ObservableObject {
     }
 
     func load() {
-        Task {
-            do {
-                self.loading = true
-                
-                self.listByWallet = try await self.wallets.asyncMap { wallet -> [String: [NFT]] in
-                    let address = wallet.address!
-                    let list = try await NFTProvider.fetchNFTs(ownerAddress: address)
-                    return [address: list]
-                }
-                .flatMap { $0 }
-                .reduce([String:[NFT]]()) { acc, curr in
-                    var nextDict = acc
-                    nextDict.updateValue(curr.value, forKey: curr.key)
-                    return nextDict
-                }
-
-                self.list = self.listByWallet.reduce(into: []) {  acc, curr in
-                    acc += curr.value
-                }
-                
-                self.loading = false
-
-            } catch {
-                print("⚠️ (CanvasPageViewModel)::load() \(error)")
-                self.loading = false
-            }
-        }
+        
+        self.test = CachedNFTStorage.shared.fetch()
+        self.loading = false
+        
+//        Task {
+//            do {
+//                self.loading = true
+//
+//                self.listByWallet = try await self.wallets.asyncMap { wallet -> [String: [NFT]] in
+//                    let address = wallet.address!
+////                    let list = try await NFTProvider.fetchNFTs(ownerAddress: address)
+//                    let list = [NFT]()
+//                    return [address: list]
+//                }
+//                .flatMap { $0 }
+//                .reduce([String:[NFT]]()) { acc, curr in
+//                    var nextDict = acc
+//                    nextDict.updateValue(curr.value, forKey: curr.key)
+//                    return nextDict
+//                }
+//
+//                self.list = self.listByWallet.reduce(into: []) {  acc, curr in
+//                    acc += curr.value
+//                }
+//
+//                self.loading = false
+//
+//            } catch {
+//                print("⚠️ (CanvasPageViewModel)::load() \(error)")
+//                self.loading = false
+//            }
+//        }
     }
 }
 

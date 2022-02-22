@@ -60,18 +60,14 @@ struct ConnectSheet: View {
                     if viewModel.loading {
                         ViewLoader()
                     } else {
-                        if !viewModel.unsupported.isEmpty {
+                        
+                        if !viewModel.supported.isEmpty {
                             Section(header: Text("NFTs")) {
                                 ForEach(viewModel.supported) { item in
                                     NFTItem(item: item)
-                                }
-                            }
-                        }
-                        
-                        if !viewModel.unsupported.isEmpty {
-                            Section(header: Text("Unsupported")) {
-                                ForEach(viewModel.unsupported) { item in
-                                    UnsupportedNFTItem(item: item)
+                                        
+                                }.onDelete { offsets in
+                                    viewModel.delete(at: offsets)
                                 }
                             }
                         }
@@ -85,7 +81,7 @@ struct ConnectSheet: View {
                                 Button(action: {
                                     viewModel.presentMailFormSheet()
                                 }, label: {
-                                    Text("Contact")
+                                    Text("📧")
                                 })
                             }
                         }

@@ -17,23 +17,33 @@ struct CollectionPage: View {
             if viewModel.loading {
                 ViewLoader()
             }else{
-                StaggeredGrid(
-                    list: viewModel.list,
-                    columns: viewModel.columns,
-                    showsIndicators: false,
-                    spacing: 10,
-                    lazy: false,
-                    content: { item in
-                        NFTCard(item: item)
-                            .onTapGesture {
-                                viewModel.presentAssetSheet(
-                                    contractAddress: item.address,
-                                    tokenId: item.tokenId
-                                )
-                            }
+                
+                List {
+                    ForEach(viewModel.test) { item in
+                        VStack {
+                            Image(uiImage: UIImage(data: item.image!.blob!)!).resizable().aspectRatio(contentMode: .fit)
+                            Text(item.title ?? "Untitled")
+                        }
                     }
-                )
-                .padding([.horizontal], 10)
+                }
+                
+//                StaggeredGrid(
+//                    list: viewModel.list,
+//                    columns: viewModel.columns,
+//                    showsIndicators: false,
+//                    spacing: 10,
+//                    lazy: false,
+//                    content: { item in
+//                        NFTCard(item: item)
+//                            .onTapGesture {
+//                                viewModel.presentAssetSheet(
+//                                    contractAddress: item.address,
+//                                    tokenId: item.tokenId
+//                                )
+//                            }
+//                    }
+//                )
+//                .padding([.horizontal], 10)
                 
                 
                 // Contact

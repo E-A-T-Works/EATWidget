@@ -4,6 +4,9 @@
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
 //
+//  References:
+//      https://www.swiftbysundell.com/articles/async-and-concurrent-forEach-and-map/
+//
 
 import Foundation
 

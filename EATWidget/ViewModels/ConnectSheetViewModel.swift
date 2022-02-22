@@ -115,14 +115,34 @@ final class ConnectSheetViewModel: ObservableObject {
         }
     }
     
+    func delete(at offsets: IndexSet) {
+        supported.remove(atOffsets: offsets)
+    }
+    
     func submit() {
         do {
-            try WalletStorage.shared.add(
+            print("SUBMIT")
+            
+            // add the wallet
+            let newWallet = try WalletStorage.shared.add(
                 address: form.address,
                 title: form.title
             )
             
-            self.shouldDismissView = true
+            print(newWallet)
+            
+            Task {
+                // sync the data NFTs in the wallet
+                try await CachedNFTStorage.shared.syncWithNFTs(
+                    wallet: newWallet,
+                    list: supported
+                )
+                
+            }
+            
+            
+    
+//            self.shouldDismissView = true
         } catch {
             print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
         }

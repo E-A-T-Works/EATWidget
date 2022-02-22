@@ -62,7 +62,7 @@ class WalletStorage: NSObject, ObservableObject {
         return wallets
     }
     
-    func add(address: String, title: String?) throws {
+    func add(address: String, title: String?) throws -> Wallet {
         let context = PersistenceController.shared.container.viewContext
         
         let newWallet = Wallet(context: context)
@@ -72,6 +72,8 @@ class WalletStorage: NSObject, ObservableObject {
         newWallet.timestamp = Date()
         
         try commit()
+        
+        return newWallet
     }
     
     func delete(object: NSManagedObject) throws {

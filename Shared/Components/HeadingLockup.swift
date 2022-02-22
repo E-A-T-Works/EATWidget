@@ -34,8 +34,8 @@ struct HeadingLockup_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
             HeadingLockup(
-                title: TestData.asset.title,
-                text: TestData.asset.collection?.title,
+                title: "Title",
+                text: "Text",
                 size: 12.0
             )
         }

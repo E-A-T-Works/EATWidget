@@ -27,11 +27,14 @@ extension APIAlchemyUri: Decodable {
         let ALLOWED_EXTENSIONS = ["png", "jpg"]
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
+
         
         let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
+                
         raw = rawString.isEmpty || !rawString.isValidURL || !ALLOWED_EXTENSIONS.contains((rawString as NSString).pathExtension) ? nil : URL(string: rawString)
         
         let gatewayString = (try? container.decode(String.self, forKey: .gateway)) ?? ""
+    
         gateway = gatewayString.isEmpty || !gatewayString.isValidURL || !ALLOWED_EXTENSIONS.contains((gatewayString as NSString).pathExtension) ? nil : URL(string: gatewayString)
     }
 }
@@ -119,24 +122,6 @@ extension APIAlchemyAttribute: Decodable {
     }
 }
 
-// MARK: Media
-
-struct APIAlchemyMedia {
-    let uri: APIAlchemyUri
-}
-
-extension APIAlchemyMedia: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case uri = "uri"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        uri = try container.decode(APIAlchemyUri.self, forKey: .uri)
-    }
-}
-
 // MARK: Token Data
 
 struct APIAlchemyMetadata {
@@ -194,7 +179,7 @@ struct APIAlchemyNFT {
     
     let tokenUri: APIAlchemyUri
     
-    let media: [APIAlchemyMedia]
+    let media: [APIAlchemyUri]
     let metadata: APIAlchemyMetadata?
 }
 
@@ -211,7 +196,7 @@ extension APIAlchemyNFT: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         contract = try container.decode(APIAlchemyContract.self, forKey: .contract)
         id = try container.decode(APIAlchemyTokenId.self, forKey: .id)
         
@@ -222,7 +207,7 @@ extension APIAlchemyNFT: Decodable {
         
         tokenUri = try container.decode(APIAlchemyUri.self, forKey: .tokenUri)
         
-        media = try container.decode([APIAlchemyMedia].self, forKey: .media)
+        media = try container.decode([APIAlchemyUri].self, forKey: .media)
         
         metadata = (try? container.decode(APIAlchemyMetadata.self, forKey: .metadata)) ?? nil
     }
@@ -235,9 +220,10 @@ extension APIAlchemyNFT {
             return false
         }
         
-        if media.uri.raw == nil || media.uri.gateway == nil {
+        if media.raw == nil || media.gateway == nil {
             return false
         }
+        
         return true
     }
 }
@@ -247,21 +233,18 @@ extension APIAlchemyNFT {
 struct APIAlchemyGetNFTsResponse {
     let ownedNfts: [APIAlchemyNFT]
     let totalCount: Int
-    let blockHash: String
 }
 
 extension APIAlchemyGetNFTsResponse: Decodable {
     enum CodingKeys: String, CodingKey {
         case ownedNfts = "ownedNfts"
         case totalCount = "totalCount"
-        case blockHash = "blockHash"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        ownedNfts = try container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)
-        totalCount = try container.decode(Int.self, forKey: .totalCount)
-        blockHash = try container.decode(String.self, forKey: .blockHash)
+        ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
+        totalCount = (try? container.decode(Int.self, forKey: .totalCount)) ?? 0
     }
 }

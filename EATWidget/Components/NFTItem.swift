@@ -41,7 +41,7 @@ struct NFTItem: View {
             HStack {
                 HeadingLockup(
                     title: title ?? tokenId,
-                    text: text ?? address,
+                    text: nil,
                     size: 12
                 )
                 Spacer()

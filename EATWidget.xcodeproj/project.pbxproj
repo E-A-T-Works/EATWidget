@@ -54,9 +54,6 @@
 		5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
 		5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
 		5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
-		5C574CE327BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
-		5C574CE427BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
-		5C574CE527BAEB3F00212FED /* APIOpensea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE227BAEB3F00212FED /* APIOpensea.swift */; };
 		5C574CE727BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
 		5C574CE827BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
 		5C574CE927BAF00E00212FED /* APIEtherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CE627BAF00E00212FED /* APIEtherscan.swift */; };
@@ -240,6 +237,7 @@
 		5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
 		5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */; };
 		5CE9CFA427B57A5900F29938 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */; };
+		5CFA953427C59B4C00EBCADD /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2127B471B3001074CE /* HexagonParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,7 +296,6 @@
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
 		5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemy.swift; sourceTree = "<group>"; };
-		5C574CE227BAEB3F00212FED /* APIOpensea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpensea.swift; sourceTree = "<group>"; };
 		5C574CE627BAF00E00212FED /* APIEtherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEtherscan.swift; sourceTree = "<group>"; };
 		5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemyProvider.swift; sourceTree = "<group>"; };
 		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
@@ -543,7 +540,6 @@
 				5C574CEE27BAF16300212FED /* NFT.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
-				5C574CE227BAEB3F00212FED /* APIOpensea.swift */,
 				5C574CE627BAF00E00212FED /* APIEtherscan.swift */,
 				5C91BE2127B471B3001074CE /* HexagonParameters.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
@@ -968,7 +964,6 @@
 				5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */,
 				5C63085E27B2B5FD00AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImage.swift in Sources */,
-				5C574CE327BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5C035EE027B6C5CF00A11697 /* NFTDetails.swift in Sources */,
 				5C035EDE27B6C5C600A11697 /* NFTDescription.swift in Sources */,
 				5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
@@ -1040,10 +1035,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFA953427C59B4C00EBCADD /* HexagonParameters.swift in Sources */,
 				5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
-				5C574CE427BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
@@ -1128,7 +1123,6 @@
 				5CCA359F27BC23DD00715F85 /* GalleryView.swift in Sources */,
 				5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */,
 				5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */,
-				5C574CE527BAEB3F00212FED /* APIOpensea.swift in Sources */,
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 				5C91BE2027B47174001074CE /* BadgeBackground.swift in Sources */,
 				5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */,

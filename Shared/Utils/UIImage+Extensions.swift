@@ -6,6 +6,7 @@
 //
 //  References:
 //      https://www.hackingwithswift.com/example-code/media/how-to-read-the-average-color-of-a-uiimage-using-ciareaaverage
+//  https://github.com/V8tr/CoreDataImages-Article
 //
 
 import SwiftUI
@@ -25,3 +26,23 @@ extension UIImage {
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }
+
+
+//extension UIImage {
+//    
+//    func toData() -> Data? {
+//        return pngData()
+//    }
+//    
+//    var sizeInBytes: Int {
+//        if let data = toData() {
+//            return data.count
+//        } else {
+//            return 0
+//        }
+//    }
+//    
+//    var sizeInMB: Double {
+//        return Double(sizeInBytes) / 1_000_000
+//    }
+//}
