@@ -11,24 +11,22 @@ struct NFTCard: View {
     let address: String
     let tokenId: String
 
-    let imageUrl: URL
+    let image: UIImage
     let animationUrl: URL?
     
     let title: String?
     let text: String?
     
-    let preferredBackgroundColor: UIColor?
 
     // MARK: Body
     
     var body: some View {
         VStack {
-            
-            NFTVisual(
-                imageUrl: imageUrl,
-                animationUrl: animationUrl,
-                backgroundColor: Color.clear
-            )
+
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                
                         
             HStack {
                 HeadingLockup(
@@ -52,11 +50,10 @@ struct NFTCard_Previews: PreviewProvider {
             NFTCard(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.tokenId,
-                imageUrl: TestData.nft.imageUrl!,
+                image: UIImage(named: "eat-b-w-0")!,
                 animationUrl: TestData.nft.animationUrl,
                 title: TestData.nft.title,
-                text: TestData.nft.text,
-                preferredBackgroundColor: nil
+                text: nil
             )
                 .frame(width: 300)
         }

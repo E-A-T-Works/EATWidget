@@ -12,9 +12,9 @@ extension BasicNFTView {
     init(item: NFT, displayInfo: Bool) {
         contractAddress = item.address
         tokenId = item.tokenId
-        imageUrl = item.imageUrl
+        imageUrl = nil
         assetTitle = item.title
-        collectionTitle = item.collection?.title
+        collectionTitle = nil
         backgroundColor = nil
         self.displayInfo = displayInfo
     }
@@ -24,9 +24,9 @@ extension BasicNFTView {
     init(item: NFT) {
         contractAddress = item.address
         tokenId = item.tokenId
-        imageUrl = item.imageUrl
+        imageUrl = nil
         assetTitle = item.title
-        collectionTitle = item.collection?.title
+        collectionTitle = nil
         backgroundColor = nil
         displayInfo = false
     }

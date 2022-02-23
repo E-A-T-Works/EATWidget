@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct TestData {
     static let nft: NFT = NFT(
@@ -15,12 +16,9 @@ struct TestData {
         standard: "ERC721",
         title: "#3372 Janky",
         text: "0x066f2d5ead7951f0d0038c19affd500b9f02c0e5",
-        imageUrl: URL(string: "https://nfts.superplastic.co/images/3372.png"),
-        thumbnailUrl: nil,
+        image: UIImage(named: "eat-b-1-0")!,
         animationUrl: nil,
         externalURL: nil,
-        creator: nil,
-        collection: nil,
         traits: [
             NFTTrait(key: "Drop", value: "Episode 1: The Janky Heist"),
             NFTTrait(key: "JankyID", value: "3372"),

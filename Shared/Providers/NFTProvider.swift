@@ -15,9 +15,7 @@ enum DataStrategies {
 final class NFTProvider {
     static func fetchNFTs(
         ownerAddress: String,
-        strategy: DataStrategies = .Alchemy,
-        syncCache: Bool = true,
-        filterOutUnsupported: Bool = true
+        strategy: DataStrategies = .Alchemy
     ) async throws -> [NFT] {
         
         var list: [NFT] = [NFT]()
@@ -30,27 +28,27 @@ final class NFTProvider {
             list = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
         }
         
-        if filterOutUnsupported {
-            list = list.filter {
-                $0.isSupported
-            }
-        }
+//        if filterOutUnsupported {
+//            list = list.filter {
+//                $0.isSupported
+//            }
+//        }
 
-        if syncCache {
-            //
-            // Update the cached Options
-            //
-            let wallets = WalletStorage.shared.fetch()
-            guard let wallet = (wallets.first { $0.address == ownerAddress }) else {
-                return list
-            }
-
-            do {
-                try await CachedNFTStorage.shared.syncWithNFTs(wallet: wallet, list: list)
-            } catch {
-                print("⚠️ NFTProvider::fetchNFTs::sync: \(error)")
-            }
-        }
+//        if syncCache {
+//            //
+//            // Update the cached Options
+//            //
+//            let wallets = WalletStorage.shared.fetch()
+//            guard let wallet = (wallets.first { $0.address == ownerAddress }) else {
+//                return list
+//            }
+//
+//            do {
+//                try await CachedNFTStorage.shared.syncWithNFTs(wallet: wallet, list: list)
+//            } catch {
+//                print("⚠️ NFTProvider::fetchNFTs::sync: \(error)")
+//            }
+//        }
 
         
         //

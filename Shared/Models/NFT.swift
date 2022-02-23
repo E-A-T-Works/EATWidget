@@ -6,6 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+
+struct NFTTrait: Hashable {
+    let key: String
+    let value: String
+}
+
 
 struct NFT: Identifiable, Hashable {
     let id: String
@@ -17,48 +25,11 @@ struct NFT: Identifiable, Hashable {
     let title: String?
     let text: String?
     
-    let imageUrl: URL?
-    let thumbnailUrl: URL?
+    let image: UIImage
+    
     let animationUrl: URL?
     let externalURL: URL?
     
-    let creator: NFTCreator?
-    let collection: NFTCollection?
     let traits: [NFTTrait]?
 }
 
-struct NFTCreator: Hashable {
-    let address: String
-    
-    let title: String?
-    let text: String?
-    
-    let imageUrl: URL?
-}
-
-
-struct NFTCollection: Hashable {
-    let title: String?
-    let text: String?
-    
-    let imageUrl: URL?
-}
-
-
-struct NFTTrait: Hashable {
-    let key: String
-    let value: String
-}
-
-
-
-
-extension NFT {
-    var isSupported: Bool {
-        if self.imageUrl == nil {
-            return false
-        }
-        
-        return true
-    }
-}

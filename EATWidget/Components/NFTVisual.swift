@@ -14,7 +14,7 @@ import SwiftUI
 struct NFTVisual: View {
     @Environment(\.colorScheme) var colorScheme
     
-    let imageUrl: URL
+    let imageUrl: URL?
     let animationUrl: URL?
     let backgroundColor: Color
 
@@ -48,7 +48,7 @@ struct NFTVisual_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             NFTVisual(
-                imageUrl: TestData.nft.imageUrl!,
+                imageUrl: nil,
                 animationUrl: URL(string: "https://res.cloudinary.com/nifty-gateway/video/upload/v1613068880/A/SuperPlastic/Kranky_Metal_As_Fuck_Black_Edition_Superplastic_X_SketOne_wyhzcf_hivljh.mp4"),
                 backgroundColor: Color.clear
             )

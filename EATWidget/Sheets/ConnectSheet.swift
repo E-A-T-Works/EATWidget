@@ -65,7 +65,6 @@ struct ConnectSheet: View {
                             Section(header: Text("NFTs")) {
                                 ForEach(viewModel.supported) { item in
                                     NFTItem(item: item)
-                                        
                                 }.onDelete { offsets in
                                     viewModel.delete(at: offsets)
                                 }
@@ -73,17 +72,11 @@ struct ConnectSheet: View {
                         }
                         
                         Section {
-                            HStack {
+                            Button(action: {
+                                viewModel.presentMailFormSheet()
+                            }, label: {
                                 Text("Not seeing your NFT?")
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    viewModel.presentMailFormSheet()
-                                }, label: {
-                                    Text("📧")
-                                })
-                            }
+                            })
                         }
                     }
                 }

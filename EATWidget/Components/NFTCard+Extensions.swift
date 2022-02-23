@@ -6,15 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension NFTCard {
-    init(item: NFT) {
-        address = item.address
-        tokenId = item.tokenId
-        imageUrl = item.imageUrl!
+    init(item: NFTObject) {
+        address = item.address!
+        tokenId = item.tokenId!
+        image = UIImage(data: item.image!.blob!)!
         animationUrl = item.animationUrl
         title = item.title
-        text = item.collection?.title
-        preferredBackgroundColor = nil
+        text = nil
     }
 }

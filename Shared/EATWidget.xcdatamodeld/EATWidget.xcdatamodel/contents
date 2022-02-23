@@ -13,9 +13,35 @@
         <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTImage" inverseName="nft" inverseEntity="NFTImage"/>
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Wallet" inverseName="cachedNFT" inverseEntity="Wallet"/>
     </entity>
+    <entity name="NFTAttribute" representedClassName="NFTAttribute" syncable="YES" codeGenerationType="class">
+        <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="attributes" inverseEntity="NFTObject"/>
+    </entity>
     <entity name="NFTImage" representedClassName="NFTImage" syncable="YES" codeGenerationType="class">
         <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <relationship name="nft" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="image" inverseEntity="CachedNFT"/>
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="image" inverseEntity="NFTObject"/>
+    </entity>
+    <entity name="NFTObject" representedClassName="NFTObject" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="animationUrl" optional="YES" attributeType="URI"/>
+        <attribute name="externalUrl" optional="YES" attributeType="URI"/>
+        <attribute name="metadataUrl" optional="YES" attributeType="URI"/>
+        <attribute name="standard" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="tokenId" optional="YES" attributeType="String"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NFTAttribute" inverseName="object" inverseEntity="NFTAttribute"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTImage" inverseName="object" inverseEntity="NFTImage"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTWallet" inverseName="objects" inverseEntity="NFTWallet"/>
+    </entity>
+    <entity name="NFTWallet" representedClassName="NFTWallet" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="wallet" inverseEntity="NFTObject"/>
     </entity>
     <entity name="Wallet" representedClassName="Wallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" attributeType="String" defaultValueString=""/>
@@ -26,7 +52,10 @@
     </entity>
     <elements>
         <element name="CachedNFT" positionX="-63.19140625" positionY="174.79296875" width="128" height="208"/>
-        <element name="Wallet" positionX="-313.3203125" positionY="6.828125" width="113.4140625" height="118"/>
-        <element name="NFTImage" positionX="195.890625" positionY="120.71484375" width="128" height="73"/>
+        <element name="NFTImage" positionX="158.2578125" positionY="-188.4296875" width="128" height="88"/>
+        <element name="Wallet" positionX="-300.48828125" positionY="265.93359375" width="113.4140625" height="118"/>
+        <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="103"/>
+        <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="223"/>
+        <element name="NFTAttribute" positionX="158.19140625" positionY="-63.58984375" width="128" height="88"/>
     </elements>
 </model>

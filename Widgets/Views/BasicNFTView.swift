@@ -227,9 +227,9 @@ struct BasicNFTView_Previews: PreviewProvider {
                 BasicNFTView(
                     contractAddress: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: TestData.nft.imageUrl,
+                    imageUrl: nil,
                     assetTitle: TestData.nft.title,
-                    collectionTitle: TestData.nft.collection?.title,
+                    collectionTitle: nil,
                     backgroundColor: nil,
                     displayInfo: false
                 )
@@ -242,9 +242,9 @@ struct BasicNFTView_Previews: PreviewProvider {
                 BasicNFTView(
                     contractAddress: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: TestData.nft.imageUrl,
+                    imageUrl: nil,
                     assetTitle: TestData.nft.title,
-                    collectionTitle: TestData.nft.collection?.title,
+                    collectionTitle: nil,
                     backgroundColor: nil,
                     displayInfo: true
                 )
@@ -258,9 +258,9 @@ struct BasicNFTView_Previews: PreviewProvider {
                 BasicNFTView(
                     contractAddress: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: TestData.nft.imageUrl,
+                    imageUrl: nil,
                     assetTitle: TestData.nft.title,
-                    collectionTitle: TestData.nft.collection?.title,
+                    collectionTitle: nil,
                     backgroundColor: nil,
                     displayInfo: true
                 )
@@ -273,9 +273,9 @@ struct BasicNFTView_Previews: PreviewProvider {
                 BasicNFTView(
                     contractAddress: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: TestData.nft.imageUrl,
+                    imageUrl: nil,
                     assetTitle: TestData.nft.title,
-                    collectionTitle: TestData.nft.collection?.title,
+                    collectionTitle: nil,
                     backgroundColor: nil,
                     displayInfo: true
                 )

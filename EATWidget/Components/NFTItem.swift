@@ -8,35 +8,21 @@
 import SwiftUI
 
 struct NFTItem: View {
-    
-    @Environment(\.colorScheme) var colorScheme
-    
+
     let address: String
     let tokenId: String
 
-    let thumbnailUrl: URL?
+    let image: UIImage
     
     let title: String?
     let text: String?
     
     var body: some View {
         HStack {
-            CachedAsyncImage(url: thumbnailUrl){ phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } else if phase.error != nil {
-                    Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } else {
-                    Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
-            .frame(width: 40, height: 40)
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 40)
             
             HStack {
                 HeadingLockup(
@@ -58,7 +44,7 @@ struct NFTItem_Previews: PreviewProvider {
             NFTItem(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.id,
-                thumbnailUrl: TestData.nft.thumbnailUrl ?? TestData.nft.imageUrl,
+                image: UIImage(named: "eat-b-w-0")!,
                 title: TestData.nft.title,
                 text: TestData.nft.text
             )

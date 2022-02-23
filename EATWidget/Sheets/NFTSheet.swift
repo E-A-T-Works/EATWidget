@@ -41,7 +41,7 @@ struct NFTSheet: View {
                     VStack(alignment: .leading) {
                         NFTHeader(
                             title: viewModel.nft?.title,
-                            text: viewModel.nft?.collection?.title
+                            text: nil
                         )
                         .padding([.bottom], spacing)
 
@@ -52,11 +52,6 @@ struct NFTSheet: View {
                         
                         Divider().padding(.vertical)
 
-                        if viewModel.creator != nil {
-                            CreatorItem(item: viewModel.creator!)
-                                .padding([.bottom], spacing)
-                            Divider().padding(.vertical)
-                        }
                         
                         if !viewModel.traits.isEmpty {
                             TraitGrid(list: viewModel.traits)

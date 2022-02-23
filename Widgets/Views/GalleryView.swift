@@ -123,7 +123,7 @@ struct GalleryNiew_Previews: PreviewProvider {
             VStack{
                 GalleryView(
                     list: Array(
-                        repeating: .init(contractAddress: TestData.nft.address, tokenId: TestData.nft.tokenId, imageUrl: TestData.nft.imageUrl, assetTitle: TestData.nft.title, collectionTitle: TestData.nft.collection?.title, backgroundColor: nil),
+                        repeating: .init(contractAddress: TestData.nft.address, tokenId: TestData.nft.tokenId, imageUrl: nil, assetTitle: TestData.nft.title, collectionTitle: nil, backgroundColor: nil),
                         count: 4
                     )
                 )

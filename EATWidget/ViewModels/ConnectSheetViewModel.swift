@@ -33,7 +33,6 @@ final class ConnectSheetViewModel: ObservableObject {
     @Published private(set) var loading: Bool = false
     
     @Published private(set) var supported: [NFT] = []
-    @Published private(set) var unsupported: [NFT] = []
     
     @Published var sheetContent: ConnectFormSheetContent = .MailForm(
         data: ComposeMailData(
@@ -95,21 +94,17 @@ final class ConnectSheetViewModel: ObservableObject {
             do {
                 self.loading = true
                 
-                let results = try await NFTProvider.fetchNFTs(
+                self.supported = try await NFTProvider.fetchNFTs(
                     ownerAddress: form.address,
-                    strategy: .Alchemy,
-                    syncCache: false,
-                    filterOutUnsupported: false
+                    strategy: .Alchemy
                 )
-                
-                self.supported = results.filter { $0.isSupported }
-                self.unsupported = results.filter { !$0.isSupported }
                 
                 self.canAddWallet = !self.supported.isEmpty
                 self.loading = false
                 
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::load() \(error)")
+                self.canAddWallet = false
                 self.loading = false
             }
         }
@@ -129,7 +124,6 @@ final class ConnectSheetViewModel: ObservableObject {
                 title: form.title
             )
             
-            print(newWallet)
             
             Task {
                 // sync the data NFTs in the wallet
@@ -140,9 +134,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 
             }
             
-            
-    
-//            self.shouldDismissView = true
+            self.shouldDismissView = true
         } catch {
             print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
         }
