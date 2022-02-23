@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct WalletsSheet: View {
+    @StateObject private var viewModel = WalletsSheetViewModel()
+    
     var body: some View {
-        Text("LIST")
+        List {
+            ForEach(viewModel.wallets) { item in
+                WalletItem(item: item)
+            }
+            .onDelete { offsets in
+                viewModel.delete(at: offsets)
+            }
+        }
+        .navigationTitle("Connected Wallets")
     }
 }
 

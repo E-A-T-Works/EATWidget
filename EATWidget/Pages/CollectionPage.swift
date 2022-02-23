@@ -76,7 +76,7 @@ struct CollectionPage: View {
                 placement: .navigationBarLeading,
                 content: {
                     Button {
-                        // TODO: Think of what this does
+                        // TODO: Think of what to do w this...
                     } label: {
                         Branding()
                             .frame(width: 32, height: 32)
@@ -167,7 +167,9 @@ struct CollectionPage: View {
                 )
                 
             case .NFTWallets:
-                WalletsSheet()
+                NavigationView {
+                    WalletsSheet()
+                }
                 
             case .MailForm(let data):
                 MailView(data: data) { result in
