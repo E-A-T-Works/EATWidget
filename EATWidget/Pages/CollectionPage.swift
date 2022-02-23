@@ -9,24 +9,41 @@ import SwiftUI
 
 struct CollectionPage: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     @StateObject private var viewModel = CollectionPageViewModel()
     
+    // MARK: Calculated Values
+    
+    var list: [NFTObject] {
+        if viewModel.filterBy != nil {
+            return viewModel.nfts.filter { $0.wallet!.address! == viewModel.filterBy!.address }
+        }
+        
+        return viewModel.nfts
+    }
+
+    // MARK: Body
+    
     var body: some View {
         ZStack {
+                        
             if viewModel.loading {
-                ViewLoader()
-            } else {
                 
-                if viewModel.empty {
+                ViewLoader()
+                
+            } else {
+
+                if list.isEmpty {
                     
-                    Text("Empty Placeholder")
+                    ViewPlaceholder()
                     
                 } else {
-                
+                    
                     StaggeredGrid(
-                        list: viewModel.nfts,
-                        columns: viewModel.columns,
+                        list: list,
+                        columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
                         showsIndicators: false,
                         spacing: 10,
                         lazy: true,
@@ -41,10 +58,7 @@ struct CollectionPage: View {
                         }
                     )
                     .padding([.horizontal], 10)
-
                 }
-                
-                
                 
                 FeedbackPrompt(
                     title: "Share Feedback",
@@ -68,29 +82,50 @@ struct CollectionPage: View {
             ToolbarItem(
                 placement: .navigationBarTrailing,
                 content: {
-                    
-                    Menu(content: {
-                        ForEach(viewModel.wallets) { wallet in
-                            Button(action: {
-                                viewModel.setFilterBy(wallet: wallet)
-                            }, label: {
-                                Text(wallet.title ?? wallet.address!)
-                            })
-                        }
+
+                    if viewModel.wallets.isEmpty {
                         
                         Button(action: {
                             viewModel.presentConnectSheet()
                         }, label: {
-                            HStack {
-                                Image(systemName: "plus")
-                                Text("Connect Wallet")
-                            }
+                            Text("CONNECT")
+                                .font(.system(size: 16, design: .monospaced))
                         })
-                    }, label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                            .foregroundColor(colorScheme == .dark ? .white : .black)
-                    })
-
+                        
+                    } else if viewModel.filterBy != nil {
+                        
+                        Button(action: {
+                            viewModel.clearFilterBy()
+                        }, label: {
+                            Text("Clear")
+                                .font(.system(size: 16, design: .monospaced))
+                        })
+                        
+                    } else {
+                    
+                        Menu(content: {
+                            ForEach(viewModel.wallets) { wallet in
+                                Button(action: {
+                                    viewModel.setFilterBy(wallet: wallet)
+                                }, label: {
+                                    Text(wallet.title ?? wallet.address!)
+                                })
+                            }
+                            
+                            Button(action: {
+                                viewModel.presentConnectSheet()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "plus")
+                                    Text("Connect Wallet")
+                                }
+                            })
+                        }, label: {
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                        })
+                        
+                    }
                 }
             )
         })
@@ -124,5 +159,6 @@ struct CollectionPage_Previews: PreviewProvider {
         NavigationView {
             CollectionPage()
         }
+        .previewInterfaceOrientation(.portrait)
     }
 }

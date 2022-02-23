@@ -195,33 +195,37 @@ struct LargeBasicNFTView: View {
     // MARK: Content
     
     var body: some View {
-        ZStack {   
-            Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+        GeometryReader { geo in
+            ZStack {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: geo.size.width, height: geo.size.height)
 
-            if displayInfo {
-                VStack(alignment: .leading, spacing: 0) {
-                    Spacer()
-                    
-                    HStack {
-                        HeadingLockup(
-                            title: title,
-                            text: text,
-                            size: 12
-                        )
-
+                if displayInfo {
+                    VStack(alignment: .leading, spacing: 0) {
                         Spacer()
-                    
-                        Branding()
-                            .frame(width: 24, height: 24)
+                        
+                        HStack {
+                            HeadingLockup(
+                                title: title,
+                                text: text,
+                                size: 12
+                            )
+
+                            Spacer()
+                        
+                            Branding()
+                                .frame(width: 24, height: 24)
+                        }
+                        .padding(.vertical, 16.0)
+                        .padding(.horizontal, 24.0)
+                        .background(colorScheme == .dark ? .black : .white)
                     }
-                    .padding(.vertical, 16.0)
-                    .padding(.horizontal, 24.0)
-                    .background(colorScheme == .dark ? .black : .white)
                 }
             }
         }
+        
     }
 }
 
@@ -236,7 +240,7 @@ struct BasicNFTView_Previews: PreviewProvider {
                     tokenId: TestData.nft.tokenId,
                     image: TestData.nft.image,
                     title: TestData.nft.title,
-                    text: nil,
+                    text: TestData.nft.text,
                     displayInfo: false
                 )
             }
@@ -250,7 +254,7 @@ struct BasicNFTView_Previews: PreviewProvider {
                     tokenId: TestData.nft.tokenId,
                     image: TestData.nft.image,
                     title: TestData.nft.title,
-                    text: nil,
+                    text: TestData.nft.text,
                     displayInfo: true
                 )
             }
@@ -265,7 +269,7 @@ struct BasicNFTView_Previews: PreviewProvider {
                     tokenId: TestData.nft.tokenId,
                     image: TestData.nft.image,
                     title: TestData.nft.title,
-                    text: nil,
+                    text: TestData.nft.text,
                     displayInfo: true
                 )
             }
@@ -279,7 +283,7 @@ struct BasicNFTView_Previews: PreviewProvider {
                     tokenId: TestData.nft.tokenId,
                     image: TestData.nft.image,
                     title: TestData.nft.title,
-                    text: nil,
+                    text: TestData.nft.text,
                     displayInfo: true
                 )
             }

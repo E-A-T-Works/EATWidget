@@ -38,7 +38,7 @@ class QueuePlayerUIView: UIView {
         // Setup Player
         let player = AVQueuePlayer(playerItem: playerItem)
         playerLayer.player = player
-        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.videoGravity = .resizeAspect
         layer.addSublayer(playerLayer)
         
         // Loop

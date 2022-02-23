@@ -19,13 +19,13 @@ struct NFTVisual: View {
     
     var body: some View {
         ZStack {
-//            if animationUrl != nil {
-//                LoopingPlayer(animationUrl: animationUrl!)
-//            } else {
-            Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-//            }
+            if animationUrl != nil {
+                LoopingPlayer(animationUrl: animationUrl!)
+            } else {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
         }
     }
 }

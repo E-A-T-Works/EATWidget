@@ -42,6 +42,7 @@
 		5C06457527C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457327C5C3E200E97D1C /* NFTObjectStorage.swift */; };
 		5C06457627C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457327C5C3E200E97D1C /* NFTObjectStorage.swift */; };
 		5C06457827C5E2B200E97D1C /* FeedbackPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */; };
+		5C06457A27C68BC500E97D1C /* ViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */; };
 		5C1C71C427BBFBFA009BFC15 /* NFTDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */; };
 		5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
 		5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
@@ -83,7 +84,6 @@
 		5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
 		5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
 		5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */; };
-		5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
 		5C63085E27B2B5FD00AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
 		5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
@@ -107,7 +107,6 @@
 		5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
 		5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
-		5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C6308B927B2DA0F00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
 		5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63084D27B2B4A500AC2A24 /* Placeholder.png */; };
 		5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308BB27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift */; };
@@ -122,7 +121,6 @@
 		5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
 		5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
-		5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C63085727B2B5B000AC2A24 /* sample-nft.json */; };
 		5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085927B2B5BE00AC2A24 /* TestData.swift */; };
 		5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308AB27B2D92800AC2A24 /* WidgetIntents.intentdefinition */; };
 		5C6308E627B2EA5C00AC2A24 /* WidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6308E527B2EA5C00AC2A24 /* WidgetEntry.swift */; };
@@ -144,9 +142,7 @@
 		5C63090E27B3202000AC2A24 /* RandomNFTWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090D27B3202000AC2A24 /* RandomNFTWidget.swift */; };
 		5C63091827B435E800AC2A24 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImage.swift */; };
 		5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091A27B4378D00AC2A24 /* ContentView.swift */; };
-		5C828CF127BC313D009D92D6 /* UnsupportedNFTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */; };
 		5C828CF327BC3265009D92D6 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF227BC3265009D92D6 /* ViewLoader.swift */; };
-		5C828CF527BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */; };
 		5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF927BC4178009D92D6 /* EmailHelpers.swift */; };
 		5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */; };
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
@@ -283,6 +279,7 @@
 		5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTWalletStorage.swift; sourceTree = "<group>"; };
 		5C06457327C5C3E200E97D1C /* NFTObjectStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTObjectStorage.swift; sourceTree = "<group>"; };
 		5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPrompt.swift; sourceTree = "<group>"; };
+		5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaceholder.swift; sourceTree = "<group>"; };
 		5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTDetails+Extensions.swift"; sourceTree = "<group>"; };
 		5C1C71C527BC011A009BFC15 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		5C1C71C927BC05E7009BFC15 /* URLCache+imageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+imageCache.swift"; sourceTree = "<group>"; };
@@ -306,7 +303,6 @@
 		5C63084427B2B44900AC2A24 /* EATWidget.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EATWidget.xcdatamodel; sourceTree = "<group>"; };
 		5C63084D27B2B4A500AC2A24 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		5C63084F27B2B4DC00AC2A24 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
-		5C63085727B2B5B000AC2A24 /* sample-nft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sample-nft.json"; sourceTree = "<group>"; };
 		5C63085927B2B5BE00AC2A24 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		5C63085F27B2B60F00AC2A24 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -350,9 +346,7 @@
 		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
 		5C63090D27B3202000AC2A24 /* RandomNFTWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNFTWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedNFTItem.swift; sourceTree = "<group>"; };
 		5C828CF227BC3265009D92D6 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
-		5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UnsupportedNFTItem+Extensions.swift"; sourceTree = "<group>"; };
 		5C828CF927BC4178009D92D6 /* EmailHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelpers.swift; sourceTree = "<group>"; };
 		5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
@@ -538,7 +532,6 @@
 		5C63085627B2B58B00AC2A24 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
-				5C63085727B2B5B000AC2A24 /* sample-nft.json */,
 				5C63085927B2B5BE00AC2A24 /* TestData.swift */,
 			);
 			path = Testing;
@@ -607,14 +600,14 @@
 			isa = PBXGroup;
 			children = (
 				5C828CF227BC3265009D92D6 /* ViewLoader.swift */,
+				5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */,
 				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
 				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
 				5C1C71C927BC05E7009BFC15 /* URLCache+imageCache.swift */,
 				5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */,
 				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
-				5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */,
-				5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */,
+				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
 				5C84117627B9A6FE0021008E /* TraitGrid.swift */,
 				5C63087027B2C4BC00AC2A24 /* NFTItem.swift */,
 				5C63087E27B2CBEE00AC2A24 /* NFTItem+Extensions.swift */,
@@ -626,7 +619,6 @@
 				5C035EDF27B6C5CF00A11697 /* NFTDetails.swift */,
 				5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */,
 				5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */,
-				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -864,7 +856,6 @@
 				5C035EF027B6D17900A11697 /* Discord.png in Resources */,
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5CBC06AD27BC5BC300C2CADD /* eat-w-b-2.png in Resources */,
-				5C63085827B2B5B000AC2A24 /* sample-nft.json in Resources */,
 				5CBC06A427BC5BC300C2CADD /* eat-b-w-1.png in Resources */,
 				5CBC06C227BC5BC300C2CADD /* eat-w-b-1.png in Resources */,
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
@@ -891,7 +882,6 @@
 				5C035EC027B5A5C800A11697 /* Eth.png in Resources */,
 				5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */,
 				5C035EC527B5B43500A11697 /* Opensea.png in Resources */,
-				5C6308B827B2DA0C00AC2A24 /* sample-nft.json in Resources */,
 				5CBC06BD27BC5BC300C2CADD /* eat-w-b-5.png in Resources */,
 				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
 				5CBC06AB27BC5BC300C2CADD /* eat-b-w-2.png in Resources */,
@@ -918,7 +908,6 @@
 				5CBC06B527BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
 				5CBC06C127BC5BC300C2CADD /* eat-b-w-4.png in Resources */,
 				5CBC06A027BC5BC300C2CADD /* eat-b-w-0.png in Resources */,
-				5C6308DE27B2E3B900AC2A24 /* sample-nft.json in Resources */,
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-6.png in Resources */,
 				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
@@ -984,12 +973,12 @@
 				5C035EDC27B6C5B800A11697 /* NFTHeader.swift in Sources */,
 				5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C84117927B9A9530021008E /* TraitBox.swift in Sources */,
-				5C828CF527BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* NFTItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* ActionRow.swift in Sources */,
 				5C06457027C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,
 				5C91BE1A27B468B0001074CE /* UIColor+Extensions.swift in Sources */,
 				5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */,
+				5C06457A27C68BC500E97D1C /* ViewPlaceholder.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
@@ -1005,7 +994,6 @@
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 				5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */,
-				5C828CF127BC313D009D92D6 /* UnsupportedNFTItem.swift in Sources */,
 				5C828CF327BC3265009D92D6 /* ViewLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1249,7 +1237,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1281,7 +1269,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1310,7 +1298,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1336,7 +1324,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1364,7 +1352,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -1392,7 +1380,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;

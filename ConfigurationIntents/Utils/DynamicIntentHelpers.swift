@@ -16,7 +16,7 @@ final class DynamicIntentHelpers {
         let items: [WalletINO] = wallets.map { wallet in
             return WalletINO(
                 identifier: wallet.address,
-                display: wallet.title ?? wallet.address!,
+                display: wallet.title ?? wallet.address!.formattedWeb3,
                 subtitle: nil,
                 image: nil
             )
@@ -43,7 +43,7 @@ final class DynamicIntentHelpers {
         }.map { item in
             return NFTINO(
                 identifier: "\(item.address!)/\(item.tokenId!)",
-                display: (item.title ?? item.tokenId)!,
+                display: (item.title ?? item.tokenId!.formattedWeb3)!,
                 subtitle: nil,
                 image: nil
 //                image: INImage(imageData: item.image!.blob!)
