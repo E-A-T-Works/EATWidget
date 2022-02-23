@@ -10,12 +10,11 @@ import WidgetKit
 
 
 struct GalleryItem {
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let imageUrl: URL?
-    let assetTitle: String?
-    let collectionTitle: String?
-    let backgroundColor: UIColor?
+    let image: UIImage
+    let title: String?
+    let text: String?
 }
 
 
@@ -55,24 +54,22 @@ struct MediumGalleryView: View {
     var body: some View {
         if(list.count == 1) {
             MediumBasicNFTView(
-                contractAddress: list[0].contractAddress,
-                tokenId: list[0].tokenId,
-                imageUrl: list[0].imageUrl,
-                assetTitle: list[0].assetTitle,
-                collectionTitle: list[0].collectionTitle,
-                backgroundColor: nil
+                address: list.first!.address,
+                tokenId: list.first!.tokenId,
+                image: list.first!.image,
+                title: list.first!.title,
+                text: list.first!.text
             )
         } else if(list.count == 2) {
             HStack(alignment: .center, spacing: 0) {
                 ForEach(list, id: \.tokenId) { item in
                     VStack(spacing: 0) {
                         SmallBasicNFTView(
-                            contractAddress: item.contractAddress,
+                            address: item.address,
                             tokenId: item.tokenId,
-                            imageUrl: item.imageUrl,
-                            assetTitle: item.assetTitle,
-                            collectionTitle: item.collectionTitle,
-                            backgroundColor: item.backgroundColor,
+                            image: item.image,
+                            title: item.title,
+                            text: item.text,
                             displayInfo: false
                         )
                         .padding()
@@ -86,12 +83,11 @@ struct MediumGalleryView: View {
                     ForEach(list, id: \.tokenId) { item in
                         VStack {
                             SmallBasicNFTView(
-                                contractAddress: item.contractAddress,
+                                address: item.address,
                                 tokenId: item.tokenId,
-                                imageUrl: item.imageUrl,
-                                assetTitle: item.assetTitle,
-                                collectionTitle: item.collectionTitle,
-                                backgroundColor: item.backgroundColor,
+                                image: item.image,
+                                title: item.title,
+                                text: item.text,
                                 displayInfo: false
                             )
                         }
@@ -123,7 +119,13 @@ struct GalleryNiew_Previews: PreviewProvider {
             VStack{
                 GalleryView(
                     list: Array(
-                        repeating: .init(contractAddress: TestData.nft.address, tokenId: TestData.nft.tokenId, imageUrl: nil, assetTitle: TestData.nft.title, collectionTitle: nil, backgroundColor: nil),
+                        repeating: .init(
+                            address: TestData.nft.address,
+                            tokenId: TestData.nft.tokenId,
+                            image: TestData.nft.image,
+                            title: TestData.nft.title,
+                            text: TestData.nft.text
+                        ),
                         count: 4
                     )
                 )

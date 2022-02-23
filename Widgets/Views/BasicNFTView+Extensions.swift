@@ -7,55 +7,26 @@
 
 
 // MARK: - NFT
+import UIKit
 
 extension BasicNFTView {
-    init(item: NFT, displayInfo: Bool) {
-        contractAddress = item.address
-        tokenId = item.tokenId
-        imageUrl = nil
-        assetTitle = item.title
-        collectionTitle = nil
-        backgroundColor = nil
+    init(item: NFTObject, displayInfo: Bool) {
+        address = item.address!
+        tokenId = item.tokenId!
+        image = UIImage(data: item.image!.blob!)!
+        title = item.title
+        text = item.text
         self.displayInfo = displayInfo
     }
 }
 
 extension BasicNFTView {
-    init(item: NFT) {
-        contractAddress = item.address
-        tokenId = item.tokenId
-        imageUrl = nil
-        assetTitle = item.title
-        collectionTitle = nil
-        backgroundColor = nil
-        displayInfo = false
-    }
-}
-
-
-// MARK: - CachedNFT
-
-
-extension BasicNFTView {
-    init(item: CachedNFT, displayInfo: Bool) {
-        contractAddress = item.address!
+    init(item: NFTObject) {
+        address = item.address!
         tokenId = item.tokenId!
-        imageUrl = item.imageUrl
-        assetTitle = item.title
-        collectionTitle = nil
-        backgroundColor = nil
-        self.displayInfo = displayInfo
-    }
-}
-
-extension BasicNFTView {
-    init(item: CachedNFT) {
-        contractAddress = item.address!
-        tokenId = item.tokenId!
-        imageUrl = item.imageUrl
-        assetTitle = item.title
-        collectionTitle = nil
-        backgroundColor = nil
+        image = UIImage(data: item.image!.blob!)!
+        title = item.title
+        text = item.text
         displayInfo = false
     }
 }

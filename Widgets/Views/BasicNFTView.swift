@@ -15,12 +15,11 @@ struct BasicNFTView: View {
 
     @Environment(\.widgetFamily) var family: WidgetFamily
     
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let imageUrl: URL?
-    let assetTitle: String?
-    let collectionTitle: String?
-    let backgroundColor: UIColor?
+    let image: UIImage
+    let title: String?
+    let text: String?
     
     let displayInfo: Bool
     
@@ -34,15 +33,29 @@ struct BasicNFTView: View {
         switch family {
         case .systemSmall:
             SmallBasicNFTView(
-                contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
+                address: address,
+                tokenId: tokenId,
+                image: image,
+                title: title,
+                text: text,
+                displayInfo: displayInfo
             )
         case .systemMedium:
             MediumBasicNFTView(
-                contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor
+                address: address,
+                tokenId: tokenId,
+                image: image,
+                title: title,
+                text: text
             )
         case .systemLarge:
             LargeBasicNFTView(
-                contractAddress: contractAddress, tokenId: tokenId, imageUrl: imageUrl, assetTitle: assetTitle, collectionTitle: collectionTitle, backgroundColor: backgroundColor, displayInfo: displayInfo
+                address: address,
+                tokenId: tokenId,
+                image: image,
+                title: title,
+                text: text,
+                displayInfo: displayInfo
             )
         case .systemExtraLarge:
             UnsupportedView()
@@ -58,12 +71,11 @@ struct SmallBasicNFTView: View {
     
     // MARK: Parameters
 
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let imageUrl: URL?
-    let assetTitle: String?
-    let collectionTitle: String?
-    let backgroundColor: UIColor?
+    let image: UIImage
+    let title: String?
+    let text: String?
     
     let displayInfo: Bool
     
@@ -77,9 +89,8 @@ struct SmallBasicNFTView: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
 
-                URLImage(url: imageUrl!)
+                Image(uiImage: image)
                     .scaledToFit()
-                    .background(Color(uiColor: backgroundColor ?? .clear))
 
                 if displayInfo {
                     Spacer()
@@ -93,8 +104,8 @@ struct SmallBasicNFTView: View {
                 
                 HStack {
                     HeadingLockup(
-                        title: assetTitle ?? tokenId,
-                        text: collectionTitle,
+                        title: title,
+                        text: text,
                         size: 12
                     )
 
@@ -112,12 +123,11 @@ struct MediumBasicNFTView: View {
     
     // MARK: Parameters
 
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let imageUrl: URL?
-    let assetTitle: String?
-    let collectionTitle: String?
-    let backgroundColor: UIColor?
+    let image: UIImage
+    let title: String?
+    let text: String?
     
     
     // MARK: Content
@@ -126,9 +136,9 @@ struct MediumBasicNFTView: View {
         GeometryReader { geo in
             HStack(alignment: .center, spacing: 0) {
                 ZStack {
-                    Color(uiColor: backgroundColor ?? .clear)
-                    URLImage(url: imageUrl!)
-                        .scaledToFill()
+
+                    Image(uiImage: image)
+                        .scaledToFit()
                         .frame(width: geo.size.width * 0.5, height: geo.size.height)
                 }
                 
@@ -150,8 +160,8 @@ struct MediumBasicNFTView: View {
                         
                         HStack(spacing: 0) {
                             HeadingLockup(
-                                title: assetTitle ?? tokenId,
-                                text: collectionTitle,
+                                title: title,
+                                text: text,
                                 size: 12
                             )
                         }
@@ -171,12 +181,11 @@ struct LargeBasicNFTView: View {
     
     // MARK: Parameters
 
-    let contractAddress: String
+    let address: String
     let tokenId: String
-    let imageUrl: URL?
-    let assetTitle: String?
-    let collectionTitle: String?
-    let backgroundColor: UIColor?
+    let image: UIImage
+    let title: String?
+    let text: String?
     
     let displayInfo: Bool
     
@@ -186,11 +195,9 @@ struct LargeBasicNFTView: View {
     var body: some View {
         ZStack {
             ZStack {
-                Color(uiColor: backgroundColor ?? .clear)
-                ZStack{
-                    URLImage(url: imageUrl!)
-                        .aspectRatio(1, contentMode: .fill)
-                }
+                Image(uiImage: image)
+                    .scaledToFit()
+                    .aspectRatio(1, contentMode: .fill)
             }
             
             if displayInfo {
@@ -199,8 +206,8 @@ struct LargeBasicNFTView: View {
                     
                     HStack {
                         HeadingLockup(
-                            title: assetTitle ?? tokenId,
-                            text: collectionTitle,
+                            title: title,
+                            text: text,
                             size: 12
                         )
 
@@ -225,12 +232,11 @@ struct BasicNFTView_Previews: PreviewProvider {
         Group {
             VStack{
                 BasicNFTView(
-                    contractAddress: TestData.nft.address,
+                    address: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: nil,
-                    assetTitle: TestData.nft.title,
-                    collectionTitle: nil,
-                    backgroundColor: nil,
+                    image: TestData.nft.image,
+                    title: TestData.nft.title,
+                    text: nil,
                     displayInfo: false
                 )
             }
@@ -240,12 +246,11 @@ struct BasicNFTView_Previews: PreviewProvider {
 
             VStack{
                 BasicNFTView(
-                    contractAddress: TestData.nft.address,
+                    address: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: nil,
-                    assetTitle: TestData.nft.title,
-                    collectionTitle: nil,
-                    backgroundColor: nil,
+                    image: TestData.nft.image,
+                    title: TestData.nft.title,
+                    text: nil,
                     displayInfo: true
                 )
             }
@@ -256,12 +261,11 @@ struct BasicNFTView_Previews: PreviewProvider {
             
             VStack{
                 BasicNFTView(
-                    contractAddress: TestData.nft.address,
+                    address: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: nil,
-                    assetTitle: TestData.nft.title,
-                    collectionTitle: nil,
-                    backgroundColor: nil,
+                    image: TestData.nft.image,
+                    title: TestData.nft.title,
+                    text: nil,
                     displayInfo: true
                 )
             }
@@ -271,12 +275,11 @@ struct BasicNFTView_Previews: PreviewProvider {
 
             VStack{
                 BasicNFTView(
-                    contractAddress: TestData.nft.address,
+                    address: TestData.nft.address,
                     tokenId: TestData.nft.tokenId,
-                    imageUrl: nil,
-                    assetTitle: TestData.nft.title,
-                    collectionTitle: nil,
-                    backgroundColor: nil,
+                    image: TestData.nft.image,
+                    title: TestData.nft.title,
+                    text: nil,
                     displayInfo: true
                 )
             }

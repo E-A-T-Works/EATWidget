@@ -6,18 +6,17 @@
 //
 
 import Foundation
-
+import UIKit
 
 extension GalleryView {
-    init(list: [CachedNFT?]) {
-        self.list = list.filter { $0 != nil }.map {
+    init(list: [NFTObject]) {
+        self.list = list.map {
             GalleryItem(
-                contractAddress: ($0?.address)!,
-                tokenId: ($0?.tokenId)!,
-                imageUrl: ($0?.imageUrl)!,
-                assetTitle: $0?.title,
-                collectionTitle: nil,
-                backgroundColor: nil
+                address: $0.address!,
+                tokenId: $0.tokenId!,
+                image: UIImage(data: $0.image!.blob!)!,
+                title: $0.title,
+                text: $0.text
             )
         }
     }
