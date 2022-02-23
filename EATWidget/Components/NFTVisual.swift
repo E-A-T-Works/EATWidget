@@ -14,31 +14,17 @@ import SwiftUI
 struct NFTVisual: View {
     @Environment(\.colorScheme) var colorScheme
     
-    let imageUrl: URL?
+    let image: UIImage
     let animationUrl: URL?
-    let backgroundColor: Color
-
+    
     var body: some View {
         ZStack {
 //            if animationUrl != nil {
 //                LoopingPlayer(animationUrl: animationUrl!)
 //            } else {
-                CachedAsyncImage(url: imageUrl, urlCache: .imageCache){ phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } else if phase.error != nil {
-                        Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } else {
-                        Image(uiImage: UIImage(named: colorScheme == .dark ? "eat-w-b-0" : "eat-b-w-0")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }
-                .background(backgroundColor)
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
 //            }
         }
     }
@@ -48,9 +34,8 @@ struct NFTVisual_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             NFTVisual(
-                imageUrl: nil,
-                animationUrl: URL(string: "https://res.cloudinary.com/nifty-gateway/video/upload/v1613068880/A/SuperPlastic/Kranky_Metal_As_Fuck_Black_Edition_Superplastic_X_SketOne_wyhzcf_hivljh.mp4"),
-                backgroundColor: Color.clear
+                image: TestData.nft.image,
+                animationUrl: TestData.nft.animationUrl
             )
         }
         .padding()

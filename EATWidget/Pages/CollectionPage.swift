@@ -34,7 +34,7 @@ struct CollectionPage: View {
                             NFTCard(item: item)
                                 .onTapGesture {
                                     viewModel.presentAssetSheet(
-                                        contractAddress: item.address!,
+                                        address: item.address!,
                                         tokenId: item.tokenId!
                                     )
                                 }
@@ -101,9 +101,9 @@ struct CollectionPage: View {
                     ConnectSheet()
                 }
                 
-            case .NFTDetails(let contractAddress, let tokenId):
+            case .NFTDetails(let address, let tokenId):
                 NFTSheet(
-                    contractAddress: contractAddress,
+                    address: address,
                     tokenId: tokenId
                 )
                 

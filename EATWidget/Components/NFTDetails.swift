@@ -20,9 +20,9 @@ struct NFTDetails: View {
             SectionTitle(text: "Details")
             
             VStack {
-                TableItem(key: "Contract Address", value: address)
+                TableItem(key: "Contract Address", value: address.formattedWeb3)
                 
-                TableItem(key: "Token ID", value: tokenId)
+                TableItem(key: "Token ID", value: tokenId.formattedWeb3)
                 
                 if standard != nil {
                     TableItem(key: "Token Standard", value: standard!)

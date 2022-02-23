@@ -10,7 +10,7 @@ import Combine
 
 enum CollectionSheetContent {
     case ConnectForm
-    case NFTDetails(contractAddress: String, tokenId: String)
+    case NFTDetails(address: String, tokenId: String)
     case MailForm(data: ComposeMailData)
 }
 
@@ -65,8 +65,8 @@ final class CollectionPageViewModel: ObservableObject {
         showingSheet.toggle()
     }
     
-    func presentAssetSheet(contractAddress: String, tokenId: String) {
-        sheetContent = .NFTDetails(contractAddress: contractAddress, tokenId: tokenId)
+    func presentAssetSheet(address: String, tokenId: String) {
+        sheetContent = .NFTDetails(address: address, tokenId: tokenId)
         showingSheet.toggle()
     }
     

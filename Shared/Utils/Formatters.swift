@@ -20,3 +20,13 @@ extension Date {
         return formatter.localizedString(for: self, relativeTo: Date())
     }
 }
+
+extension String {
+    var formattedWeb3: String {
+        if self.count > 7 {
+            return "\(self.prefix(4))...\(self.suffix(4))"
+        }
+        
+        return self
+    }
+}

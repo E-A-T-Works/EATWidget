@@ -9,14 +9,14 @@ import SwiftUI
 
 struct NFTSheet: View {
     
-    let contractAddress: String
+    let address: String
     let tokenId: String
     
     let spacing: CGFloat = 12
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject private var viewModel = NFTSheetViewModel()
+    @StateObject var viewModel = NFTSheetViewModel()
     
     var body: some View {
         ZStack {
@@ -27,9 +27,8 @@ struct NFTSheet: View {
                 ScrollView {
                     
                     NFTVisual(
-                        imageUrl: viewModel.imageUrl,
-                        animationUrl: nil,
-                        backgroundColor: viewModel.backgroundColor
+                        image: UIImage(data: viewModel.nft!.image!.blob!)!,
+                        animationUrl: viewModel.nft?.animationUrl
                     )
                     .padding([.bottom], spacing)
 
@@ -53,11 +52,11 @@ struct NFTSheet: View {
                         Divider().padding(.vertical)
 
                         
-                        if !viewModel.traits.isEmpty {
-                            TraitGrid(list: viewModel.traits)
-                                .padding([.bottom], spacing)
-                            Divider().padding(.vertical)
-                        }
+//                        if (viewModel.nft?.attributes ?? []).count > 0 {
+//                            TraitGrid(list: viewModel.nft?.attributes!)
+//                                .padding([.bottom], spacing)
+//                            Divider().padding(.vertical)
+//                        }
                         
                         NFTDetails(
                             address: viewModel.nft?.address ?? "--",
@@ -67,17 +66,17 @@ struct NFTSheet: View {
                             .padding([.bottom], spacing)
                         
                 
-                        if(viewModel.nft?.externalURL != nil) {
-                            HStack(alignment: .center) {
-                                Spacer()
-                                URLLink(
-                                    url: viewModel.nft!.externalURL!,
-                                    title: "metadata"
-                                )
-                                Spacer()
-                            }
-                            .padding(.vertical)
-                        }
+//                        if(viewModel.nft?.externalURL != nil) {
+//                            HStack(alignment: .center) {
+//                                Spacer()
+//                                URLLink(
+//                                    url: viewModel.nft!.externalURL!,
+//                                    title: "metadata"
+//                                )
+//                                Spacer()
+//                            }
+//                            .padding(.vertical)
+//                        }
                         
                     }
                     .padding(.horizontal)
@@ -93,16 +92,13 @@ struct NFTSheet: View {
             )
         }
         .ignoresSafeArea()
+        .onAppear {
+            viewModel.load(address: address, tokenId: tokenId)
+        }
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             if shouldDismiss {
                 self.presentationMode.wrappedValue.dismiss()
             }
-        }
-        .onAppear {
-            viewModel.load(
-                contractAddress: contractAddress,
-                tokenId: tokenId
-            )
         }
     }
 }
@@ -110,7 +106,7 @@ struct NFTSheet: View {
 struct NFTSheet_Previews: PreviewProvider {
     static var previews: some View {
         NFTSheet(
-            contractAddress: TestData.nft.address,
+            address: TestData.nft.address,
             tokenId: TestData.nft.tokenId
         )
     }

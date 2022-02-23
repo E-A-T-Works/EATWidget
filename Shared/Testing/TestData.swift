@@ -17,7 +17,7 @@ struct TestData {
         title: "#3372 Janky",
         text: "0x066f2d5ead7951f0d0038c19affd500b9f02c0e5",
         image: UIImage(named: "Placeholder")!,
-        animationUrl: nil,
+        animationUrl: URL(string: "https://res.cloudinary.com/nifty-gateway/video/upload/v1613068880/A/SuperPlastic/Kranky_Metal_As_Fuck_Black_Edition_Superplastic_X_SketOne_wyhzcf_hivljh.mp4"),
         externalURL: nil,
         traits: [
             NFTTrait(key: "Drop", value: "Episode 1: The Janky Heist"),
