@@ -58,7 +58,9 @@ struct ConnectSheet: View {
                 
                 if viewModel.ready {
                     if viewModel.loading {
-                        ViewLoader()
+                        VStack(alignment: .center) {
+                            ViewLoader()
+                        }
                     } else {
                         
                         if !viewModel.supported.isEmpty {

@@ -20,40 +20,11 @@ final class NFTProvider {
         
         var list: [NFT] = [NFT]()
         
-        //
-        // Fetch
-        //
         switch strategy {
         case .Alchemy:
             list = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
         }
-        
-//        if filterOutUnsupported {
-//            list = list.filter {
-//                $0.isSupported
-//            }
-//        }
-
-//        if syncCache {
-//            //
-//            // Update the cached Options
-//            //
-//            let wallets = WalletStorage.shared.fetch()
-//            guard let wallet = (wallets.first { $0.address == ownerAddress }) else {
-//                return list
-//            }
-//
-//            do {
-//                try await CachedNFTStorage.shared.syncWithNFTs(wallet: wallet, list: list)
-//            } catch {
-//                print("⚠️ NFTProvider::fetchNFTs::sync: \(error)")
-//            }
-//        }
-
-        
-        //
-        // Return data
-        //
+ 
         return list
     }
     

@@ -115,28 +115,24 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func submit() {
-        do {
-            print("SUBMIT")
-            
-            // add the wallet
-            let newWallet = try WalletStorage.shared.add(
-                address: form.address,
-                title: form.title
-            )
-            
-            
-            Task {
-                // sync the data NFTs in the wallet
-                try await CachedNFTStorage.shared.syncWithNFTs(
-                    wallet: newWallet,
-                    list: supported
+        Task {
+            do {
+                // add the wallet
+                let newWallet = try NFTWalletStorage.shared.create(
+                    address: form.address,
+                    title: form.title
                 )
                 
+                // sync the data NFTs in the wallet
+                try await NFTObjectStorage.shared.sync(
+                    list: supported,
+                    wallet: newWallet
+                )
+                            
+                self.shouldDismissView = true
+            } catch {
+                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
             }
-            
-            self.shouldDismissView = true
-        } catch {
-            print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
         }
     }
     

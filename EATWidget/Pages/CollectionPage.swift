@@ -16,57 +16,40 @@ struct CollectionPage: View {
         ZStack {
             if viewModel.loading {
                 ViewLoader()
-            }else{
+            } else {
                 
-                List {
-                    ForEach(viewModel.test) { item in
-                        VStack {
-                            Image(uiImage: UIImage(data: item.image!.blob!)!).resizable().aspectRatio(contentMode: .fit)
-                            Text(item.title ?? "Untitled")
-                        }
-                    }
-                }
-                
-//                StaggeredGrid(
-//                    list: viewModel.list,
-//                    columns: viewModel.columns,
-//                    showsIndicators: false,
-//                    spacing: 10,
-//                    lazy: false,
-//                    content: { item in
-//                        NFTCard(item: item)
-//                            .onTapGesture {
-//                                viewModel.presentAssetSheet(
-//                                    contractAddress: item.address,
-//                                    tokenId: item.tokenId
-//                                )
-//                            }
-//                    }
-//                )
-//                .padding([.horizontal], 10)
-                
-                
-                // Contact
-                VStack {
-                    Spacer()
+                if viewModel.empty {
                     
-                    HStack {
-                        Spacer()
-                        
-                        Button(action: {
-                            viewModel.presentMailFormSheet()
-                        }, label: {
-                            Text("Share Feedback")
-                                .font(.system(size: 14, design: .monospaced))
-                                .foregroundColor(colorScheme == .dark ? Color.black : Color.white)
-                                .padding(8)
-                        })
-                            .background(colorScheme == .dark ? Color.white : Color.black)
-                            .shadow(radius: 2)
-                            .padding()
-                            
-                    }
+                    Text("Empty Placeholder")
+                    
+                } else {
+                
+                    StaggeredGrid(
+                        list: viewModel.nfts,
+                        columns: viewModel.columns,
+                        showsIndicators: false,
+                        spacing: 10,
+                        lazy: true,
+                        content: { item in
+                            NFTCard(item: item)
+                                .onTapGesture {
+                                    viewModel.presentAssetSheet(
+                                        contractAddress: item.address!,
+                                        tokenId: item.tokenId!
+                                    )
+                                }
+                        }
+                    )
+                    .padding([.horizontal], 10)
+
                 }
+                
+                
+                
+                FeedbackPrompt(
+                    title: "Share Feedback",
+                    action: { viewModel.presentMailFormSheet() }
+                )
             }
         }
         .navigationTitle("Collection")
@@ -85,21 +68,37 @@ struct CollectionPage: View {
             ToolbarItem(
                 placement: .navigationBarTrailing,
                 content: {
-                    Button("Connect", action: { viewModel.presentConnectSheet() })
+                    
+                    Menu(content: {
+                        ForEach(viewModel.wallets) { wallet in
+                            Button(action: {
+                                viewModel.setFilterBy(wallet: wallet)
+                            }, label: {
+                                Text(wallet.title ?? wallet.address!)
+                            })
+                        }
+                        
+                        Button(action: {
+                            viewModel.presentConnectSheet()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "plus")
+                                Text("Connect Wallet")
+                            }
+                        })
+                    }, label: {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                    })
+
                 }
             )
         })
-        .onAppear {
-            viewModel.load()
-        }
         .sheet(isPresented: $viewModel.showingSheet) {
             switch viewModel.sheetContent {
             case .ConnectForm:
                 NavigationView {
-                    ConnectSheet().onDisappear {
-                        // TODO: This has to be smarter
-                        viewModel.load()
-                    }
+                    ConnectSheet()
                 }
                 
             case .NFTDetails(let contractAddress, let tokenId):

@@ -135,16 +135,10 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             
             if entry != nil { return }
             
-            
             ///
-            /// Attempt to download the image. If unable to download it then continue
+            /// Convert the UIImage to a blob
             ///
-        
-//            guard let imageData = try? Data(contentsOf: item.imageUrl!) else { return }
-//
-            // enforce 10mb size limit
-//            if imageData.count > (10 * 1_000_000) { return }
-            
+
             guard let imageBlob = item.image.jpegData(compressionQuality: 1.0) else { return }
             
             ///

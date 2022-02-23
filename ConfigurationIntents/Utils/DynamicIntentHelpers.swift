@@ -11,13 +11,13 @@ import Intents
 final class DynamicIntentHelpers {
     
     static func provideWalletOptionsCollection() async throws -> INObjectCollection<WalletINO> {
-        let wallets = WalletStorage.shared.fetch()
+        let wallets = NFTWalletStorage.shared.fetch()
         
         let items: [WalletINO] = wallets.map { wallet in
             return WalletINO(
                 identifier: wallet.address,
-                display: wallet.title != nil && !wallet.title!.isEmpty ? wallet.title! : "Untitled Wallet",
-                subtitle: wallet.address,
+                display: wallet.title ?? wallet.address!,
+                subtitle: nil,
                 image: nil
             )
         }
@@ -36,7 +36,7 @@ final class DynamicIntentHelpers {
         /// ref: https://github.com/hackenbacker/FictionalCard/issues/1
         ///
         
-        let options = CachedNFTStorage.shared.fetch()
+        let options = NFTObjectStorage.shared.fetch()
         
         let items: [NFTINO] = options.filter { item in
             ownerAddress == nil ? true : item.wallet?.address == ownerAddress
@@ -46,8 +46,11 @@ final class DynamicIntentHelpers {
                 display: (item.title ?? item.tokenId)!,
                 subtitle: nil,
 //                image: item.imageUrl != nil ? INImage(url: item.imageUrl!) : nil
-                image: nil
+//                image: nil
+                image: INImage(imageData: item.image!.blob!)
             )
+            
+            
         }
 
         return INObjectCollection(items: items)

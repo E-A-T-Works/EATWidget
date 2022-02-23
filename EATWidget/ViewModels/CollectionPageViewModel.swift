@@ -19,16 +19,14 @@ final class CollectionPageViewModel: ObservableObject {
     
     // MARK: - Properties
     @Published private(set) var loading: Bool = true
+    @Published private(set) var empty: Bool = false
     
     @Published private(set) var columns: Int = 2
     
-    
-    @Published private(set) var test: [CachedNFT] = []
+    @Published private(set) var wallets: [NFTWallet] = []
+    @Published private(set) var nfts: [NFTObject] = []
 
-    @Published private(set) var wallets: [Wallet] = []
-    @Published private(set) var list: [NFT] = []
-    
-    @Published private(set) var listByWallet: [String:[NFT]] = [:]
+    @Published private(set) var filterBy: String?
     
     @Published var sheetContent: CollectionSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
@@ -37,13 +35,30 @@ final class CollectionPageViewModel: ObservableObject {
     
     // MARK: - Initialization
     
-    init(walletPublisher: AnyPublisher<[Wallet], Never> = WalletStorage.shared.wallets.eraseToAnyPublisher()) {
-        cancellable = walletPublisher.sink { wallets in
-            self.wallets = wallets
-        }
+    init(
+        walletPublisher: AnyPublisher<[NFTWallet], Never> = NFTWalletStorage.shared.list.eraseToAnyPublisher(),
+        nftPublisher: AnyPublisher<[NFTObject], Never> = NFTObjectStorage.shared.list.eraseToAnyPublisher()
+    ) {
+        cancellable = Publishers.Zip(
+            walletPublisher,
+            nftPublisher
+        ).sink(receiveValue: { [weak self] wallets, nfts in
+            self?.wallets = wallets
+            self?.nfts = nfts
+
+            self?.loading = false
+        })
     }
     
     // MARK: - Public Methods
+    
+    func setFilterBy(wallet: NFTWallet) {
+        filterBy = wallet.address!
+    }
+    
+    func clearFilterBy() {
+        filterBy = nil
+    }
     
     func presentConnectSheet() {
         sheetContent = .ConnectForm
@@ -65,41 +80,6 @@ final class CollectionPageViewModel: ObservableObject {
             )
         )
         showingSheet.toggle()
-    }
-
-    func load() {
-        
-        self.test = CachedNFTStorage.shared.fetch()
-        self.loading = false
-        
-//        Task {
-//            do {
-//                self.loading = true
-//
-//                self.listByWallet = try await self.wallets.asyncMap { wallet -> [String: [NFT]] in
-//                    let address = wallet.address!
-////                    let list = try await NFTProvider.fetchNFTs(ownerAddress: address)
-//                    let list = [NFT]()
-//                    return [address: list]
-//                }
-//                .flatMap { $0 }
-//                .reduce([String:[NFT]]()) { acc, curr in
-//                    var nextDict = acc
-//                    nextDict.updateValue(curr.value, forKey: curr.key)
-//                    return nextDict
-//                }
-//
-//                self.list = self.listByWallet.reduce(into: []) {  acc, curr in
-//                    acc += curr.value
-//                }
-//
-//                self.loading = false
-//
-//            } catch {
-//                print("⚠️ (CanvasPageViewModel)::load() \(error)")
-//                self.loading = false
-//            }
-//        }
     }
 }
 
