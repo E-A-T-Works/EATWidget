@@ -12,6 +12,8 @@ struct CollectionPage: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
+    @Namespace var animation
+    
     @StateObject private var viewModel = CollectionPageViewModel()
     
     // MARK: Calculated Values
@@ -49,6 +51,7 @@ struct CollectionPage: View {
                         lazy: true,
                         content: { item in
                             NFTCard(item: item)
+                                .matchedGeometryEffect(id: item.id, in: animation)
                                 .onTapGesture {
                                     viewModel.presentAssetSheet(
                                         address: item.address!,
@@ -66,6 +69,7 @@ struct CollectionPage: View {
                 )
             }
         }
+        .animation(.easeInOut, value: list.count + 1)
         .navigationTitle("Collection")
         .toolbar(content: {
             ToolbarItem(
@@ -88,7 +92,7 @@ struct CollectionPage: View {
                         Button(action: {
                             viewModel.presentConnectSheet()
                         }, label: {
-                            Text("CONNECT")
+                            Text("connect")
                                 .font(.system(size: 16, design: .monospaced))
                         })
                         
@@ -97,9 +101,15 @@ struct CollectionPage: View {
                         Button(action: {
                             viewModel.clearFilterBy()
                         }, label: {
-                            Text("Clear")
-                                .font(.system(size: 16, design: .monospaced))
-                        })
+                            HStack {
+                                Text(viewModel.filterBy!.title ?? viewModel.filterBy!.address!.formattedWeb3)
+                                    .font(.system(size: 16, design: .monospaced))
+                                
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 12, design: .monospaced))
+                            }
+                            
+                        }).buttonStyle(.bordered)
                         
                     } else {
                     
@@ -108,7 +118,7 @@ struct CollectionPage: View {
                                 Button(action: {
                                     viewModel.setFilterBy(wallet: wallet)
                                 }, label: {
-                                    Text(wallet.title ?? wallet.address!)
+                                    Text(wallet.title ?? wallet.address!.formattedWeb3)
                                 })
                             }
                             

@@ -120,7 +120,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 // add the wallet
                 let newWallet = try NFTWalletStorage.shared.create(
                     address: form.address,
-                    title: form.title
+                    title: form.title.isEmpty ? nil : form.title
                 )
                 
                 // sync the data NFTs in the wallet

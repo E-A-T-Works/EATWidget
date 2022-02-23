@@ -37,7 +37,7 @@ final class APIAlchemyProvider {
             
             let suported = response.ownedNfts.filter {
                 $0.isSupported
-            }
+            }.prefix(25)  // TODO: Revisit this hard limit
             
             let list: [NFT?] = await suported.asyncMap { (item: APIAlchemyNFT) -> NFT? in
                 
@@ -64,26 +64,6 @@ final class APIAlchemyProvider {
             }
                 
             let cleanedList: [NFT] = list.compactMap{ $0 }
-                
-//            .map { (item: APIAlchemyNFT) -> NFT in
-//                NFT(
-//                    id: "\(item.contract.address)/\(item.id.tokenId)",
-//                    address: item.contract.address,
-//                    tokenId: item.id.tokenId,
-//                    standard: item.id.tokenMetadata.tokenType,
-//                    title: item.title,
-//                    text: item.text,
-//                    imageUrl: item.media.first?.gateway,
-//                    thumbnailUrl: item.metadata?.thumbnailUrl,
-//                    animationUrl: item.metadata?.animationUrl,
-//                    externalURL: nil,
-//                    traits: (item.metadata?.attributes ?? []).filter {
-//                        $0.traitType != nil && $0.value != nil
-//                    }.map { (attribute: APIAlchemyAttribute) -> NFTTrait in
-//                        NFTTrait(key: attribute.traitType!, value: attribute.value!)
-//                    }
-//                )
-//            }
 
             return cleanedList
         } catch {
