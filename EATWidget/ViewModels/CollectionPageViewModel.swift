@@ -12,6 +12,7 @@ import SwiftUI
 enum CollectionSheetContent {
     case ConnectForm
     case NFTDetails(address: String, tokenId: String)
+    case NFTWallets
     case MailForm(data: ComposeMailData)
 }
 
@@ -83,8 +84,13 @@ final class CollectionPageViewModel: ObservableObject {
         showingSheet.toggle()
     }
     
-    func presentAssetSheet(address: String, tokenId: String) {
+    func presentNFTDetailsSheet(address: String, tokenId: String) {
         sheetContent = .NFTDetails(address: address, tokenId: tokenId)
+        showingSheet.toggle()
+    }
+    
+    func presentWalletsSheet() {
+        sheetContent = .NFTWallets
         showingSheet.toggle()
     }
     

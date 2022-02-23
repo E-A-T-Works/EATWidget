@@ -173,6 +173,7 @@
 		5C91BE2527B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2627B4754C001074CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2427B4754C001074CE /* Branding.swift */; };
 		5C91BE2827B47BC3001074CE /* NFTSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE2727B47BC3001074CE /* NFTSheet.swift */; };
+		5CA9ADA727C6A3CA003C25DE /* WalletsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADA627C6A3CA003C25DE /* WalletsSheet.swift */; };
 		5CBC069B27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
 		5CBC069C27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
 		5CBC069D27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
@@ -362,6 +363,7 @@
 		5C91BE2127B471B3001074CE /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
 		5C91BE2427B4754C001074CE /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
 		5C91BE2727B47BC3001074CE /* NFTSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSheet.swift; sourceTree = "<group>"; };
+		5CA9ADA627C6A3CA003C25DE /* WalletsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsSheet.swift; sourceTree = "<group>"; };
 		5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-5.png"; sourceTree = "<group>"; };
 		5CBC068D27BC5BC200C2CADD /* eat-b-w-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-0.png"; sourceTree = "<group>"; };
 		5CBC068E27BC5BC200C2CADD /* eat-w-b-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-6.png"; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			children = (
 				5C63088227B2D2A000AC2A24 /* ConnectSheet.swift */,
 				5C91BE2727B47BC3001074CE /* NFTSheet.swift */,
+				5CA9ADA627C6A3CA003C25DE /* WalletsSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				5C035EDC27B6C5B800A11697 /* NFTHeader.swift in Sources */,
 				5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C84117927B9A9530021008E /* TraitBox.swift in Sources */,
+				5CA9ADA727C6A3CA003C25DE /* WalletsSheet.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* NFTItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* ActionRow.swift in Sources */,
 				5C06457027C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,

@@ -53,7 +53,7 @@ struct CollectionPage: View {
                             NFTCard(item: item)
                                 .matchedGeometryEffect(id: item.id, in: animation)
                                 .onTapGesture {
-                                    viewModel.presentAssetSheet(
+                                    viewModel.presentNFTDetailsSheet(
                                         address: item.address!,
                                         tokenId: item.tokenId!
                                     )
@@ -83,12 +83,13 @@ struct CollectionPage: View {
                     }
                 }
             )
+            
             ToolbarItem(
                 placement: .navigationBarTrailing,
                 content: {
 
                     if viewModel.wallets.isEmpty {
-                        
+
                         Button(action: {
                             viewModel.presentConnectSheet()
                         }, label: {
@@ -112,24 +113,37 @@ struct CollectionPage: View {
                         }).buttonStyle(.bordered)
                         
                     } else {
-                    
+                        
                         Menu(content: {
-                            ForEach(viewModel.wallets) { wallet in
-                                Button(action: {
-                                    viewModel.setFilterBy(wallet: wallet)
-                                }, label: {
-                                    Text(wallet.title ?? wallet.address!.formattedWeb3)
-                                })
+                            Section {
+                                ForEach(viewModel.wallets) { wallet in
+                                    Button(action: {
+                                        viewModel.setFilterBy(wallet: wallet)
+                                    }, label: {
+                                        Text(wallet.title ?? wallet.address!.formattedWeb3)
+                                    })
+                                }
                             }
                             
-                            Button(action: {
-                                viewModel.presentConnectSheet()
-                            }, label: {
-                                HStack {
-                                    Image(systemName: "plus")
-                                    Text("Connect Wallet")
-                                }
-                            })
+                            Section {
+                                Button(action: {
+                                    viewModel.presentWalletsSheet()
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "slider.horizontal.3")
+                                        Text("Manage Wallets")
+                                    }
+                                })
+                                
+                                Button(action: {
+                                    viewModel.presentConnectSheet()
+                                }, label: {
+                                    HStack {
+                                        Image(systemName: "plus")
+                                        Text("Connect Wallet")
+                                    }
+                                })
+                            }
                         }, label: {
                             Image(systemName: "line.3.horizontal.decrease.circle")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -151,6 +165,9 @@ struct CollectionPage: View {
                     address: address,
                     tokenId: tokenId
                 )
+                
+            case .NFTWallets:
+                WalletsSheet()
                 
             case .MailForm(let data):
                 MailView(data: data) { result in
