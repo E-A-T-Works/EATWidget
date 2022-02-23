@@ -26,7 +26,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
-        guard let data = CachedNFTStorage.shared.fetch().randomElement() else {
+        guard let data = NFTObjectStorage.shared.fetch().randomElement() else {
             completion(
                 BasicNFTWidgetEntry(
                     date: Date(),
@@ -87,7 +87,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        let options = CachedNFTStorage.shared.fetch()
+        let options = NFTObjectStorage.shared.fetch()
         
         guard let data = (options.first { $0.address == contractAddress && $0.tokenId == tokenId }) else {
             let timeline = Timeline(
@@ -127,7 +127,7 @@ struct BasicNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: CachedNFT?
+    let data: NFTObject?
 }
 
 

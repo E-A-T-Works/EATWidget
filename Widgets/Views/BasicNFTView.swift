@@ -90,7 +90,8 @@ struct SmallBasicNFTView: View {
             HStack(alignment: .top) {
 
                 Image(uiImage: image)
-                    .scaledToFit()
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
 
                 if displayInfo {
                     Spacer()
@@ -138,7 +139,8 @@ struct MediumBasicNFTView: View {
                 ZStack {
 
                     Image(uiImage: image)
-                        .scaledToFit()
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: geo.size.width * 0.5, height: geo.size.height)
                 }
                 
@@ -193,13 +195,11 @@ struct LargeBasicNFTView: View {
     // MARK: Content
     
     var body: some View {
-        ZStack {
-            ZStack {
-                Image(uiImage: image)
-                    .scaledToFit()
-                    .aspectRatio(1, contentMode: .fill)
-            }
-            
+        ZStack {   
+            Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+
             if displayInfo {
                 VStack(alignment: .leading, spacing: 0) {
                     Spacer()
@@ -257,8 +257,8 @@ struct BasicNFTView_Previews: PreviewProvider {
             .previewContext(
                 WidgetPreviewContext(family: .systemSmall)
             )
-            
-            
+
+
             VStack{
                 BasicNFTView(
                     address: TestData.nft.address,

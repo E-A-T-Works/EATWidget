@@ -35,20 +35,4 @@ final class NFTProvider {
             return try! await APIAlchemyProvider.fetchNFT(contractAddress: contractAddress, tokenId: tokenId)
         }
     }
-    
-    static func fetchRandomNFT(ownerAddress: String) async throws -> NFT {
-        do {
-            let items = try await fetchNFTs(ownerAddress: ownerAddress)
-            
-            let randomIndex = Int.random(in: 0..<items.count)
-            
-            return items[randomIndex]
-        
-        } catch {
-            print("⚠️ NFTProvider::fetchRandomNFT: \(error)")
-            
-            throw APIError.BadResponse
-        }
-    }
-    
 }

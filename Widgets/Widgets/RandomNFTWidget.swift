@@ -25,7 +25,7 @@ struct RandomNFTWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (RandomNFTWidgetEntry) -> Void
     ) {
-        guard let data = CachedNFTStorage.shared.fetch().randomElement() else {
+        guard let data = NFTObjectStorage.shared.fetch().randomElement() else {
             completion(
                 RandomNFTWidgetEntry(
                     date: Date(),
@@ -65,7 +65,7 @@ struct RandomNFTWidgetProvider: IntentTimelineProvider {
         // Figure out which address to use
         //
         
-        let wallets = WalletStorage.shared.fetch()
+        let wallets = NFTWalletStorage.shared.fetch()
         
         if wallets.isEmpty {
             let timeline = Timeline(
@@ -91,7 +91,7 @@ struct RandomNFTWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        let options = CachedNFTStorage.shared.fetch().filter { $0.wallet?.address == ownerAddress }
+        let options = NFTObjectStorage.shared.fetch().filter { $0.wallet?.address == ownerAddress }
         
         guard let data = options.randomElement() else {
             let timeline = Timeline(
@@ -130,7 +130,7 @@ struct RandomNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: CachedNFT?
+    let data: NFTObject?
 }
 
 

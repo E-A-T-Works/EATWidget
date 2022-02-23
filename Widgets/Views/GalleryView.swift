@@ -93,18 +93,10 @@ struct MediumGalleryView: View {
                         }
                     }
                 }
-                .padding(.horizontal, inset)
-                .padding(.top, 24)
-                .padding(.bottom, 0)
-                
-                VStack {
-                    HStack {
-                        Branding()
-                            .frame(width: 24, height: 24)
-                            .padding()
-                    }
-                    Spacer()
-                }
+                .padding(inset)
+//                .padding(.horizontal, inset)
+//                .padding(.top, 24)
+//                .padding(.bottom, 0)
             }
         }
     }

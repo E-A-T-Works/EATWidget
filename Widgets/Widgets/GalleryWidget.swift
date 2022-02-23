@@ -99,20 +99,22 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         // Map onto data
         //
         
-        let cached = CachedNFTStorage.shared.fetch()
+        let cached = NFTObjectStorage.shared.fetch()
         
-        let data: [CachedNFT?] = selection!.map({ pick in
+        let data: [NFTObject?] = selection!.map({ pick in
             return cached.first { item in
                 return item.address! == pick[0] && item.tokenId! == pick[1]
             }
         })
+        
+        let cleanedData: [NFTObject] = data.compactMap { $0 }
 
         let timeline = Timeline(
             entries: [
                 GalleryWidgetEntry(
                     date: Date(),
                     kind: .Success,
-                    data: data
+                    data: cleanedData
                 )
             ],
             policy: .never
@@ -127,7 +129,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
 struct GalleryWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
-    let data: [CachedNFT?]?
+    let data: [NFTObject]?
 }
 
 

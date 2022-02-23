@@ -71,9 +71,6 @@
 		5C574D0027BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0227BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
-		5C60F05627BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
-		5C60F05727BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
-		5C60F05827BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */; };
 		5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
 		5C60F06027BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
 		5C60F06127BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
@@ -92,13 +89,10 @@
 		5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
 		5C63086227B2B62A00AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C63086727B2C34900AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
-		5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C63087127B2C4BC00AC2A24 /* NFTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087027B2C4BC00AC2A24 /* NFTItem.swift */; };
-		5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087227B2C57600AC2A24 /* WalletItem.swift */; };
 		5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087427B2C5CB00AC2A24 /* CollectionPageViewModel.swift */; };
 		5C63087727B2C6A000AC2A24 /* NFTSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087627B2C6A000AC2A24 /* NFTSheetViewModel.swift */; };
 		5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087827B2C6FE00AC2A24 /* CollectionPage.swift */; };
-		5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */; };
 		5C63087F27B2CBEE00AC2A24 /* NFTItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63087E27B2CBEE00AC2A24 /* NFTItem+Extensions.swift */; };
 		5C63088127B2CD8400AC2A24 /* ConnectSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63088027B2CD8400AC2A24 /* ConnectSheetViewModel.swift */; };
 		5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63088227B2D2A000AC2A24 /* ConnectSheet.swift */; };
@@ -110,7 +104,6 @@
 		5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084127B2B44900AC2A24 /* Persistence.swift */; };
 		5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
 		5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
-		5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
 		5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
@@ -126,7 +119,6 @@
 		5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084127B2B44900AC2A24 /* Persistence.swift */; };
 		5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */; };
 		5C6308D727B2E3AA00AC2A24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086627B2C34900AC2A24 /* API.swift */; };
-		5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */; };
 		5C6308DB27B2E3B200AC2A24 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63086127B2B62A00AC2A24 /* APIRequest.swift */; };
 		5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085F27B2B60F00AC2A24 /* Formatters.swift */; };
 		5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */; };
@@ -150,10 +142,6 @@
 		5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090927B30FDD00AC2A24 /* Icon_White.png */; };
 		5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
 		5C63090E27B3202000AC2A24 /* RandomNFTWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090D27B3202000AC2A24 /* RandomNFTWidget.swift */; };
-		5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
-		5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
-		5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090F27B337F700AC2A24 /* DataProvider.swift */; };
-		5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091327B407FC00AC2A24 /* WalletWidget.swift */; };
 		5C63091827B435E800AC2A24 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImage.swift */; };
 		5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091A27B4378D00AC2A24 /* ContentView.swift */; };
 		5C828CF127BC313D009D92D6 /* UnsupportedNFTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */; };
@@ -307,7 +295,6 @@
 		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		5C574CFA27BAF81500212FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C574CFF27BAFA4000212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
-		5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedNFTStorage.swift; sourceTree = "<group>"; };
 		5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTAdapters.swift; sourceTree = "<group>"; };
 		5C60F06227BCBF73006F8AB4 /* GalleryWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryWidget.swift; sourceTree = "<group>"; };
 		5C60F06427BCCDE3006F8AB4 /* GalleryView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryView+Extensions.swift"; sourceTree = "<group>"; };
@@ -325,13 +312,10 @@
 		5C63085F27B2B60F00AC2A24 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		5C63086127B2B62A00AC2A24 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		5C63086627B2C34900AC2A24 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStorage.swift; sourceTree = "<group>"; };
 		5C63087027B2C4BC00AC2A24 /* NFTItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTItem.swift; sourceTree = "<group>"; };
-		5C63087227B2C57600AC2A24 /* WalletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItem.swift; sourceTree = "<group>"; };
 		5C63087427B2C5CB00AC2A24 /* CollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewModel.swift; sourceTree = "<group>"; };
 		5C63087627B2C6A000AC2A24 /* NFTSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTSheetViewModel.swift; sourceTree = "<group>"; };
 		5C63087827B2C6FE00AC2A24 /* CollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPage.swift; sourceTree = "<group>"; };
-		5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletItem+Extensions.swift"; sourceTree = "<group>"; };
 		5C63087E27B2CBEE00AC2A24 /* NFTItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTItem+Extensions.swift"; sourceTree = "<group>"; };
 		5C63088027B2CD8400AC2A24 /* ConnectSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectSheetViewModel.swift; sourceTree = "<group>"; };
 		5C63088227B2D2A000AC2A24 /* ConnectSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectSheet.swift; sourceTree = "<group>"; };
@@ -365,8 +349,6 @@
 		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
 		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
 		5C63090D27B3202000AC2A24 /* RandomNFTWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNFTWidget.swift; sourceTree = "<group>"; };
-		5C63090F27B337F700AC2A24 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		5C63091327B407FC00AC2A24 /* WalletWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWidget.swift; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsupportedNFTItem.swift; sourceTree = "<group>"; };
 		5C828CF227BC3265009D92D6 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
@@ -579,7 +561,6 @@
 		5C63086327B2C31900AC2A24 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				5C63090F27B337F700AC2A24 /* DataProvider.swift */,
 				5C1E516D27BBE31E0027869C /* NFTProvider.swift */,
 				5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */,
 			);
@@ -589,8 +570,6 @@
 		5C63086827B2C3E200AC2A24 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				5C63086927B2C3EF00AC2A24 /* WalletStorage.swift */,
-				5C60F05527BCADA4006F8AB4 /* CachedNFTStorage.swift */,
 				5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */,
 				5C06457327C5C3E200E97D1C /* NFTObjectStorage.swift */,
 			);
@@ -636,8 +615,6 @@
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
 				5C828CF027BC313D009D92D6 /* UnsupportedNFTItem.swift */,
 				5C828CF427BC3364009D92D6 /* UnsupportedNFTItem+Extensions.swift */,
-				5C63087227B2C57600AC2A24 /* WalletItem.swift */,
-				5C63087C27B2C85200AC2A24 /* WalletItem+Extensions.swift */,
 				5C84117627B9A6FE0021008E /* TraitGrid.swift */,
 				5C63087027B2C4BC00AC2A24 /* NFTItem.swift */,
 				5C63087E27B2CBEE00AC2A24 /* NFTItem+Extensions.swift */,
@@ -737,7 +714,6 @@
 				5C6308E727B2EB7400AC2A24 /* BasicNFTWidget.swift */,
 				5C63090D27B3202000AC2A24 /* RandomNFTWidget.swift */,
 				5C60F06227BCBF73006F8AB4 /* GalleryWidget.swift */,
-				5C63091327B407FC00AC2A24 /* WalletWidget.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -982,12 +958,10 @@
 				5C574CEF27BAF16300212FED /* NFT.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extensions.swift in Sources */,
 				5C1E516E27BBE31E0027869C /* NFTProvider.swift in Sources */,
-				5C63087327B2C57600AC2A24 /* WalletItem.swift in Sources */,
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
-				5C60F05627BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* NFTVisual.swift in Sources */,
@@ -1014,11 +988,8 @@
 				5C63087127B2C4BC00AC2A24 /* NFTItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* ActionRow.swift in Sources */,
 				5C06457027C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,
-				5C63086A27B2C3EF00AC2A24 /* WalletStorage.swift in Sources */,
 				5C91BE1A27B468B0001074CE /* UIColor+Extensions.swift in Sources */,
 				5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */,
-				5C63091027B337F700AC2A24 /* DataProvider.swift in Sources */,
-				5C63087D27B2C85200AC2A24 /* WalletItem+Extensions.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
@@ -1058,11 +1029,8 @@
 				5C574CE827BAF00E00212FED /* APIEtherscan.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
 				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
-				5C6308B427B2DA0300AC2A24 /* WalletStorage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
 				5C60F06027BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
-				5C63091127B337F700AC2A24 /* DataProvider.swift in Sources */,
-				5C60F05727BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C84117127B9A2360021008E /* SectionTitle.swift in Sources */,
@@ -1087,14 +1055,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C574CE927BAF00E00212FED /* APIEtherscan.swift in Sources */,
-				5C60F05827BCADA4006F8AB4 /* CachedNFTStorage.swift in Sources */,
 				5C91BE2327B471B3001074CE /* HexagonParameters.swift in Sources */,
 				5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C6308E627B2EA5C00AC2A24 /* WidgetEntry.swift in Sources */,
 				5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImage.swift in Sources */,
 				5C91BE1B27B468B0001074CE /* UIColor+Extensions.swift in Sources */,
-				5C63091227B337F700AC2A24 /* DataProvider.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* BasicNFTView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* BasicNFTView+Extensions.swift in Sources */,
 				5C06457627C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
@@ -1108,7 +1074,6 @@
 				5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */,
 				5C574CED27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
-				5C63091427B407FC00AC2A24 /* WalletWidget.swift in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
 				5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5C6308E827B2EB7400AC2A24 /* BasicNFTWidget.swift in Sources */,
@@ -1119,7 +1084,6 @@
 				5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C06457227C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,
 				5C6308F927B2F23900AC2A24 /* WalletsView.swift in Sources */,
-				5C6308DA27B2E3B000AC2A24 /* WalletStorage.swift in Sources */,
 				5C574CF127BAF16300212FED /* NFT.swift in Sources */,
 				5C1E517027BBE31E0027869C /* NFTProvider.swift in Sources */,
 				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,

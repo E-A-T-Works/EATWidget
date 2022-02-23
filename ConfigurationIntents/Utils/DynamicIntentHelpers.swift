@@ -45,9 +45,8 @@ final class DynamicIntentHelpers {
                 identifier: "\(item.address!)/\(item.tokenId!)",
                 display: (item.title ?? item.tokenId)!,
                 subtitle: nil,
-//                image: item.imageUrl != nil ? INImage(url: item.imageUrl!) : nil
-//                image: nil
-                image: INImage(imageData: item.image!.blob!)
+                image: nil
+//                image: INImage(imageData: item.image!.blob!)
             )
             
             
