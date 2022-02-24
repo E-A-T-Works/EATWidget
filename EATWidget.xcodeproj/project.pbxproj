@@ -157,6 +157,9 @@
 		5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C8C69FD27C71F7100D66BD7 /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8C69FC27C71F7100D66BD7 /* PocketSVG */; };
 		5C8C69FF27C71F7B00D66BD7 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */; };
+		5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
+		5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
+		5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
@@ -362,6 +365,7 @@
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
 		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
 		5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImage.swift; sourceTree = "<group>"; };
+		5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "everyicon-test.svg"; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* NFTCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCard.swift; sourceTree = "<group>"; };
 		5C91BE1427B44B5C001074CE /* NFTCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTCard+Extensions.swift"; sourceTree = "<group>"; };
@@ -548,6 +552,7 @@
 		5C63085627B2B58B00AC2A24 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */,
 				5C63085927B2B5BE00AC2A24 /* TestData.swift */,
 			);
 			path = Testing;
@@ -869,6 +874,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CBC06B627BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
+				5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06AA27BC5BC300C2CADD /* eat-b-w-2.png in Resources */,
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
@@ -903,6 +909,7 @@
 				5CBC069C27BC5BC300C2CADD /* eat-b-w-5.png in Resources */,
 				5C035EF127B6D17900A11697 /* Discord.png in Resources */,
 				5CBC06AE27BC5BC300C2CADD /* eat-w-b-2.png in Resources */,
+				5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A827BC5BC300C2CADD /* eat-b-w-6.png in Resources */,
 				5CBC06B427BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
 				5CBC06C327BC5BC300C2CADD /* eat-w-b-1.png in Resources */,
@@ -936,6 +943,7 @@
 				5CBC06AC27BC5BC300C2CADD /* eat-b-w-2.png in Resources */,
 				5CBC06B527BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
 				5CBC06C127BC5BC300C2CADD /* eat-b-w-4.png in Resources */,
+				5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A027BC5BC300C2CADD /* eat-b-w-0.png in Resources */,
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-6.png in Resources */,
