@@ -155,6 +155,8 @@
 		5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
+		5C8C69FD27C71F7100D66BD7 /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8C69FC27C71F7100D66BD7 /* PocketSVG */; };
+		5C8C69FF27C71F7B00D66BD7 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */; };
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
@@ -359,6 +361,7 @@
 		5C84117627B9A6FE0021008E /* TraitGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitGrid.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
 		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
+		5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImage.swift; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* NFTCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCard.swift; sourceTree = "<group>"; };
 		5C91BE1427B44B5C001074CE /* NFTCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTCard+Extensions.swift"; sourceTree = "<group>"; };
@@ -400,6 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8C69FD27C71F7100D66BD7 /* PocketSVG in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +627,7 @@
 				5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */,
 				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
+				5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */,
 				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
 				5C84117627B9A6FE0021008E /* TraitGrid.swift */,
 				5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */,
@@ -773,6 +778,9 @@
 				5C6308CD27B2E0C900AC2A24 /* PBXTargetDependency */,
 			);
 			name = EATWidget;
+			packageProductDependencies = (
+				5C8C69FC27C71F7100D66BD7 /* PocketSVG */,
+			);
 			productName = EATWidget;
 			productReference = 5C63083527B2B44800AC2A24 /* EATWidget.app */;
 			productType = "com.apple.product-type.application";
@@ -841,6 +849,9 @@
 				Base,
 			);
 			mainGroup = 5C63082C27B2B44800AC2A24;
+			packageReferences = (
+				5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */,
+			);
 			productRefGroup = 5C63083627B2B44800AC2A24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -967,6 +978,7 @@
 				5C1E516E27BBE31E0027869C /* NFTProvider.swift in Sources */,
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
+				5C8C69FF27C71F7B00D66BD7 /* SVGImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
@@ -1465,6 +1477,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pocketsvg/PocketSVG.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5C8C69FC27C71F7100D66BD7 /* PocketSVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */;
+			productName = PocketSVG;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5C63084327B2B44900AC2A24 /* EATWidget.xcdatamodeld */ = {
