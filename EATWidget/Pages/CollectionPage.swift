@@ -176,7 +176,6 @@ struct CollectionPage: View {
                     print()
                 }
             }
-            
         }
     }
     

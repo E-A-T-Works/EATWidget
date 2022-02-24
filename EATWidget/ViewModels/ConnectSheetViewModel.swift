@@ -26,8 +26,10 @@ final class ConnectSheetViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var form: ConnectFormState
-    @Published private(set) var canAddWallet: Bool = false
+    @Published var form: ConnectFormState = ConnectFormState(
+        title: "",
+        address: ""
+    )
     
     @Published private(set) var ready: Bool = false
     @Published private(set) var loading: Bool = false
@@ -53,12 +55,9 @@ final class ConnectSheetViewModel: ObservableObject {
   
     // MARK: - Initialization
     
-    init(initialFormState: ConnectFormState) {
-        self.form = initialFormState
-    }
+    init() { }
     
     // MARK: - Public Methods
-    
     
     func updateTitle(_ newValue: String) {
         guard !(newValue.count > 50) else {
@@ -87,7 +86,7 @@ final class ConnectSheetViewModel: ObservableObject {
         showingSheet.toggle()
     }
     
-    func load() {
+    func lookup() {
         ready = true
 
         Task {
@@ -99,12 +98,10 @@ final class ConnectSheetViewModel: ObservableObject {
                     strategy: .Alchemy
                 )
                 
-                self.canAddWallet = !self.supported.isEmpty
                 self.loading = false
                 
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::load() \(error)")
-                self.canAddWallet = false
                 self.loading = false
             }
         }

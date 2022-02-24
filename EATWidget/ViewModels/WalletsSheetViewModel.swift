@@ -9,10 +9,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-enum WalletsSheetContent {
-    case NFTWallet(address: String)
-}
-
 
 @MainActor
 final class WalletsSheetViewModel: ObservableObject {
@@ -21,11 +17,15 @@ final class WalletsSheetViewModel: ObservableObject {
     @Published private(set) var wallets: [NFTWallet] = []
     
     @Published private(set) var loading: Bool = true
-    
-    @Published var sheetContent: WalletsSheetContent?
-    @Published var showingSheet: Bool = false
-    
+        
     private var cancellable: AnyCancellable?
+    
+    var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
+    private var shouldDismissView = false {
+        didSet {
+            viewDismissalModePublisher.send(shouldDismissView)
+        }
+    }
     
     // MARK: - Initialization
     
@@ -52,8 +52,8 @@ final class WalletsSheetViewModel: ObservableObject {
 
     }
     
-    func presentWalletDetailsSheet(address: String) {
-        sheetContent = .NFTWallet(address: address)
-        showingSheet.toggle()
+
+    func dismiss() {
+        self.shouldDismissView = true
     }
 }

@@ -12,9 +12,7 @@ struct ConnectSheet: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject private var viewModel = ConnectSheetViewModel(
-        initialFormState: ConnectFormState(title: "", address: "")
-    )
+    @StateObject private var viewModel = ConnectSheetViewModel()
     
     @FocusState private var titleIsFocused: Bool
     @FocusState private var addressIsFocused: Bool
@@ -46,20 +44,25 @@ struct ConnectSheet: View {
                 
                 Section {
                     Button(
-                        "Load NFTs",
+                        "Lookup NFTs",
                         action: {
                             addressIsFocused = false
                             titleIsFocused = false
                             
-                            viewModel.load()
+                            viewModel.lookup()
                         }
                     )
                 }
                 
                 if viewModel.ready {
                     if viewModel.loading {
-                        VStack(alignment: .center) {
+                        HStack {
+                            Spacer()
+                            
                             ViewLoader()
+                                .padding()
+                            
+                            Spacer()
                         }
                     } else {
                         
@@ -92,7 +95,9 @@ struct ConnectSheet: View {
                     action: {
                         viewModel.submit()
                     }
-                ).disabled(!viewModel.canAddWallet)
+                ).disabled(
+                    viewModel.loading || !viewModel.form.isValid || viewModel.supported.isEmpty
+                )
           })
         })
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in

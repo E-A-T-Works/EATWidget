@@ -17,9 +17,11 @@ struct WalletItem: View {
             HeadingLockup(
                 title: title ?? address.formattedWeb3,
                 text: nil,
-                size: 12
+                size: 16
             )
+            
             Spacer()
+   
         }
     }
 }

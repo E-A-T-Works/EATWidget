@@ -26,7 +26,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
     private override init() {
         fetchRequest = NFTWallet.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTWallet.timestamp, ascending: true)
+            NSSortDescriptor(keyPath: \NFTWallet.timestamp, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -79,7 +79,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         return newObject
     }
     
-    func update(title: String, object: NFTWallet) throws -> NFTWallet {
+    func update(title: String?, object: NFTWallet) throws -> NFTWallet {
         object.title = title
         
         try commit()

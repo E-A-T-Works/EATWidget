@@ -27,7 +27,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     private override init() {
         fetchRequest = NFTObject.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTObject.timestamp, ascending: true)
+            NSSortDescriptor(keyPath: \NFTObject.timestamp, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -124,7 +124,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         /// Create entries for the items not already stored
         ///
         
-        await list.asyncForEach { item in
+        await list.concurrentForEach { item in
             
             ///
             /// Determine if this NFT already has an entry in the store. If it does, resume, the data should not
@@ -174,6 +174,8 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             
             newNFTObject.timestamp = Date()
         }
+        
+        
         
         
         ///
