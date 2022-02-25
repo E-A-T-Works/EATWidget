@@ -28,7 +28,6 @@ extension APIAlchemyUri: Decodable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        
         let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
                 
         raw = rawString.isEmpty || !rawString.isValidURL || !ALLOWED_EXTENSIONS.contains((rawString as NSString).pathExtension) ? nil : URL(string: rawString)
@@ -215,7 +214,7 @@ extension APIAlchemyNFT: Decodable {
 
 
 extension APIAlchemyNFT {
-    var isSupported: Bool {
+    var isValid: Bool {
         guard let media = self.media.first else {
             return false
         }

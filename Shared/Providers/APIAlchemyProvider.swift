@@ -10,7 +10,7 @@ import UIKit
 
 
 final class APIAlchemyProvider {
-    static func fetchNFTs(ownerAddress: String) async throws -> [NFT] {
+    static func fetchNFTs(ownerAddress: String) async throws -> [APIAlchemyNFT] {
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
         guard let key = apiKey, !key.isEmpty else {
             print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
@@ -34,38 +34,9 @@ final class APIAlchemyProvider {
             let request = APIRequest(url: url)
             
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
-            
-            let suported = response.ownedNfts.filter {
-                $0.isSupported
-            }.prefix(25)  // TODO: Revisit this hard limit
-            
-            let list: [NFT?] = await suported.asyncMap { (item: APIAlchemyNFT) -> NFT? in
-                
-                guard let imageUrl = item.media.first?.gateway else { return nil }
-                
-                guard let imageData = try? Data(contentsOf: imageUrl) else { return nil }
-                
-                // enforce 10mb size limit
-                if imageData.count > (10 * 1_000_000) { return nil }
-                
-                return NFT(
-                    id: "\(item.contract.address)/\(item.id.tokenId)",
-                    address: item.contract.address,
-                    tokenId: item.id.tokenId,
-                    standard: item.id.tokenMetadata.tokenType,
-                    title: item.title,
-                    text: item.text,
-                    image: UIImage(data: imageData)!,
-                    animationUrl: item.metadata?.animationUrl,
-                    externalURL: nil,
-                    traits: []
-                )
-                
-            }
-                
-            let cleanedList: [NFT] = list.compactMap{ $0 }
 
-            return cleanedList
+            return response.ownedNfts
+
         } catch {
             print("⚠️ APIAlchemyProvider::fetchNFTs: \(error)")
             

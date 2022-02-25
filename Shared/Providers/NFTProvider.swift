@@ -22,7 +22,9 @@ final class NFTProvider {
         
         switch strategy {
         case .Alchemy:
-            list = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
+            let response = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
+            
+            list = await NFTAdapters.mapAlchemyDataToNFTs(list: response)
         }
  
         return list

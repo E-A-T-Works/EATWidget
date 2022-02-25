@@ -10,12 +10,12 @@ import PocketSVG
 
 struct ContentView: View {
     var body: some View {
-//        NavigationView {
-//            CollectionPage()
-//        }
-//        .navigationViewStyle(.stack)
+        NavigationView {
+            CollectionPage()
+        }
+        .navigationViewStyle(.stack)
         
-        Text("HI").onAppear {
+//        Text("HI").onAppear {
 //            print("HI THERE")
 //            
 //            DispatchQueue.global(qos: .background).async {
@@ -36,9 +36,9 @@ struct ContentView: View {
 ////                DispatchQueue.main.async {
 ////                    imageView.image = image
 ////                }
-            }
+//            }
             
-        }
+//        }
 //        VStack {
 //            SVGImageView(contentsOf: URL(string: "https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg")!)
 //        }
