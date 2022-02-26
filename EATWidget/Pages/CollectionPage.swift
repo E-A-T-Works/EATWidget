@@ -60,9 +60,7 @@ struct CollectionPage: View {
     func test() {
         DispatchQueue.global(qos: .background).async {
             let url = Bundle.main.url(forResource: "everyicon-test", withExtension: "svg")!
-            let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-            
-
+            let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
             
             let svgLayer = SVGLayer(contentsOf: url)
             svgLayer.frame = frame

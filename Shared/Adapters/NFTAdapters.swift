@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PocketSVG
 
 
 final class NFTAdapters {
@@ -85,24 +86,44 @@ final class NFTAdapters {
            
             guard let metadata = item.metadata else { return nil }
             
-            guard let svg = metadata.image?.replacingOccurrences(of: "data:image/svg+xml,", with: "").replacingOccurrences(of: "width='512' height='512'", with: "viewBox='0 0 512 512'") else { return nil }
+            guard let svgString = metadata.image?
+                    .replacingOccurrences(of: "data:image/svg+xml,", with: "")
+                    .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
+                    .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
+                    .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
+                    .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'") else { return nil }
+            
+            print(svgString)
             
             
-            print(svg)
-    
-//            let data = try svg.data(using: .utf8)
-//            let image = SVGKImage(data: data).uiImage!
-//
-//            if let data = response.data {
-//                if let image = SVGKImage(data: data) {
-//                   if let uiImageInstance = image.uiImage {
-//                       self.userImageView.image = uiImageInstance
-//                   }
-//                }
-//            }
-    
-            let image = UIImage(systemName: "plus")!
+            let temporaryDirectoryURL = URL(
+                fileURLWithPath: NSTemporaryDirectory(),
+                isDirectory: true
+            )
+            
+            let temporaryFilename = ProcessInfo().globallyUniqueString
 
+            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
+            
+            let svgData: Data = svgString.data(using: .utf8)!
+            try svgData.write(
+                to: temporaryFileURL,
+                options: .atomic
+            )
+            
+            
+            let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
+            
+            let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
+            svgLayer.frame = frame
+
+            guard let image = snapshotImage(for: svgLayer) else {
+                print("Fucked it")
+                return nil
+            }
+
+            try FileManager.default.removeItem(at: temporaryFileURL)
+            
             return NFT(
                 id: "\(item.contract.address)/\(item.id.tokenId)",
                 address: item.contract.address,
@@ -122,7 +143,19 @@ final class NFTAdapters {
     }
     
     
-    
+    static private func snapshotImage(for layer: CALayer) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.bounds.size, false, UIScreen.main.scale)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        
+        layer.render(in: context)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
     
 
     
