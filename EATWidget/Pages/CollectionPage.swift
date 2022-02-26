@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import PocketSVG
 
 struct CollectionPage: View {
     @Environment(\.colorScheme) var colorScheme
@@ -41,30 +41,54 @@ struct CollectionPage: View {
 
     // MARK: Body
     
+    @State var img: UIImage?
+    
+    private func snapshotImage(for layer: CALayer) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.bounds.size, false, UIScreen.main.scale)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        
+        layer.render(in: context)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    func test() {
+        DispatchQueue.global(qos: .background).async {
+            let url = Bundle.main.url(forResource: "everyicon-test", withExtension: "svg")!
+            let frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+            
+
+            
+            let svgLayer = SVGLayer(contentsOf: url)
+            svgLayer.frame = frame
+
+            let image = self.snapshotImage(for: svgLayer)
+
+            DispatchQueue.main.async {
+                img = image
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
 
             VStack {
-                SVGImage(name: "circle")
                 
-//                SVGImage(
-//                    content: svgString,
-//                    size: CGSize(width:200, height:200)
-//                )
-//                .frame(width: 200, height: 200)
-//                .background(.red)
-//                .padding()
-//
-//                Image(
-//                    uiImage:  SVGKImage(
-//                        data: svgs.data(using: .utf8)
-//                    ).uiImage
-//                )
-//                    .resizable()
-//                    .frame(width: 200, height: 200)
-//                    .background(.red)
-//
-            }
+                Text("HELLO")
+                if img != nil {
+                    Image(uiImage: img!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(.red)
+                        .padding()
+                }
+            }.onAppear{test()}
             
             
 //            if viewModel.loading {

@@ -5,44 +5,34 @@
 //  Created by Adrian Vatchinsky on 2/25/22.
 //
 
+import PocketSVG
 import SwiftUI
-import Macaw
-
 
 struct SVGImage: UIViewRepresentable {
-    // a binding allows for dynamic updates to the shown image
-    @Binding var name: String
-
-    init(name: Binding<String>) {
-        _name = name
-    }
-
-    // convenience constructor to allow for a constant image name
-    init(name: String) {
-        _name = .constant(name)
-    }
-
-    func makeUIView(context: Context) -> SVGView {
-        let svgView = SVGView()
-        svgView.backgroundColor = .clear
-        svgView.contentMode = .scaleAspectFit
+    
+    func makeUIView(context: Context) -> UIView {
+        let svgView = UIView(frame: UIScreen.main.bounds)
         
+        let url = Bundle.main.url(forResource: "everyicon-test", withExtension: "svg")!
+                
+        let svgImageView = SVGImageView.init(contentsOf: url)
+        svgImageView.frame = svgView.bounds
+        svgImageView.contentMode = .scaleAspectFit
+        svgView.addSubview(svgImageView)
+
         return svgView
     }
 
-    func updateUIView(_ uiView: SVGView, context: Context) {
-        uiView.fileName = name
+    func updateUIView(_ view: UIView, context: Context) {
+
     }
 }
 
 struct SVGImage_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            SVGImage(
-                name: "everyicon-test"
-            )
+        VStack {
+            SVGImage()
         }
-        .frame(width: 512, height: 512)
         .padding()
         .previewLayout(PreviewLayout.sizeThatFits)
     }
