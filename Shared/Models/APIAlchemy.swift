@@ -126,8 +126,7 @@ extension APIAlchemyAttribute: Decodable {
 struct APIAlchemyMetadata {
     let title: String?
     let text: String?
-    let imageUrl: URL?
-    let thumbnailUrl: URL?
+    let image: String?
     let animationUrl: URL?
     let externalUrl: URL?
     let backgroundColor: String?
@@ -138,7 +137,7 @@ extension APIAlchemyMetadata: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "name"
         case text = "description"
-        case imageUrl = "image"
+        case image = "image"
         case thumbnailUrl = "thumbnail_url"
         case animationUrl = "animation_url"
         case externalUrl = "external_url"
@@ -152,9 +151,7 @@ extension APIAlchemyMetadata: Decodable {
         title = (try? container.decode(String.self, forKey: .title)) ?? nil
         text = (try? container.decode(String.self, forKey: .text)) ?? nil
         
-        imageUrl = (try? URL(string: container.decode(String.self, forKey: .imageUrl))) ?? nil
-        
-        thumbnailUrl = (try? URL(string: container.decode(String.self, forKey: .thumbnailUrl))) ?? nil
+        image = (try? container.decode(String.self, forKey: .image)) ?? nil
         
         animationUrl = (try? URL(string: container.decode(String.self, forKey: .animationUrl))) ?? nil
         

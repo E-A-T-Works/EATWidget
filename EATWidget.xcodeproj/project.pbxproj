@@ -57,6 +57,12 @@
 		5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
 		5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
 		5C366B0B27B6FE5E00D9A0BE /* URLLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0827B6FE5E00D9A0BE /* URLLink.swift */; };
+		5C3D47B027C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
+		5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
+		5C3D47B227C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
+		5C3D47B427C98E5A00C16464 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47B327C98E5A00C16464 /* WebView.swift */; };
+		5C3D47B527C98E5A00C16464 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47B327C98E5A00C16464 /* WebView.swift */; };
+		5C3D47B627C98E5A00C16464 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47B327C98E5A00C16464 /* WebView.swift */; };
 		5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
 		5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
 		5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */; };
@@ -155,8 +161,6 @@
 		5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
 		5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
-		5C8C69FD27C71F7100D66BD7 /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8C69FC27C71F7100D66BD7 /* PocketSVG */; };
-		5C8C69FF27C71F7B00D66BD7 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */; };
 		5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
 		5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
 		5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
@@ -184,6 +188,15 @@
 		5CA9ADAD27C6A590003C25DE /* WalletSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADAC27C6A590003C25DE /* WalletSheetViewModel.swift */; };
 		5CA9ADAF27C6ABC2003C25DE /* WalletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */; };
 		5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */; };
+		5CB2022B27C9C6730026A3D3 /* Macaw in Frameworks */ = {isa = PBXBuildFile; productRef = 5CB2022A27C9C6730026A3D3 /* Macaw */; };
+		5CB2022D27C9C68B0026A3D3 /* Macaw in Frameworks */ = {isa = PBXBuildFile; productRef = 5CB2022C27C9C68B0026A3D3 /* Macaw */; };
+		5CB2022F27C9C6990026A3D3 /* Macaw in Frameworks */ = {isa = PBXBuildFile; productRef = 5CB2022E27C9C6990026A3D3 /* Macaw */; };
+		5CB2023127C9C6A10026A3D3 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2023027C9C6A00026A3D3 /* SVGImage.swift */; };
+		5CB2023227C9C6A10026A3D3 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2023027C9C6A00026A3D3 /* SVGImage.swift */; };
+		5CB2023327C9C6A10026A3D3 /* SVGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB2023027C9C6A00026A3D3 /* SVGImage.swift */; };
+		5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
+		5CB2023627C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
+		5CB2023727C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
 		5CBC069B27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
 		5CBC069C27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
 		5CBC069D27BC5BC300C2CADD /* eat-b-w-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */; };
@@ -297,6 +310,8 @@
 		5C1E516D27BBE31E0027869C /* NFTProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTProvider.swift; sourceTree = "<group>"; };
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
+		5C3D47AF27C97FD500C16464 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		5C3D47B327C98E5A00C16464 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemy.swift; sourceTree = "<group>"; };
 		5C574CE627BAF00E00212FED /* APIEtherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEtherscan.swift; sourceTree = "<group>"; };
 		5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemyProvider.swift; sourceTree = "<group>"; };
@@ -364,7 +379,6 @@
 		5C84117627B9A6FE0021008E /* TraitGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitGrid.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
 		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
-		5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImage.swift; sourceTree = "<group>"; };
 		5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "everyicon-test.svg"; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* NFTCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCard.swift; sourceTree = "<group>"; };
@@ -381,6 +395,8 @@
 		5CA9ADAC27C6A590003C25DE /* WalletSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSheetViewModel.swift; sourceTree = "<group>"; };
 		5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItem.swift; sourceTree = "<group>"; };
 		5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletItem+Extensions.swift"; sourceTree = "<group>"; };
+		5CB2023027C9C6A00026A3D3 /* SVGImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGImage.swift; sourceTree = "<group>"; };
+		5CB2023427C9C9DA0026A3D3 /* circle.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = circle.svg; sourceTree = "<group>"; };
 		5CBC068C27BC5BC200C2CADD /* eat-b-w-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-5.png"; sourceTree = "<group>"; };
 		5CBC068D27BC5BC200C2CADD /* eat-b-w-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-0.png"; sourceTree = "<group>"; };
 		5CBC068E27BC5BC200C2CADD /* eat-w-b-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-6.png"; sourceTree = "<group>"; };
@@ -407,7 +423,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C8C69FD27C71F7100D66BD7 /* PocketSVG in Frameworks */,
+				5CB2022B27C9C6730026A3D3 /* Macaw in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB2022F27C9C6990026A3D3 /* Macaw in Frameworks */,
 				5C63089F27B2D8EE00AC2A24 /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +440,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CB2022D27C9C68B0026A3D3 /* Macaw in Frameworks */,
 				5C6308C527B2E0C800AC2A24 /* SwiftUI.framework in Frameworks */,
 				5C6308C327B2E0C800AC2A24 /* WidgetKit.framework in Frameworks */,
 			);
@@ -553,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */,
+				5CB2023427C9C9DA0026A3D3 /* circle.svg */,
 				5C63085927B2B5BE00AC2A24 /* TestData.swift */,
 			);
 			path = Testing;
@@ -568,6 +587,7 @@
 				5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */,
 				5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */,
 				5C1C71C527BC011A009BFC15 /* String+Extensions.swift */,
+				5C3D47AF27C97FD500C16464 /* View+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -632,7 +652,6 @@
 				5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */,
 				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
-				5C8C69FE27C71F7B00D66BD7 /* SVGImage.swift */,
 				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
 				5C84117627B9A6FE0021008E /* TraitGrid.swift */,
 				5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */,
@@ -752,6 +771,8 @@
 				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
 				5C84117827B9A9530021008E /* TraitBox.swift */,
 				5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */,
+				5C3D47B327C98E5A00C16464 /* WebView.swift */,
+				5CB2023027C9C6A00026A3D3 /* SVGImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -784,7 +805,7 @@
 			);
 			name = EATWidget;
 			packageProductDependencies = (
-				5C8C69FC27C71F7100D66BD7 /* PocketSVG */,
+				5CB2022A27C9C6730026A3D3 /* Macaw */,
 			);
 			productName = EATWidget;
 			productReference = 5C63083527B2B44800AC2A24 /* EATWidget.app */;
@@ -803,6 +824,9 @@
 			dependencies = (
 			);
 			name = ConfigurationIntents;
+			packageProductDependencies = (
+				5CB2022E27C9C6990026A3D3 /* Macaw */,
+			);
 			productName = ConfigurationIntents;
 			productReference = 5C63089E27B2D8EE00AC2A24 /* ConfigurationIntents.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -820,6 +844,9 @@
 			dependencies = (
 			);
 			name = WidgetsExtension;
+			packageProductDependencies = (
+				5CB2022C27C9C68B0026A3D3 /* Macaw */,
+			);
 			productName = WidgetsExtension;
 			productReference = 5C6308C127B2E0C800AC2A24 /* WidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -855,7 +882,7 @@
 			);
 			mainGroup = 5C63082C27B2B44800AC2A24;
 			packageReferences = (
-				5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */,
+				5CB2022927C9C6730026A3D3 /* XCRemoteSwiftPackageReference "Macaw" */,
 			);
 			productRefGroup = 5C63083627B2B44800AC2A24 /* Products */;
 			projectDirPath = "";
@@ -896,6 +923,7 @@
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
 				5CBC069E27BC5BC300C2CADD /* eat-b-w-0.png in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
+				5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B027BC5BC300C2CADD /* eat-w-b-4.png in Resources */,
 				5CBC06A127BC5BC300C2CADD /* eat-w-b-6.png in Resources */,
 				5CBC06BC27BC5BC300C2CADD /* eat-w-b-5.png in Resources */,
@@ -927,6 +955,7 @@
 				5CBC06B727BC5BC300C2CADD /* eat-w-b-0.png in Resources */,
 				5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */,
 				5CBC06B127BC5BC300C2CADD /* eat-w-b-4.png in Resources */,
+				5CB2023627C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5C035EC827B5B43500A11697 /* Etherscan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -939,6 +968,7 @@
 				5CBC06C727BC5BC300C2CADD /* eat-b-w-3.png in Resources */,
 				5CBC06A627BC5BC300C2CADD /* eat-b-w-1.png in Resources */,
 				5CBC06AF27BC5BC300C2CADD /* eat-w-b-2.png in Resources */,
+				5CB2023727C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B227BC5BC300C2CADD /* eat-w-b-4.png in Resources */,
 				5CBC06AC27BC5BC300C2CADD /* eat-b-w-2.png in Resources */,
 				5CBC06B527BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
@@ -986,7 +1016,6 @@
 				5C1E516E27BBE31E0027869C /* NFTProvider.swift in Sources */,
 				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
-				5C8C69FF27C71F7B00D66BD7 /* SVGImage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
@@ -1003,11 +1032,13 @@
 				5C1C71C427BBFBFA009BFC15 /* NFTDetails+Extensions.swift in Sources */,
 				5C63086727B2C34900AC2A24 /* API.swift in Sources */,
 				5C63087727B2C6A000AC2A24 /* NFTSheetViewModel.swift in Sources */,
+				5C3D47B427C98E5A00C16464 /* WebView.swift in Sources */,
 				5C91BE1527B44B5C001074CE /* NFTCard+Extensions.swift in Sources */,
 				5C91BE0F27B43A27001074CE /* Theme.swift in Sources */,
 				5C63086227B2B62A00AC2A24 /* APIRequest.swift in Sources */,
 				5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */,
 				5C63088127B2CD8400AC2A24 /* ConnectSheetViewModel.swift in Sources */,
+				5C3D47B027C97FD500C16464 /* View+Extensions.swift in Sources */,
 				5C1C71CA27BC05E7009BFC15 /* URLCache+imageCache.swift in Sources */,
 				5CA9ADAD27C6A590003C25DE /* WalletSheetViewModel.swift in Sources */,
 				5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */,
@@ -1025,6 +1056,7 @@
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
+				5CB2023127C9C6A10026A3D3 /* SVGImage.swift in Sources */,
 				5C84117727B9A6FE0021008E /* TraitGrid.swift in Sources */,
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
@@ -1052,6 +1084,7 @@
 				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C06457127C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,
 				5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */,
+				5C3D47B527C98E5A00C16464 /* WebView.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C574CF027BAF16300212FED /* NFT.swift in Sources */,
@@ -1061,6 +1094,7 @@
 				5C574CE827BAF00E00212FED /* APIEtherscan.swift in Sources */,
 				5C6308AE27B2D9EF00AC2A24 /* Persistence.swift in Sources */,
 				5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */,
+				5CB2023227C9C6A10026A3D3 /* SVGImage.swift in Sources */,
 				5C6308AD27B2D9ED00AC2A24 /* AppGroup.swift in Sources */,
 				5C60F06027BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
@@ -1070,6 +1104,7 @@
 				5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */,
 				5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
 				5C574CEC27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
+				5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C06457527C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
@@ -1093,6 +1128,7 @@
 				5C6308DD27B2E3B600AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C63090127B2F72000AC2A24 /* URLImage.swift in Sources */,
 				5C91BE1B27B468B0001074CE /* UIColor+Extensions.swift in Sources */,
+				5C3D47B227C97FD500C16464 /* View+Extensions.swift in Sources */,
 				5C6308F527B2F17E00AC2A24 /* BasicNFTView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* BasicNFTView+Extensions.swift in Sources */,
 				5C06457627C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
@@ -1111,6 +1147,7 @@
 				5C6308E827B2EB7400AC2A24 /* BasicNFTWidget.swift in Sources */,
 				5C63090E27B3202000AC2A24 /* RandomNFTWidget.swift in Sources */,
 				5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */,
+				5CB2023327C9C6A10026A3D3 /* SVGImage.swift in Sources */,
 				5C6308F127B2F14900AC2A24 /* UnconfiguredView.swift in Sources */,
 				5C91BE1127B43A27001074CE /* Theme.swift in Sources */,
 				5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */,
@@ -1126,6 +1163,7 @@
 				5C6308EC27B2EC2000AC2A24 /* WidgetsHelpers.swift in Sources */,
 				5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */,
 				5C84117B27B9A9530021008E /* TraitBox.swift in Sources */,
+				5C3D47B627C98E5A00C16464 /* WebView.swift in Sources */,
 				5C91BE1827B45FA0001074CE /* UIImage+Extensions.swift in Sources */,
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
 				5CCA359F27BC23DD00715F85 /* GalleryView.swift in Sources */,
@@ -1487,21 +1525,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */ = {
+		5CB2022927C9C6730026A3D3 /* XCRemoteSwiftPackageReference "Macaw" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pocketsvg/PocketSVG.git";
+			repositoryURL = "https://github.com/exyte/Macaw";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.0;
+				minimumVersion = 0.9.9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5C8C69FC27C71F7100D66BD7 /* PocketSVG */ = {
+		5CB2022A27C9C6730026A3D3 /* Macaw */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C8C69FB27C71F7100D66BD7 /* XCRemoteSwiftPackageReference "PocketSVG" */;
-			productName = PocketSVG;
+			package = 5CB2022927C9C6730026A3D3 /* XCRemoteSwiftPackageReference "Macaw" */;
+			productName = Macaw;
+		};
+		5CB2022C27C9C68B0026A3D3 /* Macaw */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CB2022927C9C6730026A3D3 /* XCRemoteSwiftPackageReference "Macaw" */;
+			productName = Macaw;
+		};
+		5CB2022E27C9C6990026A3D3 /* Macaw */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CB2022927C9C6730026A3D3 /* XCRemoteSwiftPackageReference "Macaw" */;
+			productName = Macaw;
 		};
 /* End XCSwiftPackageProductDependency section */
 

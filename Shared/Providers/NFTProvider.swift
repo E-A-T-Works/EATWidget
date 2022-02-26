@@ -13,6 +13,7 @@ enum DataStrategies {
 }
 
 final class NFTProvider {
+
     static func fetchNFTs(
         ownerAddress: String,
         strategy: DataStrategies = .Alchemy
