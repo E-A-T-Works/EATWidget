@@ -28,66 +28,86 @@ struct NFTSheet: View {
                 if viewModel.error {
                     Text("Something went wrong...")
                 } else {
-                
-                    ScrollView {
+                    VStack {
                         
-                        NFTVisual(
-                            image: UIImage(data: viewModel.nft!.image!.blob!)!,
-                            animationUrl: viewModel.nft?.animationUrl
-                        )
-                        .frame(width: geo.size.width, height: geo.size.width)
-                        .padding([.bottom], spacing)
-                        
-                        ActionRow(
-                            list: viewModel.actionButtons
-                        )
-                        .padding([.bottom], spacing)
-                        
-                        VStack(alignment: .leading) {
-                            NFTHeader(
-                                title: viewModel.nft?.title,
-                                text: nil
+                        ScrollView {
+                            
+                            NFTVisual(
+                                image: UIImage(data: viewModel.nft!.image!.blob!)!,
+                                simulationUrl: viewModel.nft?.simulationUrl,
+                                animationUrl: viewModel.nft?.animationUrl
+                            )
+                            .frame(width: geo.size.width, height: geo.size.width)
+                            .padding([.bottom], spacing)
+                            
+                            ActionRow(
+                                list: viewModel.actionButtons
                             )
                             .padding([.bottom], spacing)
-
-                            if viewModel.nft?.text != nil {
-                                NFTDescription(text: viewModel.nft!.text!)
-                                    .padding([.bottom], spacing)
-                            }
                             
-                            Divider().padding(.vertical)
-
-                            
-    //                        if (viewModel.nft?.attributes ?? []).count > 0 {
-    //                            TraitGrid(list: viewModel.nft?.attributes!)
-    //                                .padding([.bottom], spacing)
-    //                            Divider().padding(.vertical)
-    //                        }
-                            
-                            NFTDetails(
-                                address: viewModel.nft?.address ?? "--",
-                                tokenId: viewModel.nft?.tokenId ?? "--",
-                                standard: viewModel.nft?.standard
-                            )
+                            VStack(alignment: .leading) {
+                                NFTHeader(
+                                    title: viewModel.nft?.title,
+                                    text: nil
+                                )
                                 .padding([.bottom], spacing)
-                            
-                    
-                            if(viewModel.nft?.metadataUrl != nil) {
-                                HStack(alignment: .center) {
-                                    Spacer()
-                                    URLLink(
-                                        url: viewModel.nft!.metadataUrl!,
-                                        title: "metadata"
-                                    )
-                                    Spacer()
+
+                                if viewModel.nft?.text != nil {
+                                    NFTDescription(text: viewModel.nft!.text!)
+                                        .padding([.bottom], spacing)
                                 }
-                                .padding(.vertical)
+                                
+                                Divider().padding(.vertical)
+
+                                
+        //                        if (viewModel.nft?.attributes ?? []).count > 0 {
+        //                            TraitGrid(list: viewModel.nft?.attributes!)
+        //                                .padding([.bottom], spacing)
+        //                            Divider().padding(.vertical)
+        //                        }
+                                
+                                NFTDetails(
+                                    address: viewModel.nft?.address ?? "--",
+                                    tokenId: viewModel.nft?.tokenId ?? "--",
+                                    standard: viewModel.nft?.standard
+                                )
+                                    .padding([.bottom], spacing)
+                                
+                        
+                                if(viewModel.nft?.metadataUrl != nil) {
+                                    HStack(alignment: .center) {
+                                        Spacer()
+                                        URLLink(
+                                            url: viewModel.nft!.metadataUrl!,
+                                            title: "metadata"
+                                        )
+                                        Spacer()
+                                    }
+                                    .padding(.vertical)
+                                }
                             }
-                            
+                            .padding(.horizontal)
+                            .padding(.bottom, 10)
                         }
-                        .padding(.horizontal)
-                        .padding(.bottom, 10)
+                        
+                        Group {
+                            Button {
+                                viewModel.presentTutorialSheet()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                    Text("Add Widget")
+                                    
+                                }
+                                .padding(12)
+                                .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(.horizontal)
+                            .padding(.bottom, 32)
+                        }
                     }
+                    
                 }
             }
             
@@ -105,6 +125,12 @@ struct NFTSheet: View {
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             if shouldDismiss {
                 self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .sheet(isPresented: $viewModel.showingSheet) {
+            switch viewModel.sheetContent {
+            case .Tutorial:
+                TutorialSheet()
             }
         }
     }

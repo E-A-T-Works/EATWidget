@@ -164,9 +164,15 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             newNFTObject.standard = item.standard
             newNFTObject.title = item.title
             newNFTObject.text = item.text
+
+            newNFTObject.image = newNFTImage
+            newNFTObject.simulationUrl = item.simulationUrl
             newNFTObject.animationUrl = item.animationUrl
             
-            newNFTObject.image = newNFTImage
+            newNFTObject.discordUrl = item.discordUrl
+            newNFTObject.twitterUrl = item.twitterUrl
+            newNFTObject.externalUrl = item.externalUrl
+            newNFTObject.metadataUrl = item.metadataUrl
             
             newNFTObject.attributes = .init(array: newNFTAttributes)
             

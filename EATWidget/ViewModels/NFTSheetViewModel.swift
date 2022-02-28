@@ -9,6 +9,9 @@ import SwiftUI
 import Foundation
 import Combine
 
+enum NFTSheetContent {
+    case Tutorial
+}
 
 @MainActor
 final class NFTSheetViewModel: ObservableObject {
@@ -21,6 +24,9 @@ final class NFTSheetViewModel: ObservableObject {
     @Published private(set) var nft: NFTObject?
     
     @Published private(set) var actionButtons: [ActionRowButton] = []
+    
+    @Published var sheetContent: NFTSheetContent = .Tutorial
+    @Published var showingSheet: Bool = false
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -52,13 +58,18 @@ final class NFTSheetViewModel: ObservableObject {
                 self.loading = false
                 return
             }
-            
-            self.nft = nft
 
+            self.nft = nft
+            
             resolveActionButtons()
             
             self.loading = false
         }
+    }
+    
+    func presentTutorialSheet() {
+        sheetContent = .Tutorial
+        showingSheet.toggle()
     }
 
     private func resolveActionButtons() -> Void {
@@ -75,6 +86,24 @@ final class NFTSheetViewModel: ObservableObject {
                 url: URL(string: "https://opensea.io/assets/\(nft!.address!)/\(nft!.tokenId!)")!
             )
         )
+        
+        if nft!.twitterUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Twitter,
+                    url: nft!.twitterUrl!
+                )
+            )
+        }
+        
+        if nft!.discordUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Discord,
+                    url: nft!.discordUrl!
+                )
+            )
+        }
     
         actionButtons = buttonsToSet
     }

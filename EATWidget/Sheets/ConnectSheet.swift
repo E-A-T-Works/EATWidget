@@ -16,9 +16,6 @@ struct ConnectSheet: View {
     
     @FocusState private var titleIsFocused: Bool
     
-    
-    @State var didError = false
-    
     // MARK: - View Content
     
     var body: some View {
@@ -41,7 +38,7 @@ struct ConnectSheet: View {
                             let address = pasteboard.string ?? ""
 
                              if !viewModel.validateAddress(address) {
-                                 didError.toggle()
+                                 viewModel.showingError.toggle()
                                  return
                             }
 
@@ -51,7 +48,10 @@ struct ConnectSheet: View {
                             viewModel.lookup()
                         }
                     )
-                    .alert("Invalid address", isPresented: $didError) {
+                    .alert(
+                        "Invalid address",
+                        isPresented: $viewModel.showingError
+                    ) {
                         Text("Please paste a valid etherium wallet address to continue.")
                     }
                 

@@ -15,19 +15,51 @@ struct PersistenceController {
         
         // TODO: Load up some test data for previews
         
-//        let viewContext = result.container.viewContext
-//        for _ in 0..<10 {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-//        }
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
+        let viewContext = result.container.viewContext
+        
+        let newWallet = NFTWallet(context: viewContext)
+        newWallet.address = TestData.nft.address
+        newWallet.title = "Test Wallet"
+        newWallet.timestamp = Date()
+        
+        let newNFTObject = NFTObject(context: viewContext)
+        
+        newNFTObject.address = TestData.nft.address
+        newNFTObject.tokenId = TestData.nft.tokenId
+        newNFTObject.standard = TestData.nft.standard
+        newNFTObject.title = TestData.nft.title
+        newNFTObject.text = TestData.nft.text
+
+        let newNFTImage = NFTImage(context: viewContext)
+        newNFTImage.blob = TestData.nft.image.jpegData(compressionQuality: 1.0)
+        
+        newNFTObject.image = newNFTImage
+        newNFTObject.simulationUrl = TestData.nft.simulationUrl
+        newNFTObject.animationUrl = TestData.nft.animationUrl
+        
+        newNFTObject.discordUrl = TestData.nft.discordUrl
+        newNFTObject.twitterUrl = TestData.nft.twitterUrl
+        newNFTObject.externalUrl = TestData.nft.externalUrl
+        newNFTObject.metadataUrl = TestData.nft.metadataUrl
+        
+        newNFTObject.attributes = []
+        
+        newNFTObject.wallet = newWallet
+        
+        newNFTObject.timestamp = Date()
+        
+        
+        
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
         return result
     }()
 

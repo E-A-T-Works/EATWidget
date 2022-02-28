@@ -78,6 +78,7 @@
 		5C574D0027BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0127BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
 		5C574D0227BAFA4000212FED /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5C574CFF27BAFA4000212FED /* Secrets.xcconfig */; };
+		5C5C262427CD5BBA00989B2F /* TutorialSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5C262327CD5BBA00989B2F /* TutorialSheet.swift */; };
 		5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
 		5C60F06027BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
 		5C60F06127BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */; };
@@ -318,6 +319,7 @@
 		5C574CEE27BAF16300212FED /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
 		5C574CFA27BAF81500212FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5C574CFF27BAFA4000212FED /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		5C5C262327CD5BBA00989B2F /* TutorialSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialSheet.swift; sourceTree = "<group>"; };
 		5C60F05E27BCB6F7006F8AB4 /* NFTAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTAdapters.swift; sourceTree = "<group>"; };
 		5C60F06227BCBF73006F8AB4 /* GalleryWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryWidget.swift; sourceTree = "<group>"; };
 		5C60F06427BCCDE3006F8AB4 /* GalleryView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryView+Extensions.swift"; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				5CA9ADA627C6A3CA003C25DE /* WalletsSheet.swift */,
 				5CA9ADAA27C6A585003C25DE /* WalletSheet.swift */,
 				5C91BE2727B47BC3001074CE /* NFTSheet.swift */,
+				5C5C262327CD5BBA00989B2F /* TutorialSheet.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
+				5C5C262427CD5BBA00989B2F /* TutorialSheet.swift in Sources */,
 				5CA9ADAB27C6A585003C25DE /* WalletSheet.swift in Sources */,
 				5C63085A27B2B5BE00AC2A24 /* TestData.swift in Sources */,
 				5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */,

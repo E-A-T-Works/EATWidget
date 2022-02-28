@@ -26,7 +26,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
     private override init() {
         fetchRequest = NFTWallet.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTWallet.timestamp, ascending: false)
+            NSSortDescriptor(keyPath: \NFTWallet.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(

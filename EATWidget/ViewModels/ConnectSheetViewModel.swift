@@ -44,6 +44,8 @@ final class ConnectSheetViewModel: ObservableObject {
             attachments: []
         )
     )
+    
+    @Published var showingError: Bool = false
     @Published var showingSheet: Bool = false
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
@@ -124,7 +126,7 @@ final class ConnectSheetViewModel: ObservableObject {
         Task {
             do {
                 // add the wallet
-                let newWallet = try NFTWalletStorage.shared.create(
+                let wallet = try NFTWalletStorage.shared.create(
                     address: form.address,
                     title: form.title.isEmpty ? nil : form.title
                 )
@@ -132,7 +134,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 // sync the data NFTs in the wallet
                 try await NFTObjectStorage.shared.sync(
                     list: supported,
-                    wallet: newWallet
+                    wallet: wallet
                 )
                             
                 self.shouldDismissView = true

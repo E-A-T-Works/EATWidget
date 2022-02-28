@@ -50,7 +50,7 @@ struct ActionRow: View {
     let list: [ActionRowButton]
     
     private func hideText() -> Bool {
-        return list.count > 2
+        return list.count > 3
     }
     
     var body: some View {

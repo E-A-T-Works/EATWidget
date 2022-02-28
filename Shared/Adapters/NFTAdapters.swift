@@ -62,8 +62,12 @@ final class NFTAdapters {
                 title: item.title,
                 text: item.text,
                 image: image,
+                simulationUrl: nil,
                 animationUrl: item.metadata?.animationUrl,
-                externalURL: item.tokenUri.gateway ?? item.tokenUri.raw,
+                twitterUrl: nil,
+                discordUrl: nil,
+                externalUrl: nil,
+                metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
                 traits: []
             )
         } catch {
@@ -124,9 +128,16 @@ final class NFTAdapters {
                 standard: item.id.tokenMetadata.tokenType,
                 title: item.title,
                 text: item.text,
+                
                 image: image,
-                animationUrl: item.metadata?.animationUrl,
-                externalURL: item.tokenUri.gateway ?? item.tokenUri.raw,
+                simulationUrl: item.metadata?.animationUrl,
+                animationUrl: nil,
+                
+                twitterUrl: URL(string: "https://twitter.com/eatworksnyc"),
+                discordUrl: URL(string: "https://discord.gg/TAjvAMVUmc"),
+                externalUrl: URL(string: "https://www.eatworks.xyz/projects-3/e-a-t-works-every-icon"),
+                metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
+
                 traits: []
             )
         } catch {

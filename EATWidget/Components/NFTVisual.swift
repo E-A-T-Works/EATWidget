@@ -15,11 +15,14 @@ struct NFTVisual: View {
     @Environment(\.colorScheme) var colorScheme
     
     let image: UIImage
+    let simulationUrl: URL?
     let animationUrl: URL?
     
     var body: some View {
         ZStack {
-            if animationUrl != nil {
+            if simulationUrl != nil {
+                WebView(url: simulationUrl!)
+            } else if animationUrl != nil {
                 LoopingPlayer(animationUrl: animationUrl!)
             } else {
                 Image(uiImage: image)
@@ -35,6 +38,7 @@ struct NFTVisual_Previews: PreviewProvider {
         VStack {
             NFTVisual(
                 image: TestData.nft.image,
+                simulationUrl: URL(string: "https://everyicon.xyz/icon/?tokenId=40"),
                 animationUrl: TestData.nft.animationUrl
             )
         }
