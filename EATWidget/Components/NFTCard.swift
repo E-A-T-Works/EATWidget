@@ -26,8 +26,6 @@ struct NFTCard: View {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-            
-//            NFTVisual(image: image, animationUrl: animationUrl)
 
             HStack {
                 HeadingLockup(

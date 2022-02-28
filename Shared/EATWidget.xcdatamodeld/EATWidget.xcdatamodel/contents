@@ -22,20 +22,20 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="tokenId" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
-        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NFTAttribute" inverseName="object" inverseEntity="NFTAttribute"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTImage" inverseName="object" inverseEntity="NFTImage"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NFTAttribute" inverseName="object" inverseEntity="NFTAttribute"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NFTImage" inverseName="object" inverseEntity="NFTImage"/>
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTWallet" inverseName="objects" inverseEntity="NFTWallet"/>
     </entity>
     <entity name="NFTWallet" representedClassName="NFTWallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="wallet" inverseEntity="NFTObject"/>
+        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NFTObject" inverseName="wallet" inverseEntity="NFTObject"/>
     </entity>
     <elements>
         <element name="NFTAttribute" positionX="145.33984375" positionY="-146.81640625" width="128" height="88"/>
         <element name="NFTImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="73"/>
         <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="254"/>
-        <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="103"/>
+        <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="89"/>
     </elements>
 </model>

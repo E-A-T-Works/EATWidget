@@ -33,14 +33,14 @@ struct LoopingPlayer: UIViewRepresentable {
         // ref: https://stackoverflow.com/questions/31671029/prevent-avplayer-from-canceling-background-audio
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            print("⚠️ \(error)")
         }
 
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let error as NSError {
-            print(error)
+            print("⚠️ \(error)")
         }
     }
 }
