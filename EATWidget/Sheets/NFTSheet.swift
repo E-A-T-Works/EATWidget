@@ -22,12 +22,17 @@ struct NFTSheet: View {
         GeometryReader { geo in
         ZStack {
             if viewModel.loading {
+                
                 ViewLoader()
+                
             } else {
                 
                 if viewModel.error {
+                    
                     Text("Something went wrong...")
+                    
                 } else {
+                    
                     VStack {
                         
                         ScrollView {
@@ -97,9 +102,10 @@ struct NFTSheet: View {
                                 HStack {
                                     Image(systemName: "plus.circle.fill")
                                     Text("Add Widget")
+                                        .font(.system(size: 16, design: .monospaced))
                                     
                                 }
-                                .padding(12)
+                                .padding(8)
                                 .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.borderedProminent)
@@ -109,6 +115,7 @@ struct NFTSheet: View {
                     }
                     
                 }
+                
             }
             
             SheetDismissButton(

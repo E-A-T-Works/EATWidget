@@ -15,12 +15,33 @@ struct LoopingPlayer: UIViewRepresentable {
     
     let animationUrl: URL
     
+    init(animationUrl: URL) {
+        self.animationUrl = animationUrl
+        
+        setAudioToAmbient()
+    }
+    
     func makeUIView(context: Context) -> UIView {
         return QueuePlayerUIView(animationUrl: animationUrl, frame: .zero)
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
         // Do nothing here
+    }
+    
+    private func setAudioToAmbient() {
+        // ref: https://stackoverflow.com/questions/31671029/prevent-avplayer-from-canceling-background-audio
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+        } catch let error as NSError {
+            print(error)
+        }
+
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let error as NSError {
+            print(error)
+        }
     }
 }
 
@@ -63,13 +84,14 @@ class PlayerUIView: UIView {
     
     init(animationUrl: URL, frame: CGRect) {
         super.init(frame: frame)
-        
+            
         // Load Video
         let fileUrl = animationUrl
         let playerItem = AVPlayerItem(url: fileUrl)
         
         // Setup Player
         let player = AVPlayer(playerItem: playerItem)
+
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(playerLayer)
