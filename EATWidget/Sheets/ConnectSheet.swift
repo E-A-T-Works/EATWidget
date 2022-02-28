@@ -15,23 +15,16 @@ struct ConnectSheet: View {
     @StateObject private var viewModel = ConnectSheetViewModel()
     
     @FocusState private var titleIsFocused: Bool
-    @FocusState private var addressIsFocused: Bool
+    
+    
+    @State var didError = false
     
     // MARK: - View Content
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Form {
-                Section(header: Text("Wallet Info")) {
-                    TextField(
-                        "Address",
-                        text: .init(
-                            get: { [viewModel] in viewModel.form.address },
-                            set: { [viewModel] in viewModel.updateAddress($0) }
-                        )
-                    )
-                        .focused($addressIsFocused)
-                    
+                Section {
                     TextField(
                         "Nickname (Optional)",
                         text: .init(
@@ -40,20 +33,38 @@ struct ConnectSheet: View {
                         )
                     )
                         .focused($titleIsFocused)
-                }
-                
-                Section {
+                    
                     Button(
-                        "Lookup NFTs",
+                        "Paste Wallet Address",
                         action: {
-                            addressIsFocused = false
+                            let pasteboard = UIPasteboard.general
+                            let address = pasteboard.string ?? ""
+
+                             if !viewModel.validateAddress(address) {
+                                 didError.toggle()
+                                 return
+                            }
+
                             titleIsFocused = false
                             
+                            viewModel.updateAddress(address)
                             viewModel.lookup()
                         }
                     )
-                }
+                    .alert("Invalid address", isPresented: $didError) {
+                        Text("Please paste a valid etherium wallet address to continue.")
+                    }
                 
+                } header: {
+                    Text("Wallet Info")
+                } footer: {
+                    HStack{
+                        Text("You can find your Etherium wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." )
+
+                    }
+                    
+                }
+
                 if viewModel.ready {
                     if viewModel.loading {
                         HStack {
@@ -67,21 +78,19 @@ struct ConnectSheet: View {
                     } else {
                         
                         if !viewModel.supported.isEmpty {
-                            Section(header: Text("NFTs")) {
+                            Section {
                                 ForEach(viewModel.supported) { item in
                                     NFTItem(item: item)
-                                }.onDelete { offsets in
-                                    viewModel.delete(at: offsets)
                                 }
+                            } header: {
+                                Text("Supported NFTs")
+                            } footer: {
+                                Button(action: {
+                                    viewModel.presentMailFormSheet()
+                                }, label: {
+                                    Text("Not seeing your NFT?")
+                                })
                             }
-                        }
-                        
-                        Section {
-                            Button(action: {
-                                viewModel.presentMailFormSheet()
-                            }, label: {
-                                Text("Not seeing your NFT?")
-                            })
                         }
                     }
                 }

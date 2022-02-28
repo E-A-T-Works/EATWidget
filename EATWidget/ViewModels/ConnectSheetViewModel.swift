@@ -73,6 +73,15 @@ final class ConnectSheetViewModel: ObservableObject {
         updateFormValidity()
     }
     
+    func validateAddress(_ addressToTest: String) -> Bool {
+        // ref: https://info.etherscan.com/what-is-an-ethereum-address/
+        
+        let lengthCheck = addressToTest.count == 42
+        let prefixCheck = addressToTest.hasPrefix("0x")
+        
+        return lengthCheck && prefixCheck
+    }
+    
     
     func presentMailFormSheet() {
         sheetContent = .MailForm(

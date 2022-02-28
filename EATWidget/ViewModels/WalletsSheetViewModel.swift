@@ -49,7 +49,6 @@ final class WalletsSheetViewModel: ObservableObject {
                 print("⚠️ \(error)")
             }
         }
-
     }
     
 

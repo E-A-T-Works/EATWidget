@@ -5,7 +5,6 @@
 //  Created by Adrian Vatchinsky on 2/15/22.
 //
 
-import Foundation
 import SwiftUI
 import PocketSVG
 
@@ -93,9 +92,6 @@ final class NFTAdapters {
                     .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
                     .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'") else { return nil }
             
-            print(svgString)
-            
-            
             let temporaryDirectoryURL = URL(
                 fileURLWithPath: NSTemporaryDirectory(),
                 isDirectory: true
@@ -117,10 +113,7 @@ final class NFTAdapters {
             let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
             svgLayer.frame = frame
 
-            guard let image = snapshotImage(for: svgLayer) else {
-                print("Fucked it")
-                return nil
-            }
+            guard let image = snapshotImage(for: svgLayer) else { return nil }
 
             try FileManager.default.removeItem(at: temporaryFileURL)
             
