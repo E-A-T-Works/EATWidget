@@ -20,6 +20,7 @@ struct NFTVisual: View {
     
     var body: some View {
         ZStack {
+
             if simulationUrl != nil {
                 WebView(url: simulationUrl!)
             } else if animationUrl != nil {
@@ -29,6 +30,7 @@ struct NFTVisual: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
+
         }
     }
 }
@@ -42,6 +44,7 @@ struct NFTVisual_Previews: PreviewProvider {
                 animationUrl: TestData.nft.animationUrl
             )
         }
+        .frame(width: 500, height: 500)
         .padding()
         .previewLayout(PreviewLayout.sizeThatFits)
     }
