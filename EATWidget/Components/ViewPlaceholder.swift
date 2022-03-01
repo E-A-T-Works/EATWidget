@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ViewPlaceholder: View {
-    let text: String = "Nothing to see here..."
+    var text: String = "Nothing to see here..."
     
     var body: some View {
         VStack {

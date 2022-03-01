@@ -26,38 +26,46 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         completion: @escaping (GalleryWidgetEntry) -> Void
     ) {
 
-//        let cached = CachedNFTStorage.shared.fetch()
-//
-//        if cached.isEmpty {
-//            completion(
-//                GalleryWidgetEntry(
-//                    date: Date(),
-//                    kind: .Unconfigured,
-//                    data: nil
-//                )
-//            )
-//        }
-//
-//        var data: [CachedNFT] = [CachedNFT]()
-//        for _ in 0..<4 { data.append(cached.randomElement()!) }
-//
-//        completion(
-//            GalleryWidgetEntry(
-//                date: Date(),
-//                kind: .Success,
-//                data: data
-//            )
-//        )
-//        return
+        let cached = NFTObjectStorage.shared.fetch()
         
-        
-        completion(
-            GalleryWidgetEntry(
-                date: Date(),
-                kind: .Placeholder,
-                data: nil
+        if cached.isEmpty {
+            
+            completion(
+                GalleryWidgetEntry(
+                    date: Date(),
+                    kind: .Unconfigured,
+                    data: nil
+                )
             )
-        )
+            return
+            
+        } else if cached.count < 4 {
+            
+            let selection = cached
+            
+            completion(
+                GalleryWidgetEntry(
+                    date: Date(),
+                    kind: .Success,
+                    data: selection
+                )
+            )
+            return
+            
+        } else {
+
+            let selection = Array(cached.shuffled().prefix(4))
+            
+            completion(
+                GalleryWidgetEntry(
+                    date: Date(),
+                    kind: .Success,
+                    data: selection
+                )
+            )
+            return
+            
+        }
     }
     
     func getTimeline(
@@ -65,6 +73,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (Timeline<GalleryWidgetEntry>) -> Void
     ) {
+        
         //
         //  Parse intent configuration
         //
@@ -72,15 +81,22 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         
         let selection = configuration.NFT?.map({ pick -> [String?] in
             let identifier = pick.identifier
+            
+            if identifier == "RANDOM" {
+                return ["RANDOM", "RANDOM"]
+            }
+            
             let contractAddress = identifier?.components(separatedBy: "/").first
             let tokenId = identifier?.components(separatedBy: "/").last
             
             return [contractAddress, tokenId]
         }).filter({ item -> Bool in
             return item[0] != nil && item[1] != nil
-        })
+        }) as! [[String]]
         
-        if (selection ?? []).isEmpty {
+        // Placeholder if empty
+
+        if selection.isEmpty {
             let timeline = Timeline(
                 entries: [
                     GalleryWidgetEntry(
@@ -95,15 +111,36 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
             return
         }
         
+        getTimelineForSelection(
+            for: selection,
+               completion: completion
+        )
+        return
+        
+        
+    }
+    
+    // MARK: - Helpers
+    
+    private func getTimelineForSelection(
+        for selection: [[String]],
+        completion: @escaping (Timeline<GalleryWidgetEntry>) -> Void
+    ) {
+        
         //
         // Map onto data
         //
         
         let cached = NFTObjectStorage.shared.fetch()
         
-        let data: [NFTObject?] = selection!.map({ pick in
-            return cached.first { item in
-                return item.address! == pick[0] && item.tokenId! == pick[1]
+        let data: [NFTObject?] = selection.map({ pick in
+            
+            if pick.contains("RANDOM") {
+                return cached.randomElement()
+            } else {
+                return cached.first { item in
+                    return item.address! == pick[0] && item.tokenId! == pick[1]
+                }
             }
         })
         
@@ -121,8 +158,9 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         )
         completion(timeline)
         return
-
+        
     }
+    
 }
 
 
@@ -166,7 +204,7 @@ struct GalleryWidget: Widget {
         ) { entry in
             GalleryWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Gallery")
+        .configurationDisplayName("NFT Gallery")
         .description("Choose a set of NFTs to display side by side.")
         .supportedFamilies([.systemMedium])
     }

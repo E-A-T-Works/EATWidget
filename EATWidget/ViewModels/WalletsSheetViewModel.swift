@@ -45,9 +45,6 @@ final class WalletsSheetViewModel: ObservableObject {
             do {
                 guard let itemToDelete = (index > wallets.count ? nil : wallets[index]) else { return }
                 try NFTWalletStorage.shared.delete(object: itemToDelete)
-                
-//                NFTObjectStorage.shared.dele
-                
             } catch {
                 print("⚠️ \(error)")
             }

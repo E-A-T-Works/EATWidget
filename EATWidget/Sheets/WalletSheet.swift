@@ -22,11 +22,6 @@ struct WalletSheet: View {
             Form {
                 Section(header: Text("Wallet Info")) {
                     TextField(
-                        "Address",
-                        text: $viewModel.form.address
-                    ).disabled(true)
-                    
-                    TextField(
                         "Nickname (Optional)",
                         text: .init(
                             get: { [viewModel] in viewModel.form.title },
@@ -34,9 +29,13 @@ struct WalletSheet: View {
                         )
                     )
                         .focused($titleIsFocused)
+                    
+                    HStack {
+                        Text(address.formattedWeb3)
+                    }
                 }
-                
-                if viewModel.loadingNFTs {
+        
+                if viewModel.loading {
                     HStack {
                         Spacer()
                         
@@ -46,16 +45,24 @@ struct WalletSheet: View {
                         Spacer()
                     }
                 } else {
-                    
+                
                     if !viewModel.supported.isEmpty {
-                        Section(header: Text("NFTs")) {
+                        Section {
                             ForEach(viewModel.supported) { item in
                                 NFTItem(item: item)
-                            }.onDelete { offsets in
-                                viewModel.delete(at: offsets)
                             }
+                        } header: {
+                            Text("Supported NFTs")
+                        } footer: {
+                            Button(action: {
+                                viewModel.presentMailFormSheet()
+                            }, label: {
+                                Text("Not seeing your NFT?")
+                            })
                         }
+
                     }
+                    
                 }
             }
         }
@@ -69,7 +76,7 @@ struct WalletSheet: View {
                     }
                 )
                     .disabled(
-                        viewModel.loading || viewModel.loadingNFTs || !viewModel.form.isValid
+                        viewModel.loading || !viewModel.form.isValid
                     )
           })
         })
@@ -79,6 +86,14 @@ struct WalletSheet: View {
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             if shouldDismiss {
                 self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .sheet(isPresented: $viewModel.showingSheet) {
+            switch viewModel.sheetContent {
+            case .MailForm(let data):
+                MailView(data: data) { result in
+                    print()
+                }
             }
         }
     }

@@ -67,6 +67,13 @@ final class NFTWalletStorage: NSObject, ObservableObject {
     }
     
     func create(address: String, title: String?) throws -> NFTWallet {
+        
+        let existingObject = fetch().first { $0.address == address }
+        if existingObject != nil {
+            return try update(title: title, object: existingObject!)
+        }
+        
+        
         let context = PersistenceController.shared.container.viewContext
         
         let newObject = NFTWallet(context: context)

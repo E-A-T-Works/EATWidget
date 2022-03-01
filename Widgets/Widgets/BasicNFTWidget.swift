@@ -26,17 +26,17 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         in context: Context,
         completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
+
         guard let data = NFTObjectStorage.shared.fetch().randomElement() else {
             completion(
                 BasicNFTWidgetEntry(
                     date: Date(),
-                    kind: .Placeholder,
+                    kind: .Unconfigured,
                     displayInfo: false,
                     data: nil
                 )
             )
             return
-            
         }
         
         completion(
@@ -61,6 +61,90 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         //
         
         let identifier = configuration.NFT?.identifier
+        
+        if identifier != "RANDOM" {
+            getTimelineForSpecificNFT(for: configuration, completion: completion)
+        } else {
+            getTimelineForRandomNFT(for: configuration, completion: completion)
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    private func getTimelineForRandomNFT(
+        for configuration: BasicNFTOptionsIntent,
+        completion: @escaping (Timeline<BasicNFTWidgetEntry>) -> Void
+    ) {
+        let preferredAddress = configuration.Wallet?.identifier
+        let displayInfo = configuration.DisplayInfo?.boolValue ?? false
+        
+        let wallets = NFTWalletStorage.shared.fetch()
+        
+        if wallets.isEmpty {
+            let timeline = Timeline(
+                entries: [
+                    BasicNFTWidgetEntry(
+                        date: Date(),
+                        kind: .Unconfigured,
+                        displayInfo: false,
+                        data: nil
+                    )
+                ],
+                policy: .never
+            )
+            completion(timeline)
+            return
+        }
+        
+        
+        let ownerAddress = preferredAddress != nil ? preferredAddress : wallets.map { $0.address! }.randomElement()
+        
+        let options = NFTObjectStorage.shared.fetch().filter { $0.wallet?.address == ownerAddress }
+        
+        guard let data = options.randomElement() else {
+            let timeline = Timeline(
+                entries: [
+                    BasicNFTWidgetEntry(
+                        date: Date(),
+                        kind: .NotFound,
+                        displayInfo: false,
+                        data: nil
+                    )
+                ],
+                policy: .never
+            )
+            completion(timeline)
+            return
+        }
+        
+        let timeline = Timeline(
+            entries: [
+                BasicNFTWidgetEntry(
+                    date: Date(),
+                    kind: .Success,
+                    displayInfo: displayInfo,
+                    data: data
+                )
+            ],
+            policy: .after(
+                Calendar.current.date(
+                    byAdding: .hour,
+                    value: 1,
+                    to: Date()
+                )!
+            )
+        )
+        
+        completion(timeline)
+    }
+    
+    
+    private func getTimelineForSpecificNFT(
+        for configuration: BasicNFTOptionsIntent,
+        completion: @escaping (Timeline<BasicNFTWidgetEntry>) -> Void
+    ){
+        let identifier = configuration.NFT?.identifier
+        
         let contractAddress = identifier?.components(separatedBy: "/").first
         let tokenId = identifier?.components(separatedBy: "/").last
         
@@ -166,7 +250,7 @@ struct BasicNFTWidget: Widget {
             BasicNFTWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("NFT")
-        .description("Choose an NFT to display.")
+        .description("Choose an NFT to display on your homescreen.")
         .supportedFamilies([.systemSmall, .systemLarge])
     }
     

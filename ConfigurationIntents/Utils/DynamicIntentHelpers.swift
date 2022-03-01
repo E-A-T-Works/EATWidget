@@ -38,7 +38,14 @@ final class DynamicIntentHelpers {
         
         let options = NFTObjectStorage.shared.fetch()
         
-        let items: [NFTINO] = options.filter { item in
+        let items: [NFTINO] = [
+            NFTINO(
+                identifier: "RANDOM",
+                display: "Random NFT",
+                subtitle: "Picks an NFT from your collection at random.",
+                image: nil
+            )
+        ] + options.filter { item in
             ownerAddress == nil ? true : item.wallet?.address == ownerAddress
         }.map { item in
             return NFTINO(
@@ -48,8 +55,6 @@ final class DynamicIntentHelpers {
                 image: nil
 //                image: INImage(imageData: item.image!.blob!)
             )
-            
-            
         }
 
         return INObjectCollection(items: items)

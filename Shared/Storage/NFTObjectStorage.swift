@@ -182,8 +182,6 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         }
         
         
-        
-        
         ///
         /// Delete cached items which are not in the list
         ///

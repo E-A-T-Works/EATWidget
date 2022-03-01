@@ -39,7 +39,7 @@ struct CollectionPage: View {
 
                 if list.isEmpty {
 
-                    ViewPlaceholder()
+                    ViewPlaceholder(text: "Connect a wallet to see your NFTs")
 
                 } else {
 

@@ -31,30 +31,46 @@ struct ConnectSheet: View {
                     )
                         .focused($titleIsFocused)
                     
-                    Button(
-                        "Paste Wallet Address",
-                        action: {
-                            let pasteboard = UIPasteboard.general
-                            let address = pasteboard.string ?? ""
-
-                             if !viewModel.validateAddress(address) {
-                                 viewModel.showingError.toggle()
-                                 return
+                    if !viewModel.form.address.isEmpty {
+                        HStack {
+                            Text(viewModel.form.address.formattedWeb3)
+                            Spacer()
+                            Button {
+                                viewModel.resetAddress()
+                            } label: {
+                                Text("Try another")
                             }
-
-                            titleIsFocused = false
-                            
-                            viewModel.updateAddress(address)
-                            viewModel.lookup()
                         }
-                    )
-                    .alert(
-                        "Invalid address",
-                        isPresented: $viewModel.showingError
-                    ) {
-                        Text("Please paste a valid etherium wallet address to continue.")
+                    } else {
+                        Button(
+                            "Paste Wallet Address",
+                            action: {
+                                let pasteboard = UIPasteboard.general
+                                let address = pasteboard.string ?? ""
+
+                                 if !viewModel.validateAddress(address) {
+                                     viewModel.showingError.toggle()
+                                     return
+                                }
+
+                                titleIsFocused = false
+
+                                viewModel.updateAddress(address)
+                                viewModel.lookup()
+                            }
+                        )
+                        .alert(
+                            isPresented: $viewModel.showingError
+                        ) {
+                            Alert(
+                                title: Text("Invalid address"),
+                                message: Text("Please paste a valid etherium wallet address to continue."),
+                                dismissButton: .default(
+                                    Text("Ok")
+                                )
+                            )
+                        }
                     }
-                
                 } header: {
                     Text("Wallet Info")
                 } footer: {

@@ -16,6 +16,10 @@ struct WalletFormState: Equatable {
     var isValid: Bool = false
 }
 
+enum WalletSheetContent {
+    case MailForm(data: ComposeMailData)
+}
+
 @MainActor
 final class WalletSheetViewModel: ObservableObject {
     
@@ -33,9 +37,19 @@ final class WalletSheetViewModel: ObservableObject {
     
     @Published private(set) var wallet: NFTWallet?
     
-    @Published private(set) var loadingNFTs: Bool = false
     @Published private(set) var supported: [NFT] = []
     
+    @Published var sheetContent: WalletSheetContent = .MailForm(
+        data: ComposeMailData(
+            subject: "[BETA:EATWidget] - Missing NFT",
+            recipients: ["adrian@eatworks.xyz"],
+            message: "Please provide the contract address and token Id (or a link that has that info e.g. opensea) for each NFT you think should be supported.",
+            attachments: []
+        )
+    )
+    
+    @Published var showingError: Bool = false
+    @Published var showingSheet: Bool = false
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -50,6 +64,10 @@ final class WalletSheetViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
+    func presentMailFormSheet() {
+        showingSheet.toggle()
+    }
+    
     func updateTitle(_ newValue: String) {
         guard !(newValue.count > 50) else {
             return // Titles should not be more than 50 characters long
@@ -61,13 +79,10 @@ final class WalletSheetViewModel: ObservableObject {
     
     func load(address: String) {
         Task {
-            self.loading = true
-            
             guard let wallet = (NFTWalletStorage.shared.fetch().first {
                 $0.address == address
             }) else {
                 self.error = true
-                self.loading = false
                 return
             }
             
@@ -77,7 +92,6 @@ final class WalletSheetViewModel: ObservableObject {
             self.form.title = wallet.title ?? ""
 
             self.error = false
-            self.loading = false
             
             self.lookup()
         }
@@ -86,14 +100,14 @@ final class WalletSheetViewModel: ObservableObject {
     func lookup() {
         Task {
             do {
-                self.loadingNFTs = true
+                self.loading = true
                 
                 self.supported = try await NFTProvider.fetchNFTs(
                     ownerAddress: form.address,
                     strategy: .Alchemy
                 )
                 
-                self.loadingNFTs = false
+                self.loading = false
                 
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::load() \(error)")
@@ -112,8 +126,8 @@ final class WalletSheetViewModel: ObservableObject {
         Task {
             do {
                 
-                // add the wallet
-                let updatedWallet = try NFTWalletStorage.shared.update(
+                // update the wallet
+                let wallet = try NFTWalletStorage.shared.update(
                     title: form.title.isEmpty ? nil : form.title,
                     object: wallet!
                 )
@@ -121,7 +135,7 @@ final class WalletSheetViewModel: ObservableObject {
                 // sync the data NFTs in the wallet
                 try await NFTObjectStorage.shared.sync(
                     list: supported,
-                    wallet: updatedWallet
+                    wallet: wallet
                 )
                             
                 dismiss()

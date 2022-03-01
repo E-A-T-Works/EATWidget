@@ -75,6 +75,11 @@ final class ConnectSheetViewModel: ObservableObject {
         updateFormValidity()
     }
     
+    func resetAddress() {
+        updateAddress("")
+        supported = []
+    }
+    
     func validateAddress(_ addressToTest: String) -> Bool {
         // ref: https://info.etherscan.com/what-is-an-ethereum-address/
         
@@ -137,14 +142,16 @@ final class ConnectSheetViewModel: ObservableObject {
                     wallet: wallet
                 )
                             
-                self.shouldDismissView = true
+                dismiss()
             } catch {
                 print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
             }
         }
     }
     
-    
+    func dismiss() {
+        self.shouldDismissView = true
+    }
     
     // MARK: - Private Methods
     
