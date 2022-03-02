@@ -32,6 +32,7 @@ struct NFT: Identifiable, Hashable {
     
     let twitterUrl: URL?
     let discordUrl: URL?
+    let openseaUrl: URL?
     let externalUrl: URL?
     let metadataUrl: URL?
     

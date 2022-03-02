@@ -42,7 +42,6 @@ struct CollectionPage: View {
                     ViewPlaceholder(text: "Connect a wallet to see your NFTs")
 
                 } else {
-
                     StaggeredGrid(
                         list: list,
                         columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),

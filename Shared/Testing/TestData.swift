@@ -22,6 +22,7 @@ struct TestData {
         
         twitterUrl: nil,
         discordUrl: nil,
+        openseaUrl: nil,
         externalUrl: nil,
         metadataUrl: nil,
         

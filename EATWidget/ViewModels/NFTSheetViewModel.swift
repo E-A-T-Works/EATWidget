@@ -79,13 +79,24 @@ final class NFTSheetViewModel: ObservableObject {
             actionButtons = buttonsToSet
             return
         }
-
-        buttonsToSet.append(
-            ActionRowButton(
-                target: .Opensea,
-                url: URL(string: "https://opensea.io/assets/\(nft!.address!)/\(nft!.tokenId!)")!
+        
+        if nft!.externalUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Other,
+                    url: nft!.externalUrl!
+                )
             )
-        )
+        }
+
+        if nft!.openseaUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Opensea,
+                    url: nft!.openseaUrl!
+                )
+            )
+        }
         
         if nft!.twitterUrl != nil {
             buttonsToSet.append(

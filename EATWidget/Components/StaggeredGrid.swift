@@ -59,7 +59,18 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     }
     
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: showsIndicators) {
+            // TODO: Think about this
+            VStack(alignment: .center) {
+                Text("Reserved space for ios widget tutorial")
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 124)
+            .background(.black)
+            .foregroundColor(.white)
+            
+            
             HStack(alignment: .top) {
                 ForEach(setupColumns()) { column in
                     

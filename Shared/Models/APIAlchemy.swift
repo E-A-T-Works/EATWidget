@@ -24,17 +24,17 @@ extension APIAlchemyUri: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let ALLOWED_EXTENSIONS = ["png", "jpg"]
+//        let ALLOWED_EXTENSIONS = ["png", "jpg"]
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
-                
-        raw = rawString.isEmpty || !rawString.isValidURL || !ALLOWED_EXTENSIONS.contains((rawString as NSString).pathExtension) ? nil : URL(string: rawString)
+        
+        raw = rawString.isEmpty || !rawString.isValidURL ? nil : URL(string: rawString)
         
         let gatewayString = (try? container.decode(String.self, forKey: .gateway)) ?? ""
     
-        gateway = gatewayString.isEmpty || !gatewayString.isValidURL || !ALLOWED_EXTENSIONS.contains((gatewayString as NSString).pathExtension) ? nil : URL(string: gatewayString)
+        gateway = gatewayString.isEmpty || !gatewayString.isValidURL ? nil : URL(string: gatewayString)
     }
 }
 

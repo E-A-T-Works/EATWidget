@@ -15,6 +15,7 @@
         <attribute name="discordUrl" optional="YES" attributeType="URI"/>
         <attribute name="externalUrl" optional="YES" attributeType="URI"/>
         <attribute name="metadataUrl" optional="YES" attributeType="URI"/>
+        <attribute name="openseaUrl" optional="YES" attributeType="URI"/>
         <attribute name="simulationUrl" optional="YES" attributeType="URI"/>
         <attribute name="standard" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
@@ -35,7 +36,7 @@
     <elements>
         <element name="NFTAttribute" positionX="145.33984375" positionY="-146.81640625" width="128" height="88"/>
         <element name="NFTImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="73"/>
-        <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="254"/>
+        <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="269"/>
         <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="89"/>
     </elements>
 </model>

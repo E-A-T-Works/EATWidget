@@ -66,49 +66,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         
         return list
     }
-    
-    func create(
-        address: String,
-        tokenId: String,
-        standard: String,
-        title: String,
-        text: String?,
-        animationUrl: URL?,
-        image: NFTImage,
-        attributes: [NFTAttribute]?,
-        wallet: NFTWallet
-    ) throws -> NFTObject {
-        let context = PersistenceController.shared.container.viewContext
-        
-        let newObject = NFTObject(context: context)
-        
-        newObject.address = address
-        newObject.tokenId = tokenId
-        newObject.standard = standard
-        newObject.title = title
-        newObject.text = text
-        newObject.animationUrl = animationUrl
-        
-        newObject.image = image
-        
-        newObject.attributes = .init(array: attributes ?? [])
-        
-        newObject.wallet = wallet
-        
-        newObject.timestamp = Date()
-        
-        try commit()
-        
-        return newObject
-    }
-    
-    func delete(object: NFTObject) throws {
-        let context = PersistenceController.shared.container.viewContext
-        context.delete(object)
-        
-        try commit()
-    }
-    
+
     func sync(list: [NFT], wallet: NFTWallet) async throws {
         let context = PersistenceController.shared.container.viewContext
                 
@@ -169,8 +127,9 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             newNFTObject.simulationUrl = item.simulationUrl
             newNFTObject.animationUrl = item.animationUrl
             
-            newNFTObject.discordUrl = item.discordUrl
             newNFTObject.twitterUrl = item.twitterUrl
+            newNFTObject.discordUrl = item.discordUrl
+            newNFTObject.openseaUrl = item.openseaUrl
             newNFTObject.externalUrl = item.externalUrl
             newNFTObject.metadataUrl = item.metadataUrl
             

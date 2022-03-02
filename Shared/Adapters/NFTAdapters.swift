@@ -35,6 +35,8 @@ final class NFTAdapters {
         switch address {
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
+        case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
+            return await normalizeCryptopunk(item: item)
         default:
             return await normalizeAlchemyNFT(item: item)
         }
@@ -66,6 +68,7 @@ final class NFTAdapters {
                 animationUrl: item.metadata?.animationUrl,
                 twitterUrl: nil,
                 discordUrl: nil,
+                openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
                 externalUrl: nil,
                 metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
                 traits: []
@@ -135,6 +138,7 @@ final class NFTAdapters {
                 
                 twitterUrl: URL(string: "https://twitter.com/eatworksnyc"),
                 discordUrl: URL(string: "https://discord.gg/TAjvAMVUmc"),
+                openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
                 externalUrl: URL(string: "https://www.eatworks.xyz/projects-3/e-a-t-works-every-icon"),
                 metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
 
@@ -145,6 +149,45 @@ final class NFTAdapters {
             return nil
         }
     }
+    
+
+    static private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
+
+        do {
+            guard let imageUrl = item.media.first?.gateway ?? item.media.first?.raw else { return nil }
+            
+            let imageData = try Data(contentsOf: imageUrl)
+            
+            // enforce 10mb size limit
+            if imageData.count > (10 * 1_000_000) { return nil }
+            
+            guard let image = UIImage(data: imageData) else { return nil }
+
+            return NFT(
+                id: "\(item.contract.address)/\(item.id.tokenId)",
+                address: item.contract.address,
+                tokenId: item.id.tokenId,
+                standard: item.id.tokenMetadata.tokenType,
+                title: item.title,
+                text: item.text,
+                image: image,
+                simulationUrl: nil,
+                animationUrl: item.metadata?.animationUrl,
+                twitterUrl: URL(string: "https://twitter.com/v1punks"),
+                discordUrl: URL(string: "https://discord.com/invite/v1punks"),
+                openseaUrl: nil,
+                externalUrl: URL(string: "https://www.v1punks.io"),
+                metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
+                traits: []
+            )
+        } catch {
+            print("⚠️ normalizeCryptopunk \(item.contract.address) \(item.id.tokenId) \(error)")
+            return nil
+        }
+    }
+    
+    
+    // MARK: - Helpers
     
     
     static private func snapshotImage(for layer: CALayer) -> UIImage? {
