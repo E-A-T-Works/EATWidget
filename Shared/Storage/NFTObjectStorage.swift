@@ -61,8 +61,6 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     }
 
     func sync(list: [NFT], wallet: NFTWallet) async throws {
-        print("!!!!!! sync !!!!!!")
-        
         let context = PersistenceController.shared.container.viewContext
                 
         ///

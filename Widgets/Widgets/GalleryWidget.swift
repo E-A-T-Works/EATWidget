@@ -94,9 +94,11 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
             return [contractAddress, tokenId]
         }).filter({ item -> Bool in
             return item[0] != nil && item[1] != nil
-        }) as! [[String]]
+        }) as? [[String]] ?? []
         
         // Placeholder if empty
+        
+        print("🎨 GalleryWidget::getTimeline \(selection)")
 
         if selection.isEmpty {
             let timeline = Timeline(

@@ -9,7 +9,7 @@ import Foundation
 
 extension WalletItem {
     init(item: NFTWallet) {
-        address = item.address!
-        title = item.title
+        address = item.address ?? ""
+        title = item.title ?? ""
     }
 }

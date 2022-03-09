@@ -29,7 +29,7 @@ struct CarouselCard: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .padding()
+                .padding(64)
                 .opacity(0.14)
             
             Spacer()
@@ -38,11 +38,11 @@ struct CarouselCard: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(title)
-                            .font(.title)
+                            .font(.system(size: 12, design: .monospaced))
                             .fontWeight(.bold)
                         
                         Text(text)
-                            .font(.body)
+                            .font(.system(size: 12, design: .monospaced))
                             .opacity(0.64)
                     }
                     Spacer()

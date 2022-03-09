@@ -48,6 +48,8 @@ struct CollectionPage: View {
                     ScrollView(showsIndicators: false) {
                         VStack(alignment: .leading) {
                             Text("Learn about iOS widgets")
+                                .font(.system(size: 12, design: .monospaced))
+                                .fontWeight(.bold)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 124)

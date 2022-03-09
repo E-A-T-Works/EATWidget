@@ -120,6 +120,9 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
             return
         }
         
+        
+        print("🎨 BasicNFTWidget:getTimelineForRandomNFT \(data)")
+        
         let timeline = Timeline(
             entries: [
                 BasicNFTWidgetEntry(
@@ -146,12 +149,14 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         for configuration: BasicNFTOptionsIntent,
         completion: @escaping (Timeline<BasicNFTWidgetEntry>) -> Void
     ){
+        
         let identifier = configuration.NFT?.identifier
         
         let contractAddress = identifier?.components(separatedBy: "/").first
         let tokenId = identifier?.components(separatedBy: "/").last
         
         let displayInfo = configuration.DisplayInfo?.boolValue ?? false
+        
         
         if contractAddress == nil || tokenId == nil {
             
@@ -192,6 +197,8 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
             return
             
         }
+        
+        print("🎨 BasicNFTWidget:getTimelineForSpecificNFT \(data)")
         
         let timeline = Timeline(
             entries: [

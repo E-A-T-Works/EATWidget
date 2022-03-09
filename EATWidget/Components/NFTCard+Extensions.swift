@@ -12,7 +12,7 @@ extension NFTCard {
     init(item: NFTObject) {
         address = item.address ?? ""
         tokenId = item.tokenId ?? ""
-        image = item.image != nil ? UIImage(data: item.image!.blob!)! : UIImage(systemName: "plus")!
+        image = item.image != nil ? UIImage(data: item.image!.blob!)! : UIImage(systemName: "scribble")!
         animationUrl = item.animationUrl
         title = item.title ?? ""
         text = nil
