@@ -107,6 +107,23 @@ struct ConnectSheet: View {
                                     Text("Not seeing your NFT?")
                                 })
                             }
+                        } else {
+                            VStack {
+                            
+                                ViewPlaceholder(
+                                    text: "Sorry, we don't support these yet..."
+                                )
+                                
+                                Button(action: {
+                                    viewModel.presentMailFormSheet()
+                                }, label: {
+                                    Text("Let us know more")
+                                })
+                                
+                            }
+                            .padding()
+                            
+                            
                         }
                     }
                 }

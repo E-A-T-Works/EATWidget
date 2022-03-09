@@ -99,7 +99,7 @@ final class ConnectSheetViewModel: ObservableObject {
             data: ComposeMailData(
                 subject: "[BETA:EATWidget] - Missing NFT",
                 recipients: ["adrian@eatworks.xyz"],
-                message: "Please provide the contract address and token Id (or a link that has that info e.g. opensea) for each NFT you think should be supported.",
+                message: "(Wallet Address: \(form.address ?? "")) Please provide the contract address and token Id (or a link that has that info e.g. opensea) for each NFT you think should be supported.",
                 attachments: []
             )
         )

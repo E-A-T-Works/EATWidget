@@ -14,14 +14,16 @@ struct ViewPlaceholder: View {
         VStack {
             Text(text)
                 .font(.system(size: 12, design: .monospaced))
+                .multilineTextAlignment(.center)
                 .opacity(0.72)
                 .padding(.vertical, 8)
+                .frame(maxWidth: 300)
         }
     }
 }
 
 struct ViewPlaceholder_Previews: PreviewProvider {
     static var previews: some View {
-        ViewPlaceholder()
+        ViewPlaceholder(text: "Sorry, we don't support any of these NFTs yet.")
     }
 }
