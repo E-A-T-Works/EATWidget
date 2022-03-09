@@ -79,14 +79,15 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         
         await list.concurrentForEach { item in
             
-            
             ///
             /// Determine if this NFT already has an entry in the store. If it does, resume, the data should not
             /// change since it's immutable.
             ///
 
-//            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
-//            if entry != nil { return }
+            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
+            let isUpdating = entry != nil
+            
+            guard let nftObject = isUpdating ? entry : NFTObject(context: context) else { return }
             
             ///
             /// Convert the UIImage to a blob
@@ -98,35 +99,45 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             /// If all went well, create the NFTObject and it's related objects
             ///
             
-            let newNFTImage = NFTImage(context: context)
-            newNFTImage.blob = imageBlob
+            var nftImage: NFTImage {
+                if isUpdating {
+                    return nftObject.image!
+                } else {
+                    let newNFTImage = NFTImage(context: context)
+                    newNFTImage.blob = imageBlob
+                    
+                    return newNFTImage
+                }
+            }
             
-            
-            let newNFTObject = NFTObject(context: context)
-            
-            newNFTObject.address = item.address
-            newNFTObject.tokenId = item.tokenId
-            newNFTObject.standard = item.standard
-            newNFTObject.title = item.title
-            newNFTObject.text = item.text
+            nftObject.address = item.address
+            nftObject.tokenId = item.tokenId
+            nftObject.standard = item.standard
+            nftObject.title = item.title
+            nftObject.text = item.text
 
-            newNFTObject.image = newNFTImage
-            newNFTObject.simulationUrl = item.simulationUrl
-            newNFTObject.animationUrl = item.animationUrl
+            nftObject.image = nftImage
+            nftObject.simulationUrl = item.simulationUrl
+            nftObject.animationUrl = item.animationUrl
             
-            newNFTObject.twitterUrl = item.twitterUrl
-            newNFTObject.discordUrl = item.discordUrl
-            newNFTObject.openseaUrl = item.openseaUrl
-            newNFTObject.externalUrl = item.externalUrl
-            newNFTObject.metadataUrl = item.metadataUrl
+            nftObject.twitterUrl = item.twitterUrl
+            nftObject.discordUrl = item.discordUrl
+            nftObject.openseaUrl = item.openseaUrl
+            nftObject.externalUrl = item.externalUrl
+            nftObject.metadataUrl = item.metadataUrl
 
-            newNFTObject.wallet = wallet
+            nftObject.wallet = wallet
             
-            newNFTObject.timestamp = Date()
+            nftObject.timestamp = Date()
             
             //
             // Update the attributes
             //
+            
+//            let attributesToDelete: [NFTAttribute] = nftObject.attributes.
+//            attributesToDelete.forEach { context.delete($0) }
+            
+//            nftObject.attributes!.forEach { context.delete($0) }
             
             item.attributes.forEach { data in
 
@@ -134,7 +145,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
                 newNFTAttribute.key = data.key
                 newNFTAttribute.value = data.value
                 
-                newNFTAttribute.object = newNFTObject
+                newNFTAttribute.object = nftObject
             }
             
         }

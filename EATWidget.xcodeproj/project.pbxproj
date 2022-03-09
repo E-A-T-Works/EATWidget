@@ -35,6 +35,8 @@
 		5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
 		5C035EF627B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
 		5C035EF827B6D98100A11697 /* AssetPaymentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */; };
+		5C0394B927D923E5003029D2 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0394B827D923E5003029D2 /* Carousel.swift */; };
+		5C0394BB27D92599003029D2 /* CarouselCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0394BA27D92599003029D2 /* CarouselCard.swift */; };
 		5C06457027C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */; };
 		5C06457127C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */; };
 		5C06457227C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */; };
@@ -297,6 +299,8 @@
 		5C035EEF27B6D17900A11697 /* Discord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Discord.png; sourceTree = "<group>"; };
 		5C035EF327B6D75E00A11697 /* EthPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthPrice.swift; sourceTree = "<group>"; };
 		5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPaymentToken.swift; sourceTree = "<group>"; };
+		5C0394B827D923E5003029D2 /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		5C0394BA27D92599003029D2 /* CarouselCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCard.swift; sourceTree = "<group>"; };
 		5C06456F27C5C3DA00E97D1C /* NFTWalletStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTWalletStorage.swift; sourceTree = "<group>"; };
 		5C06457327C5C3E200E97D1C /* NFTObjectStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTObjectStorage.swift; sourceTree = "<group>"; };
 		5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPrompt.swift; sourceTree = "<group>"; };
@@ -664,6 +668,8 @@
 				5C035EDF27B6C5CF00A11697 /* NFTDetails.swift */,
 				5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */,
 				5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */,
+				5C0394B827D923E5003029D2 /* Carousel.swift */,
+				5C0394BA27D92599003029D2 /* CarouselCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -988,6 +994,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C63085027B2B4DC00AC2A24 /* AppGroup.swift in Sources */,
+				5C0394BB27D92599003029D2 /* CarouselCard.swift in Sources */,
 				5C63085E27B2B5FD00AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C63091827B435E800AC2A24 /* URLImage.swift in Sources */,
 				5C035EE027B6C5CF00A11697 /* NFTDetails.swift in Sources */,
@@ -1022,6 +1029,7 @@
 				5C63087727B2C6A000AC2A24 /* NFTSheetViewModel.swift in Sources */,
 				5C3D47B427C98E5A00C16464 /* WebView.swift in Sources */,
 				5C91BE1527B44B5C001074CE /* NFTCard+Extensions.swift in Sources */,
+				5C0394B927D923E5003029D2 /* Carousel.swift in Sources */,
 				5C91BE0F27B43A27001074CE /* Theme.swift in Sources */,
 				5C63086227B2B62A00AC2A24 /* APIRequest.swift in Sources */,
 				5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */,

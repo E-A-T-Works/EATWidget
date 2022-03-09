@@ -9,9 +9,9 @@ import SwiftUI
 
 struct Branding: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var seed: Int = 0
     
-    let randomize: Bool = true
+    var seed: Int = 0
+    var randomize: Bool = true
 
     var body: some View {
         ZStack{
@@ -22,11 +22,6 @@ struct Branding: View {
             )
             .resizable()
             .aspectRatio(contentMode: .fit)
-        }.onAppear {
-            if !randomize {
-                return
-            }
-            seed = Int.random(in: 0..<7)
         }
     }
 }

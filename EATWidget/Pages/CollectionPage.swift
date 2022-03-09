@@ -14,6 +14,8 @@ struct CollectionPage: View {
     
     @Namespace var animation
     
+    @State var brandingIcon: Int = 0
+    
     @StateObject private var viewModel = CollectionPageViewModel()
     
     // MARK: Calculated Values
@@ -42,24 +44,37 @@ struct CollectionPage: View {
                     ViewPlaceholder(text: "Connect a wallet to see your NFTs")
 
                 } else {
-                    StaggeredGrid(
-                        list: list,
-                        columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                        showsIndicators: false,
-                        spacing: 10,
-                        lazy: true,
-                        content: { item in
-                            NFTCard(item: item)
-                                .matchedGeometryEffect(id: item.id, in: animation)
-                                .onTapGesture {
-                                    viewModel.presentNFTDetailsSheet(
-                                        address: item.address!,
-                                        tokenId: item.tokenId!
-                                    )
-                                }
+                    
+                    ScrollView {
+                        VStack(alignment: .center) {
+                            Text("Reserved space for ios widget tutorial")
                         }
-                    )
-                    .padding([.horizontal], 10)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 124)
+                        .background(.black)
+                        .foregroundColor(.white)
+                        
+                        
+                        StaggeredGrid(
+                            list: list,
+                            columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+                            showsIndicators: false,
+                            spacing: 10,
+                            lazy: true,
+                            content: { item in
+                                NFTCard(item: item)
+                                    .matchedGeometryEffect(id: item.id, in: animation)
+                                    .onTapGesture {
+                                        viewModel.presentNFTDetailsSheet(
+                                            address: item.address!,
+                                            tokenId: item.tokenId!
+                                        )
+                                    }
+                            }
+                        )
+                        .padding([.horizontal], 10)
+                        
+                    }
                 }
 
                 FeedbackPrompt(
@@ -76,8 +91,11 @@ struct CollectionPage: View {
                 content: {
                     Button {
                         // TODO: Think of what to do w this...
+                        brandingIcon = Int.random(in: 0..<7)
+                        
+                        print(brandingIcon)
                     } label: {
-                        Branding()
+                        Branding(seed: brandingIcon, randomize: false)
                             .frame(width: 32, height: 32)
                     }
                 }
