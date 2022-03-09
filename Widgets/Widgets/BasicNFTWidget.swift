@@ -10,6 +10,9 @@ import SwiftUI
 
 struct BasicNFTWidgetProvider: IntentTimelineProvider {
     
+    private let walletStorage = NFTWalletStorage.shared
+    private let objectStorage = NFTObjectStorage.shared
+    
     func placeholder(
         in context: Context
     ) -> BasicNFTWidgetEntry {
@@ -27,7 +30,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
 
-        guard let data = NFTObjectStorage.shared.fetch().randomElement() else {
+        guard let data = objectStorage.fetch().randomElement() else {
             completion(
                 BasicNFTWidgetEntry(
                     date: Date(),
@@ -78,7 +81,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         let preferredAddress = configuration.Wallet?.identifier
         let displayInfo = configuration.DisplayInfo?.boolValue ?? false
         
-        let wallets = NFTWalletStorage.shared.fetch()
+        let wallets = walletStorage.fetch()
         
         if wallets.isEmpty {
             let timeline = Timeline(
@@ -99,7 +102,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         
         let ownerAddress = preferredAddress != nil ? preferredAddress : wallets.map { $0.address! }.randomElement()
         
-        let options = NFTObjectStorage.shared.fetch().filter { $0.wallet?.address == ownerAddress }
+        let options = objectStorage.fetch().filter { $0.wallet?.address == ownerAddress }
         
         guard let data = options.randomElement() else {
             let timeline = Timeline(
@@ -171,7 +174,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        let options = NFTObjectStorage.shared.fetch()
+        let options = objectStorage.fetch()
         
         guard let data = (options.first { $0.address == contractAddress && $0.tokenId == tokenId }) else {
             let timeline = Timeline(

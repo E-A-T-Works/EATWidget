@@ -22,11 +22,13 @@ final class NFTSheetViewModel: ObservableObject {
     @Published private(set) var error: Bool = false
     
     @Published private(set) var nft: NFTObject?
-    
+    @Published private(set) var attributes: [NFTAttribute] = []
     @Published private(set) var actionButtons: [ActionRowButton] = []
     
     @Published var sheetContent: NFTSheetContent = .Tutorial
     @Published var showingSheet: Bool = false
+    
+    private let objectStorage = NFTObjectStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -51,7 +53,7 @@ final class NFTSheetViewModel: ObservableObject {
         Task {
             self.loading = true
             
-            guard let nft = (NFTObjectStorage.shared.fetch().first {
+            guard let nft = (objectStorage.fetch().first {
                 $0.address == address && $0.tokenId == tokenId
             }) else {
                 self.error = true
@@ -61,6 +63,7 @@ final class NFTSheetViewModel: ObservableObject {
 
             self.nft = nft
             
+            resolveAttributes()
             resolveActionButtons()
             
             self.loading = false
@@ -70,6 +73,10 @@ final class NFTSheetViewModel: ObservableObject {
     func presentTutorialSheet() {
         sheetContent = .Tutorial
         showingSheet.toggle()
+    }
+    
+    private func resolveAttributes() -> Void {
+        attributes = (nft?.attributes?.allObjects as? [NFTAttribute]) ?? []
     }
 
     private func resolveActionButtons() -> Void {

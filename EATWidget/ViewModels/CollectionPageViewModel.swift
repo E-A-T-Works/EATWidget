@@ -26,28 +26,32 @@ final class CollectionPageViewModel: ObservableObject {
 
     @Published private(set) var filterBy: NFTWallet?
     
-    @Published private(set) var loading: Bool = true
+    @Published private(set) var loading: Bool = false
     
     @Published var sheetContent: CollectionSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
+    
+    private let walletStorage = NFTWalletStorage.shared
+    private let objectStorage = NFTObjectStorage.shared
     
     private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
     
-    init(
-        walletPublisher: AnyPublisher<[NFTWallet], Never> = NFTWalletStorage.shared.list.eraseToAnyPublisher(),
-        nftPublisher: AnyPublisher<[NFTObject], Never> = NFTObjectStorage.shared.list.eraseToAnyPublisher()
-    ) {
-        cancellable = Publishers.Zip(
-            walletPublisher,
-            nftPublisher
-        ).sink(receiveValue: { [weak self] wallets, nfts in
-            self?.wallets = wallets
-            self?.nfts = nfts
-
-            self?.loading = false
-        })
+    init() {
+        setupSubscriptions()
+    }
+    
+    private func setupSubscriptions() {
+        walletStorage.$list
+            .receive(on: RunLoop.main)
+            .compactMap { $0 }
+            .assign(to: &$wallets)
+        
+        objectStorage.$list
+            .receive(on: RunLoop.main)
+            .compactMap { $0 }
+            .assign(to: &$nfts)
     }
     
     // MARK: - Public Methods

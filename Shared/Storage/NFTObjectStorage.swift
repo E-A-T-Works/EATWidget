@@ -15,7 +15,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     
     // MARK: - Properties
     
-    var list = CurrentValueSubject<[NFTObject], Never>([])
+    @Published var list: [NFTObject] = [NFTObject]()
     
     private let fetchRequest: NSFetchRequest<NFTObject>
     private let fetchedResultsController: NSFetchedResultsController<NFTObject>
@@ -27,7 +27,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     private override init() {
         fetchRequest = NFTObject.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTObject.timestamp, ascending: false)
+            NSSortDescriptor(keyPath: \NFTObject.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -41,14 +41,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         
         fetchedResultsController.delegate = self
         
-        
-        do {
-            try fetchedResultsController.performFetch()
-            list.value = fetchedResultsController.fetchedObjects ?? []
-        } catch {
-            let nsError = error as NSError
-            fatalError("⚠️ Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        list = fetch()
     }
     
     // MARK: - Public
@@ -57,10 +50,10 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         var list: [NFTObject] {
             do {
                 try fetchedResultsController.performFetch()
-                return fetchedResultsController.fetchedObjects ?? []
+                return fetchedResultsController.fetchedObjects ?? [NFTObject]()
             } catch {
                 print("⚠️ \(error)")
-                return []
+                return [NFTObject]()
             }
         }
         
@@ -106,15 +99,15 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             let newNFTImage = NFTImage(context: context)
             newNFTImage.blob = imageBlob
             
-            let newNFTAttributes = (item.traits ?? []).map { attribute -> NFTAttribute in
-                let newNFTAttribute = NFTAttribute(context: context)
-                newNFTAttribute.key = attribute.key
-                newNFTAttribute.value = attribute.value
-                
-                return newNFTAttribute
-            }
-            
-            
+//            let newNFTAttributes = (item.traits ?? []).map { attribute -> NFTAttribute in
+//                let newNFTAttribute = NFTAttribute(context: context)
+//                newNFTAttribute.key = attribute.key
+//                newNFTAttribute.value = attribute.value
+//
+//                return newNFTAttribute
+//            }
+//
+
             let newNFTObject = NFTObject(context: context)
             
             newNFTObject.address = item.address
@@ -133,7 +126,8 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             newNFTObject.externalUrl = item.externalUrl
             newNFTObject.metadataUrl = item.metadataUrl
             
-            newNFTObject.attributes = .init(array: newNFTAttributes)
+//            newNFTObject.attributes = .init(objects: newNFTAttributes)
+            newNFTObject.attributes = []
             
             newNFTObject.wallet = wallet
             
@@ -179,7 +173,7 @@ extension NFTObjectStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let list = controller.fetchedObjects as? [NFTObject] else { return }
 
-        self.list.value = list
+        self.list = list
     }
 }
 

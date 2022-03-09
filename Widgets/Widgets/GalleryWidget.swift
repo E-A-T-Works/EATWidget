@@ -10,6 +10,8 @@ import SwiftUI
 
 struct GalleryWidgetProvider: IntentTimelineProvider {
     
+    private let objectStorage = NFTObjectStorage.shared
+    
     func placeholder(
         in context: Context
     ) -> GalleryWidgetEntry {
@@ -26,7 +28,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         completion: @escaping (GalleryWidgetEntry) -> Void
     ) {
 
-        let cached = NFTObjectStorage.shared.fetch()
+        let cached = objectStorage.fetch()
         
         if cached.isEmpty {
             
@@ -131,7 +133,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         // Map onto data
         //
         
-        let cached = NFTObjectStorage.shared.fetch()
+        let cached = objectStorage.fetch()
         
         let data: [NFTObject?] = selection.map({ pick in
             

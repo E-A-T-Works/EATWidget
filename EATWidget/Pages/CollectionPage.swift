@@ -119,7 +119,7 @@ struct CollectionPage: View {
                                     Button(action: {
                                         viewModel.setFilterBy(wallet: wallet)
                                     }, label: {
-                                        Text(wallet.title ?? wallet.address!.formattedWeb3)
+                                        Text(wallet.title ?? (wallet.address ?? "").formattedWeb3)
                                     })
                                 }
                             }

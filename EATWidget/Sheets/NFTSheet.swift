@@ -65,11 +65,11 @@ struct NFTSheet: View {
                                 Divider().padding(.vertical)
 
                                 
-        //                        if (viewModel.nft?.attributes ?? []).count > 0 {
-        //                            TraitGrid(list: viewModel.nft?.attributes!)
-        //                                .padding([.bottom], spacing)
-        //                            Divider().padding(.vertical)
-        //                        }
+                                if viewModel.attributes.count > 0 {
+                                    TraitGrid(list: viewModel.attributes)
+                                        .padding([.bottom], spacing)
+                                    Divider().padding(.vertical)
+                                }
                                 
                                 NFTDetails(
                                     address: viewModel.nft?.address ?? "--",

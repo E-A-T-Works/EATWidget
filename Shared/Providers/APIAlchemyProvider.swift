@@ -34,6 +34,8 @@ final class APIAlchemyProvider {
             let request = APIRequest(url: url)
             
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
+            
+            print(response)
 
             return response.ownedNfts
 

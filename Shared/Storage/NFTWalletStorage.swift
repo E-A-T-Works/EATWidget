@@ -12,14 +12,14 @@ import CoreData
 
 final class NFTWalletStorage: NSObject, ObservableObject {
     
-    // MARK: - Properties
+    static let shared: NFTWalletStorage = NFTWalletStorage()
     
-    var list = CurrentValueSubject<[NFTWallet], Never>([])
+    // MARK: - Properties
+
+    @Published var list: [NFTWallet] = [NFTWallet]()
     
     private let fetchRequest: NSFetchRequest<NFTWallet>
     private let fetchedResultsController: NSFetchedResultsController<NFTWallet>
-    
-    static let shared: NFTWalletStorage = NFTWalletStorage()
     
     // MARK: - Init
     
@@ -41,13 +41,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         fetchedResultsController.delegate = self
         
         
-        do {
-            try fetchedResultsController.performFetch()
-            list.value = fetchedResultsController.fetchedObjects ?? []
-        } catch {
-            let nsError = error as NSError
-            fatalError("⚠️ Unresolved error \(nsError), \(nsError.userInfo)")
-        }
+        list = fetch()
     }
     
     // MARK: - Public
@@ -56,10 +50,10 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         var list: [NFTWallet] {
             do {
                 try fetchedResultsController.performFetch()
-                return fetchedResultsController.fetchedObjects ?? []
+                return fetchedResultsController.fetchedObjects ?? [NFTWallet]()
             } catch {
                 print("⚠️ \(error)")
-                return []
+                return [NFTWallet]()
             }
         }
         
@@ -117,6 +111,6 @@ extension NFTWalletStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         guard let list = controller.fetchedObjects as? [NFTWallet] else { return }
 
-        self.list.value = list
+        self.list = list
     }
 }

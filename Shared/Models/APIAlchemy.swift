@@ -12,6 +12,32 @@ import Foundation
 
 // MARK: URI
 
+
+struct APIAlchemyStringUri {
+    let raw: String?
+    let gateway: String?
+}
+
+extension APIAlchemyStringUri: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case raw = "raw"
+        case gateway = "gateway"
+    }
+    
+    init(from decoder: Decoder) throws {
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
+        
+        raw = rawString.isEmpty ? nil : rawString
+        
+        let gatewayString = (try? container.decode(String.self, forKey: .gateway)) ?? ""
+    
+        gateway = gatewayString.isEmpty ? nil : gatewayString
+    }
+}
+
 struct APIAlchemyUri {
     let raw: URL?
     let gateway: URL?
@@ -24,8 +50,7 @@ extension APIAlchemyUri: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-//        let ALLOWED_EXTENSIONS = ["png", "jpg"]
-        
+
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let rawString = (try? container.decode(String.self, forKey: .raw)) ?? ""
@@ -240,6 +265,7 @@ extension APIAlchemyGetNFTsResponse: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+//        ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
         ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
         totalCount = (try? container.decode(Int.self, forKey: .totalCount)) ?? 0
     }

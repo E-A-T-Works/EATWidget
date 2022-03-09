@@ -8,7 +8,7 @@
 import Foundation
 
 extension TraitBox {
-    init(item: NFTTrait) {
+    init(item: NFTAttribute) {
         key = item.key
         value = item.value
     }

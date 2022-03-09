@@ -51,6 +51,9 @@ final class WalletSheetViewModel: ObservableObject {
     @Published var showingError: Bool = false
     @Published var showingSheet: Bool = false
     
+    private let walletStorage = NFTWalletStorage.shared
+    private let objectStorage = NFTObjectStorage.shared
+    
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
         didSet {
@@ -79,7 +82,7 @@ final class WalletSheetViewModel: ObservableObject {
     
     func load(address: String) {
         Task {
-            guard let wallet = (NFTWalletStorage.shared.fetch().first {
+            guard let wallet = (walletStorage.fetch().first {
                 $0.address == address
             }) else {
                 self.error = true
@@ -127,13 +130,13 @@ final class WalletSheetViewModel: ObservableObject {
             do {
                 
                 // update the wallet
-                let wallet = try NFTWalletStorage.shared.update(
+                let wallet = try walletStorage.update(
                     title: form.title.isEmpty ? nil : form.title,
                     object: wallet!
                 )
                 
                 // sync the data NFTs in the wallet
-                try await NFTObjectStorage.shared.sync(
+                try await objectStorage.sync(
                     list: supported,
                     wallet: wallet
                 )

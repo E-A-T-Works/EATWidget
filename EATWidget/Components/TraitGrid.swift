@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TraitGrid: View {
     
-    let list: [NFTTrait]
+    let list: [NFTAttribute]
     
     let size: CGFloat = 120
     let spacing: CGFloat = 10
@@ -43,7 +43,7 @@ struct TraitGrid_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TraitGrid(
-                list: TestData.nft.traits ?? []
+                list: []
             )
         }
         .padding()

@@ -16,9 +16,9 @@ final class WalletsSheetViewModel: ObservableObject {
 
     @Published private(set) var wallets: [NFTWallet] = []
     
-    @Published private(set) var loading: Bool = true
-        
-    private var cancellable: AnyCancellable?
+    @Published private(set) var loading: Bool = false
+    
+    private let walletStorage = NFTWalletStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -29,14 +29,17 @@ final class WalletsSheetViewModel: ObservableObject {
     
     // MARK: - Initialization
     
-    init(
-        walletPublisher: AnyPublisher<[NFTWallet], Never> = NFTWalletStorage.shared.list.eraseToAnyPublisher()
-    ) {
-        cancellable = walletPublisher.sink(receiveValue: { [weak self] wallets in
-            self?.wallets = wallets
-            self?.loading = false
-        })
+    init() {
+        setupSubscriptions()
     }
+    
+    private func setupSubscriptions() {
+        walletStorage.$list
+            .receive(on: RunLoop.main)
+            .compactMap { $0 }
+            .assign(to: &$wallets)
+    }
+    
     
     // MARK: - Public Methods
     
@@ -55,4 +58,6 @@ final class WalletsSheetViewModel: ObservableObject {
     func dismiss() {
         self.shouldDismissView = true
     }
+    
+    
 }
