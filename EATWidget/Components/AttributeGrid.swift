@@ -1,5 +1,5 @@
 //
-//  TraitGrid.swift
+//  AttributeGrid.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/13/22.
@@ -7,20 +7,17 @@
 
 import SwiftUI
 
-struct TraitGrid: View {
+struct AttributeGrid: View {
     
     let list: [NFTAttribute]
     
     let size: CGFloat = 120
     let spacing: CGFloat = 10
     
-    
-
-    
     var body: some View {
         
         VStack(alignment: .leading) {
-            SectionTitle(text: "Traits")
+            SectionTitle(text: "Attributes")
             
             LazyVGrid(
                 columns: Array(
@@ -30,8 +27,8 @@ struct TraitGrid: View {
                 ),
                 spacing: spacing
             ) {
-                ForEach(list, id: \.self) { trait in
-                    TraitBox(item: trait)
+                ForEach(list, id: \.self) { item in
+                    AttributeBox(item: item)
                         .frame(width: size, height: size, alignment: .center)
                 }
             }
@@ -39,10 +36,10 @@ struct TraitGrid: View {
     }
 }
 
-struct TraitGrid_Previews: PreviewProvider {
+struct AttributeGrid_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TraitGrid(
+            AttributeGrid(
                 list: []
             )
         }

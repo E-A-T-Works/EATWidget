@@ -31,7 +31,8 @@ final class NFTAdapters {
     }
     
     static private func normalize(address: String, item: APIAlchemyNFT) async -> NFT? {
-        print("➡️ \(item.contract.address) \(item.id.tokenId) \(item.title)")
+//        print("➡️ \(item.contract.address) \(item.id.tokenId) \(item.title)")
+        
         switch address {
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
@@ -39,8 +40,8 @@ final class NFTAdapters {
         case "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270":
             return await normalizeArtblocks(item: item)
             
-//        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
-//            return await normalizeStrangeAttractors(item: item)
+        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
+            return await normalizeStrangeAttractors(item: item)
 
         case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
             return await normalizeCryptopunk(item: item)
@@ -53,10 +54,14 @@ final class NFTAdapters {
     
     static private func normalizeAlchemyNFT(item: APIAlchemyNFT) async -> NFT? {
         do {
-            guard let imageUrl = item.media.first?.gateway ?? item.media.first?.raw else {
+            
+            guard
+                let imageUrl = item.media.first?.gateway ?? item.media.first?.raw,
+                let metadata = item.metadata
+            else {
                 return nil
             }
-            
+
             let imageData = try Data(contentsOf: imageUrl)
             
             // enforce 10mb size limit
@@ -64,7 +69,9 @@ final class NFTAdapters {
             
             guard let image = UIImage(data: imageData) else { return nil }
             
-//            let traits = (item.metadata?.attributes ?? []).filter { $0.traitType != nil && $0.value != nil }.map { NFTTrait(key: $0.traitType!, value: $0.value!) }
+            let attributes: [Attribute] = (metadata.attributes ?? [APIAlchemyAttribute]())
+                .filter { $0.traitType != nil && $0.value != nil }
+                .map { Attribute(key: $0.traitType!, value: $0.value!) }
             
             return NFT(
                 id: "\(item.contract.address)/\(item.id.tokenId)",
@@ -81,7 +88,7 @@ final class NFTAdapters {
                 openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
                 externalUrl: nil,
                 metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
-                traits: []
+                attributes: attributes
             )
         } catch {
             print("⚠️ normalizeAlchemyNFT \(item.contract.address) \(item.id.tokenId) \(error)")
@@ -97,7 +104,6 @@ final class NFTAdapters {
     /// to convert it to a UIImage and save it to a temporary
     ///
     static private func normalizeEveryIcon(item: APIAlchemyNFT) async -> NFT? {
-        
         do {
            
             guard let metadata = item.metadata else { return nil }
@@ -152,7 +158,7 @@ final class NFTAdapters {
                 externalUrl: URL(string: "https://www.eatworks.xyz/projects-3/e-a-t-works-every-icon"),
                 metadataUrl: nil,
 
-                traits: []
+                attributes: [Attribute]()
             )
         } catch {
             print("⚠️ normalizeEveryIcon \(item.contract.address) \(item.id.tokenId) \(error)")
@@ -160,89 +166,22 @@ final class NFTAdapters {
         }
     }
     
+    
     static private func normalizeStrangeAttractors(item: APIAlchemyNFT) async -> NFT? {
-        do {
-//            struct EncodedData: Codable {
-//                var name: String
-//                var description: String
-//                var image: String
-//            }
-//
-//            let rawDataString = item.tokenUri.raw!
-//            let cleanedRawData = rawDataString
-//                .removingPercentEncoding!
-//                .replacingOccurrences(of: "data:application/json,", with: "")
-//                .data(using: .utf8)!
-//
-//
-//            let decoder = JSONDecoder()
-//            let data = try decoder.decode(EncodedData.self, from: cleanedRawData)
-//
-//            let svgString = data.image
-//                .replacingOccurrences(of: "data:image/svg+xml,", with: "")
-//                .replacingOccurrences(of: "\'", with: "'")
-//
-//
-////            return nil
-//            let temporaryDirectoryURL = URL(
-//                fileURLWithPath: NSTemporaryDirectory(),
-//                isDirectory: true
-//            )
-//
-//            let temporaryFilename = ProcessInfo().globallyUniqueString
-//
-//            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
-//
-//            let svgData: Data = svgString.data(using: .utf8)!
-//            try svgData.write(
-//                to: temporaryFileURL,
-//                options: .atomic
-//            )
-
-//
-//            let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
-//
-//            let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
-//            svgLayer.frame = frame
-//
-//            guard let image = snapshotImage(for: svgLayer) else { return nil }
-//
-//            try FileManager.default.removeItem(at: temporaryFileURL)
-//
-//            return NFT(
-//                id: "\(item.contract.address)/\(item.id.tokenId)",
-//                address: item.contract.address,
-//                tokenId: item.id.tokenId,
-//                standard: item.id.tokenMetadata.tokenType,
-//                title: data.name,
-//                text: data.description,
-//
-//                image: image,
-//                simulationUrl: nil,
-//                animationUrl: nil,
-//
-//                twitterUrl: URL(string: "https://twitter.com/strngeattrctors?s=21"),
-//                discordUrl: URL(string: "https://discord.gg/SyYCfrtzkP"),
-//                openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
-//                externalUrl: URL(string: "https://strangeattractors.art"),
-//                metadataUrl: nil,
-//
-//                traits: []
-//            )
-
-            return nil
-            
-        } catch {
-            print("⚠️ normalizeStrangeAttractors \(item.contract.address) \(item.id.tokenId) \(error)")
-            return nil
-        }
+        // TODO: Implement this
+        return nil
     }
     
     
     static private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
 
         do {
-            guard let imageUrl = item.media.first?.gateway ?? item.media.first?.raw else { return nil }
+            guard
+                let imageUrl = item.media.first?.gateway ?? item.media.first?.raw,
+                let metadata = item.metadata
+            else {
+                return nil
+            }
             
             let imageData = try Data(contentsOf: imageUrl)
             
@@ -250,6 +189,10 @@ final class NFTAdapters {
             if imageData.count > (10 * 1_000_000) { return nil }
             
             guard let image = UIImage(data: imageData) else { return nil }
+            
+            let attributes: [Attribute] = (metadata.attributes ?? [APIAlchemyAttribute]())
+                .filter { $0.traitType != nil && $0.value != nil }
+                .map { Attribute(key: $0.traitType!, value: $0.value!) }
 
             return NFT(
                 id: "\(item.contract.address)/\(item.id.tokenId)",
@@ -266,7 +209,7 @@ final class NFTAdapters {
                 openseaUrl: nil,
                 externalUrl: URL(string: "https://www.v1punks.io"),
                 metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
-                traits: []
+                attributes: attributes
             )
         } catch {
             print("⚠️ normalizeCryptopunk \(item.contract.address) \(item.id.tokenId) \(error)")
@@ -278,7 +221,12 @@ final class NFTAdapters {
     static private func normalizeArtblocks(item: APIAlchemyNFT) async -> NFT? {
 
         do {
-            guard let imageUrl = item.media.first?.gateway ?? item.media.first?.raw else { return nil }
+            guard
+                let imageUrl = item.media.first?.gateway ?? item.media.first?.raw,
+                let metadata = item.metadata
+            else {
+                return nil
+            }
             
             let imageData = try Data(contentsOf: imageUrl)
             
@@ -286,6 +234,10 @@ final class NFTAdapters {
             if imageData.count > (10 * 1_000_000) { return nil }
             
             guard let image = UIImage(data: imageData) else { return nil }
+            
+            let attributes: [Attribute] = (metadata.attributes ?? [APIAlchemyAttribute]())
+                .filter { $0.traitType != nil && $0.value != nil }
+                .map { Attribute(key: $0.traitType!, value: $0.value!) }
 
             return NFT(
                 id: "\(item.contract.address)/\(item.id.tokenId)",
@@ -302,7 +254,7 @@ final class NFTAdapters {
                 openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
                 externalUrl: nil,
                 metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
-                traits: []
+                attributes: attributes
             )
         } catch {
             print("⚠️ normalizeUnknownSignals \(item.contract.address) \(item.id.tokenId) \(error)")

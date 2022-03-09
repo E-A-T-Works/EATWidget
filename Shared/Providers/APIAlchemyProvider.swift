@@ -35,8 +35,6 @@ final class APIAlchemyProvider {
             
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
             
-            print(response)
-
             return response.ownedNfts
 
         } catch {

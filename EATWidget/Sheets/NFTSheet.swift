@@ -36,7 +36,6 @@ struct NFTSheet: View {
                     VStack {
                         
                         ScrollView {
-                            
                             NFTVisual(
                                 image: UIImage(data: viewModel.nft!.image!.blob!)!,
                                 simulationUrl: viewModel.nft?.simulationUrl,
@@ -66,7 +65,7 @@ struct NFTSheet: View {
 
                                 
                                 if viewModel.attributes.count > 0 {
-                                    TraitGrid(list: viewModel.attributes)
+                                    AttributeGrid(list: viewModel.attributes)
                                         .padding([.bottom], spacing)
                                     Divider().padding(.vertical)
                                 }

@@ -151,13 +151,13 @@
 		5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117027B9A2350021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
 		5C84117127B9A2360021008E /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84116E27B9A1C40021008E /* SectionTitle.swift */; };
-		5C84117727B9A6FE0021008E /* TraitGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117627B9A6FE0021008E /* TraitGrid.swift */; };
-		5C84117927B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
-		5C84117A27B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
-		5C84117B27B9A9530021008E /* TraitBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* TraitBox.swift */; };
-		5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
-		5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
-		5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */; };
+		5C84117727B9A6FE0021008E /* AttributeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117627B9A6FE0021008E /* AttributeGrid.swift */; };
+		5C84117927B9A9530021008E /* AttributeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* AttributeBox.swift */; };
+		5C84117A27B9A9530021008E /* AttributeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* AttributeBox.swift */; };
+		5C84117B27B9A9530021008E /* AttributeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117827B9A9530021008E /* AttributeBox.swift */; };
+		5C84117D27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
+		5C84117E27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
+		5C84117F27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
 		5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
 		5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
 		5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
@@ -372,9 +372,9 @@
 		5C828CF927BC4178009D92D6 /* EmailHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelpers.swift; sourceTree = "<group>"; };
 		5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
 		5C84116E27B9A1C40021008E /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
-		5C84117627B9A6FE0021008E /* TraitGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitGrid.swift; sourceTree = "<group>"; };
-		5C84117827B9A9530021008E /* TraitBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitBox.swift; sourceTree = "<group>"; };
-		5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TraitBox+Extensions.swift"; sourceTree = "<group>"; };
+		5C84117627B9A6FE0021008E /* AttributeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeGrid.swift; sourceTree = "<group>"; };
+		5C84117827B9A9530021008E /* AttributeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeBox.swift; sourceTree = "<group>"; };
+		5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributeBox+Extensions.swift"; sourceTree = "<group>"; };
 		5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "everyicon-test.svg"; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* NFTCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCard.swift; sourceTree = "<group>"; };
@@ -651,7 +651,7 @@
 				5C3D47B327C98E5A00C16464 /* WebView.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
 				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
-				5C84117627B9A6FE0021008E /* TraitGrid.swift */,
+				5C84117627B9A6FE0021008E /* AttributeGrid.swift */,
 				5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */,
 				5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */,
 				5C63087027B2C4BC00AC2A24 /* NFTItem.swift */,
@@ -758,8 +758,8 @@
 				5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */,
 				5C84116E27B9A1C40021008E /* SectionTitle.swift */,
 				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
-				5C84117827B9A9530021008E /* TraitBox.swift */,
-				5C84117C27B9A9620021008E /* TraitBox+Extensions.swift */,
+				5C84117827B9A9530021008E /* AttributeBox.swift */,
+				5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1033,7 +1033,7 @@
 				5C06457827C5E2B200E97D1C /* FeedbackPrompt.swift in Sources */,
 				5C035EDC27B6C5B800A11697 /* NFTHeader.swift in Sources */,
 				5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */,
-				5C84117927B9A9530021008E /* TraitBox.swift in Sources */,
+				5C84117927B9A9530021008E /* AttributeBox.swift in Sources */,
 				5CA9ADA727C6A3CA003C25DE /* WalletsSheet.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* NFTItem.swift in Sources */,
 				5C035EE227B6C5E500A11697 /* ActionRow.swift in Sources */,
@@ -1045,7 +1045,7 @@
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
 				5CB2024027C9CF910026A3D3 /* SVGImage.swift in Sources */,
-				5C84117727B9A6FE0021008E /* TraitGrid.swift in Sources */,
+				5C84117727B9A6FE0021008E /* AttributeGrid.swift in Sources */,
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
@@ -1056,7 +1056,7 @@
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 				5CA9ADAF27C6ABC2003C25DE /* WalletItem.swift in Sources */,
-				5C84117D27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
+				5C84117D27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */,
 				5CE9CFA027B576BA00F29938 /* DerivedColors.swift in Sources */,
 				5C828CF327BC3265009D92D6 /* ViewLoader.swift in Sources */,
 			);
@@ -1087,9 +1087,9 @@
 				5C6308B527B2DA0600AC2A24 /* APIRequest.swift in Sources */,
 				5C6308AF27B2D9F500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C84117127B9A2360021008E /* SectionTitle.swift in Sources */,
-				5C84117A27B9A9530021008E /* TraitBox.swift in Sources */,
+				5C84117A27B9A9530021008E /* AttributeBox.swift in Sources */,
 				5C6308B227B2D9FE00AC2A24 /* API.swift in Sources */,
-				5C84117E27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
+				5C84117E27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */,
 				5C574CEC27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
@@ -1130,7 +1130,7 @@
 				5C574CED27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
-				5C84117F27B9A9620021008E /* TraitBox+Extensions.swift in Sources */,
+				5C84117F27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */,
 				5C6308E827B2EB7400AC2A24 /* BasicNFTWidget.swift in Sources */,
 				5C6308EF27B2F12D00AC2A24 /* PlaceholderView.swift in Sources */,
 				5CB2024227C9CF910026A3D3 /* SVGImage.swift in Sources */,
@@ -1147,7 +1147,7 @@
 				5C6308F327B2F16E00AC2A24 /* NotFoundView.swift in Sources */,
 				5C1C71C827BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C6308FD27B2F3F400AC2A24 /* WalletsView+Extensions.swift in Sources */,
-				5C84117B27B9A9530021008E /* TraitBox.swift in Sources */,
+				5C84117B27B9A9530021008E /* AttributeBox.swift in Sources */,
 				5C91BE1827B45FA0001074CE /* UIImage+Extensions.swift in Sources */,
 				5C6308EA27B2EB8D00AC2A24 /* WidgetsBundle.swift in Sources */,
 				5CCA359F27BC23DD00715F85 /* GalleryView.swift in Sources */,

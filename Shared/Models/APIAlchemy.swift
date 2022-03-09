@@ -265,7 +265,6 @@ extension APIAlchemyGetNFTsResponse: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-//        ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
         ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
         totalCount = (try? container.decode(Int.self, forKey: .totalCount)) ?? 0
     }

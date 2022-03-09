@@ -26,16 +26,16 @@ struct TestData {
         externalUrl: nil,
         metadataUrl: nil,
         
-        traits: [
-            NFTTrait(key: "Drop", value: "Episode 1: The Janky Heist"),
-            NFTTrait(key: "JankyID", value: "3372"),
-            NFTTrait(key: "Head", value: "WHACKULA Head"),
-            NFTTrait(key: "Body", value: "STANK Body"),
-            NFTTrait(key: "Shoe", value: "SHüDOG-BRED Shoe"),
-            NFTTrait(key: "Jankyness Level", value: "Level 7"),
-            NFTTrait(key: "Background", value: "Normal"),
-            NFTTrait(key: "Artist", value: "Janky & Guggimon"),
-            NFTTrait(key: "Type", value: "Normie")
+        attributes: [
+            Attribute(key: "Drop", value: "Episode 1: The Janky Heist"),
+            Attribute(key: "JankyID", value: "3372"),
+            Attribute(key: "Head", value: "WHACKULA Head"),
+            Attribute(key: "Body", value: "STANK Body"),
+            Attribute(key: "Shoe", value: "SHüDOG-BRED Shoe"),
+            Attribute(key: "Jankyness Level", value: "Level 7"),
+            Attribute(key: "Background", value: "Normal"),
+            Attribute(key: "Artist", value: "Janky & Guggimon"),
+            Attribute(key: "Type", value: "Normie")
         ]
     )
 }

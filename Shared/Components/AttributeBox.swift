@@ -1,5 +1,5 @@
 //
-//  TraitBox.swift
+//  AttributeBox.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/13/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TraitBox: View {
+struct AttributeBox: View {
     
     let key: String?
     let value: String?
@@ -22,6 +22,7 @@ struct TraitBox: View {
                         .font(.system(size: 10, design: .monospaced))
                         .fontWeight(.bold)
                         .lineLimit(1)
+                        .padding(.bottom, 1)
                     
                     Text(value ?? "--")
                         .font(.system(size: 10, design: .monospaced))
@@ -37,10 +38,10 @@ struct TraitBox: View {
     }
 }
 
-struct TraitBox_Previews: PreviewProvider {
+struct AttributeBox_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TraitBox(
+            AttributeBox(
                 key: "Foo",
                 value: "Bar"
             ).frame(width: 100, height: 100)

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-struct NFTTrait: Hashable {
+struct Attribute: Hashable {
     let key: String
     let value: String
 }
@@ -36,6 +36,6 @@ struct NFT: Identifiable, Hashable {
     let externalUrl: URL?
     let metadataUrl: URL?
     
-    let traits: [NFTTrait]?
+    let attributes: [Attribute]
 }
 

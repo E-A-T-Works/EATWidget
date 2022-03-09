@@ -61,6 +61,8 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     }
 
     func sync(list: [NFT], wallet: NFTWallet) async throws {
+        print("!!!!!! sync !!!!!!")
+        
         let context = PersistenceController.shared.container.viewContext
                 
         ///
@@ -77,14 +79,14 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         
         await list.concurrentForEach { item in
             
+            
             ///
             /// Determine if this NFT already has an entry in the store. If it does, resume, the data should not
             /// change since it's immutable.
             ///
 
-            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
-            
-            if entry != nil { return }
+//            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
+//            if entry != nil { return }
             
             ///
             /// Convert the UIImage to a blob
@@ -99,15 +101,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             let newNFTImage = NFTImage(context: context)
             newNFTImage.blob = imageBlob
             
-//            let newNFTAttributes = (item.traits ?? []).map { attribute -> NFTAttribute in
-//                let newNFTAttribute = NFTAttribute(context: context)
-//                newNFTAttribute.key = attribute.key
-//                newNFTAttribute.value = attribute.value
-//
-//                return newNFTAttribute
-//            }
-//
-
+            
             let newNFTObject = NFTObject(context: context)
             
             newNFTObject.address = item.address
@@ -125,14 +119,27 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             newNFTObject.openseaUrl = item.openseaUrl
             newNFTObject.externalUrl = item.externalUrl
             newNFTObject.metadataUrl = item.metadataUrl
-            
-//            newNFTObject.attributes = .init(objects: newNFTAttributes)
-            newNFTObject.attributes = []
-            
+
             newNFTObject.wallet = wallet
             
             newNFTObject.timestamp = Date()
+            
+            //
+            // Update the attributes
+            //
+            
+            item.attributes.forEach { data in
+
+                let newNFTAttribute = NFTAttribute(context: context)
+                newNFTAttribute.key = data.key
+                newNFTAttribute.value = data.value
+                
+                newNFTAttribute.object = newNFTObject
+            }
+            
         }
+        
+        
         
         
         ///
