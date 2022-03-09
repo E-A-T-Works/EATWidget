@@ -147,6 +147,8 @@
 		5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C63090A27B30FDD00AC2A24 /* Icon_Black.png */; };
 		5C63091827B435E800AC2A24 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63090027B2F72000AC2A24 /* URLImage.swift */; };
 		5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C63091A27B4378D00AC2A24 /* ContentView.swift */; };
+		5C7772F927D94639005AED7E /* CollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7772F827D94639005AED7E /* CollectionSection.swift */; };
+		5C7772FB27D9465B005AED7E /* CollectionSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7772FA27D9465B005AED7E /* CollectionSectionViewModel.swift */; };
 		5C828CF327BC3265009D92D6 /* ViewLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF227BC3265009D92D6 /* ViewLoader.swift */; };
 		5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CF927BC4178009D92D6 /* EmailHelpers.swift */; };
 		5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */; };
@@ -372,6 +374,8 @@
 		5C63090927B30FDD00AC2A24 /* Icon_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_White.png; sourceTree = "<group>"; };
 		5C63090A27B30FDD00AC2A24 /* Icon_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Black.png; sourceTree = "<group>"; };
 		5C63091A27B4378D00AC2A24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5C7772F827D94639005AED7E /* CollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSection.swift; sourceTree = "<group>"; };
+		5C7772FA27D9465B005AED7E /* CollectionSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionViewModel.swift; sourceTree = "<group>"; };
 		5C828CF227BC3265009D92D6 /* ViewLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLoader.swift; sourceTree = "<group>"; };
 		5C828CF927BC4178009D92D6 /* EmailHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailHelpers.swift; sourceTree = "<group>"; };
 		5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayer.swift; sourceTree = "<group>"; };
@@ -638,6 +642,7 @@
 				5CA9ADA827C6A578003C25DE /* WalletsSheetViewModel.swift */,
 				5CA9ADAC27C6A590003C25DE /* WalletSheetViewModel.swift */,
 				5C63087627B2C6A000AC2A24 /* NFTSheetViewModel.swift */,
+				5C7772FA27D9465B005AED7E /* CollectionSectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				5C035EF727B6D98100A11697 /* AssetPaymentToken.swift */,
 				5C0394B827D923E5003029D2 /* Carousel.swift */,
 				5C0394BA27D92599003029D2 /* CarouselCard.swift */,
+				5C7772F827D94639005AED7E /* CollectionSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1053,11 +1059,13 @@
 				5C63087927B2C6FE00AC2A24 /* CollectionPage.swift in Sources */,
 				5C91BE1F27B47174001074CE /* BadgeBackground.swift in Sources */,
 				5CB2024027C9CF910026A3D3 /* SVGImage.swift in Sources */,
+				5C7772FB27D9465B005AED7E /* CollectionSectionViewModel.swift in Sources */,
 				5C84117727B9A6FE0021008E /* AttributeGrid.swift in Sources */,
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
 				5C035EE627B6C64E00A11697 /* URLButton.swift in Sources */,
+				5C7772F927D94639005AED7E /* CollectionSection.swift in Sources */,
 				5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* NFTItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* CollectionPageViewModel.swift in Sources */,
