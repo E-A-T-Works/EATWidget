@@ -30,7 +30,7 @@ struct CarouselCard: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()
-                .opacity(0.24)
+                .opacity(0.14)
             
             Spacer()
             

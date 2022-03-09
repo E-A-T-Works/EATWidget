@@ -45,20 +45,22 @@ struct CollectionPage: View {
 
                 } else {
                     
-                    ScrollView {
-                        VStack(alignment: .center) {
-                            Text("Reserved space for ios widget tutorial")
+                    ScrollView(showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            Text("Learn about iOS widgets")
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 124)
                         .background(.black)
                         .foregroundColor(.white)
-                        
+                        .padding(10)
+                        .onTapGesture {
+                            viewModel.presentTutorialSheet()
+                        }
                         
                         StaggeredGrid(
                             list: list,
                             columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                            showsIndicators: false,
                             spacing: 10,
                             lazy: true,
                             content: { item in
@@ -187,6 +189,9 @@ struct CollectionPage: View {
                 NavigationView {
                     WalletsSheet()
                 }
+                
+            case .Tutorial:
+                TutorialSheet()
                 
             case .MailForm(let data):
                 MailView(data: data) { result in

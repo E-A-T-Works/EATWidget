@@ -13,6 +13,7 @@ enum CollectionSheetContent {
     case ConnectForm
     case NFTDetails(address: String, tokenId: String)
     case NFTWallets
+    case Tutorial
     case MailForm(data: ComposeMailData)
 }
 
@@ -95,6 +96,11 @@ final class CollectionPageViewModel: ObservableObject {
     
     func presentWalletsSheet() {
         sheetContent = .NFTWallets
+        showingSheet.toggle()
+    }
+    
+    func presentTutorialSheet() {
+        sheetContent = .Tutorial
         showingSheet.toggle()
     }
     

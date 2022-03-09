@@ -38,7 +38,6 @@ struct Carousel: View {
             }
             .padding()
         }
-        .ignoresSafeArea()
     }
 }
 

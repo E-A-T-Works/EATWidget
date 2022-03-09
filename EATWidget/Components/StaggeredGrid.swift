@@ -18,8 +18,7 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     var list: [T]
     
     var columns: Int
-    
-    var showsIndicators: Bool
+
     var spacing: CGFloat
     
     let lazy: Bool
@@ -27,14 +26,12 @@ struct StaggeredGrid<Content: View, T: Identifiable>: View where T: Hashable {
     init(
         list: [T],
         columns: Int,
-        showsIndicators: Bool,
         spacing: CGFloat,
         lazy: Bool,
         @ViewBuilder content: @escaping (T) -> Content
     ) {
         self.list = list
         self.columns = columns
-        self.showsIndicators = showsIndicators
         self.spacing = spacing
         self.lazy = lazy
         self.content = content
