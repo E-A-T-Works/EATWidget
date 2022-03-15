@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CollectionSection: View {
     let address: String
+    var filterBy: NFTWallet?
+    
+    let action: (_ address:String, _ tokenId:String) -> Void
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -17,19 +20,22 @@ struct CollectionSection: View {
     
     @Namespace var animation
     
-    init(address: String) {
+    init(address: String, filterBy: NFTWallet?, action: @escaping (_ address:String, _ tokenId:String) -> Void) {
         self.address = address
+        self.filterBy = filterBy
+        self.action = action
         
         self._viewModel = StateObject(wrappedValue: CollectionSectionViewModel(address: address))
     }
     
     
     var list: [NFTObject] {
-//        if viewModel.filterBy != nil {
-//            return viewModel.nfts.filter { $0.wallet!.address! == viewModel.filterBy!.address }
-//        }
         
-        return viewModel.nfts
+        guard filterBy != nil else {
+            return viewModel.nfts
+        }
+        
+        return viewModel.nfts.filter { $0.wallet!.address! == filterBy!.address }
     }
     
     var body: some View {
@@ -40,6 +46,7 @@ struct CollectionSection: View {
                 Text("\(address.formattedWeb3)")
                 Spacer()
             }
+            .padding([.horizontal], 10)
                         
             StaggeredGrid(
                 list: list,
@@ -50,22 +57,26 @@ struct CollectionSection: View {
                     NFTCard(item: item)
                         .matchedGeometryEffect(id: item.id, in: animation)
                         .onTapGesture {
-
+                            action(item.address!, item.tokenId!)
                         }
                 }
             )
             .padding([.horizontal], 10)
-            
-            Divider()
-            
+
         }
-        
+        .padding(.bottom)
         
     }
 }
 
 struct CollectionSection_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionSection(address: "123")
+        VStack {
+            CollectionSection(address: "123", filterBy: nil) { address, tokenId in
+                // pass
+            }
+        }
+        .padding()
+        .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

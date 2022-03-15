@@ -66,7 +66,12 @@ struct CollectionPage: View {
                         
                         ForEach(viewModel.addresses, id: \.self) { address in
                                 
-                            CollectionSection(address: address)
+                            CollectionSection(
+                                address: address,
+                                filterBy: viewModel.filterBy
+                            ) { address, tokenId in
+                                viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                            }
                             
                         }
                     }
