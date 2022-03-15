@@ -43,11 +43,14 @@ struct CollectionSection: View {
         VStack {
             
             HStack {
-                Text("\(address.formattedWeb3)")
+                HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
                 Spacer()
             }
             .padding([.horizontal], 10)
-                        
+            
+            Divider()
+                .padding([.horizontal], 10)
+
             StaggeredGrid(
                 list: list,
                 columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
