@@ -16,7 +16,11 @@ struct CollectionPage: View {
     
     @State var brandingIcon: Int = 0
     
-    @StateObject private var viewModel = CollectionPageViewModel()
+    @StateObject private var viewModel: CollectionPageViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: CollectionPageViewModel())
+    }
     
     // MARK: Calculated Values
 
@@ -60,24 +64,11 @@ struct CollectionPage: View {
                             viewModel.presentTutorialSheet()
                         }
                         
-                        StaggeredGrid(
-                            list: list,
-                            columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                            spacing: 10,
-                            lazy: true,
-                            content: { item in
-                                NFTCard(item: item)
-                                    .matchedGeometryEffect(id: item.id, in: animation)
-                                    .onTapGesture {
-                                        viewModel.presentNFTDetailsSheet(
-                                            address: item.address!,
-                                            tokenId: item.tokenId!
-                                        )
-                                    }
-                            }
-                        )
-                        .padding([.horizontal], 10)
-                        
+                        ForEach(viewModel.addresses, id: \.self) { address in
+                                
+                            CollectionSection(address: address)
+                            
+                        }
                     }
                 }
 

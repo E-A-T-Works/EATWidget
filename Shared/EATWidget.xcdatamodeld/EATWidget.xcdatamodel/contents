@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="NFTAttribute" representedClassName="NFTAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="key" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="attributes" inverseEntity="NFTObject"/>
+    </entity>
+    <entity name="NFTCollection" representedClassName="NFTCollection" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="NFTImage" representedClassName="NFTImage" syncable="YES" codeGenerationType="class">
         <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
@@ -38,5 +44,6 @@
         <element name="NFTImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="73"/>
         <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="269"/>
         <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="89"/>
+        <element name="NFTCollection" positionX="-99" positionY="-54" width="128" height="89"/>
     </elements>
 </model>

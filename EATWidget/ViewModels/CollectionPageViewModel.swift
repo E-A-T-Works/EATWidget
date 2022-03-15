@@ -24,7 +24,8 @@ final class CollectionPageViewModel: ObservableObject {
 
     @Published private(set) var wallets: [NFTWallet] = []
     @Published private(set) var nfts: [NFTObject] = []
-
+    @Published private(set) var addresses: [String] = []
+    
     @Published private(set) var filterBy: NFTWallet?
     
     @Published private(set) var loading: Bool = false
@@ -53,6 +54,15 @@ final class CollectionPageViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .compactMap { $0 }
             .assign(to: &$nfts)
+        
+        objectStorage.$list
+            .receive(on: RunLoop.main)
+            .compactMap { $0 }
+            .map { $0.filter { $0.address != nil }.map { $0.address! }.unique() }
+            .removeDuplicates { prev, curr in
+                prev.elementsEqual(curr)
+            }
+            .assign(to: &$addresses)
     }
     
     // MARK: - Public Methods
