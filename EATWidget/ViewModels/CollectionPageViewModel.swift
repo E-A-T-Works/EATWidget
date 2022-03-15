@@ -66,25 +66,6 @@ final class CollectionPageViewModel: ObservableObject {
     }
     
     // MARK: - Public Methods
-    
-    // Ref: https://github.com/renaudjenny/SwiftUI-with-Size-Classes
-    func determineColumns(vertical: UserInterfaceSizeClass?, horizontal: UserInterfaceSizeClass?) -> Int {
-        if vertical == .regular && horizontal == .compact {
-            // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
-            return 2
-        } else if vertical == .compact && horizontal == .compact {
-            // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
-            return 3
-        } else if vertical == .compact && horizontal == .regular {
-            // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
-            return 4
-        } else if vertical == .regular && horizontal == .regular {
-            // macOS or iPad without split view - no Multitasking
-            return 4
-        } else {
-            return 2
-        }
-    }
 
     func setFilterBy(wallet: NFTWallet) {
         filterBy = wallet

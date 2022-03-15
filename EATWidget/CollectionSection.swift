@@ -65,7 +65,8 @@ struct CollectionSection: View {
 
         }
         .padding(.bottom)
-        
+        .animation(.easeInOut, value: list.count + 1)
+   
     }
 }
 

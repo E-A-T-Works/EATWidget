@@ -9,10 +9,6 @@ import SwiftUI
 
 struct CollectionPage: View {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
-    @Namespace var animation
     
     @State var brandingIcon: Int = 0
     
@@ -22,16 +18,6 @@ struct CollectionPage: View {
         self._viewModel = StateObject(wrappedValue: CollectionPageViewModel())
     }
     
-    // MARK: Calculated Values
-
-    var list: [NFTObject] {
-        if viewModel.filterBy != nil {
-            return viewModel.nfts.filter { $0.wallet!.address! == viewModel.filterBy!.address }
-        }
-        
-        return viewModel.nfts
-    }
-
     // MARK: Body
    
     var body: some View {
@@ -43,7 +29,7 @@ struct CollectionPage: View {
 
             } else {
 
-                if list.isEmpty {
+                if viewModel.nfts.isEmpty {
 
                     ViewPlaceholder(text: "Connect a wallet to see your NFTs")
 
@@ -83,7 +69,6 @@ struct CollectionPage: View {
                 )
             }
         }
-        .animation(.easeInOut, value: list.count + 1)
         .navigationTitle("Collection")
         .toolbar(content: {
             ToolbarItem(

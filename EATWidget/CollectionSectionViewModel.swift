@@ -15,7 +15,6 @@ final class CollectionSectionViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    
     let address: String
     
     @Published private(set) var collection: NFTCollection?
@@ -24,8 +23,6 @@ final class CollectionSectionViewModel: ObservableObject {
     
     private let collectionStorage = NFTCollectionStorage.shared
     private let objectStorage = NFTObjectStorage.shared
-    
-    private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
     
@@ -47,8 +44,6 @@ final class CollectionSectionViewModel: ObservableObject {
     private func load() {}
     
     // MARK: - Public Methods
-    
-    
     
     // Ref: https://github.com/renaudjenny/SwiftUI-with-Size-Classes
     func determineColumns(vertical: UserInterfaceSizeClass?, horizontal: UserInterfaceSizeClass?) -> Int {
