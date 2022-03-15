@@ -455,6 +455,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C33E07827E0E98E004CED17 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5CA04D3B27E0C86700559129 /* CollectionSection.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		5C60F05D27BCB6E7006F8AB4 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,12 +505,11 @@
 				5C63083C27B2B44900AC2A24 /* Assets.xcassets */,
 				5C63086F27B2C4AD00AC2A24 /* Components */,
 				5C63086D27B2C48B00AC2A24 /* ViewModels */,
+				5C33E07827E0E98E004CED17 /* Managers */,
 				5C63086C27B2C48000AC2A24 /* Sheets */,
 				5C63086B27B2C47600AC2A24 /* Pages */,
 				5C828CF627BC3AA3009D92D6 /* Utils */,
 				5C63083E27B2B44900AC2A24 /* Preview Content */,
-				5CA04D3B27E0C86700559129 /* CollectionSection.swift */,
-				5CA04D3D27E0C87200559129 /* CollectionSectionViewModel.swift */,
 			);
 			path = EATWidget;
 			sourceTree = "<group>";
@@ -647,6 +654,7 @@
 				5CA9ADA827C6A578003C25DE /* WalletsSheetViewModel.swift */,
 				5CA9ADAC27C6A590003C25DE /* WalletSheetViewModel.swift */,
 				5C63087627B2C6A000AC2A24 /* NFTSheetViewModel.swift */,
+				5CA04D3D27E0C87200559129 /* CollectionSectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
