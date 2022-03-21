@@ -17,18 +17,21 @@ final class NFTProvider {
     static func fetchNFTs(
         ownerAddress: String,
         strategy: DataStrategies = .Alchemy
-    ) async throws -> [NFT] {
+    ) async throws -> [DataFetchResultKey: [NFT]] {
         
-        var list: [NFT] = [NFT]()
+        var results: [DataFetchResultKey: [NFT]] = [
+            .Supported: [NFT](),
+            .Unsupported: [NFT]()
+        ]
         
         switch strategy {
         case .Alchemy:
             let response = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
             
-            list = await NFTAdapters.mapAlchemyDataToNFTs(list: response)
+            results = await NFTAdapters.mapAlchemyDataToNFTs(list: response)
         }
  
-        return list
+        return results
     }
     
     

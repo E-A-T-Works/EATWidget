@@ -9,29 +9,84 @@ import SwiftUI
 import PocketSVG
 
 
+enum DataFetchResultKey {
+    case Supported
+    case Unsupported
+}
+
+struct NFTParsedData {
+    let address: String
+    let tokenId: String
+    let data: NFT?
+}
+
 final class NFTAdapters {
     
-    static func mapAlchemyDataToNFTs(list: [APIAlchemyNFT]) async -> [NFT] {
+    static func mapAlchemyDataToNFTs(list: [APIAlchemyNFT]) async -> [DataFetchResultKey: [NFT]] {
+        
+        var parsed = [NFTParsedData]()
+        
+        var supported = [NFT]()
+        var unsupported = [NFT]()
+        
         do {
-            var parsed = [NFT?]()
-            var cleaned = [NFT]()
-            
-            parsed = try await list.concurrentMap { (item: APIAlchemyNFT) -> NFT? in
-                return await normalize(address: item.contract.address, item: item)
+            parsed = try await list.concurrentMap { (item: APIAlchemyNFT) -> NFTParsedData in
+                
+                let address = item.contract.address
+                let tokenId = item.id.tokenId
+                
+                let data = await normalize(address: item.contract.address, item: item)
+                
+                return NFTParsedData(address: address, tokenId: tokenId, data: data)
             }
-                        
-            cleaned = parsed.compactMap { $0 }
-            
-            return cleaned
         } catch {
             print("⚠️ NFTAdapters:mapAlchemyDataToNFTs \(error)")
-
-            return [NFT]()
         }
+        
+        supported = parsed.map {
+            $0.data
+        }.compactMap{ $0 }
+  
+        unsupported = parsed.map {
+            $0.data == nil
+                ? stub(address: $0.address, tokenId: $0.tokenId)
+                : nil
+        }.compactMap{ $0 }
+
+        return [
+            .Supported: supported,
+            .Unsupported: unsupported
+        ]
     }
     
+    
+    // MARK: -
+    
+    static private func stub(address: String, tokenId: String) -> NFT {
+        return NFT(
+            id: "\(address)/\(tokenId)",
+            address: address,
+            tokenId: tokenId,
+            standard: "",
+            title: "Unsupported",
+            text: "\(address.formattedWeb3) | \(tokenId)",
+            image: UIImage(systemName: "photo")!,
+            simulationUrl: nil,
+            animationUrl: nil,
+            twitterUrl: nil,
+            discordUrl: nil,
+            openseaUrl: nil,
+            externalUrl: nil,
+            metadataUrl: nil,
+            attributes: [Attribute]()
+        )
+    }
+    
+    
+    // MARK: -
+    
     static private func normalize(address: String, item: APIAlchemyNFT) async -> NFT? {
-//        print("➡️ \(item.contract.address) \(item.id.tokenId) \(item.title)")
+        print("🧹 \(item.contract.address) \(item.id.tokenId) \(item.title)")
         
         switch address {
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":

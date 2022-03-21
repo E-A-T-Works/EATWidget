@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 
 struct ConnectFormState: Equatable {
@@ -31,10 +32,14 @@ final class ConnectSheetViewModel: ObservableObject {
         address: ""
     )
     
-    @Published private(set) var ready: Bool = false
+    @Published private(set) var ready: Bool = true
     @Published private(set) var loading: Bool = false
     
-    @Published private(set) var supported: [NFT] = []
+    @Published private(set) var rawResults: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    @Published private(set) var cleanedResults: [DataFetchResultKey: [NFT]] = [
+        .Supported: [NFT](),
+        .Unsupported: [NFT]()
+    ]
     
     @Published var sheetContent: ConnectFormSheetContent = .MailForm(
         data: ComposeMailData(
@@ -64,7 +69,53 @@ final class ConnectSheetViewModel: ObservableObject {
     init() { }
     
     // MARK: - Public Methods
+   
+    func markAsReady() {
+        ready = true
+    }
     
+    func markAsNotReady() {
+        ready = false
+    }
+    
+    func reset() {
+        updateAddress("")
+        updateTitle("")
+//
+//        results = [
+//            .Supported: [NFT](),
+//            .Unsupported: [NFT]()
+//        ]
+        
+        markAsNotReady()
+    }
+    
+    
+    // MARK: -
+    
+    func updateAddress(_ newValue: String) {
+        form.address = newValue
+        updateFormValidity()
+    }
+
+    func validateAddress(_ addressToTest: String) -> Bool {
+        // ref: https://info.etherscan.com/what-is-an-ethereum-address/
+        
+//        let lengthCheck = addressToTest.count == 42
+//        let prefixCheck = addressToTest.hasPrefix("0x")
+//
+//        return lengthCheck && prefixCheck
+        return true
+    }
+    
+    func setAddressFromPasteboard() {
+        let pasteboard = UIPasteboard.general
+        guard let address = pasteboard.string else { return }
+        
+        updateAddress(address)
+        lookup()
+    }
+
     func updateTitle(_ newValue: String) {
         guard !(newValue.count > 50) else {
             return // Titles should not be more than 50 characters long
@@ -74,87 +125,93 @@ final class ConnectSheetViewModel: ObservableObject {
         updateFormValidity()
     }
     
-    func updateAddress(_ newValue: String) {
-        form.address = newValue
-        updateFormValidity()
+    func validateTitle(_ titleToTest: String) -> Bool {
+        return true
     }
+
     
-    func resetAddress() {
-        updateAddress("")
-        supported = []
-    }
+    // MARK: -
     
-    func validateAddress(_ addressToTest: String) -> Bool {
-        // ref: https://info.etherscan.com/what-is-an-ethereum-address/
+    func lookup() {
         
-        let lengthCheck = addressToTest.count == 42
-        let prefixCheck = addressToTest.hasPrefix("0x")
+        print("🔍 lookup() \(form.address)")
         
-        return lengthCheck && prefixCheck
+        guard form.isValid else {
+            
+            print("🙅‍♂️ Invalid: \(form.address) \(form.title)")
+            
+            return
+        }
+        
+        
+        markAsReady()
+        
+        loading = true
+        
+        Task {
+
+            do {
+//                results = try await NFTProvider.fetchNFTs(
+//                    ownerAddress: form.address,
+//                    strategy: .Alchemy
+//                )
+                
+//                print()
+                
+//                print("➡️ Supported: \(results[.Supported]?.count ?? 0) | Unsupported: \(results[.Unsupported]?.count ?? 0)")
+                
+//                print()
+                
+                
+                rawResults = try await APIAlchemyProvider.fetchNFTs(ownerAddress: form.address)
+                
+            } catch {
+                print("⚠️ (ConnectSheetViewModel)::load() \(error)")
+            }
+            
+            print("✅")
+            loading = false
+        }
     }
     
+    func submit() {
+//        Task {
+//            do {
+//                // add the wallet
+//                let wallet = try walletStorage.create(
+//                    address: form.address,
+//                    title: form.title.isEmpty ? nil : form.title
+//                )
+//
+//                // sync the data NFTs in the wallet
+//                try await objectStorage.sync(
+//                    list: supported,
+//                    wallet: wallet
+//                )
+//
+//                dismiss()
+//            } catch {
+//                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
+//            }
+//        }
+    }
     
+    func dismiss() {
+        self.shouldDismissView = true
+    }
+    
+    // MARK: -
+
     func presentMailFormSheet() {
         sheetContent = .MailForm(
             data: ComposeMailData(
                 subject: "[BETA:EATWidget] - Missing NFT",
                 recipients: ["adrian@eatworks.xyz"],
-                message: "(Wallet Address: \(form.address ?? "")) Please provide the contract address and token Id (or a link that has that info e.g. opensea) for each NFT you think should be supported.",
+                message: "(Wallet Address: \(form.address)) Please provide the contract address and token Id (or a link that has that info e.g. opensea) for each NFT you think should be supported.",
                 attachments: []
             )
         )
         showingSheet.toggle()
-    }
-    
-    func lookup() {
-        ready = true
-
-        Task {
-            do {
-                self.loading = true
-                
-                self.supported = try await NFTProvider.fetchNFTs(
-                    ownerAddress: form.address,
-                    strategy: .Alchemy
-                )
-                
-                self.loading = false
-                
-            } catch {
-                print("⚠️ (ConnectSheetViewModel)::load() \(error)")
-                self.loading = false
-            }
-        }
-    }
-    
-    func delete(at offsets: IndexSet) {
-        supported.remove(atOffsets: offsets)
-    }
-    
-    func submit() {
-        Task {
-            do {
-                // add the wallet
-                let wallet = try walletStorage.create(
-                    address: form.address,
-                    title: form.title.isEmpty ? nil : form.title
-                )
-                
-                // sync the data NFTs in the wallet
-                try await objectStorage.sync(
-                    list: supported,
-                    wallet: wallet
-                )
-                            
-                dismiss()
-            } catch {
-                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
-            }
-        }
-    }
-    
-    func dismiss() {
-        self.shouldDismissView = true
     }
     
     // MARK: - Private Methods
@@ -164,6 +221,6 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     private func isValidForm() -> Bool {
-        return !form.address.isEmpty
+        return !form.address.isEmpty && validateAddress(form.address) && validateTitle(form.title)
     }
 }

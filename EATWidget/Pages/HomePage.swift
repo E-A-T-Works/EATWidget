@@ -12,10 +12,10 @@ struct CollectionPage: View {
     
     @State var brandingIcon: Int = 0
     
-    @StateObject private var viewModel: CollectionPageViewModel
+    @StateObject private var viewModel: HomePageViewModel
     
     init() {
-        self._viewModel = StateObject(wrappedValue: CollectionPageViewModel())
+        self._viewModel = StateObject(wrappedValue: HomePageViewModel())
     }
     
     // MARK: Body

@@ -1,5 +1,5 @@
 //
-//  CollectionPageViewModel.swift
+//  HomePageViewModel.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/8/22.
@@ -8,9 +8,8 @@
 import Foundation
 import Combine
 import SwiftUI
-import Firebase
 
-enum CollectionSheetContent {
+enum HomePageSheetContent {
     case ConnectForm
     case NFTDetails(address: String, tokenId: String)
     case NFTWallets
@@ -19,7 +18,7 @@ enum CollectionSheetContent {
 }
 
 @MainActor
-final class CollectionPageViewModel: ObservableObject {
+final class HomePageViewModel: ObservableObject {
     
     // MARK: - Properties
 
@@ -31,34 +30,18 @@ final class CollectionPageViewModel: ObservableObject {
     
     @Published private(set) var loading: Bool = false
     
-    @Published var sheetContent: CollectionSheetContent = .ConnectForm
+    @Published var sheetContent: HomePageSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
     
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
-    
-    private let db = Firestore.firestore()
-    
+
     private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
     
     init() {
         setupSubscriptions()
-        
-        print("firebase test")
-        let docRef = db.collection("test").document("data")
-        
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-        }
-        
-
     }
     
     private func setupSubscriptions() {
