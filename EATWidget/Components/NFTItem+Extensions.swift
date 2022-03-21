@@ -8,22 +8,25 @@
 import SwiftUI
 
 extension NFTItem {
-    init(item: NFT) {
+    init(item: NFT, state: NFTItemState) {
+
+        title = item.title ?? "Untitled"
         address = item.address
         tokenId = item.tokenId
+        
         image = item.image
-        title = item.title
-        text = item.text
+        self.state = state
     }
 }
 
 
 extension NFTItem {
-    init(item: NFTObject) {
+    init(item: NFTObject, state: NFTItemState) {
+        title = item.title ?? "Untitled"
         address = item.address!
         tokenId = item.tokenId!
+        
         image = UIImage(data: item.image!.blob!)!
-        title = item.title
-        text = item.text
+        self.state = state
     }
 }

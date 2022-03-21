@@ -63,6 +63,12 @@
 		5C36B34427E8CBAF0039A50E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5C36B34327E8CBAF0039A50E /* FirebaseAuth */; };
 		5C36B34627E8CBAF0039A50E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5C36B34527E8CBAF0039A50E /* FirebaseFirestore */; };
 		5C36B34827E8CBAF0039A50E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5C36B34727E8CBAF0039A50E /* FirebaseStorage */; };
+		5C36B35027E9111E0039A50E /* spinner-03.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34A27E9111E0039A50E /* spinner-03.json */; };
+		5C36B35127E9111E0039A50E /* spinner-01.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34B27E9111E0039A50E /* spinner-01.json */; };
+		5C36B35227E9111E0039A50E /* spinner-05.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34C27E9111E0039A50E /* spinner-05.json */; };
+		5C36B35327E9111E0039A50E /* spinner-06.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34D27E9111E0039A50E /* spinner-06.json */; };
+		5C36B35427E9111E0039A50E /* spinner-04.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34E27E9111E0039A50E /* spinner-04.json */; };
+		5C36B35527E9111E0039A50E /* spinner-02.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C36B34F27E9111E0039A50E /* spinner-02.json */; };
 		5C3D47B027C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
 		5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
 		5C3D47B227C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
@@ -320,6 +326,12 @@
 		5C33D15427E8C53500EFD666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
+		5C36B34A27E9111E0039A50E /* spinner-03.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-03.json"; sourceTree = "<group>"; };
+		5C36B34B27E9111E0039A50E /* spinner-01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-01.json"; sourceTree = "<group>"; };
+		5C36B34C27E9111E0039A50E /* spinner-05.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-05.json"; sourceTree = "<group>"; };
+		5C36B34D27E9111E0039A50E /* spinner-06.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-06.json"; sourceTree = "<group>"; };
+		5C36B34E27E9111E0039A50E /* spinner-04.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-04.json"; sourceTree = "<group>"; };
+		5C36B34F27E9111E0039A50E /* spinner-02.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spinner-02.json"; sourceTree = "<group>"; };
 		5C3D47AF27C97FD500C16464 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		5C3D47B327C98E5A00C16464 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAlchemy.swift; sourceTree = "<group>"; };
@@ -473,6 +485,19 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		5C36B34927E911060039A50E /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				5C36B34B27E9111E0039A50E /* spinner-01.json */,
+				5C36B34F27E9111E0039A50E /* spinner-02.json */,
+				5C36B34A27E9111E0039A50E /* spinner-03.json */,
+				5C36B34E27E9111E0039A50E /* spinner-04.json */,
+				5C36B34C27E9111E0039A50E /* spinner-05.json */,
+				5C36B34D27E9111E0039A50E /* spinner-06.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		5C60F05D27BCB6E7006F8AB4 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +545,7 @@
 				5C63086C27B2C48000AC2A24 /* Sheets */,
 				5C63086B27B2C47600AC2A24 /* Pages */,
 				5C828CF627BC3AA3009D92D6 /* Utils */,
+				5C36B34927E911060039A50E /* Lottie */,
 				5C63083E27B2B44900AC2A24 /* Preview Content */,
 			);
 			path = EATWidget;
@@ -934,10 +960,14 @@
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
 				5CBC06B327BC5BC300C2CADD /* eat-w-b-3.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
+				5C36B35527E9111E0039A50E /* spinner-02.json in Resources */,
+				5C36B35327E9111E0039A50E /* spinner-06.json in Resources */,
 				5CBC06BF27BC5BC300C2CADD /* eat-b-w-4.png in Resources */,
 				5CBC06A727BC5BC300C2CADD /* eat-b-w-6.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
+				5C36B35227E9111E0039A50E /* spinner-05.json in Resources */,
 				5CBC06C527BC5BC300C2CADD /* eat-b-w-3.png in Resources */,
+				5C36B35027E9111E0039A50E /* spinner-03.json in Resources */,
 				5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */,
 				5CBC069B27BC5BC300C2CADD /* eat-b-w-5.png in Resources */,
 				5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */,
@@ -948,6 +978,8 @@
 				5CBC06C227BC5BC300C2CADD /* eat-w-b-1.png in Resources */,
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
 				5CBC069E27BC5BC300C2CADD /* eat-b-w-0.png in Resources */,
+				5C36B35127E9111E0039A50E /* spinner-01.json in Resources */,
+				5C36B35427E9111E0039A50E /* spinner-04.json in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
 				5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B027BC5BC300C2CADD /* eat-w-b-4.png in Resources */,

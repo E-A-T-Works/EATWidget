@@ -49,7 +49,7 @@ struct WalletSheet: View {
                     if !viewModel.supported.isEmpty {
                         Section {
                             ForEach(viewModel.supported) { item in
-                                NFTItem(item: item)
+                                NFTItem(item: item, state: .Supported)
                             }
                         } header: {
                             Text("Supported NFTs")
