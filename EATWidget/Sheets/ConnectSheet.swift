@@ -29,7 +29,6 @@ struct ConnectSheet: View {
     
     var body: some View {
         
-        
         ZStack {
             VStack {
                 Form {
@@ -42,6 +41,7 @@ struct ConnectSheet: View {
                                     set: { [viewModel] in viewModel.updateAddress($0) }
                                 )
                             )
+                            .disabled(viewModel.ready)
                             
                             Spacer()
                             
@@ -93,10 +93,6 @@ struct ConnectSheet: View {
                             
                         } else {
                             
-                            
-                            
-                            // processing
-                            
                             Section {
                                 ForEach(viewModel.rawResults.indices, id: \.self) { index in
                                     
@@ -107,61 +103,42 @@ struct ConnectSheet: View {
                                     }
                                 }
                             } header: {
-                                Text("Processing")
+                                Text("\(viewModel.totalCleaned) / \(viewModel.totalResults) NFT\(viewModel.totalResults == 1 ? "" : "s") Processed")
                             } footer: {
                                 
                             }
 
-                            
- 
-                            
-                            // supported
-                            
-                            Section {
-                                
-                            } header: {
-                                HStack {
-                                    Text("Supported")
-                                }
-                            } footer: {
-                                
-                            }
-
-                            
-                            // unsupported
-                            
-                            Section {
-                                
-                            } header: {
-                                HStack {
-                                    Text("Unsupported")
-                                    Spacer()
-                                    Button {
-                                        
-                                    } label: {
-                                        Text("Call us")
-                                    }
-
-                                }
-                            }
                         }
                         
                     }
-                    
-                   
- 
                 }
             }
         }
         .navigationTitle("Connect a wallet")
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing, content: {
-                Button {
+                Button{
+                    
+                    if viewModel.ready {
+                        viewModel.submit()
+                    } else {
+                        viewModel.lookup()
+                    }
                     
                 } label: {
-                    Text("DONE")
-                        .font(.system(size: 16, design: .monospaced))
+                    
+                    if viewModel.ready {
+                        Text("DONE")
+                            .font(.system(size: 16, design: .monospaced))
+                    } else {
+                        Text("CONNECT")
+                            .font(.system(size: 16, design: .monospaced))
+                    }
+
                 }
+                .disabled(
+                    viewModel.ready ? viewModel.loading : !viewModel.form.isValid
+                )
 
           })
         })

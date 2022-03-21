@@ -40,6 +40,8 @@ final class ConnectSheetViewModel: ObservableObject {
         .Supported: [NFT](),
         .Unsupported: [NFT]()
     ]
+    @Published private(set) var totalResults: Int = 0
+    @Published private(set) var totalCleaned: Int = 0
     
     @Published var sheetContent: ConnectFormSheetContent = .MailForm(
         data: ComposeMailData(
@@ -81,12 +83,7 @@ final class ConnectSheetViewModel: ObservableObject {
     func reset() {
         updateAddress("")
         updateTitle("")
-//
-//        results = [
-//            .Supported: [NFT](),
-//            .Unsupported: [NFT]()
-//        ]
-        
+
         markAsNotReady()
     }
     
