@@ -91,7 +91,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             /// Convert the UIImage to a blob
             ///
 
-            guard let imageBlob = item.image.jpegData(compressionQuality: 1.0) else { return }
+            guard let imageBlob = item.image.jpegData(compressionQuality: 0.25) else { return }
             
             ///
             /// If all went well, create the NFTObject and it's related objects

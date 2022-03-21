@@ -13,7 +13,6 @@ struct Carousel: View {
     
     var list: [CarouselCardContent] = []
     
-    
     var body: some View {
         VStack {
             
@@ -28,15 +27,17 @@ struct Carousel: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
-            HStack(spacing: 4) {
-                ForEach((0..<list.count), id: \.self) { index in
-                    Circle()
-                        .fill(index == self.index ? Color.black : Color.black.opacity(0.24))
-                        .frame(width: 8, height: 8)
+            if list.count > 1 {
+                HStack(spacing: 4) {
+                    ForEach((0..<list.count), id: \.self) { index in
+                        Circle()
+                            .fill(index == self.index ? Color.black : Color.black.opacity(0.24))
+                            .frame(width: 8, height: 8)
 
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }

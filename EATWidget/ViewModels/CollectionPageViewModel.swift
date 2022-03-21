@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import Firebase
 
 enum CollectionSheetContent {
     case ConnectForm
@@ -36,12 +37,28 @@ final class CollectionPageViewModel: ObservableObject {
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
     
+    private let db = Firestore.firestore()
+    
     private var cancellable: AnyCancellable?
     
     // MARK: - Initialization
     
     init() {
         setupSubscriptions()
+        
+        print("firebase test")
+        let docRef = db.collection("test").document("data")
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+
     }
     
     private func setupSubscriptions() {
