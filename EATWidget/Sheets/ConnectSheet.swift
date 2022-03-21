@@ -41,7 +41,7 @@ struct ConnectSheet: View {
                                     set: { [viewModel] in viewModel.updateAddress($0) }
                                 )
                             )
-                            .disabled(viewModel.ready)
+                            .disabled(viewModel.addressIsSet)
                             
                             Spacer()
                             
@@ -64,7 +64,7 @@ struct ConnectSheet: View {
                         }
                         
                     } footer: {
-                        if !viewModel.ready {
+                        if !viewModel.addressIsSet {
                             HStack(alignment: .top) {
                                 Image(systemName: "info.circle")
                                 
@@ -74,7 +74,7 @@ struct ConnectSheet: View {
                         }
                     }
                     
-                    if viewModel.ready {
+                    if viewModel.addressIsSet {
                         
                         Section {
                             TextField(
@@ -119,7 +119,7 @@ struct ConnectSheet: View {
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button{
                     
-                    if viewModel.ready {
+                    if viewModel.addressIsSet {
                         viewModel.submit()
                     } else {
                         viewModel.lookup()
@@ -127,7 +127,7 @@ struct ConnectSheet: View {
                     
                 } label: {
                     
-                    if viewModel.ready {
+                    if viewModel.addressIsSet {
                         Text("DONE")
                             .font(.system(size: 16, design: .monospaced))
                     } else {
@@ -137,7 +137,7 @@ struct ConnectSheet: View {
 
                 }
                 .disabled(
-                    viewModel.ready ? viewModel.loading : !viewModel.form.isValid
+                    viewModel.addressIsSet ? viewModel.loading : !viewModel.form.isValid
                 )
 
           })
@@ -211,7 +211,7 @@ struct ConnectSheet: View {
 //
 //                }
 //
-//                if viewModel.ready {
+//                if viewModel.addressIsSet {
 //                    if viewModel.loading {
 //                        HStack {
 //                            Spacer()

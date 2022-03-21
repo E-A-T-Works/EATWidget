@@ -32,7 +32,7 @@ final class ConnectSheetViewModel: ObservableObject {
         address: ""
     )
     
-    @Published private(set) var ready: Bool = true
+    @Published private(set) var addressIsSet: Bool = true
     @Published private(set) var loading: Bool = false
     
     @Published private(set) var rawResults: [APIAlchemyNFT] = [APIAlchemyNFT]()
@@ -71,20 +71,12 @@ final class ConnectSheetViewModel: ObservableObject {
     init() { }
     
     // MARK: - Public Methods
-   
-    func markAsReady() {
-        ready = true
-    }
-    
-    func markAsNotReady() {
-        ready = false
-    }
     
     func reset() {
         updateAddress("")
         updateTitle("")
 
-        markAsNotReady()
+        addressIsSet = false
     }
     
     
@@ -140,10 +132,8 @@ final class ConnectSheetViewModel: ObservableObject {
             return
         }
         
-        
-        markAsReady()
-        
         loading = true
+        addressIsSet = true
         
         Task {
 
