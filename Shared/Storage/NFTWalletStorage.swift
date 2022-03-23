@@ -13,15 +13,17 @@ import CoreData
 final class NFTWalletStorage: NSObject, ObservableObject {
     
     static let shared: NFTWalletStorage = NFTWalletStorage()
-    
-    // MARK: - Properties
 
+    
     @Published var list: [NFTWallet] = [NFTWallet]()
     
     private let fetchRequest: NSFetchRequest<NFTWallet>
     private let fetchedResultsController: NSFetchedResultsController<NFTWallet>
     
-    // MARK: - Init
+    
+    private let persistenceController = PersistenceController.shared
+    
+    
     
     private override init() {
         fetchRequest = NFTWallet.fetchRequest()
@@ -31,7 +33,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: PersistenceController.shared.container.viewContext,
+            managedObjectContext: persistenceController.container.viewContext,
             sectionNameKeyPath: nil,
             cacheName: nil
         )
@@ -44,7 +46,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         list = fetch()
     }
     
-    // MARK: - Public
+
     
     func fetch() -> [NFTWallet] {
         var list: [NFTWallet] {
@@ -58,6 +60,62 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         }
         
         return list
+    }
+    
+    func sync(list: [Wallet]) -> [NFTWallet] {
+        
+        let context = persistenceController.container.viewContext
+        
+        let cached = fetch()
+        
+        //
+        // Handle creation
+        //
+
+        let toCreate = list.filter { !cached.map { $0.address }.contains($0.address) }
+        
+        toCreate.forEach { data in
+            let newObject = NFTWallet(context: context)
+            newObject.address = data.address
+            newObject.title = data.title
+            newObject.timestamp = Date()
+        }
+        
+        //
+        // Handle updates
+        //
+        
+        let toUpdate = cached.filter { list.map { $0.address }.contains($0.address) }
+        
+        toUpdate.forEach { cached in
+            let update = list.first { $0.address == cached.address }
+            guard update != nil else { return }
+            
+            cached.title = update!.title
+        }
+        
+        
+        //
+        // Handle deletion
+        //
+        
+        let toDelete = cached.filter { !list.map { $0.address }.contains($0.address) }
+        
+        toDelete.forEach { context.delete($0) }
+        
+        //
+        // Commit
+        //
+        
+        do {
+            try context.save()
+        } catch {
+            print("⚠️ Failed to Write \(error)")
+        }
+        
+        
+        return fetch()
+
     }
     
     func create(address: String, title: String?) throws -> NFTWallet {

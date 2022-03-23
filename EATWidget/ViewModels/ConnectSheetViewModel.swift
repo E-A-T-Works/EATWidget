@@ -43,6 +43,7 @@ final class ConnectSheetViewModel: ObservableObject {
     )
     
     @Published var showingSheet: Bool = false
+    @Published var showingLoader: Bool = false
     @Published var showingError: Bool = false
     
     private let queue = OperationQueue()
@@ -142,12 +143,31 @@ final class ConnectSheetViewModel: ObservableObject {
         }
         
         // wait for everything to finish
-        DispatchQueue(label: "xyz.eatworks.app.workers", qos: .userInitiated).async { [weak self] in
+        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
             
             self?.queue.waitUntilAllOperationsAreFinished()
 
             DispatchQueue.main.async { [weak self] in
                 self?.isProcessing = false
+            }
+        }
+    }
+    
+    func submit() async {
+        showingLoader = true
+        
+        let wallets = [Wallet(id: form.address, address: form.address, title: form.title)]
+        
+        let syncWalletCacheOp = SyncWalletCacheOperation(list: wallets)
+        queue.addOperation(syncWalletCacheOp)
+        
+        // wait for everything to finish
+        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
+            
+            self?.queue.waitUntilAllOperationsAreFinished()
+
+            DispatchQueue.main.async { [weak self] in
+                self?.showingLoader = false
             }
         }
     }
@@ -166,34 +186,22 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func reset() {
-        updateAddress("")
-        updateTitle("")
+        form = ConnectSheetFormState(
+            title: "",
+            address: "",
+            isValid: false
+        )
 
         isAddressSet = false
+        isLoading = false
+        isProcessing = false
+        
+        list = [NFTParseTask]()
+        totalCount = 0
+        parsedCount = 0
+        successCount = 0
+        failureCount = 0
     }
-    
-    func submit() {
-//        Task {
-//            do {
-//                // add the wallet
-//                let wallet = try walletStorage.create(
-//                    address: form.address,
-//                    title: form.title.isEmpty ? nil : form.title
-//                )
-//
-//                // sync the data NFTs in the wallet
-//                try await objectStorage.sync(
-//                    list: supported,
-//                    wallet: wallet
-//                )
-//
-//                dismiss()
-//            } catch {
-//                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
-//            }
-//        }
-    }
-    
     
 
     // MARK: - Overlay Helpers

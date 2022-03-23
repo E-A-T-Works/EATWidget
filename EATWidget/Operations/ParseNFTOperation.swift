@@ -32,7 +32,14 @@ final class ParseNFTOperation: AsyncOperation {
             
             parsed = await adapters.parse(item: data)
             
+            
+            // Sync Results
             do {
+                guard Auth.auth().currentUser != nil else {
+                    state = .finished
+                    return
+                }
+                
                 let db = Firestore.firestore()
                 
                 try await db
@@ -41,7 +48,8 @@ final class ParseNFTOperation: AsyncOperation {
                     .collection("assets")
                     .document(tokenId)
                     .setData([
-                        "success": parsed != nil
+                        "success": parsed != nil,
+                        "timestamp": Date()
                     ])
             } catch {
                 print("⚠️ Failed to log to firestore \(error)")

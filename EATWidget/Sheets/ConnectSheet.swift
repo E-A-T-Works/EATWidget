@@ -134,12 +134,9 @@ struct ConnectSheet: View {
                 Button{
                     
                     if viewModel.isAddressSet {
-                        viewModel.submit()
+                        Task { await viewModel.submit() }
                     } else {
-                        Task {
-                            await viewModel.lookupAndProcess()
-                            
-                        }
+                        Task { await viewModel.lookupAndProcess() }
                     }
                     
                 } label: {

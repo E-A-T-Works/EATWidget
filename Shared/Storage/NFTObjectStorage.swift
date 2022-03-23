@@ -15,16 +15,16 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     
     static let shared: NFTObjectStorage = NFTObjectStorage()
     
-    // MARK: - Properties
     
     @Published var list: [NFTObject] = [NFTObject]()
+    
     
     private let fetchRequest: NSFetchRequest<NFTObject>
     private let fetchedResultsController: NSFetchedResultsController<NFTObject>
     
+    private let persistenceController = PersistenceController.shared
     
     
-    // MARK: - Init
     
     private override init() {
         fetchRequest = NFTObject.fetchRequest()
@@ -34,7 +34,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: PersistenceController.shared.container.viewContext,
+            managedObjectContext: persistenceController.container.viewContext,
             sectionNameKeyPath: nil,
             cacheName: nil
         )
@@ -46,7 +46,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         list = fetch()
     }
     
-    // MARK: - Public
+    
     
     func fetch() -> [NFTObject] {
         var list: [NFTObject] {
@@ -63,7 +63,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     }
 
     func sync(list: [NFT], wallet: NFTWallet) async throws {
-        let context = PersistenceController.shared.container.viewContext
+        let context = persistenceController.container.viewContext
                 
         ///
         /// Get the relevent cached NFTObjects
@@ -178,7 +178,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     // MARK: - Private
     
     private func commit() throws {
-        let context = PersistenceController.shared.container.viewContext
+        let context = persistenceController.container.viewContext
         try context.save()
     }
     
