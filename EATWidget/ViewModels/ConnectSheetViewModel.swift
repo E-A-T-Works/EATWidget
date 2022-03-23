@@ -155,21 +155,36 @@ final class ConnectSheetViewModel: ObservableObject {
     
     func submit() async {
         showingLoader = true
-        
-        let wallets = [Wallet(id: form.address, address: form.address, title: form.title)]
-        
-        let syncWalletCacheOp = SyncWalletCacheOperation(list: wallets)
-        queue.addOperation(syncWalletCacheOp)
-        
-        // wait for everything to finish
-        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
-            
-            self?.queue.waitUntilAllOperationsAreFinished()
 
-            DispatchQueue.main.async { [weak self] in
-                self?.showingLoader = false
-            }
+        let toCache: [NFT] = list.filter { $0.state == .success }.map { $0.parsed }.compactMap { $0 }
+        
+        guard !toCache.isEmpty else {
+            showingLoader = false
+            return
         }
+        
+        do {
+            let wallet = try walletStorage.set(
+                address: form.address,
+                title: form.title
+            )
+            
+            try objectStorage.sync(
+                wallet: wallet,
+                list: toCache
+            )
+            
+            // TODO: Dismiss
+
+        } catch {
+            showingLoader = false
+            return
+        }
+        
+        
+        
+        
+        showingLoader = false
     }
     
     func lookupAndProcess() async {

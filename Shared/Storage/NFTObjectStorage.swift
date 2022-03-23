@@ -62,117 +62,117 @@ final class NFTObjectStorage: NSObject, ObservableObject {
         return list
     }
 
-    func sync(list: [NFT], wallet: NFTWallet) async throws {
-        let context = persistenceController.container.viewContext
-                
-        ///
-        /// Get the relevent cached NFTObjects
-        /// TODO: Think about how to make use of the filters here rather than manual filter
-        ///
-        
-        let cached = fetch().filter { $0.wallet!.address == wallet.address }
-        
-        
-        ///
-        /// Create entries for the items not already stored
-        ///
-        
-        await list.concurrentForEach { item in
-            
-            ///
-            /// Determine if this NFT already has an entry in the store. If it does, resume, the data should not
-            /// change since it's immutable.
-            ///
-
-            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
-            let isUpdating = entry != nil
-            
-            guard let nftObject = isUpdating ? entry : NFTObject(context: context) else { return }
-            
-            ///
-            /// Convert the UIImage to a blob
-            ///
-
-            guard let imageBlob = item.image.jpegData(compressionQuality: 0.25) else { return }
-            
-            ///
-            /// If all went well, create the NFTObject and it's related objects
-            ///
-            
-            var nftImage: NFTImage {
-                if isUpdating {
-                    return nftObject.image!
-                } else {
-                    let newNFTImage = NFTImage(context: context)
-                    newNFTImage.blob = imageBlob
-                    
-                    return newNFTImage
-                }
-            }
-            
-            nftObject.address = item.address
-            nftObject.tokenId = item.tokenId
-            nftObject.standard = item.standard
-            nftObject.title = item.title
-            nftObject.text = item.text
-
-            nftObject.image = nftImage
-            nftObject.simulationUrl = item.simulationUrl
-            nftObject.animationUrl = item.animationUrl
-            
-            nftObject.twitterUrl = item.twitterUrl
-            nftObject.discordUrl = item.discordUrl
-            nftObject.openseaUrl = item.openseaUrl
-            nftObject.externalUrl = item.externalUrl
-            nftObject.metadataUrl = item.metadataUrl
-
-            nftObject.wallet = wallet
-            
-            nftObject.timestamp = Date()
-            
-            //
-            // Update the attributes
-            //
-            
-//            let attributesToDelete: [NFTAttribute] = nftObject.attributes.
-//            attributesToDelete.forEach { context.delete($0) }
-            
-//            nftObject.attributes!.forEach { context.delete($0) }
-            
-            item.attributes.forEach { data in
-
-                let newNFTAttribute = NFTAttribute(context: context)
-                newNFTAttribute.key = data.key
-                newNFTAttribute.value = data.value
-                
-                newNFTAttribute.object = nftObject
-            }
-            
-        }
-        
-        
-        
-        
-        ///
-        /// Delete cached items which are not in the list
-        ///
-        
-        for entry in cached {
-            
-            let item = list.first { $0.address == entry.address && $0.tokenId == entry.tokenId }
-            
-            if item == nil {
-                context.delete(entry)
-            }
-        }
-        
-        
-        ///
-        /// Finally commit all changes
-        ///
-        
-        try commit()
-        
+    func sync(wallet: NFTWallet, list: [NFT]) throws {
+//        let context = persistenceController.container.viewContext
+//
+//        ///
+//        /// Get the relevent cached NFTObjects
+//        /// TODO: Think about how to make use of the filters here rather than manual filter
+//        ///
+//
+//        let cached = fetch().filter { $0.wallet!.address == wallet.address }
+//
+//
+//        ///
+//        /// Create entries for the items not already stored
+//        ///
+//
+//        await list.concurrentForEach { item in
+//
+//            ///
+//            /// Determine if this NFT already has an entry in the store. If it does, resume, the data should not
+//            /// change since it's immutable.
+//            ///
+//
+//            let entry = cached.first { $0.address == item.address && $0.tokenId == item.tokenId }
+//            let isUpdating = entry != nil
+//
+//            guard let nftObject = isUpdating ? entry : NFTObject(context: context) else { return }
+//
+//            ///
+//            /// Convert the UIImage to a blob
+//            ///
+//
+//            guard let imageBlob = item.image.jpegData(compressionQuality: 0.25) else { return }
+//
+//            ///
+//            /// If all went well, create the NFTObject and it's related objects
+//            ///
+//
+//            var nftImage: NFTImage {
+//                if isUpdating {
+//                    return nftObject.image!
+//                } else {
+//                    let newNFTImage = NFTImage(context: context)
+//                    newNFTImage.blob = imageBlob
+//
+//                    return newNFTImage
+//                }
+//            }
+//
+//            nftObject.address = item.address
+//            nftObject.tokenId = item.tokenId
+//            nftObject.standard = item.standard
+//            nftObject.title = item.title
+//            nftObject.text = item.text
+//
+//            nftObject.image = nftImage
+//            nftObject.simulationUrl = item.simulationUrl
+//            nftObject.animationUrl = item.animationUrl
+//
+//            nftObject.twitterUrl = item.twitterUrl
+//            nftObject.discordUrl = item.discordUrl
+//            nftObject.openseaUrl = item.openseaUrl
+//            nftObject.externalUrl = item.externalUrl
+//            nftObject.metadataUrl = item.metadataUrl
+//
+//            nftObject.wallet = wallet
+//
+//            nftObject.timestamp = Date()
+//
+//            //
+//            // Update the attributes
+//            //
+//
+////            let attributesToDelete: [NFTAttribute] = nftObject.attributes.
+////            attributesToDelete.forEach { context.delete($0) }
+//
+////            nftObject.attributes!.forEach { context.delete($0) }
+//
+//            item.attributes.forEach { data in
+//
+//                let newNFTAttribute = NFTAttribute(context: context)
+//                newNFTAttribute.key = data.key
+//                newNFTAttribute.value = data.value
+//
+//                newNFTAttribute.object = nftObject
+//            }
+//
+//        }
+//
+//
+//
+//
+//        ///
+//        /// Delete cached items which are not in the list
+//        ///
+//
+//        for entry in cached {
+//
+//            let item = list.first { $0.address == entry.address && $0.tokenId == entry.tokenId }
+//
+//            if item == nil {
+//                context.delete(entry)
+//            }
+//        }
+//
+//
+//        ///
+//        /// Finally commit all changes
+//        ///
+//
+//        try commit()
+//
     }
     
     // MARK: - Private

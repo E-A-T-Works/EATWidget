@@ -110,27 +110,27 @@ final class WalletSheetViewModel: ObservableObject {
     
     
     func submit() {
-        Task {
-            do {
-                
-                // update the wallet
-                let wallet = try walletStorage.update(
-                    title: form.title.isEmpty ? nil : form.title,
-                    object: wallet!
-                )
-                
-                // sync the data NFTs in the wallet
-                try await objectStorage.sync(
-                    list: supported,
-                    wallet: wallet
-                )
-                            
-                dismiss()
-                
-            } catch {
-                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
-            }
-        }
+//        Task {
+//            do {
+//                
+//                // update the wallet
+//                let wallet = try walletStorage.update(
+//                    title: form.title.isEmpty ? nil : form.title,
+//                    object: wallet!
+//                )
+//                
+//                // sync the data NFTs in the wallet
+//                try await objectStorage.sync(
+//                    list: supported,
+//                    wallet: wallet
+//                )
+//                            
+//                dismiss()
+//                
+//            } catch {
+//                print("⚠️ (ConnectSheetViewModel)::submit() \(error)")
+//            }
+//        }
     }
     
     func dismiss() {
