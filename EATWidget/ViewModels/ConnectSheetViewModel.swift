@@ -135,7 +135,11 @@ final class ConnectSheetViewModel: ObservableObject {
    
     @Published private(set) var providerState: NFTProviderState = .pending
     @Published private(set) var providerData: [String: NFTProviderData] = [:]
+    
     @Published private(set) var providerIds: [String] = [String]()
+    @Published private(set) var providerStates: [NFTProviderDataState] = [NFTProviderDataState]()
+    
+    @Published private(set) var providerTest: [NFTProviderData] = [NFTProviderData]()
     
     private let queue = OperationQueue()
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
@@ -166,38 +170,48 @@ final class ConnectSheetViewModel: ObservableObject {
             let key = "\(address)/\(tokenId)"
             
             var updated = partialResult
-            updated[key] = NFTProviderData(state: .pending, raw: item, cleaned: nil)
+            updated[key] = NFTProviderData(
+                id: "\(key)",
+                state: .pending,
+                raw: item,
+                cleaned: nil
+            )
 
             return updated
         })
         
         providerIds = providerData.keys.map { $0 }
+        providerStates = providerData.keys.map { providerData[$0]!.state }
 
+        providerTest = providerData.keys.map { providerData[$0]! }
     }
     
     func process() async {
         print("⚙️ process()")
         providerState = .processing
         
-        providerIds.forEach { id in
-            guard let data = providerData[id] else { return }
+        providerStates.indices.forEach { index in
+            let data = providerTest[index]
             
-            print("     ❇️ Start: \(id)")
+            print("     ❇️ Start: \(index)")
             let parseOp = ParseNFTOperation(data: data.raw)
-            
+
             parseOp.completionBlock = {
                 DispatchQueue.main.async {
-                    guard var data = self.providerData[id] else { return }
-                    
+                    var data = self.providerTest[index]
+
                     let parsed = parseOp.parsed
-                    
+
                     data.state = parsed == nil ? .failure : .success
                     data.cleaned = parseOp.parsed
                     
-                    print("     ✅ Finish: \(id)")
+                    
+                    self.providerStates[index] = parsed == nil ? .failure : .success
+
+                    print("     ✅ Finish: \(index)")
                 }
             }
-            
+
             queue.addOperation(parseOp)
         }
         

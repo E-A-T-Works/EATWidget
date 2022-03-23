@@ -46,22 +46,22 @@ struct WalletSheet: View {
                     }
                 } else {
                 
-                    if !viewModel.supported.isEmpty {
-                        Section {
-                            ForEach(viewModel.supported) { item in
-                                NFTItem(item: item, state: .Supported)
-                            }
-                        } header: {
-                            Text("Supported NFTs")
-                        } footer: {
-                            Button(action: {
-                                viewModel.presentMailFormSheet()
-                            }, label: {
-                                Text("Not seeing your NFT?")
-                            })
-                        }
-
-                    }
+//                    if !viewModel.supported.isEmpty {
+//                        Section {
+//                            ForEach(viewModel.supported) { item in
+//                                NFTItem(item: item, state: .Supported)
+//                            }
+//                        } header: {
+//                            Text("Supported NFTs")
+//                        } footer: {
+//                            Button(action: {
+//                                viewModel.presentMailFormSheet()
+//                            }, label: {
+//                                Text("Not seeing your NFT?")
+//                            })
+//                        }
+//
+//                    }
                     
                 }
             }

@@ -95,11 +95,26 @@ struct ConnectSheet: View {
                         Text("State: \(viewModel.providerState.rawValue)")
                         Text("DataCount: \(viewModel.providerData.count)")
                         
-                        ForEach(viewModel.providerIds, id: \.self) { id in
-                            VStack {
-                                Text("\(viewModel.providerData[id]?.raw.title ?? "idk")").lineLimit(1)
-                                Text("\(viewModel.providerData[id]?.state.rawValue ?? "--")").lineLimit(1)
+                        ForEach(viewModel.providerTest.indices, id: \.self) { i in
+                            
+                            VStack(alignment: .leading) {
+                                Text(viewModel.providerStates[i].rawValue)
+                                Text(viewModel.providerTest[i].raw.title).lineLimit(1)
                             }
+                            
+                            
+//                            NFTItem(
+//                                title: viewModel.providerData[id]?.state.rawValue ?? "idk",
+//                                address: "111",
+//                                tokenId: "123",
+//                                image: nil,
+//                                state: .constant(.pending)
+//                            )
+                            
+//                            VStack {
+//                                Text("\(viewModel.providerData[id]?.raw.title ?? "idk")").lineLimit(1)
+//                                Text("\(viewModel.providerData[id]?.state.rawValue ?? "--")").lineLimit(1)
+//                            }
                             
                         }
                         

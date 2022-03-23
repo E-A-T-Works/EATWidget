@@ -15,12 +15,13 @@ enum NFTItemState {
 
 
 struct NFTItem: View {
+    
     let title: String
     let address: String
     let tokenId: String
     
     var image: UIImage?
-    var state: NFTItemState = .Pending
+    
     
     var body: some View {
         HStack {
@@ -60,11 +61,11 @@ struct NFTItem: View {
             
             Spacer()
             
-            switch state {
-            case .Pending: Image(systemName: "circle.dotted")
-            case .Supported: Image(systemName: "checkmark.circle")
-            case .Unsupported: Image(systemName: "x.circle")
-            }
+//            switch state {
+//            case .pending: Image(systemName: "circle.dotted")
+//            case .success: Image(systemName: "checkmark.circle")
+//            case .failure: Image(systemName: "x.circle")
+//            }
         }
     }
 }
@@ -75,8 +76,7 @@ struct NFTItem_Previews: PreviewProvider {
             NFTItem(
                 title: "Title",
                 address: "0x00000000000000",
-                tokenId: "#012",
-                state: .Pending
+                tokenId: "#012"
             )
         }
         .previewLayout(PreviewLayout.sizeThatFits)

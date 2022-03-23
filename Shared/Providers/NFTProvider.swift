@@ -17,7 +17,8 @@ enum NFTProviderDataState: String {
     case pending, success, failure
 }
 
-struct NFTProviderData {
+struct NFTProviderData: Identifiable {
+    let id: String
     var state: NFTProviderDataState
     var raw: APIAlchemyNFT
     var cleaned: NFT?
@@ -67,7 +68,7 @@ final class NFTProvider: ObservableObject {
             let key = "\(address)/\(tokenId)"
             
             var updated = partialResult
-            updated[key] = NFTProviderData(state: .pending, raw: item, cleaned: nil)
+            updated[key] = NFTProviderData(id: key, state: .pending, raw: item, cleaned: nil)
 
             return updated
         })

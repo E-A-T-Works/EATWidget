@@ -7,36 +7,36 @@
 
 import SwiftUI
 
-extension NFTItem {
-    init(item: NFT, state: NFTItemState) {
-
-        title = item.title ?? "Untitled"
-        address = item.address
-        tokenId = item.tokenId
-        
-        image = item.image
-        self.state = state
-    }
-}
-
-
-extension NFTItem {
-    init(item: NFTObject, state: NFTItemState) {
-        title = item.title ?? "Untitled"
-        address = item.address!
-        tokenId = item.tokenId!
-        
-        image = UIImage(data: item.image!.blob!)!
-        self.state = state
-    }
-}
-
-extension NFTItem {
-    init(item: APIAlchemyNFT, state: NFTItemState) {
-        title = item.title ?? "Untitled"
-        address = item.contract.address
-        tokenId = item.id.tokenId
-        
-        self.state = state
-    }
-}
+//extension NFTItem {
+//    init(item: NFT, state: NFTItemState) {
+//
+//        title = item.title ?? "Untitled"
+//        address = item.address
+//        tokenId = item.tokenId
+//        
+//        image = item.image
+//        self.state = state
+//    }
+//}
+//
+//
+//extension NFTItem {
+//    init(item: NFTObject, state: NFTItemState) {
+//        title = item.title ?? "Untitled"
+//        address = item.address!
+//        tokenId = item.tokenId!
+//        
+//        image = UIImage(data: item.image!.blob!)!
+//        self.state = state
+//    }
+//}
+//
+//extension NFTItem {
+//    init(item: APIAlchemyNFT, state: NFTItemState) {
+//        title = item.title ?? "Untitled"
+//        address = item.contract.address
+//        tokenId = item.id.tokenId
+//        
+//        self.state = state
+//    }
+//}
