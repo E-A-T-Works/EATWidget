@@ -238,7 +238,7 @@ final class ConnectSheetViewModel: ObservableObject {
     }
 
     
-
+    
     // MARK: - Validity Helpers
     
     private func updateFormValidity() {

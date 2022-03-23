@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 final class ParseNFTOperation: AsyncOperation {
     var parsed: NFT?
@@ -25,7 +26,28 @@ final class ParseNFTOperation: AsyncOperation {
     
     override func main() {
         Task {
+            
+            let address = data.contract.address
+            let tokenId = data.id.tokenId
+            
             parsed = await adapters.parse(item: data)
+            
+            do {
+                let db = Firestore.firestore()
+                
+                try await db
+                    .collection("contracts")
+                    .document(address)
+                    .collection("assets")
+                    .document(tokenId)
+                    .setData([
+                        "success": parsed != nil
+                    ])
+            } catch {
+                print("⚠️ Failed to log to firestore \(error)")
+            }
+            
+            // mark task as done
             state = .finished
         }
     }
