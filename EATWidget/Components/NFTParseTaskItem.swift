@@ -8,12 +8,11 @@
 import SwiftUI
 
 
-struct NFTItem: View {
-    
-    let title: String
+struct NFTParseTaskItem: View {
     let address: String
     let tokenId: String
     
+    var title: String?
     var image: UIImage?
     var state: NFTParseTaskState? = .pending
     
@@ -39,7 +38,7 @@ struct NFTItem: View {
             
             
             VStack(alignment: .leading) {
-                Text(title)
+                Text(title ?? "Untitled")
                     .font(.system(size: 12.0, design: .monospaced))
                     .fontWeight(.black)
                     .lineLimit(1)
@@ -59,17 +58,16 @@ struct NFTItem: View {
             case .pending: Image(systemName: "circle.dotted")
             case .success: Image(systemName: "checkmark.circle")
             case .failure: Image(systemName: "x.circle")
-            case .none: Image(systemName: "circle.dotted")      
+            case .none: Image(systemName: "circle.dotted")
             }
         }
     }
 }
 
-struct NFTItem_Previews: PreviewProvider {
+struct NFTParseTaskItem_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            NFTItem(
-                title: "Title",
+            NFTParseTaskItem(
                 address: "0x00000000000000",
                 tokenId: "#012"
             )

@@ -47,6 +47,10 @@ enum NFTParseTaskState: String {
 
 struct NFTParseTask: Identifiable {
     let id: String
+    
+    let address: String
+    let tokenId: String
+    
     var state: NFTParseTaskState
     var raw: APIAlchemyNFT
     var parsed: NFT?

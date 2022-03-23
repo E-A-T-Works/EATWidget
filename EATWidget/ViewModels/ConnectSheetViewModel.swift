@@ -96,6 +96,8 @@ final class ConnectSheetViewModel: ObservableObject {
             
             return NFTParseTask(
                 id: key,
+                address: address,
+                tokenId: tokenId,
                 state: .pending,
                 raw: result,
                 parsed: nil
