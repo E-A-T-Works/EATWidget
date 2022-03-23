@@ -22,47 +22,51 @@ struct NFTParsedData {
 
 final class NFTAdapters {
     
-    static func mapAlchemyDataToNFTs(list: [APIAlchemyNFT]) async -> [DataFetchResultKey: [NFT]] {
+    static let shared: NFTAdapters = NFTAdapters()
+    
+    private init() {}
+    
+    func mapAlchemyDataToNFTs(list: [APIAlchemyNFT]) async -> [DataFetchResultKey: [NFT]] {
         
         var parsed = [NFTParsedData]()
         
         var supported = [NFT]()
         var unsupported = [NFT]()
-        
-        do {
-            parsed = try await list.concurrentMap { (item: APIAlchemyNFT) -> NFTParsedData in
-                
-                let address = item.contract.address
-                let tokenId = item.id.tokenId
-                
-                let data = await normalize(address: item.contract.address, item: item)
-                
-                return NFTParsedData(address: address, tokenId: tokenId, data: data)
-            }
-        } catch {
-            print("⚠️ NFTAdapters:mapAlchemyDataToNFTs \(error)")
-        }
-        
-        supported = parsed.map {
-            $0.data
-        }.compactMap{ $0 }
-  
-        unsupported = parsed.map {
-            $0.data == nil
-                ? stub(address: $0.address, tokenId: $0.tokenId)
-                : nil
-        }.compactMap{ $0 }
+//
+//        do {
+//            parsed = try await list.concurrentMap { (item: APIAlchemyNFT) -> NFTParsedData in
+//
+//                let address = item.contract.address
+//                let tokenId = item.id.tokenId
+//
+//                let data = await self.normalize(address: item.contract.address, item: item)
+//
+//                return NFTParsedData(address: address, tokenId: tokenId, data: data)
+//            }
+//        } catch {
+//            print("⚠️ NFTAdapters:mapAlchemyDataToNFTs \(error)")
+//        }
+//
+//        supported = parsed.map {
+//            $0.data
+//        }.compactMap{ $0 }
+//
+//        unsupported = parsed.map {
+//            $0.data == nil
+//                ? stub(address: $0.address, tokenId: $0.tokenId)
+//                : nil
+//        }.compactMap{ $0 }
 
         return [
             .Supported: supported,
             .Unsupported: unsupported
         ]
     }
-    
+
     
     // MARK: -
     
-    static private func stub(address: String, tokenId: String) -> NFT {
+    func stub(address: String, tokenId: String) -> NFT {
         return NFT(
             id: "\(address)/\(tokenId)",
             address: address,
@@ -85,18 +89,20 @@ final class NFTAdapters {
     
     // MARK: -
     
-    static private func normalize(address: String, item: APIAlchemyNFT) async -> NFT? {
-        print("🧹 \(item.contract.address) \(item.id.tokenId) \(item.title)")
+    func parse(item: APIAlchemyNFT) async -> NFT? {
+        let address = item.contract.address
+        
+//        print("🧹 \(address) \(item.id.tokenId) \(item.title)")
         
         switch address {
-        case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
-            return await normalizeEveryIcon(item: item)
+//        case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
+//            return await normalizeEveryIcon(item: item)
             
-        case "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270":
-            return await normalizeArtblocks(item: item)
+//        case "0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270":
+//            return await normalizeArtblocks(item: item)
             
-        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
-            return await normalizeStrangeAttractors(item: item)
+//        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
+//            return await normalizeStrangeAttractors(item: item)
 
         case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
             return await normalizeCryptopunk(item: item)
@@ -107,7 +113,7 @@ final class NFTAdapters {
     }
     
     
-    static private func normalizeAlchemyNFT(item: APIAlchemyNFT) async -> NFT? {
+    private func normalizeAlchemyNFT(item: APIAlchemyNFT) async -> NFT? {
         do {
             
             guard
@@ -158,7 +164,7 @@ final class NFTAdapters {
     /// We need to parse it, write it to a temporary file so we can read it and use PocketSVG
     /// to convert it to a UIImage and save it to a temporary
     ///
-    static private func normalizeEveryIcon(item: APIAlchemyNFT) async -> NFT? {
+    private func normalizeEveryIcon(item: APIAlchemyNFT) async -> NFT? {
         do {
            
             guard let metadata = item.metadata else { return nil }
@@ -222,13 +228,13 @@ final class NFTAdapters {
     }
     
     
-    static private func normalizeStrangeAttractors(item: APIAlchemyNFT) async -> NFT? {
+    private func normalizeStrangeAttractors(item: APIAlchemyNFT) async -> NFT? {
         // TODO: Implement this
         return nil
     }
     
     
-    static private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
+    private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
 
         do {
             guard
@@ -273,7 +279,7 @@ final class NFTAdapters {
     }
     
 
-    static private func normalizeArtblocks(item: APIAlchemyNFT) async -> NFT? {
+    private func normalizeArtblocks(item: APIAlchemyNFT) async -> NFT? {
 
         do {
             guard
@@ -320,11 +326,11 @@ final class NFTAdapters {
     
     // MARK: - Helpers
     
-    static private func cleanMetadataUrl(data: APIAlchemyStringUri) -> URL? {
+    private func cleanMetadataUrl(data: APIAlchemyStringUri) -> URL? {
         return data.gateway != nil ? URL(string: data.gateway!) : data.raw != nil ? URL(string: data.raw!) : nil
     }
     
-    static private func snapshotImage(for layer: CALayer) -> UIImage? {
+    private func snapshotImage(for layer: CALayer) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.bounds.size, false, UIScreen.main.scale)
         
         guard let context = UIGraphicsGetCurrentContext() else { return nil }

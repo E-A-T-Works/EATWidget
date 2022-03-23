@@ -101,23 +101,7 @@ final class WalletSheetViewModel: ObservableObject {
     }
     
     func lookup() {
-//        Task {
-//            do {
-//                self.loading = true
-//                
-//                self.supported = try await NFTProvider.fetchNFTs(
-//                    ownerAddress: form.address,
-//                    strategy: .Alchemy
-//                )
-//                
-//                self.loading = false
-//                
-//            } catch {
-//                print("⚠️ (ConnectSheetViewModel)::load() \(error)")
-//
-//                self.loading = false
-//            }
-//        }
+
     }
     
     func delete(at offsets: IndexSet) {

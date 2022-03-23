@@ -11,15 +11,24 @@ import Combine
 import UIKit
 
 
-struct ConnectFormState: Equatable {
+struct ConnectSheetFormState: Equatable {
     var title: String = ""
     var address: String = ""
     
     var isValid: Bool = false
 }
 
-enum ConnectFormSheetContent {
+enum ConnectSheetSheetContent {
     case MailForm(data: ComposeMailData)
+}
+
+struct ConnectSheetListItem: Identifiable, Hashable {
+    let id: String
+    
+    let address: String
+    let tokenId: String
+    
+    let state: NFTItemState
 }
 
 @MainActor
@@ -27,23 +36,22 @@ final class ConnectSheetViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var form: ConnectFormState = ConnectFormState(
+    @Published var form: ConnectSheetFormState = ConnectSheetFormState(
         title: "",
         address: ""
     )
     
-    @Published private(set) var addressIsSet: Bool = true
-    @Published private(set) var loading: Bool = false
+    @Published private(set) var isAddressSet: Bool = false
+    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var isProcessing: Bool = false
     
-    @Published private(set) var rawResults: [APIAlchemyNFT] = [APIAlchemyNFT]()
-    @Published private(set) var cleanedResults: [DataFetchResultKey: [NFT]] = [
-        .Supported: [NFT](),
-        .Unsupported: [NFT]()
-    ]
-    @Published private(set) var totalResults: Int = 0
-    @Published private(set) var totalCleaned: Int = 0
+    @Published private(set) var apiResultMap: [String: APIAlchemyNFT] = [:]
+    @Published private(set) var processedMap: [String: NFT] = [:]
     
-    @Published var sheetContent: ConnectFormSheetContent = .MailForm(
+    @Published private(set) var list: [ConnectSheetListItem] = [ConnectSheetListItem]()
+    
+
+    @Published var sheetContent: ConnectSheetSheetContent = .MailForm(
         data: ComposeMailData(
             subject: "[BETA:EATWidget] - App Feedback",
             recipients: ["adrian@eatworks.xyz"],
@@ -58,6 +66,7 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
+    
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -76,7 +85,7 @@ final class ConnectSheetViewModel: ObservableObject {
         updateAddress("")
         updateTitle("")
 
-        addressIsSet = false
+        isAddressSet = false
     }
     
     
@@ -102,7 +111,10 @@ final class ConnectSheetViewModel: ObservableObject {
         guard let address = pasteboard.string else { return }
         
         updateAddress(address)
-        lookup()
+        Task {
+            await lookup()
+            await process()
+        }
     }
 
     func updateTitle(_ newValue: String) {
@@ -120,44 +132,83 @@ final class ConnectSheetViewModel: ObservableObject {
 
     
     // MARK: -
+   
+    @Published private(set) var providerState: NFTProviderState = .pending
+    @Published private(set) var providerData: [String: NFTProviderData] = [:]
+    @Published private(set) var providerIds: [String] = [String]()
     
-    func lookup() {
+    private let queue = OperationQueue()
+    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    
+    private var disposables = Set<AnyCancellable>()
+    
+    func lookup() async {
+        print("🔍 lookup()")
+
+        isAddressSet = true
+        isLoading = true
+
         
-        print("🔍 lookup() \(form.address)")
+        providerState = .fetching
         
-        guard form.isValid else {
-            
-            print("🙅‍♂️ Invalid: \(form.address) \(form.title)")
-            
-            return
+        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    
+        do {
+            results = try await api.getNFTs(for: form.address)
+        } catch {
+            print("⚠️ \(error)")
         }
         
-        loading = true
-        addressIsSet = true
-        
-        Task {
 
-            do {
-//                results = try await NFTProvider.fetchNFTs(
-//                    ownerAddress: form.address,
-//                    strategy: .Alchemy
-//                )
-                
-//                print()
-                
-//                print("➡️ Supported: \(results[.Supported]?.count ?? 0) | Unsupported: \(results[.Unsupported]?.count ?? 0)")
-                
-//                print()
-                
-                
-                rawResults = try await APIAlchemyProvider.fetchNFTs(ownerAddress: form.address)
-                
-            } catch {
-                print("⚠️ (ConnectSheetViewModel)::load() \(error)")
+        providerData = results.reduce([:], { partialResult, item in
+            let address = item.contract.address
+            let tokenId = item.id.tokenId
+            let key = "\(address)/\(tokenId)"
+            
+            var updated = partialResult
+            updated[key] = NFTProviderData(state: .pending, raw: item, cleaned: nil)
+
+            return updated
+        })
+        
+        providerIds = providerData.keys.map { $0 }
+
+    }
+    
+    func process() async {
+        print("⚙️ process()")
+        providerState = .processing
+        
+        providerIds.forEach { id in
+            guard let data = providerData[id] else { return }
+            
+            print("     ❇️ Start: \(id)")
+            let parseOp = ParseNFTOperation(data: data.raw)
+            
+            parseOp.completionBlock = {
+                DispatchQueue.main.async {
+                    guard var data = self.providerData[id] else { return }
+                    
+                    let parsed = parseOp.parsed
+                    
+                    data.state = parsed == nil ? .failure : .success
+                    data.cleaned = parseOp.parsed
+                    
+                    print("     ✅ Finish: \(id)")
+                }
             }
             
-            print("✅")
-            loading = false
+            queue.addOperation(parseOp)
+        }
+        
+        DispatchQueue(label: "xyz.eatworks.app.workers", qos: .userInitiated).async { [weak self] in
+            
+            self?.queue.waitUntilAllOperationsAreFinished()
+
+            DispatchQueue.main.async { [weak self] in
+                print("🎉🎉🎉🎉🎉🎉🎉🎉")
+                self?.providerState = .pending
+            }
         }
     }
     

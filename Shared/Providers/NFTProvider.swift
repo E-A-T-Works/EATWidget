@@ -6,39 +6,98 @@
 //
 
 import Foundation
+import Combine
 
 
-enum DataStrategies {
-    case Alchemy
+enum NFTProviderState: String {
+    case pending, fetching, processing
 }
 
-final class NFTProvider {
+enum NFTProviderDataState: String {
+    case pending, success, failure
+}
 
-    static func fetchNFTs(
-        ownerAddress: String,
-        strategy: DataStrategies = .Alchemy
-    ) async throws -> [DataFetchResultKey: [NFT]] {
+struct NFTProviderData {
+    var state: NFTProviderDataState
+    var raw: APIAlchemyNFT
+    var cleaned: NFT?
+}
+
+
+final class NFTProvider: ObservableObject {
+    @Published private(set) var state: NFTProviderState = .pending
+    @Published private(set) var data: [String: NFTProviderData] = [:]
+    
+    let ownerAddress: String
+    
+    private let adapters: NFTAdapters = NFTAdapters.shared
+    private let apiProvider: APIAlchemyProvider = APIAlchemyProvider.shared
+    
+    private var disposables = Set<AnyCancellable>()
+
+    
+    init(ownerAddress: String) {
+        self.ownerAddress = ownerAddress
+    }
+    
+    func fetchAndProcess() async {
+        state = .fetching
+        await fetch()
         
-        var results: [DataFetchResultKey: [NFT]] = [
-            .Supported: [NFT](),
-            .Unsupported: [NFT]()
-        ]
+        state = .processing
+        await process()
         
-        switch strategy {
-        case .Alchemy:
-            let response = try! await APIAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
+        state = .pending
+    }
+    
+    
+    private func fetch() async {
+        
+        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
+        
+        do {
+            results = try await apiProvider.getNFTs(for: ownerAddress)
+        } catch {
+            print("⚠️ \(error)")
+        }
+        
+        data = results.reduce([:], { partialResult, item in
+            let address = item.contract.address
+            let tokenId = item.id.tokenId
+            let key = "\(address)/\(tokenId)"
             
-            results = await NFTAdapters.mapAlchemyDataToNFTs(list: response)
-        }
- 
-        return results
+            var updated = partialResult
+            updated[key] = NFTProviderData(state: .pending, raw: item, cleaned: nil)
+
+            return updated
+        })
+    }
+    
+    private func process() async {
+        
+//        sleep(5)
+        
     }
     
     
-    static func fetchNFT(contractAddress: String, tokenId: String, strategy: DataStrategies = .Alchemy) async throws -> NFT? {
-        switch strategy {
-        case .Alchemy:
-            return try! await APIAlchemyProvider.fetchNFT(contractAddress: contractAddress, tokenId: tokenId)
-        }
-    }
+
+//    func fetchNFTs(
+//        ownerAddress: String,
+//        strategy: DataStrategies = .Alchemy
+//    ) async throws -> [DataFetchResultKey: [NFT]] {
+//
+//        var results: [DataFetchResultKey: [NFT]] = [
+//            .Supported: [NFT](),
+//            .Unsupported: [NFT]()
+//        ]
+//
+//        switch strategy {
+//        case .Alchemy:
+//            let response = try! await apiAlchemyProvider.fetchNFTs(ownerAddress: ownerAddress)
+//
+//            results = await adapters.mapAlchemyDataToNFTs(list: response)
+//        }
+//
+//        return results
+//    }
 }

@@ -10,10 +10,13 @@ import UIKit
 
 
 final class APIAlchemyProvider {
-    static func fetchNFTs(ownerAddress: String) async throws -> [APIAlchemyNFT] {
+    static let shared: APIAlchemyProvider = APIAlchemyProvider()
+    
+    func getNFTs(for ownerAddress: String) async throws -> [APIAlchemyNFT] {
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
         guard let key = apiKey, !key.isEmpty else {
             print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
+
             throw APIError.MissingKey
         }
         
@@ -42,12 +45,5 @@ final class APIAlchemyProvider {
             
             throw APIError.BadResponse
         }
-    }
-    
-    static func fetchNFT(contractAddress: String, tokenId: String) async throws -> NFT? {
-        
-        // TODO: Implement
-        
-        return nil
     }
 }

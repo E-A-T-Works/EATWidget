@@ -27,6 +27,9 @@ struct ConnectSheet: View {
     
     // MARK: - View Content
     
+//    let keys = viewModel.providerData.map{$0.key}
+//    let values = viewModel.providerData.map {$0.value}
+    
     var body: some View {
         
         ZStack {
@@ -41,12 +44,13 @@ struct ConnectSheet: View {
                                     set: { [viewModel] in viewModel.updateAddress($0) }
                                 )
                             )
-                            .disabled(viewModel.addressIsSet)
+                            .disabled(viewModel.isAddressSet)
                             
                             Spacer()
                             
                             if viewModel.form.address.isEmpty {
                                 Button {
+                                    print("paste")
                                     viewModel.setAddressFromPasteboard()
                                 } label: {
                                     Image(systemName: "doc.on.clipboard")
@@ -55,6 +59,7 @@ struct ConnectSheet: View {
                                 .disabled(!UIPasteboard.general.hasStrings)
                             } else {
                                 Button {
+                                    print("reset")
                                     viewModel.reset()
                                 } label: {
                                     Image(systemName: "xmark.circle")
@@ -64,7 +69,7 @@ struct ConnectSheet: View {
                         }
                         
                     } footer: {
-                        if !viewModel.addressIsSet {
+                        if !viewModel.isAddressSet {
                             HStack(alignment: .top) {
                                 Image(systemName: "info.circle")
                                 
@@ -74,7 +79,7 @@ struct ConnectSheet: View {
                         }
                     }
                     
-                    if viewModel.addressIsSet {
+                    if viewModel.isAddressSet {
                         
                         Section {
                             TextField(
@@ -87,28 +92,38 @@ struct ConnectSheet: View {
                         }
                         
                         
-                        if viewModel.loading {
-                            
-                            Text("Loading")
-                            
-                        } else {
-                            
-                            Section {
-                                ForEach(viewModel.rawResults.indices, id: \.self) { index in
-                                    
-                                    VStack {
-                                        Text("\(viewModel.rawResults[index].title)")
-                                        Text("\(viewModel.rawResults[index].contract.address)")
-                                        Text("\(viewModel.rawResults[index].id.tokenId)")
-                                    }
-                                }
-                            } header: {
-                                Text("\(viewModel.totalCleaned) / \(viewModel.totalResults) NFT\(viewModel.totalResults == 1 ? "" : "s") Processed")
-                            } footer: {
-                                
+                        Text("State: \(viewModel.providerState.rawValue)")
+                        Text("DataCount: \(viewModel.providerData.count)")
+                        
+                        ForEach(viewModel.providerIds, id: \.self) { id in
+                            VStack {
+                                Text("\(viewModel.providerData[id]?.raw.title ?? "idk")").lineLimit(1)
+                                Text("\(viewModel.providerData[id]?.state.rawValue ?? "--")").lineLimit(1)
                             }
-
+                            
                         }
+                        
+//                        if viewModel.isLoading {
+//
+//                            Text("Loading")
+//
+//                        } else {
+//
+//                            Section {
+//                                ForEach(viewModel.list) { obj in
+////                                    NFTItem(
+////                                        item: obj.data,
+////                                        state: obj.state
+////                                    )
+//                                    Text("bleh")
+//                                }
+//                            } header: {
+//                                Text("\(viewModel.processedMap.count) / \(viewModel.apiResultMap.count) NFT\(viewModel.apiResultMap.count == 1 ? "" : "s") Processed")
+//                            } footer: {
+//
+//                            }
+//
+//                        }
                         
                     }
                 }
@@ -119,15 +134,15 @@ struct ConnectSheet: View {
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button{
                     
-                    if viewModel.addressIsSet {
+                    if viewModel.isAddressSet {
                         viewModel.submit()
                     } else {
-                        viewModel.lookup()
+                        Task { await viewModel.lookup() }
                     }
                     
                 } label: {
                     
-                    if viewModel.addressIsSet {
+                    if viewModel.isAddressSet {
                         Text("DONE")
                             .font(.system(size: 16, design: .monospaced))
                     } else {
@@ -137,11 +152,22 @@ struct ConnectSheet: View {
 
                 }
                 .disabled(
-                    viewModel.addressIsSet ? viewModel.loading : !viewModel.form.isValid
+                    viewModel.isAddressSet ? viewModel.isLoading || viewModel.isProcessing : !viewModel.form.isValid
                 )
 
           })
         })
+        .alert(
+            isPresented: $viewModel.showingError
+        ) {
+            Alert(
+                title: Text("Invalid address"),
+                message: Text("Please paste a valid Ethereum wallet address to continue."),
+                dismissButton: .default(
+                    Text("Ok")
+                )
+            )
+        }
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             
             guard shouldDismiss else { return }
@@ -211,7 +237,7 @@ struct ConnectSheet: View {
 //
 //                }
 //
-//                if viewModel.addressIsSet {
+//                if viewModel.isAddressSet {
 //                    if viewModel.loading {
 //                        HStack {
 //                            Spacer()

@@ -28,7 +28,7 @@ struct NFTItem: View {
                 Image(uiImage: image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 64, height: 64)
+                    .frame(width: 40, height: 40)
                     .padding(4)
                     .background(.thickMaterial)
                     .cornerRadius(4)
@@ -36,7 +36,7 @@ struct NFTItem: View {
                 Image(systemName: "scribble")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 64, height: 64)
+                    .frame(width: 40, height: 40)
                     .padding(4)
                     .background(.thickMaterial)
                     .cornerRadius(4)
@@ -44,16 +44,16 @@ struct NFTItem: View {
             
             
             VStack(alignment: .leading) {
-                Text("Title")
+                Text(title)
                     .font(.system(size: 12.0, design: .monospaced))
                     .fontWeight(.black)
                     .lineLimit(1)
                 
-                Text("Contract: \("0x002323203232323232".formattedWeb3)")
+                Text("Contract: \(address.formattedWeb3)")
                     .font(.system(size: 12.0, design: .monospaced))
                     .lineLimit(1)
                 
-                Text("Token Id: \("1212121212sdsdsdsds")")
+                Text("Token Id: \(tokenId)")
                     .font(.system(size: 12.0, design: .monospaced))
                     .lineLimit(1)
             }
@@ -66,7 +66,6 @@ struct NFTItem: View {
             case .Unsupported: Image(systemName: "x.circle")
             }
         }
-        .padding()
     }
 }
 

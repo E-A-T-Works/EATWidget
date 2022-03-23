@@ -30,3 +30,13 @@ extension NFTItem {
         self.state = state
     }
 }
+
+extension NFTItem {
+    init(item: APIAlchemyNFT, state: NFTItemState) {
+        title = item.title ?? "Untitled"
+        address = item.contract.address
+        tokenId = item.id.tokenId
+        
+        self.state = state
+    }
+}

@@ -13,6 +13,8 @@ import UIKit
 
 final class NFTObjectStorage: NSObject, ObservableObject {
     
+    static let shared: NFTObjectStorage = NFTObjectStorage()
+    
     // MARK: - Properties
     
     @Published var list: [NFTObject] = [NFTObject]()
@@ -20,7 +22,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     private let fetchRequest: NSFetchRequest<NFTObject>
     private let fetchedResultsController: NSFetchedResultsController<NFTObject>
     
-    static let shared: NFTObjectStorage = NFTObjectStorage()
+    
     
     // MARK: - Init
     
