@@ -18,24 +18,26 @@ struct NFTParseTaskItem: View {
     
     var body: some View {
         HStack {
-            if image != nil {
-                Image(uiImage: image!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .padding(4)
-                    .background(.thickMaterial)
-                    .cornerRadius(4)
-            } else {
-                Image(systemName: "scribble")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-                    .padding(4)
-                    .background(.thickMaterial)
-                    .cornerRadius(4)
-            }
-            
+//            if image != nil {
+//                Image(uiImage: image!)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 40, height: 40)
+//                    .padding(4)
+//                    .background(.thickMaterial)
+//                    .cornerRadius(4)
+//            } else {
+//                Image(systemName: "scribble")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//                    .frame(width: 40, height: 40)
+//                    .padding(4)
+//                    .background(.thickMaterial)
+//                    .cornerRadius(4)
+//            }
+
+            LottieView()
+                .frame(width: 40, height: 40)
             
             VStack(alignment: .leading) {
                 Text(title ?? "Untitled")

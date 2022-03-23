@@ -18,10 +18,11 @@ final class NFTAdapters {
     
     func parse(item: APIAlchemyNFT) async -> NFT? {
         let address = item.contract.address
-        
-//        print("🧹 \(address) \(item.id.tokenId) \(item.title)")
-        
+
         switch address {
+        case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
+            return await normalizeCryptopunk(item: item)
+
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
             
@@ -30,9 +31,6 @@ final class NFTAdapters {
             
 //        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
 //            return await normalizeStrangeAttractors(item: item)
-
-        case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
-            return await normalizeCryptopunk(item: item)
             
         default:
             return await normalizeAlchemyNFT(item: item)
