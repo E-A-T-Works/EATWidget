@@ -76,11 +76,9 @@ struct CollectionPage: View {
                 content: {
                     Button {
                         // TODO: Think of what to do w this...
-                        brandingIcon = Int.random(in: 0..<7)
-                        
-                        print(brandingIcon)
+                        brandingIcon = Int.random(in: 0..<6)
                     } label: {
-                        Branding(seed: brandingIcon, randomize: false)
+                        Branding(seed: brandingIcon)
                             .frame(width: 32, height: 32)
                     }
                 }

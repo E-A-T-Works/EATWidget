@@ -11,6 +11,9 @@ struct ConnectSheet: View {
     // MARK: - Properties
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var seed: Int = Int.random(in: 1..<7)
     
     @StateObject private var viewModel: ConnectSheetViewModel
     
@@ -32,7 +35,9 @@ struct ConnectSheet: View {
     var body: some View {
         
         ZStack {
+            
             VStack {
+                
                 Form {
                     Section {
                         HStack {
@@ -44,6 +49,11 @@ struct ConnectSheet: View {
                                 )
                             )
                             .disabled(viewModel.isAddressSet)
+                            .autocapitalization(.none)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                Task { await viewModel.lookupAndProcess() }
+                            }
                             
                             Spacer()
                             
@@ -53,16 +63,15 @@ struct ConnectSheet: View {
                                     viewModel.setAddressFromPasteboard()
                                 } label: {
                                     Image(systemName: "doc.on.clipboard")
-                                        .foregroundColor(.black)
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
                                 }
                                 .disabled(!UIPasteboard.general.hasStrings)
                             } else {
                                 Button {
-                                    print("reset")
                                     viewModel.reset()
                                 } label: {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundColor(.black)
+                                    Image(systemName: "xmark")
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
                                 }
                             }
                         }
@@ -88,14 +97,14 @@ struct ConnectSheet: View {
                                     set: { [viewModel] in viewModel.updateTitle($0) }
                                 )
                             )
+                            .submitLabel(.done)
                         }
                         
                         if viewModel.isLoading {
-                            HStack {
-                                Spacer()
-                                Text("loading...")
-                                Spacer()
-                            }
+                            
+                            ViewLoader(seed: 2)
+                                .padding(.vertical)
+                            
                         } else {
                         
                             Section {
@@ -127,7 +136,10 @@ struct ConnectSheet: View {
                     if viewModel.isAddressSet {
                         viewModel.submit()
                     } else {
-                        Task { await viewModel.lookup() }
+                        Task {
+                            await viewModel.lookupAndProcess()
+                            
+                        }
                     }
                     
                 } label: {

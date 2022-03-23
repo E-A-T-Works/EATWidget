@@ -9,38 +9,70 @@ import SwiftUI
 
 
 struct NFTParseTaskItem: View {
+
+    @Environment(\.colorScheme) var colorScheme
+    
     let address: String
     let tokenId: String
     
     var title: String?
     var image: UIImage?
-    var state: NFTParseTaskState? = .pending
+    var state: NFTParseTaskState = .pending
+    
+    var seed: Int = Int.random(in: 0..<6)
+    
+
+    
+    var loader: String {
+        return "spinner-\(String(format: "%02d", seed))"
+    }
+    
+    var fallback: String {
+        return colorScheme == .dark ? "eat-w-b-01" : "eat-b-w-01"
+    }
+    
+    var detailIcon: String {
+        switch state {
+        case .pending: return "circle.dotted"
+        case .success: return "checkmark.circle"
+        case .failure: return "exclamationmark.circle"
+        }
+    }
     
     var body: some View {
         HStack {
-//            if image != nil {
-//                Image(uiImage: image!)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 40, height: 40)
-//                    .padding(4)
-//                    .background(.thickMaterial)
-//                    .cornerRadius(4)
-//            } else {
-//                Image(systemName: "scribble")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 40, height: 40)
-//                    .padding(4)
-//                    .background(.thickMaterial)
-//                    .cornerRadius(4)
-//            }
 
-            LottieView()
-                .frame(width: 40, height: 40)
+            switch state {
+            case .pending:
+                LottieView(name: loader, loopMode: .loop)
+                    .frame(width: 40, height: 40)
+                    .padding(4)
+                    .background(.thickMaterial)
+                    .cornerRadius(4)
+                
+            case .success:
+                Image(uiImage: image!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 40)
+                    .padding(4)
+                    .background(.thickMaterial)
+                    .cornerRadius(4)
+                
+            case .failure:
+                Image(uiImage: UIImage(named: fallback)!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 40)
+                    .opacity(0.5)
+                    .padding(4)
+                    .background(.thickMaterial)
+                    .cornerRadius(4)
+            }
+            
             
             VStack(alignment: .leading) {
-                Text(title ?? "Untitled")
+                Text(title != nil && !title!.isEmpty ? title! : "Untitled")
                     .font(.system(size: 12.0, design: .monospaced))
                     .fontWeight(.black)
                     .lineLimit(1)
@@ -56,13 +88,11 @@ struct NFTParseTaskItem: View {
             
             Spacer()
             
-            switch state {
-            case .pending: Image(systemName: "circle.dotted")
-            case .success: Image(systemName: "checkmark.circle")
-            case .failure: Image(systemName: "x.circle")
-            case .none: Image(systemName: "circle.dotted")
-            }
-        }
+            Image(systemName: detailIcon)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+                .opacity(0.32)
+
+        }.padding(4)
     }
 }
 

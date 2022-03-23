@@ -49,7 +49,7 @@ struct NFTCard_Previews: PreviewProvider {
             NFTCard(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.tokenId,
-                image: UIImage(named: "eat-b-w-0")!,
+                image: UIImage(named: "eat-b-w-00")!,
                 animationUrl: TestData.nft.animationUrl,
                 title: TestData.nft.title,
                 text: nil
