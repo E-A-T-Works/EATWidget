@@ -14,7 +14,6 @@ struct Attribute: Hashable {
     let value: String
 }
 
-
 struct NFT: Identifiable, Hashable {
     let id: String
     
@@ -39,3 +38,16 @@ struct NFT: Identifiable, Hashable {
     let attributes: [Attribute]
 }
 
+
+
+
+enum NFTParseTaskState: String {
+    case pending, success, failure
+}
+
+struct NFTParseTask: Identifiable {
+    let id: String
+    var state: NFTParseTaskState
+    var raw: APIAlchemyNFT
+    var parsed: NFT?
+}

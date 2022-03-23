@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ConnectSheet: View {
-    // MARK: - Dependencies
+    // MARK: - Properties
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @StateObject private var viewModel: ConnectSheetViewModel
+    
+    // MARK: - Initialization
     
     init() {
         self._viewModel = StateObject(wrappedValue: ConnectSheetViewModel())
@@ -26,10 +28,7 @@ struct ConnectSheet: View {
     }
     
     // MARK: - View Content
-    
-//    let keys = viewModel.providerData.map{$0.key}
-//    let values = viewModel.providerData.map {$0.value}
-    
+
     var body: some View {
         
         ZStack {
@@ -91,55 +90,39 @@ struct ConnectSheet: View {
                             )
                         }
                         
+                        if viewModel.isLoading {
+                            HStack {
+                                Spacer()
+                                Text("loading...")
+                                Spacer()
+                            }
+                        } else {
                         
-                        Text("State: \(viewModel.providerState.rawValue)")
-                        Text("DataCount: \(viewModel.providerData.count)")
-                        
-                        ForEach(viewModel.providerTest.indices, id: \.self) { i in
-                            
-                            VStack(alignment: .leading) {
-                                Text(viewModel.providerStates[i].rawValue)
-                                Text(viewModel.providerTest[i].raw.title).lineLimit(1)
+                            Section {
+                                ForEach(viewModel.list.indices, id: \.self) { i in
+                                    
+                                    NFTItem(
+                                        title: viewModel.list[i].raw.title,
+                                        address: viewModel.list[i].raw.contract.address,
+                                        tokenId: viewModel.list[i].raw.id.tokenId,
+                                        image: viewModel.list[i].parsed?.image,
+                                        state: viewModel.list[i].state
+                                    )
+                                    
+                                }
+                            } header: {
+                                
+                                if viewModel.isProcessing {
+                                    Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Processed")
+                                } else {
+                                    Text("\(viewModel.successCount) Pass / \(viewModel.failureCount) Fail")
+                                }
+                                
+                            } footer: {
+                                Text("Email us")
                             }
                             
-                            
-//                            NFTItem(
-//                                title: viewModel.providerData[id]?.state.rawValue ?? "idk",
-//                                address: "111",
-//                                tokenId: "123",
-//                                image: nil,
-//                                state: .constant(.pending)
-//                            )
-                            
-//                            VStack {
-//                                Text("\(viewModel.providerData[id]?.raw.title ?? "idk")").lineLimit(1)
-//                                Text("\(viewModel.providerData[id]?.state.rawValue ?? "--")").lineLimit(1)
-//                            }
-                            
                         }
-                        
-//                        if viewModel.isLoading {
-//
-//                            Text("Loading")
-//
-//                        } else {
-//
-//                            Section {
-//                                ForEach(viewModel.list) { obj in
-////                                    NFTItem(
-////                                        item: obj.data,
-////                                        state: obj.state
-////                                    )
-//                                    Text("bleh")
-//                                }
-//                            } header: {
-//                                Text("\(viewModel.processedMap.count) / \(viewModel.apiResultMap.count) NFT\(viewModel.apiResultMap.count == 1 ? "" : "s") Processed")
-//                            } footer: {
-//
-//                            }
-//
-//                        }
-                        
                     }
                 }
             }

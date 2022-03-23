@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum NFTItemState {
-    case Pending
-    case Supported
-    case Unsupported
-}
-
 
 struct NFTItem: View {
     
@@ -21,7 +15,7 @@ struct NFTItem: View {
     let tokenId: String
     
     var image: UIImage?
-    
+    var state: NFTParseTaskState? = .pending
     
     var body: some View {
         HStack {
@@ -61,11 +55,12 @@ struct NFTItem: View {
             
             Spacer()
             
-//            switch state {
-//            case .pending: Image(systemName: "circle.dotted")
-//            case .success: Image(systemName: "checkmark.circle")
-//            case .failure: Image(systemName: "x.circle")
-//            }
+            switch state {
+            case .pending: Image(systemName: "circle.dotted")
+            case .success: Image(systemName: "checkmark.circle")
+            case .failure: Image(systemName: "x.circle")
+            case .none: Image(systemName: "circle.dotted")      
+            }
         }
     }
 }

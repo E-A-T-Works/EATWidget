@@ -11,25 +11,7 @@ import Combine
 import UIKit
 
 
-struct ConnectSheetFormState: Equatable {
-    var title: String = ""
-    var address: String = ""
-    
-    var isValid: Bool = false
-}
-
-enum ConnectSheetSheetContent {
-    case MailForm(data: ComposeMailData)
-}
-
-struct ConnectSheetListItem: Identifiable, Hashable {
-    let id: String
-    
-    let address: String
-    let tokenId: String
-    
-    let state: NFTItemState
-}
+// MARK: - ViewModel
 
 @MainActor
 final class ConnectSheetViewModel: ObservableObject {
@@ -45,12 +27,13 @@ final class ConnectSheetViewModel: ObservableObject {
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var isProcessing: Bool = false
     
-    @Published private(set) var apiResultMap: [String: APIAlchemyNFT] = [:]
-    @Published private(set) var processedMap: [String: NFT] = [:]
+    @Published private(set) var prog: [NFTParseTaskState] = [NFTParseTaskState]()
+    @Published private(set) var list: [NFTParseTask] = [NFTParseTask]()
+    @Published private(set) var totalCount: Int = 0
+    @Published private(set) var parsedCount: Int = 0
+    @Published private(set) var successCount: Int = 0
+    @Published private(set) var failureCount: Int = 0
     
-    @Published private(set) var list: [ConnectSheetListItem] = [ConnectSheetListItem]()
-    
-
     @Published var sheetContent: ConnectSheetSheetContent = .MailForm(
         data: ComposeMailData(
             subject: "[BETA:EATWidget] - App Feedback",
@@ -60,12 +43,15 @@ final class ConnectSheetViewModel: ObservableObject {
         )
     )
     
-    @Published var showingError: Bool = false
     @Published var showingSheet: Bool = false
+    @Published var showingError: Bool = false
+    
+    private let queue = OperationQueue()
     
     
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
+    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
@@ -79,31 +65,92 @@ final class ConnectSheetViewModel: ObservableObject {
     
     init() { }
     
-    // MARK: - Public Methods
-    
-    func reset() {
-        updateAddress("")
-        updateTitle("")
-
-        isAddressSet = false
-    }
-    
-    
-    // MARK: -
-    
-    func updateAddress(_ newValue: String) {
-        form.address = newValue
-        updateFormValidity()
-    }
-
-    func validateAddress(_ addressToTest: String) -> Bool {
-        // ref: https://info.etherscan.com/what-is-an-ethereum-address/
+    // MARK: - Form Submission and Lookup
+ 
+    func lookup() async {
         
-//        let lengthCheck = addressToTest.count == 42
-//        let prefixCheck = addressToTest.hasPrefix("0x")
-//
-//        return lengthCheck && prefixCheck
-        return true
+        guard form.isValid else {
+            showingError = true
+            return
+        }
+        
+        isAddressSet = true
+        isLoading = true
+        
+        let address = form.address
+        
+        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    
+        do {
+            results = try await api.getNFTs(for: address)
+        } catch {
+            print("⚠️ \(error)")
+        }
+        
+        totalCount = results.count
+        
+        list = results.map { result in
+            let address = result.contract.address
+            let tokenId = result.id.tokenId
+            let key = "\(address)/\(tokenId)"
+            
+            return NFTParseTask(
+                id: key,
+                state: .pending,
+                raw: result,
+                parsed: nil
+            )
+        }
+        
+        isLoading = false
+    }
+    
+    func process() async {
+        print("⚙️ process()")
+        isProcessing = true
+        
+        list.indices.forEach { index in
+            let data = list[index]
+            
+            let parseOp = ParseNFTOperation(data: data.raw)
+
+            parseOp.completionBlock = {
+                DispatchQueue.main.async {
+                    
+                    let parsed = parseOp.parsed
+                    
+                    
+                    var data = self.list[index]
+                    data.state = parsed == nil ? .failure : .success
+                    data.parsed = parseOp.parsed
+                    
+                    self.list[index] = data
+                    
+                    self.parsedCount += 1
+                    
+                    if parsed == nil {
+                        self.failureCount += 1
+                    } else {
+                        self.successCount += 1
+                    }
+                    
+                    
+                }
+            }
+
+            queue.addOperation(parseOp)
+        }
+        
+        // wait for everything to finish
+        DispatchQueue(label: "xyz.eatworks.app.workers", qos: .userInitiated).async { [weak self] in
+            
+            self?.queue.waitUntilAllOperationsAreFinished()
+
+            DispatchQueue.main.async { [weak self] in
+                print("🎉🎉🎉🎉🎉🎉🎉🎉")
+                self?.isProcessing = false
+            }
+        }
     }
     
     func setAddressFromPasteboard() {
@@ -116,114 +163,12 @@ final class ConnectSheetViewModel: ObservableObject {
             await process()
         }
     }
-
-    func updateTitle(_ newValue: String) {
-        guard !(newValue.count > 50) else {
-            return // Titles should not be more than 50 characters long
-        }
-        
-        form.title = newValue
-        updateFormValidity()
-    }
     
-    func validateTitle(_ titleToTest: String) -> Bool {
-        return true
-    }
+    func reset() {
+        updateAddress("")
+        updateTitle("")
 
-    
-    // MARK: -
-   
-    @Published private(set) var providerState: NFTProviderState = .pending
-    @Published private(set) var providerData: [String: NFTProviderData] = [:]
-    
-    @Published private(set) var providerIds: [String] = [String]()
-    @Published private(set) var providerStates: [NFTProviderDataState] = [NFTProviderDataState]()
-    
-    @Published private(set) var providerTest: [NFTProviderData] = [NFTProviderData]()
-    
-    private let queue = OperationQueue()
-    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
-    
-    private var disposables = Set<AnyCancellable>()
-    
-    func lookup() async {
-        print("🔍 lookup()")
-
-        isAddressSet = true
-        isLoading = true
-
-        
-        providerState = .fetching
-        
-        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
-    
-        do {
-            results = try await api.getNFTs(for: form.address)
-        } catch {
-            print("⚠️ \(error)")
-        }
-        
-
-        providerData = results.reduce([:], { partialResult, item in
-            let address = item.contract.address
-            let tokenId = item.id.tokenId
-            let key = "\(address)/\(tokenId)"
-            
-            var updated = partialResult
-            updated[key] = NFTProviderData(
-                id: "\(key)",
-                state: .pending,
-                raw: item,
-                cleaned: nil
-            )
-
-            return updated
-        })
-        
-        providerIds = providerData.keys.map { $0 }
-        providerStates = providerData.keys.map { providerData[$0]!.state }
-
-        providerTest = providerData.keys.map { providerData[$0]! }
-    }
-    
-    func process() async {
-        print("⚙️ process()")
-        providerState = .processing
-        
-        providerStates.indices.forEach { index in
-            let data = providerTest[index]
-            
-            print("     ❇️ Start: \(index)")
-            let parseOp = ParseNFTOperation(data: data.raw)
-
-            parseOp.completionBlock = {
-                DispatchQueue.main.async {
-                    var data = self.providerTest[index]
-
-                    let parsed = parseOp.parsed
-
-                    data.state = parsed == nil ? .failure : .success
-                    data.cleaned = parseOp.parsed
-                    
-                    
-                    self.providerStates[index] = parsed == nil ? .failure : .success
-
-                    print("     ✅ Finish: \(index)")
-                }
-            }
-
-            queue.addOperation(parseOp)
-        }
-        
-        DispatchQueue(label: "xyz.eatworks.app.workers", qos: .userInitiated).async { [weak self] in
-            
-            self?.queue.waitUntilAllOperationsAreFinished()
-
-            DispatchQueue.main.async { [weak self] in
-                print("🎉🎉🎉🎉🎉🎉🎉🎉")
-                self?.providerState = .pending
-            }
-        }
+        isAddressSet = false
     }
     
     func submit() {
@@ -248,11 +193,9 @@ final class ConnectSheetViewModel: ObservableObject {
 //        }
     }
     
-    func dismiss() {
-        self.shouldDismissView = true
-    }
     
-    // MARK: -
+
+    // MARK: - Overlay Helpers
 
     func presentMailFormSheet() {
         sheetContent = .MailForm(
@@ -266,7 +209,36 @@ final class ConnectSheetViewModel: ObservableObject {
         showingSheet.toggle()
     }
     
-    // MARK: - Private Methods
+    func presentAlert() {
+        
+        showingError.toggle()
+    }
+    
+    func dismiss() {
+        self.shouldDismissView = true
+    }
+    
+    
+    
+    // MARK: - Form Field Helpers
+    
+    func updateAddress(_ newValue: String) {
+        form.address = newValue
+        updateFormValidity()
+    }
+
+    func updateTitle(_ newValue: String) {
+        guard !(newValue.count > 50) else {
+            return // Titles should not be more than 50 characters long
+        }
+        
+        form.title = newValue
+        updateFormValidity()
+    }
+
+    
+
+    // MARK: - Validity Helpers
     
     private func updateFormValidity() {
         form.isValid = isValidForm()
@@ -275,4 +247,35 @@ final class ConnectSheetViewModel: ObservableObject {
     private func isValidForm() -> Bool {
         return !form.address.isEmpty && validateAddress(form.address) && validateTitle(form.title)
     }
+    
+    func validateAddress(_ addressToTest: String) -> Bool {
+        // ref: https://info.etherscan.com/what-is-an-ethereum-address/
+        
+        let lengthCheck = addressToTest.count <= 42
+
+        return lengthCheck
+    }
+    
+    func validateTitle(_ titleToTest: String) -> Bool {
+        return true
+    }
+}
+
+
+// MARK: - Auxillary
+
+struct ConnectSheetFormState: Equatable {
+    var title: String = ""
+    var address: String = ""
+    
+    var isValid: Bool = false
+}
+
+struct ConnectSheetError {
+    var title: String = ""
+    var text: String = ""
+}
+
+enum ConnectSheetSheetContent {
+    case MailForm(data: ComposeMailData)
 }
