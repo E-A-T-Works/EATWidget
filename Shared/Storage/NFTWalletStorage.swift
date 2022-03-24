@@ -62,63 +62,6 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         return list
     }
     
-//    func sync(list: [Wallet]) -> [NFTWallet] {
-//
-//        let context = persistenceController.container.viewContext
-//
-//        let cached = fetch()
-//
-//        //
-//        // Handle creation
-//        //
-//
-//        let toCreate = list.filter { !cached.map { $0.address }.contains($0.address) }
-//
-//        toCreate.forEach { data in
-//            let newObject = NFTWallet(context: context)
-//            newObject.address = data.address
-//            newObject.title = data.title
-//            newObject.timestamp = Date()
-//        }
-//
-//        //
-//        // Handle updates
-//        //
-//
-//        let toUpdate = cached.filter { list.map { $0.address }.contains($0.address) }
-//
-//        toUpdate.forEach { cached in
-//            let update = list.first { $0.address == cached.address }
-//            guard update != nil else { return }
-//
-//            cached.title = update!.title
-//        }
-//
-//
-//        //
-//        // Handle deletion
-//        //
-//
-//        let toDelete = cached.filter { !list.map { $0.address }.contains($0.address) }
-//
-//        toDelete.forEach { context.delete($0) }
-//
-//        //
-//        // Commit
-//        //
-//
-//        do {
-//            try context.save()
-//        } catch {
-//            print("⚠️ Failed to Write \(error)")
-//        }
-//
-//
-//        return fetch()
-//
-//    }
-    
-    
     func set(address: String, title: String?) throws -> NFTWallet {
         let context = persistenceController.container.viewContext
         

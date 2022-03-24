@@ -169,22 +169,20 @@ final class ConnectSheetViewModel: ObservableObject {
                 title: form.title
             )
             
-            try objectStorage.sync(
+            let _ = try objectStorage.sync(
                 wallet: wallet,
                 list: toCache
             )
             
-            // TODO: Dismiss
-
         } catch {
             showingLoader = false
             return
         }
-        
-        
-        
-        
+
         showingLoader = false
+        
+        dismiss()
+
     }
     
     func lookupAndProcess() async {
