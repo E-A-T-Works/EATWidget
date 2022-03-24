@@ -23,6 +23,11 @@ extension Date {
 
 extension String {
     var formattedWeb3: String {
+        
+        if self.contains(".eth") {
+            return self
+        }
+        
         if self.count > 7 {
             return "\(self.prefix(4))...\(self.suffix(4))"
         }

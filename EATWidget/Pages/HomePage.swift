@@ -50,6 +50,10 @@ struct CollectionPage: View {
                             viewModel.presentTutorialSheet()
                         }
                         
+                        VStack {
+                            Text("count: \(viewModel.addresses.count)")
+                        }
+                        
                         ForEach(viewModel.addresses, id: \.self) { address in
                                 
                             CollectionSection(
@@ -180,9 +184,9 @@ struct CollectionPage: View {
                 }
             }
         }
-        .onAppear {
+//        .onAppear {
 //            viewModel.sync()
-        }
+//        }
     }
     
 }

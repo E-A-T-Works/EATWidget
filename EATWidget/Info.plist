@@ -6,10 +6,5 @@
 	<string>${API_KEY_ALCHEMY}</string>
 	<key>API_KEY_ETHERSCAN</key>
 	<string>${API_KEY_ETHERSCAN}</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>processing</string>
-	</array>
 </dict>
 </plist>

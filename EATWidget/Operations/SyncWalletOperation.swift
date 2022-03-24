@@ -51,10 +51,10 @@ final class SyncWalletOperation: AsyncOperation {
                 let data = results[index]
                 
                 let parseOp = ParseNFTOperation(data: data)
-                
+                print("❇️ \(data.contract.address)|\(data.id.tokenId)")
                 parseOp.completionBlock = {
                     guard let parsed = parseOp.parsed else { return }
-                    
+                    print("✅ \(parsed.address)|\(parsed.tokenId)")
                     parsedList.append(parsed)
                     
                 }

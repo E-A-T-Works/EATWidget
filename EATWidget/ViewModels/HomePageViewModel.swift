@@ -55,8 +55,15 @@ final class HomePageViewModel: ObservableObject {
             .compactMap { $0 }
             .assign(to: &$nfts)
         
-        objectStorage.$list
+        Publishers.CombineLatest(objectStorage.$list, $filterBy)
             .receive(on: RunLoop.main)
+            .map { (list, filterBy) -> [NFTObject] in
+                if filterBy != nil {
+                    return list.filter { $0.wallet?.objectID === filterBy?.objectID }
+                } else {
+                    return list
+                }
+            }
             .compactMap { $0 }
             .map { $0.filter { $0.address != nil }.map { $0.address! }.unique() }
             .removeDuplicates { prev, curr in

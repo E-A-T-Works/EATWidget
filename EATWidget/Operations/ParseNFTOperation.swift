@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Firebase
 
 final class ParseNFTOperation: AsyncOperation {
     var parsed: NFT?
@@ -15,6 +14,7 @@ final class ParseNFTOperation: AsyncOperation {
     private let completionHandler: ((NFT?) -> Void)?
     
     private let adapters: NFTAdapters = NFTAdapters.shared
+    private let fb: FirebaseProvider = FirebaseProvider.shared
     
     init(data: APIAlchemyNFT, completionHandler: ((NFT?) -> Void)? = nil) {
         self.data = data
@@ -31,28 +31,9 @@ final class ParseNFTOperation: AsyncOperation {
             
             parsed = await adapters.parse(item: data)
             
-            
+
             // Sync Results
-            do {
-                guard Auth.auth().currentUser != nil else {
-                    state = .finished
-                    return
-                }
-                
-                let db = Firestore.firestore()
-                
-                try await db
-                    .collection("contracts")
-                    .document(address)
-                    .collection("assets")
-                    .document(tokenId)
-                    .setData([
-                        "success": parsed != nil,
-                        "timestamp": Date()
-                    ])
-            } catch {
-                print("⚠️ Failed to log to firestore \(error)")
-            }
+            await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
             
             // mark task as done
             state = .finished

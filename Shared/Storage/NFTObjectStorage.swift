@@ -66,7 +66,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     
         let context = persistenceController.container.viewContext
 
-        let cached = fetch()
+        let cached = fetch().filter { $0.wallet?.objectID == wallet.objectID }
 
         //
         // Handle creation

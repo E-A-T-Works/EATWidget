@@ -10,7 +10,11 @@ import SwiftUI
 struct WalletsSheet: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject private var viewModel = WalletsSheetViewModel()
+    @StateObject private var viewModel: WalletsSheetViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: WalletsSheetViewModel())
+    }
     
     var body: some View {
         
@@ -25,7 +29,7 @@ struct WalletsSheet: View {
                 List {
                     ForEach(viewModel.wallets) { item in
                         NavigationLink(
-                            destination: WalletSheet(address: item.address!)
+                            destination: ConnectSheet(address: item.address!)
                         ) {
                             WalletItem(item: item)
                         }

@@ -23,6 +23,8 @@ final class ConnectSheetViewModel: ObservableObject {
         address: ""
     )
     
+    @Published private(set) var wallet: NFTWallet? = nil
+    
     @Published private(set) var isAddressSet: Bool = false
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var isParsing: Bool = false
@@ -48,9 +50,9 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let queue = OperationQueue()
     
-    
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
+    private let fb: FirebaseProvider = FirebaseProvider.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     
     
@@ -63,12 +65,29 @@ final class ConnectSheetViewModel: ObservableObject {
   
     // MARK: - Initialization
     
-    init() { }
+    init(address: String? = nil) {
+        setupForm(address: address)
+    }
+    
+    private func setupForm(address: String? = nil) {
+        guard let address = address else { return }
+        
+        let cached = walletStorage.fetch().first { $0.address == address }
+        
+        guard cached != nil else { return }
+        
+        wallet = cached
+        updateAddress(address)
+        updateTitle(wallet?.title ?? "")
+        Task { await lookupAndParse() }
+    }
+    
+    
     
     // MARK: - Form Submission and Lookup
  
     func lookup() async {
-        
+        print("🔍 lookup:: \(form.address)")
         guard form.isValid else {
             showingError = true
             return
@@ -108,6 +127,7 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func parse() async {
+        print("🔍 parse:: \(form.address) | \(list.count)")
         isParsing = true
         
         list.indices.forEach { index in
@@ -162,10 +182,13 @@ final class ConnectSheetViewModel: ObservableObject {
             return
         }
         
+        let address = form.address
+        let title =  form.title.isEmpty ? nil : form.title
+        
         do {
             let wallet = try walletStorage.set(
-                address: form.address,
-                title: form.title.isEmpty ? nil : form.title
+                address: address,
+                title: title
             )
             
             let _ = try objectStorage.sync(
@@ -177,6 +200,8 @@ final class ConnectSheetViewModel: ObservableObject {
             showingLoader = false
             return
         }
+        
+        await fb.logWallet(address: address)
 
         showingLoader = false
         
@@ -184,20 +209,10 @@ final class ConnectSheetViewModel: ObservableObject {
 
     }
     
-    func lookupAndParse() async {
-        await lookup()
-        await parse()
-    }
-    
-    func setAddressFromPasteboard() {
-        let pasteboard = UIPasteboard.general
-        guard let address = pasteboard.string else { return }
-        
-        updateAddress(address)
-        Task { await lookupAndParse() }
-    }
-    
     func reset() {
+        
+        guard wallet == nil else { return }
+        
         form = ConnectSheetFormState(
             title: "",
             address: "",
@@ -214,6 +229,20 @@ final class ConnectSheetViewModel: ObservableObject {
         successCount = 0
         failureCount = 0
     }
+    
+    func lookupAndParse() async {
+        await lookup()
+        await parse()
+    }
+    
+    func setAddressFromPasteboard() {
+        let pasteboard = UIPasteboard.general
+        guard let address = pasteboard.string else { return }
+        
+        updateAddress(address)
+        Task { await lookupAndParse() }
+    }
+    
     
 
     // MARK: - Overlay Helpers

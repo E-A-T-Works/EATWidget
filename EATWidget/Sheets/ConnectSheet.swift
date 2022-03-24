@@ -17,10 +17,11 @@ struct ConnectSheet: View {
     
     @StateObject private var viewModel: ConnectSheetViewModel
     
+    
     // MARK: - Initialization
     
-    init() {
-        self._viewModel = StateObject(wrappedValue: ConnectSheetViewModel())
+    init(address: String? = nil) {
+        self._viewModel = StateObject(wrappedValue: ConnectSheetViewModel(address: address))
         
         UINavigationBar.appearance().largeTitleTextAttributes = [
             .font : UIFont.monospacedSystemFont(ofSize: 28.0, weight: .bold)
@@ -106,23 +107,38 @@ struct ConnectSheet: View {
                                 .padding(.vertical)
                             
                         } else {
-                        
-                            Section {
-                                ForEach(viewModel.list.indices, id: \.self) { i in
-                                    NFTParseTaskItem(item: viewModel.list[i])
-                                }
-                            } header: {
-                                
-                                if viewModel.isParsing {
-                                    Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Processed")
-                                } else {
-                                    Text("\(viewModel.successCount) Pass / \(viewModel.failureCount) Fail")
-                                }
-                                
-                            } footer: {
-                                Text("Email us")
-                            }
                             
+                            if viewModel.list.isEmpty {
+                                
+                                Text("Sorry, we could not find anything associated with this address. Currently we only support Ethereum addresses.")
+                                
+                            } else {
+                             
+                                Section {
+                                    ForEach(viewModel.list.indices, id: \.self) { i in
+                                        NFTParseTaskItem(item: viewModel.list[i])
+                                    }
+                                } header: {
+                                    
+                                    if viewModel.isParsing {
+                                        Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Discovered")
+                                    } else {
+                                        Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
+                                    }
+                                    
+                                } footer: {
+                                    HStack {
+                                        Text("Not seeing your NFTs?")
+
+                                        Button(action: {
+                                            viewModel.presentMailFormSheet()
+                                        }, label: {
+                                            Text("Let us know")
+                                        })
+                                    }
+                                }
+                                
+                            }
                         }
                     }
                 }
@@ -151,7 +167,7 @@ struct ConnectSheet: View {
 
                 }
                 .disabled(
-                    viewModel.isAddressSet ? viewModel.isLoading || viewModel.isParsing : !viewModel.form.isValid
+                    viewModel.isAddressSet ? viewModel.isLoading || viewModel.isParsing || viewModel.list.isEmpty : !viewModel.form.isValid
                 )
 
           })
