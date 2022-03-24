@@ -59,7 +59,7 @@ final class HomePageViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .map { (list, filterBy) -> [NFTObject] in
                 if filterBy != nil {
-                    return list.filter { $0.wallet?.objectID === filterBy?.objectID }
+                    return list.filter { $0.wallet?.objectID == filterBy?.objectID }
                 } else {
                     return list
                 }
