@@ -17,6 +17,8 @@ final class SyncWalletOperation: AsyncOperation {
     private let adapters: NFTAdapters = NFTAdapters.shared
     private let storage: NFTObjectStorage = NFTObjectStorage.shared
     
+    private let queue = OperationQueue()
+    
     init(wallet: NFTWallet, completionHandler: ((NFT?) -> Void)? = nil) {
         self.wallet = wallet
         self.completionHandler = completionHandler
@@ -43,24 +45,29 @@ final class SyncWalletOperation: AsyncOperation {
             }
             
             // parse
-            var parsed: [NFT] = [NFT]()
-            do {
-                parsed = try await results.concurrentMap({ data in
-                    await self.adapters.parse(item: data)
-                }).compactMap { $0 }
+            var parsedList: [NFT] = [NFT]()
+
+            results.indices.forEach { index in
+                let data = results[index]
                 
-            } catch {
-                print("⚠️ sync::parse \(error)")
-                state = .finished
-                return
+                let parseOp = ParseNFTOperation(data: data)
+                
+                parseOp.completionBlock = {
+                    guard let parsed = parseOp.parsed else { return }
+                    
+                    parsedList.append(parsed)
+                    
+                }
+                
+                queue.addOperation(parseOp)
             }
-            print("➡️ parse: \(address) | \(parsed.count)")
             
+            
+            queue.waitUntilAllOperationsAreFinished()
             
             // store
-            print("➡️ store: \(address)")
             do {
-                let _ = try storage.sync(wallet: wallet, list: parsed)
+                let _ = try storage.sync(wallet: wallet, list: parsedList)
             } catch {
                 print("⚠️ sync::store \(error)")
                 state = .finished
