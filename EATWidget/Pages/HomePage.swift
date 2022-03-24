@@ -180,6 +180,9 @@ struct CollectionPage: View {
                 }
             }
         }
+        .onAppear {
+//            viewModel.sync()
+        }
     }
     
 }

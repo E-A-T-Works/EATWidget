@@ -13,7 +13,6 @@ final class ParseNFTOperation: AsyncOperation {
     
     private let data: APIAlchemyNFT
     private let completionHandler: ((NFT?) -> Void)?
-    private var task: URLSessionDataTask?
     
     private let adapters: NFTAdapters = NFTAdapters.shared
     

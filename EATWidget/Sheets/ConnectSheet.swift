@@ -52,7 +52,7 @@ struct ConnectSheet: View {
                             .autocapitalization(.none)
                             .submitLabel(.next)
                             .onSubmit {
-                                Task { await viewModel.lookupAndProcess() }
+                                Task { await viewModel.lookupAndParse() }
                             }
                             
                             Spacer()
@@ -113,7 +113,7 @@ struct ConnectSheet: View {
                                 }
                             } header: {
                                 
-                                if viewModel.isProcessing {
+                                if viewModel.isParsing {
                                     Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Processed")
                                 } else {
                                     Text("\(viewModel.successCount) Pass / \(viewModel.failureCount) Fail")
@@ -136,7 +136,7 @@ struct ConnectSheet: View {
                     if viewModel.isAddressSet {
                         Task { await viewModel.submit() }
                     } else {
-                        Task { await viewModel.lookupAndProcess() }
+                        Task { await viewModel.lookupAndParse() }
                     }
                     
                 } label: {
@@ -151,7 +151,7 @@ struct ConnectSheet: View {
 
                 }
                 .disabled(
-                    viewModel.isAddressSet ? viewModel.isLoading || viewModel.isProcessing : !viewModel.form.isValid
+                    viewModel.isAddressSet ? viewModel.isLoading || viewModel.isParsing : !viewModel.form.isValid
                 )
 
           })

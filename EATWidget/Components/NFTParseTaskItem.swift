@@ -64,7 +64,6 @@ struct NFTParseTaskItem: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
-                    .opacity(0.5)
                     .padding(4)
                     .background(.thickMaterial)
                     .cornerRadius(4)

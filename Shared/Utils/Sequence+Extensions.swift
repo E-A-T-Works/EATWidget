@@ -46,8 +46,8 @@ extension Sequence {
         await withTaskGroup(of: Void.self) { group in
             for element in self {
                 group.addTask {
-    await operation(element)
-}
+                    await operation(element)
+                }
             }
         }
     }
@@ -60,8 +60,8 @@ extension Sequence {
     ) async throws -> [T] {
         let tasks = map { element in
             Task {
-    try await transform(element)
-}
+                try await transform(element)
+            }
         }
 
         return try await tasks.asyncMap { task in

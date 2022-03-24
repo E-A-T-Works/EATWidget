@@ -25,7 +25,7 @@ final class ConnectSheetViewModel: ObservableObject {
     
     @Published private(set) var isAddressSet: Bool = false
     @Published private(set) var isLoading: Bool = false
-    @Published private(set) var isProcessing: Bool = false
+    @Published private(set) var isParsing: Bool = false
     
     @Published private(set) var list: [NFTParseTask] = [NFTParseTask]()
     @Published private(set) var totalCount: Int = 0
@@ -107,8 +107,8 @@ final class ConnectSheetViewModel: ObservableObject {
         isLoading = false
     }
     
-    func process() async {
-        isProcessing = true
+    func parse() async {
+        isParsing = true
         
         list.indices.forEach { index in
             let data = list[index]
@@ -119,7 +119,6 @@ final class ConnectSheetViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     
                     let parsed = parseOp.parsed
-                    
                     
                     var data = self.list[index]
                     data.state = parsed == nil ? .failure : .success
@@ -148,7 +147,7 @@ final class ConnectSheetViewModel: ObservableObject {
             self?.queue.waitUntilAllOperationsAreFinished()
 
             DispatchQueue.main.async { [weak self] in
-                self?.isProcessing = false
+                self?.isParsing = false
             }
         }
     }
@@ -166,7 +165,7 @@ final class ConnectSheetViewModel: ObservableObject {
         do {
             let wallet = try walletStorage.set(
                 address: form.address,
-                title: form.title
+                title: form.title.isEmpty ? nil : form.title
             )
             
             let _ = try objectStorage.sync(
@@ -185,9 +184,9 @@ final class ConnectSheetViewModel: ObservableObject {
 
     }
     
-    func lookupAndProcess() async {
+    func lookupAndParse() async {
         await lookup()
-        await process()
+        await parse()
     }
     
     func setAddressFromPasteboard() {
@@ -195,7 +194,7 @@ final class ConnectSheetViewModel: ObservableObject {
         guard let address = pasteboard.string else { return }
         
         updateAddress(address)
-        Task { await lookupAndProcess() }
+        Task { await lookupAndParse() }
     }
     
     func reset() {
@@ -207,7 +206,7 @@ final class ConnectSheetViewModel: ObservableObject {
 
         isAddressSet = false
         isLoading = false
-        isProcessing = false
+        isParsing = false
         
         list = [NFTParseTask]()
         totalCount = 0

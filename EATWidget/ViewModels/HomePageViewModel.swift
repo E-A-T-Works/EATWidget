@@ -35,8 +35,8 @@ final class HomePageViewModel: ObservableObject {
     
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
-
-    private var cancellable: AnyCancellable?
+    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    
     
     // MARK: - Initialization
     
@@ -105,6 +105,33 @@ final class HomePageViewModel: ObservableObject {
             )
         )
         showingSheet.toggle()
+    }
+    
+    
+    // MARK: - Sync
+
+    private let queue = OperationQueue()
+    
+    func sync() {
+        
+        let wallets = walletStorage.fetch()
+        
+        print("➡️ syncing \(wallets.count) wallets...")
+        
+        wallets.forEach { wallet in
+            let syncOp = SyncWalletOperation(wallet: wallet)
+            syncOp.completionBlock = { }
+            queue.addOperation(syncOp)
+        }
+        
+        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
+            
+            self?.queue.waitUntilAllOperationsAreFinished()
+
+            DispatchQueue.main.async {
+                print("♻️ done with sync")
+            }
+        }
     }
 }
 
