@@ -14,6 +14,8 @@ struct WalletsSheet: View {
     
     init() {
         self._viewModel = StateObject(wrappedValue: WalletsSheetViewModel())
+        
+        LayoutHelpers.stylePageTitle()
     }
     
     var body: some View {

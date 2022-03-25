@@ -42,6 +42,7 @@ final class HomePageViewModel: ObservableObject {
     
     init() {
         setupSubscriptions()
+        autoPresentConnectSheetIfNeeded()
     }
     
     private func setupSubscriptions() {
@@ -70,6 +71,14 @@ final class HomePageViewModel: ObservableObject {
                 prev.elementsEqual(curr)
             }
             .assign(to: &$addresses)
+    }
+    
+    private func autoPresentConnectSheetIfNeeded() {
+        let list = walletStorage.fetch()
+        
+        guard list.isEmpty else { return }
+        
+        presentConnectSheet()
     }
     
     // MARK: - Public Methods

@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct CollectionPage: View {
+struct HomePage: View {
     @Environment(\.colorScheme) var colorScheme
-    
+    @StateObject private var viewModel: HomePageViewModel
     @State var brandingIcon: Int = 0
     
-    @StateObject private var viewModel: HomePageViewModel
-    
+
     init() {
         self._viewModel = StateObject(wrappedValue: HomePageViewModel())
+        
+        LayoutHelpers.stylePageTitle()
     }
     
     // MARK: Body
@@ -31,7 +32,9 @@ struct CollectionPage: View {
 
                 if viewModel.nfts.isEmpty {
 
-                    ViewPlaceholder(text: "Connect a wallet to see your NFTs")
+                    ViewPlaceholder(
+                        text: "Connect a wallet to see your NFTs"
+                    )
 
                 } else {
                     
@@ -48,10 +51,6 @@ struct CollectionPage: View {
                         .padding(10)
                         .onTapGesture {
                             viewModel.presentTutorialSheet()
-                        }
-                        
-                        VStack {
-                            Text("count: \(viewModel.addresses.count)")
                         }
                         
                         ForEach(viewModel.addresses, id: \.self) { address in
@@ -184,18 +183,15 @@ struct CollectionPage: View {
                 }
             }
         }
-//        .onAppear {
-//            viewModel.sync()
-//        }
     }
     
 }
 
 
-struct CollectionPage_Previews: PreviewProvider {
+struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CollectionPage()
+            HomePage()
         }
         .previewInterfaceOrientation(.portrait)
     }

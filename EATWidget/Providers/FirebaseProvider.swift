@@ -31,6 +31,7 @@ final class FirebaseProvider {
                 .setData([
                     "timestamp": Date()
                 ])
+
         } catch {
             print("⚠️ Failed to log to firestore \(error)")
         }
@@ -46,15 +47,29 @@ final class FirebaseProvider {
             
             let db = Firestore.firestore()
             
-            try await db
+            let ref = db
                 .collection("contracts")
                 .document(address)
                 .collection("assets")
                 .document(tokenId)
-                .setData([
-                    "success": success,
-                    "timestamp": Date()
-                ])
+            
+            let snapshot = try await ref.getDocument()
+            
+            if snapshot.exists {
+                try await ref
+                    .updateData([
+                        "success": success,
+                        "modified": Date()
+                    ])
+            } else {
+                try await ref
+                    .setData([
+                        "success": success,
+                        "modified": Date(),
+                        "timestamp": Date()
+                    ])
+            }
+            
         } catch {
             print("⚠️ Failed to log to firestore \(error)")
         }

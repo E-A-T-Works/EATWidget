@@ -16,7 +16,16 @@ struct NFTSheet: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @StateObject var viewModel = NFTSheetViewModel()
+    @StateObject var viewModel: NFTSheetViewModel
+    
+    init(address: String, tokenId:String) {
+        self.address = address
+        self.tokenId = tokenId
+        
+        self._viewModel = StateObject(wrappedValue: NFTSheetViewModel())
+        
+        LayoutHelpers.stylePageTitle()
+    }
     
     var body: some View {
         GeometryReader { geo in

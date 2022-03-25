@@ -23,12 +23,7 @@ struct ConnectSheet: View {
     init(address: String? = nil) {
         self._viewModel = StateObject(wrappedValue: ConnectSheetViewModel(address: address))
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            .font : UIFont.monospacedSystemFont(ofSize: 28.0, weight: .bold)
-        ]
-        UINavigationBar.appearance().titleTextAttributes = [
-            .font : UIFont.monospacedSystemFont(ofSize: 16.0, weight: .bold)
-        ]
+        LayoutHelpers.stylePageTitle()
     }
     
     // MARK: - View Content
