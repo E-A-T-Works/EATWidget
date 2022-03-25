@@ -46,4 +46,10 @@ final class APIAlchemyProvider {
             throw APIError.BadResponse
         }
     }
+    
+    func getNFTsForCollection(for contractAddress: String, startToken: String? = nil) async throws -> [APIAlchemyNFT] {
+        
+        
+        return [APIAlchemyNFT]()
+    }
 }

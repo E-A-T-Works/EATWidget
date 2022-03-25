@@ -52,6 +52,9 @@
 		5C24E4F527EE122E00F3CF2A /* CollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */; };
 		5C24E4F727EE13DD00F3CF2A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */; };
 		5C24E4F927EE155900F3CF2A /* CollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */; };
+		5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4FA27EE1D8600F3CF2A /* Collection.swift */; };
+		5C24E4FC27EE1D8600F3CF2A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4FA27EE1D8600F3CF2A /* Collection.swift */; };
+		5C24E4FD27EE1D8600F3CF2A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4FA27EE1D8600F3CF2A /* Collection.swift */; };
 		5C28D1C427ECB67100F98779 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C28D1C327ECB67100F98779 /* FirebaseProvider.swift */; };
 		5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C33D15427E8C53500EFD666 /* GoogleService-Info.plist */; };
 		5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
@@ -327,6 +330,7 @@
 		5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPage.swift; sourceTree = "<group>"; };
 		5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewModel.swift; sourceTree = "<group>"; };
+		5C24E4FA27EE1D8600F3CF2A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		5C28D1C327ECB67100F98779 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
 		5C33D15427E8C53500EFD666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				5C3C880F27EBAFE8005BECA1 /* Wallet.swift */,
+				5C24E4FA27EE1D8600F3CF2A /* Collection.swift */,
 				5C574CEE27BAF16300212FED /* NFT.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
@@ -1159,6 +1164,7 @@
 				5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* NFTParseTaskItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* HomePageViewModel.swift in Sources */,
+				5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5CA04D3C27E0C86700559129 /* CollectionSection.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
@@ -1201,6 +1207,7 @@
 				5C84117E27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */,
 				5C574CEC27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */,
+				5C24E4FC27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
 				5C06457527C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
@@ -1247,6 +1254,7 @@
 				5C91BE1127B43A27001074CE /* Theme.swift in Sources */,
 				5C574CE127BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C06457227C5C3DA00E97D1C /* NFTWalletStorage.swift in Sources */,
+				5C24E4FD27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5C6308F927B2F23900AC2A24 /* WalletsView.swift in Sources */,
 				5C574CF127BAF16300212FED /* NFT.swift in Sources */,
 				5C6308D427B2E3A300AC2A24 /* Persistence.swift in Sources */,

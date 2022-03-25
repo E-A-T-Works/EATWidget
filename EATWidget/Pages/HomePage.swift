@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePage: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel: HomePageViewModel
+    
     @State var brandingIcon: Int = 0
     
 

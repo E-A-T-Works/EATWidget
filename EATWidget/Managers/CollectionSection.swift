@@ -42,11 +42,16 @@ struct CollectionSection: View {
         
         VStack {
             
-            HStack {
-                HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
-                Spacer()
-            }
-            .padding([.horizontal], 10)
+            NavigationLink(
+                destination: CollectionPage(address: address)
+            ) {
+                HStack {
+                    HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
+                    Spacer()
+                }
+                .padding([.horizontal], 10)
+            }.buttonStyle(.plain)
+            
             
             Divider()
                 .padding([.horizontal], 10)
@@ -76,7 +81,10 @@ struct CollectionSection: View {
 struct CollectionSection_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CollectionSection(address: "123", filterBy: nil) { address, tokenId in
+            CollectionSection(
+                address: "0xf9a423b86afbf8db41d7f24fa56848f56684e43f",
+                filterBy: nil
+            ) { address, tokenId in
                 // pass
             }
         }

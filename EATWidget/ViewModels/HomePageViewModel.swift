@@ -33,6 +33,9 @@ final class HomePageViewModel: ObservableObject {
     @Published var sheetContent: HomePageSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
     
+    @Published var nextPageAddress: String = ""
+    @Published var nextPage: String? = nil
+    
     private let walletStorage = NFTWalletStorage.shared
     private let objectStorage = NFTObjectStorage.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
