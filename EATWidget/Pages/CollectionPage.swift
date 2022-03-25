@@ -33,7 +33,16 @@ struct CollectionPage: View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             
             TabView(selection: $selectedTab) {
-                Color(.red)
+                
+                VStack {
+                 
+                    if viewModel.collection != nil {
+                        URLImage(url: viewModel.collection!.thumbnail)
+                    } else {
+                        Text("loading")
+                    }
+                    
+                }
                     .ignoresSafeArea()
                     .tag("list")
                 

@@ -17,6 +17,6 @@ struct Collection: Identifiable, Hashable {
     
     let assetCount: Int
     
-    let banner: UIImage?
-    let thumbnail: UIImage?
+    let banner: URL
+    let thumbnail: URL
 }
