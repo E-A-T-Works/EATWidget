@@ -9,13 +9,11 @@ import SwiftUI
 
 struct CollectionPage: View {
     let address: String
-    let tabs: [String] = ["list", "creator", "project"]
     
     @Environment(\.colorScheme) var colorScheme
     @StateObject private var viewModel: CollectionPageViewModel
     
     @State var brandingIcon: Int = 0
-    @State var selectedTab: String = "list"
     
     init(address: String) {
         self.address = address
@@ -32,72 +30,50 @@ struct CollectionPage: View {
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             
-            TabView(selection: $selectedTab) {
-                
-                VStack {
-                 
-                    if viewModel.collection != nil {
-                        URLImage(url: viewModel.collection!.thumbnail)
-                    } else {
-                        Text("loading")
-                    }
+                TabView(selection: $viewModel.tab) {
                     
+                    CollectionAssetsPage()
+                        .ignoresSafeArea()
+                        .tag(CollectionPageTabs.list)
+                    
+                    CollectionDetailsPage()
+                        .ignoresSafeArea()
+                        .tag(CollectionPageTabs.detail)
                 }
-                    .ignoresSafeArea()
-                    .tag("list")
-                
-                Color(.green)
-                    .ignoresSafeArea()
-                    .tag("creator")
-                
-                Color(.yellow)
-                    .ignoresSafeArea()
-                    .tag("project")
-            }
+             
             
-            HStack {
+            
+            HStack(spacing: 0) {
+                                
+                Button {
+                    viewModel.changeTabs(to: .list)
+                } label: {
+                    Image(systemName: "square.grid.2x2")
+                        .padding()
+                        .frame(width: 64, height: 56)
+                        .background(viewModel.tab == .list ? .white : .white.opacity(0.0))
+                        .foregroundColor(.black)
+                        .cornerRadius(22)
+                }.padding(.horizontal, 4)
                 
-                ForEach(tabs, id: \.self) { tab in
-                    Button {
-                        selectedTab = tab
-                    } label: {
-                        Text("\(tab)")
-                    }
-                    .padding()
-                    
-                    if tab != tabs.last { Spacer() }
-                    
-                }
+                HStack { Divider().padding(.vertical).padding(.horizontal, 4) }
+                
+                Button {
+                    viewModel.changeTabs(to: .detail)
+                } label: {
+                    Image(systemName: "doc.plaintext")
+                        .padding()
+                        .frame(width: 64, height: 56)
+                        .background(viewModel.tab == .detail ? .white : .white.opacity(0.0))
+                        .foregroundColor(.black)
+                        .cornerRadius(22)
+                }.padding(.horizontal, 4)
+                
             }
-            .background(.white)
-            .padding()
+            .background(.thickMaterial)
+            .cornerRadius(26)
+            .frame(width: 180, height: 64)
         }
-
-        
-//
-//        ZStack {
-//            VStack {
-//                VStack {
-//                    URLImage(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/eatworks-36a21.appspot.com/o/contracts%2F0xf9a423b86afbf8db41d7f24fa56848f56684e43f%2Fbanner.png?alt=media&token=e6f96e72-067e-4c02-bcbe-c5f0d0288e20")!)
-//                }.ignoresSafeArea()
-//
-//                VStack {
-//                    HStack {
-//                        URLImage(url: URL(string: "https://firebasestorage.googleapis.com/v0/b/eatworks-36a21.appspot.com/o/contracts%2F0xf9a423b86afbf8db41d7f24fa56848f56684e43f%2Fthumbnail.png?alt=media&token=17039284-d6ab-4371-bbd3-23b76960dd06")!).frame(width: 100, height: 100)
-//
-//                        Text("Hello")
-//
-//                        Spacer()
-//                    }
-//                }
-//
-//                Spacer()
-//            }
-//
-//
-//        }
-//        .navigationTitle("Every Icon")
-
     }
 }
 

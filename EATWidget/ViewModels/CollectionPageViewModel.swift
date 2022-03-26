@@ -13,6 +13,10 @@ enum CollectionPageSheetContent {
     case NFTDetails(address: String, tokenId: String)
 }
 
+enum CollectionPageTabs {
+    case list
+    case detail
+}
 
 @MainActor
 final class CollectionPageViewModel: ObservableObject {
@@ -21,12 +25,17 @@ final class CollectionPageViewModel: ObservableObject {
     
     let address: String
     
+    
+    
     @Published private(set) var collection: Collection?
     
     @Published private(set) var owned: [NFTObject] = []
     @Published private(set) var remaining: [NFT] = []
     
     @Published private(set) var loading: Bool = false
+    
+    
+    @Published var tab: CollectionPageTabs = .list
     
     @Published var sheetContent: CollectionPageSheetContent = .NFTDetails(address: "", tokenId: "")
     @Published var showingSheet: Bool = false
@@ -77,5 +86,10 @@ final class CollectionPageViewModel: ObservableObject {
         Task {
             collection = await fb.loadCollection(for: address)
         }
+    }
+    
+    
+    func changeTabs(to tab:CollectionPageTabs) {
+        self.tab = tab
     }
 }
