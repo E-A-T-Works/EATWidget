@@ -51,15 +51,15 @@ struct ActionRowButton {
 }
 
 struct ActionRow: View {
-    
     let list: [ActionRowButton]
+    var alignment: HorizontalAlignment = .center
     
     private func hideText() -> Bool {
         return list.count > 3
     }
     
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: alignment) {
             HStack {
                 ForEach(list, id: \.target) { item in
                     URLButton(
@@ -78,6 +78,11 @@ struct ActionRow_Previews: PreviewProvider {
         VStack {
             ActionRow(
                 list: [
+                    ActionRowButton(
+                        target: .Other,
+                        url: URL(string: "https://google.com")!
+                    ),
+                    
                     ActionRowButton(
                         target: .Opensea,
                         url: URL(string: "https://google.com")!

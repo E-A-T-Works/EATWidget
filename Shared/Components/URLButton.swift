@@ -29,6 +29,7 @@ struct URLButton: View {
                 HStack{
                     Image(uiImage: image).resizable()
                         .aspectRatio(contentMode: .fit)
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         .frame(width:24, height: 24)
                     
                     if title != nil {
@@ -52,7 +53,7 @@ struct URLButton_Previews: PreviewProvider {
         VStack{
             URLButton(
                 url: URL(string: "https://eatworks.xyz")!,
-                image: UIImage(named: "Placeholder")!,
+                image: UIImage(systemName: "safari")!,
                 title: "Button"
             )
         }
