@@ -36,13 +36,10 @@ struct CollectionPage: View {
 //            if viewModel.loading {
 //                ViewLoader()
 //            } else {
-            
-            
-            
-                
+
                 ScrollView {
                     
-                    CollectionSegment(item: TestData.collection)
+                    CollectionSection(item: TestData.collection)
                     
                     Divider().padding()
                     
@@ -55,15 +52,7 @@ struct CollectionPage: View {
                     
                     // everything else
                 }
-            
-            
-            
-            
-            
-                
-                
-                
-                
+    
 //            }
             
             

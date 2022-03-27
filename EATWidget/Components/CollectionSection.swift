@@ -1,5 +1,5 @@
 //
-//  CollectionSegment.swift
+//  CollectionSection.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 3/27/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CollectionSegment: View {
+struct CollectionSection: View {
     let item: Collection
     
     var body: some View {
@@ -47,10 +47,10 @@ struct CollectionSegment: View {
     }
 }
 
-struct CollectionSegment_Previews: PreviewProvider {
+struct CollectionSection_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CollectionSegment(item: TestData.collection)
+            CollectionSection(item: TestData.collection)
         }
         .previewLayout(PreviewLayout.sizeThatFits)
         .padding()

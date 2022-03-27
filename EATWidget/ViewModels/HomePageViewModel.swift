@@ -50,17 +50,11 @@ final class HomePageViewModel: ObservableObject {
     
     private func setupSubscriptions() {
         walletStorage.$list
-            .receive(on: RunLoop.main)
             .compactMap { $0 }
+            .receive(on: RunLoop.main)
             .assign(to: &$wallets)
         
-        objectStorage.$list
-            .receive(on: RunLoop.main)
-            .compactMap { $0 }
-            .assign(to: &$nfts)
-        
         Publishers.CombineLatest(objectStorage.$list, $filterBy)
-            .receive(on: RunLoop.main)
             .map { (list, filterBy) -> [NFTObject] in
                 if filterBy != nil {
                     return list.filter { $0.wallet?.objectID == filterBy?.objectID }
@@ -69,10 +63,15 @@ final class HomePageViewModel: ObservableObject {
                 }
             }
             .compactMap { $0 }
+            .receive(on: RunLoop.main)
+            .assign(to: &$nfts)
+        
+        $nfts
             .map { $0.filter { $0.address != nil }.map { $0.address! }.unique() }
             .removeDuplicates { prev, curr in
                 prev.elementsEqual(curr)
             }
+            .receive(on: RunLoop.main)
             .assign(to: &$addresses)
     }
     
@@ -124,6 +123,26 @@ final class HomePageViewModel: ObservableObject {
             )
         )
         showingSheet.toggle()
+    }
+    
+    
+    // Ref: https://github.com/renaudjenny/SwiftUI-with-Size-Classes
+    func determineColumns(vertical: UserInterfaceSizeClass?, horizontal: UserInterfaceSizeClass?) -> Int {
+        if vertical == .regular && horizontal == .compact {
+            // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
+            return 2
+        } else if vertical == .compact && horizontal == .compact {
+            // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
+            return 3
+        } else if vertical == .compact && horizontal == .regular {
+            // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
+            return 4
+        } else if vertical == .regular && horizontal == .regular {
+            // macOS or iPad without split view - no Multitasking
+            return 4
+        } else {
+            return 2
+        }
     }
     
     
