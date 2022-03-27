@@ -14,6 +14,8 @@ struct CollectionPage: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
+    @Namespace var animation
+    
     @StateObject private var viewModel: CollectionPageViewModel
     
     @State var brandingIcon: Int = 0
@@ -33,9 +35,11 @@ struct CollectionPage: View {
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             
-//            if viewModel.loading {
-//                ViewLoader()
-//            } else {
+            if viewModel.loading {
+                
+                ViewLoader()
+                
+            } else {
 
                 ScrollView {
                     
@@ -43,64 +47,54 @@ struct CollectionPage: View {
                     
                     Divider().padding()
                     
-                    // in current collection
+                    StaggeredGrid(
+                        list: viewModel.owned,
+                        columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+                        spacing: 10,
+                        lazy: true,
+                        content: { item in
+                            NFTCard(item: item)
+                                .matchedGeometryEffect(id: item.id, in: animation)
+                                .onTapGesture {
+                                    
+                                    guard
+                                        let address = item.address,
+                                        let tokenId = item.tokenId
+                                    else { return}
+                                    
+                                    viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                                }
+                        }
+                    )
+                    .padding(.horizontal)
                     
-                    ForEach(0..<100, id: \.self) { i in
-                        Text("hihi \(i)")
-                    }
+                    Divider().padding()
                     
-                    
-                    // everything else
+                    Text("Everything else")
                 }
     
-//            }
-            
-            
-//                TabView(selection: $viewModel.tab) {
-//
-//                    CollectionAssetsPage()
-//                        .ignoresSafeArea()
-//                        .tag(CollectionPageTabs.list)
-//
-//                    CollectionDetailsPage()
-//                        .ignoresSafeArea()
-//                        .tag(CollectionPageTabs.detail)
-//                }
-             
-            
-            
-//            HStack(spacing: 0) {
-//
-//                Button {
-//                    viewModel.changeTabs(to: .list)
-//                } label: {
-//                    Image(systemName: "square.grid.2x2")
-//                        .padding()
-//                        .frame(width: 64, height: 56)
-//                        .background(viewModel.tab == .list ? .white : .white.opacity(0.0))
-//                        .foregroundColor(.black)
-//                        .cornerRadius(22)
-//                }.padding(.horizontal, 4)
-//
-//                HStack { Divider().padding(.vertical).padding(.horizontal, 4) }
-//
-//                Button {
-//                    viewModel.changeTabs(to: .detail)
-//                } label: {
-//                    Image(systemName: "doc.plaintext")
-//                        .padding()
-//                        .frame(width: 64, height: 56)
-//                        .background(viewModel.tab == .detail ? .white : .white.opacity(0.0))
-//                        .foregroundColor(.black)
-//                        .cornerRadius(22)
-//                }.padding(.horizontal, 4)
-//
-//            }
-//            .background(.thickMaterial)
-//            .cornerRadius(26)
-//            .frame(width: 180, height: 64)
+            }
         }
         .ignoresSafeArea()
+        .navigationTitle("Every Icon")
+        .toolbar(content: {
+            EmptyView()
+        })
+        .sheet(isPresented: $viewModel.showingSheet) {
+            switch viewModel.sheetContent {
+            case .NFTDetails(let address, let tokenId):
+                NFTSheet(
+                    address: address,
+                    tokenId: tokenId
+                )
+            case .MailForm(let data):
+                MailView(data: data) { result in
+                    print()
+                }
+            case .none:
+                EmptyView()
+            }
+        }
     }
 }
 

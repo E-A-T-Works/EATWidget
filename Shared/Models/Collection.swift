@@ -12,10 +12,12 @@ import UIKit
 struct Collection: Identifiable, Hashable {
     let id: String
     
+    let address: String
+    
     let title: String
     let text: String?
     
-    let assetCount: Int
+    let links: [ExternalLink]
     
     let banner: URL
     let thumbnail: URL

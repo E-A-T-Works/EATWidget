@@ -11,10 +11,11 @@ import UIKit
 struct TestData {
     
     static let collection: Collection = Collection(
-        id: "collection-00",
+        id: "0x0000000000000000",
+        address: "0x0000000000000000",
         title: "Every Icon",
         text: "A re-imagining of Every Icon, John F. Simon Jr.'s seminal web-based software art work first released in 1997.  This blockchain-native, on-chain expression was created by John F. Simon Jr. and divergence, in collaboration with FingerprintsDAO and e•a•t•}works",
-        assetCount: 512,
+        links: [ExternalLink](),
         banner: URL(string: "https://firebasestorage.googleapis.com/v0/b/eatworks-36a21.appspot.com/o/contracts%2F0xf9a423b86afbf8db41d7f24fa56848f56684e43f%2Fbanner.png?alt=media&token=e6f96e72-067e-4c02-bcbe-c5f0d0288e20")!,
         thumbnail: URL(string: "https://firebasestorage.googleapis.com/v0/b/eatworks-36a21.appspot.com/o/contracts%2F0xf9a423b86afbf8db41d7f24fa56848f56684e43f%2Fthumbnail.png?alt=media&token=17039284-d6ab-4371-bbd3-23b76960dd06")!
     )

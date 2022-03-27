@@ -87,6 +87,9 @@
 		5C5026C927F0AB4500B59C42 /* CollectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */; };
 		5C5026CB27F0BC3100B59C42 /* CreatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CA27F0BC3100B59C42 /* CreatorItem.swift */; };
 		5C5026CD27F0CA3000B59C42 /* CollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CC27F0CA2F00B59C42 /* CollectionSection.swift */; };
+		5C5026CF27F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
+		5C5026D027F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
+		5C5026D127F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
 		5C55E2AE27EB5D3B008639DD /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55E2AD27EB5D3B008639DD /* AsyncOperation.swift */; };
 		5C55E2BA27EB5E18008639DD /* ParseNFTOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55E2B927EB5E18008639DD /* ParseNFTOperation.swift */; };
 		5C55E2CD27EB8A9B008639DD /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C55E2CC27EB8A9B008639DD /* LottieView.swift */; };
@@ -353,6 +356,7 @@
 		5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDescription.swift; sourceTree = "<group>"; };
 		5C5026CA27F0BC3100B59C42 /* CreatorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorItem.swift; sourceTree = "<group>"; };
 		5C5026CC27F0CA2F00B59C42 /* CollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSection.swift; sourceTree = "<group>"; };
+		5C5026CE27F0ED6D00B59C42 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		5C55E2AD27EB5D3B008639DD /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		5C55E2B927EB5E18008639DD /* ParseNFTOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNFTOperation.swift; sourceTree = "<group>"; };
 		5C55E2CC27EB8A9B008639DD /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -644,6 +648,7 @@
 				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
 				5C574CE627BAF00E00212FED /* APIEtherscan.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
+				5C5026CE27F0ED6D00B59C42 /* Helpers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 				5C63087527B2C5CB00AC2A24 /* HomePageViewModel.swift in Sources */,
 				5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
+				5C5026CF27F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 				5CA9ADAF27C6ABC2003C25DE /* WalletItem.swift in Sources */,
 				5C24E4F527EE122E00F3CF2A /* CollectionPage.swift in Sources */,
@@ -1214,6 +1220,7 @@
 				5C24E4FC27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5CD2ADAC27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C6308BC27B2DA5A00AC2A24 /* DynamicIntentHelpers.swift in Sources */,
+				5C5026D027F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5C06457527C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
 				5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */,
@@ -1237,6 +1244,7 @@
 				5C6308F527B2F17E00AC2A24 /* BasicNFTView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* BasicNFTView+Extensions.swift in Sources */,
 				5C06457627C5C3E200E97D1C /* NFTObjectStorage.swift in Sources */,
+				5C5026D127F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C60F06527BCCDE3006F8AB4 /* GalleryView+Extensions.swift in Sources */,
 				5CA04D3727E0C70300559129 /* NFTCollectionStorage.swift in Sources */,

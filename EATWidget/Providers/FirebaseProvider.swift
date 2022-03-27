@@ -101,9 +101,10 @@ final class FirebaseProvider {
 
             let collection = Collection(
                 id: snapshot.documentID,
+                address: snapshot.documentID,
                 title: (data?["title"] ?? "Untitled") as! String,
                 text: data?["text"] as? String,
-                assetCount: (data?["assetCount"] ?? 0) as! Int,
+                links: [ExternalLink](),
                 banner: bannerURL,
                 thumbnail: thumbnailURL
             )

@@ -11,11 +11,7 @@ import SwiftUI
 
 enum CollectionPageSheetContent {
     case NFTDetails(address: String, tokenId: String)
-}
-
-enum CollectionPageTabs {
-    case list
-    case detail
+    case MailForm(data: ComposeMailData)
 }
 
 @MainActor
@@ -25,19 +21,14 @@ final class CollectionPageViewModel: ObservableObject {
     
     let address: String
     
-    
-    
     @Published private(set) var collection: Collection?
     
     @Published private(set) var owned: [NFTObject] = []
-    @Published private(set) var remaining: [NFT] = []
+    @Published private(set) var everything: [NFT] = []
     
     @Published private(set) var loading: Bool = false
     
-    
-    @Published var tab: CollectionPageTabs = .list
-    
-    @Published var sheetContent: CollectionPageSheetContent = .NFTDetails(address: "", tokenId: "")
+    @Published var sheetContent: CollectionPageSheetContent? = nil
     @Published var showingSheet: Bool = false
     
     private let objectStorage = NFTObjectStorage.shared
@@ -88,8 +79,26 @@ final class CollectionPageViewModel: ObservableObject {
         }
     }
     
+    func presentNFTDetailsSheet(address: String, tokenId: String) {
+        sheetContent = .NFTDetails(address: address, tokenId: tokenId)
+        showingSheet.toggle()
+    }
     
-    func changeTabs(to tab:CollectionPageTabs) {
-        self.tab = tab
+    func determineColumns(vertical: UserInterfaceSizeClass?, horizontal: UserInterfaceSizeClass?) -> Int {
+        if vertical == .regular && horizontal == .compact {
+            // iPhone Portrait or iPad 1/3 split view for Multitasking for instance
+            return 2
+        } else if vertical == .compact && horizontal == .compact {
+            // some "standard" iPhone Landscape (iPhone SE, X, XS, 7, 8, ...)
+            return 3
+        } else if vertical == .compact && horizontal == .regular {
+            // some "bigger" iPhone Landscape (iPhone Xs Max, 6s Plus, 7 Plus, 8 Plus, ...)
+            return 4
+        } else if vertical == .regular && horizontal == .regular {
+            // macOS or iPad without split view - no Multitasking
+            return 4
+        } else {
+            return 2
+        }
     }
 }
