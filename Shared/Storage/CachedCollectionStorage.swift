@@ -89,7 +89,7 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             
             var thumbnail: CachedImage?
             if data.thumbnail != nil {
-                let blob = data.banner?.jpegData(compressionQuality: 1.0)
+                let blob = data.thumbnail?.jpegData(compressionQuality: 1.0)
                 if blob != nil {
                     thumbnail = CachedImage(context: context)
                     thumbnail?.blob = blob

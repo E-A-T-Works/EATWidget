@@ -76,7 +76,8 @@ struct CollectionPage: View {
             }
         }
         .ignoresSafeArea()
-        .navigationTitle("Every Icon")
+//        .navigationTitle("Every Icon")
+        .navigationBarBackButtonHidden(true)
         .toolbar(content: {
             EmptyView()
         })

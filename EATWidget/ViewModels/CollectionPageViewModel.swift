@@ -21,7 +21,7 @@ final class CollectionPageViewModel: ObservableObject {
     
     let address: String
     
-    @Published private(set) var collection: Collection?
+    @Published private(set) var collection: CachedCollection?
     
     @Published private(set) var collected: [CachedNFT] = []
     @Published private(set) var everything: [NFT] = []
@@ -31,7 +31,9 @@ final class CollectionPageViewModel: ObservableObject {
     @Published var sheetContent: CollectionPageSheetContent? = nil
     @Published var showingSheet: Bool = false
     
+    private let collectionStorage = CachedCollectionStorage.shared
     private let nftStorage = CachedNFTStorage.shared
+    
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     
@@ -56,6 +58,9 @@ final class CollectionPageViewModel: ObservableObject {
     private func fetchCollection() {
         Task {
             loading = true
+            
+            let cached = collectionStorage.fetch()
+            collection = cached.first { $0.address == address }
             
 //            let annotated = await fb.loadCollection(for: address)
             

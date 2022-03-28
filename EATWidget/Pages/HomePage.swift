@@ -45,6 +45,8 @@ struct HomePage: View {
                 } else {
                     
                     ScrollView(showsIndicators: false) {
+
+                        // TODO: Make this into a component
                         VStack(alignment: .leading) {
                             Text("Learn about iOS widgets")
                                 .font(.system(size: 12, design: .monospaced))
@@ -59,58 +61,40 @@ struct HomePage: View {
                             viewModel.presentTutorialSheet()
                         }
                         
-                        ForEach(viewModel.collections) { collection in
-                            Text(collection.title ?? "Uknown")
-                        }
                         
-//                        ForEach(viewModel.addresses, id: \.self) { address in
-//
-//                            VStack {
-//                                NavigationLink(
-//                                    destination: CollectionPage(address: address)
-//                                ) {
-//                                    HStack {
-//                                        HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
-//                                        Spacer()
-//                                    }
-//                                    .padding([.horizontal], 10)
-//                                }.buttonStyle(.plain)
-//
-//                                Divider()
-//                                    .padding([.horizontal], 10)
-//
-//                                StaggeredGrid(
-//                                    list: viewModel.nfts.filter { $0.address == address },
-//                                    columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-//                                    spacing: 10,
-//                                    lazy: true,
-//                                    content: { item in
-//                                        NFTCard(item: item)
-//                                            .matchedGeometryEffect(id: item.id, in: animation)
-//                                            .onTapGesture {
-//
-//                                                guard
-//                                                    let address = item.address,
-//                                                    let tokenId = item.tokenId
-//                                                else { return}
-//
-//                                                viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
-//                                            }
-//                                    }
-//                                )
-//                                .padding([.horizontal], 10)
-//                            }
-//
-//                        }
-//                        .animation(.easeInOut, value: viewModel.addresses.count + 1)
+                        ForEach(viewModel.collections) { collection in
+                                                        
+                            NavigationLink(destination: CollectionPage(address: collection.address!)) {
+                                CollectionItem(item: collection).padding(.horizontal)
+                            }
+                            .buttonStyle(.plain)
+                            
+                            Divider().padding(.horizontal)
+                            
+                            StaggeredGrid(
+                                list: viewModel.nfts.filter { $0.address == collection.address },
+                                columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+                                spacing: 10,
+                                lazy: true,
+                                content: { item in
+                                    NFTCard(item: item)
+                                        .matchedGeometryEffect(id: item.id, in: animation)
+                                        .onTapGesture {
 
+                                            guard
+                                                let address = item.address,
+                                                let tokenId = item.tokenId
+                                            else { return}
+
+                                            viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                                        }
+                                }
+                            )
+                            .padding(.horizontal)
+                            .animation(.easeInOut, value: viewModel.collections.count + 1)
+                        }
                     }
                 }
-
-                FeedbackPrompt(
-                    title: "Share Feedback",
-                    action: { viewModel.presentMailFormSheet() }
-                )
             }
         }
         .navigationTitle("Collection")
@@ -148,10 +132,10 @@ struct HomePage: View {
                         }, label: {
                             HStack {
                                 Text(viewModel.filterBy!.title ?? viewModel.filterBy!.address!.formattedWeb3)
-                                    .font(.system(size: 16, design: .monospaced))
+                                    .font(.system(size: 12, design: .monospaced))
                                 
                                 Image(systemName: "xmark")
-                                    .font(.system(size: 12, design: .monospaced))
+                                    .font(.system(size: 8, design: .monospaced))
                             }
                             
                         }).buttonStyle(.bordered)

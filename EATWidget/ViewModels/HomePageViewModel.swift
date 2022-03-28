@@ -23,10 +23,8 @@ final class HomePageViewModel: ObservableObject {
     // MARK: - Properties
 
     @Published private(set) var wallets: [CachedWallet] = []
-    @Published private(set) var collections: [CachedCollection] = []
     @Published private(set) var nfts: [CachedNFT] = []
-    
-    @Published private(set) var addresses: [String] = []
+    @Published private(set) var collections: [CachedCollection] = []
     
     @Published private(set) var filterBy: CachedWallet?
     
@@ -40,8 +38,8 @@ final class HomePageViewModel: ObservableObject {
     
     
     private let walletStorage = CachedWalletStorage.shared
-    private let collectionStorage = CachedCollectionStorage.shared
     private let nftStorage = CachedNFTStorage.shared
+    private let collectionStorage = CachedCollectionStorage.shared
     
     
     
@@ -58,10 +56,6 @@ final class HomePageViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &$wallets)
         
-        collectionStorage.$list
-            .receive(on: RunLoop.main)
-            .assign(to: &$collections)
-        
         Publishers.CombineLatest(nftStorage.$list, $filterBy)
             .map { (list, filterBy) -> [CachedNFT] in
                 if filterBy != nil {
@@ -74,13 +68,19 @@ final class HomePageViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &$nfts)
         
-        $nfts
-            .map { $0.filter { $0.address != nil }.map { $0.address! }.unique() }
+        Publishers.CombineLatest($nfts, collectionStorage.$list)
+            .map { (nfts, collections) -> [CachedCollection] in
+                return collections.filter { collection in
+                    let list = nfts.filter { $0.address == collection.address }
+                    
+                    return !list.isEmpty
+                }
+            }
             .removeDuplicates { prev, curr in
                 prev.elementsEqual(curr)
             }
             .receive(on: RunLoop.main)
-            .assign(to: &$addresses)   
+            .assign(to: &$collections)
     }
     
     private func autoPresentConnectSheetIfNeeded() {

@@ -203,6 +203,8 @@
 		5C93784E27F21036003281EC /* OverlaySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93784D27F21036003281EC /* OverlaySpinner.swift */; };
 		5C93785027F21356003281EC /* ParseCollectionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93784F27F21356003281EC /* ParseCollectionOperation.swift */; };
 		5C93785227F21BF1003281EC /* CollectionAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93785127F21BF1003281EC /* CollectionAdapters.swift */; };
+		5C93785427F23326003281EC /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93785327F23326003281EC /* CollectionItem.swift */; };
+		5C93785627F2342B003281EC /* CollectionItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C93785527F2342B003281EC /* CollectionItem+Extensions.swift */; };
 		5CA04D3527E0C70300559129 /* CachedCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA04D3427E0C70300559129 /* CachedCollectionStorage.swift */; };
 		5CA04D3627E0C70300559129 /* CachedCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA04D3427E0C70300559129 /* CachedCollectionStorage.swift */; };
 		5CA04D3727E0C70300559129 /* CachedCollectionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA04D3427E0C70300559129 /* CachedCollectionStorage.swift */; };
@@ -433,6 +435,8 @@
 		5C93784D27F21036003281EC /* OverlaySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlaySpinner.swift; sourceTree = "<group>"; };
 		5C93784F27F21356003281EC /* ParseCollectionOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseCollectionOperation.swift; sourceTree = "<group>"; };
 		5C93785127F21BF1003281EC /* CollectionAdapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionAdapters.swift; sourceTree = "<group>"; };
+		5C93785327F23326003281EC /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
+		5C93785527F2342B003281EC /* CollectionItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionItem+Extensions.swift"; sourceTree = "<group>"; };
 		5CA04D3427E0C70300559129 /* CachedCollectionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedCollectionStorage.swift; sourceTree = "<group>"; };
 		5CA9ADA627C6A3CA003C25DE /* WalletsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsSheet.swift; sourceTree = "<group>"; };
 		5CA9ADA827C6A578003C25DE /* WalletsSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsSheetViewModel.swift; sourceTree = "<group>"; };
@@ -741,6 +745,8 @@
 				5C84117627B9A6FE0021008E /* AttributeGrid.swift */,
 				5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */,
 				5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */,
+				5C93785327F23326003281EC /* CollectionItem.swift */,
+				5C93785527F2342B003281EC /* CollectionItem+Extensions.swift */,
 				5C5026C427F0AA8500B59C42 /* CollectionVisual.swift */,
 				5C5026C627F0AB3900B59C42 /* CollectionHeader.swift */,
 				5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */,
@@ -1111,6 +1117,7 @@
 				5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
 				5CA04D3527E0C70300559129 /* CachedCollectionStorage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
+				5C93785427F23326003281EC /* CollectionItem.swift in Sources */,
 				5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */,
 				5CD2ADAF27B71B5000FDDAB3 /* SheetDismissButton.swift in Sources */,
 				5C5C262427CD5BBA00989B2F /* TutorialSheet.swift in Sources */,
@@ -1162,6 +1169,7 @@
 				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
+				5C93785627F2342B003281EC /* CollectionItem+Extensions.swift in Sources */,
 				5C3C881027EBAFE8005BECA1 /* Wallet.swift in Sources */,
 				5C035EE627B6C64E00A11697 /* URLButton.swift in Sources */,
 				5C93785227F21BF1003281EC /* CollectionAdapters.swift in Sources */,
