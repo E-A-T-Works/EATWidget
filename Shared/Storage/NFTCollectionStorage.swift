@@ -26,7 +26,7 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
     private override init() {
         fetchRequest = NFTCollection.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTCollection.timestamp, ascending: false)
+            NSSortDescriptor(keyPath: \NFTCollection.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -73,7 +73,6 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
         let newObject = NFTCollection(context: context)
         newObject.address = address
         newObject.title = title
-        newObject.timestamp = Date()
         
         try commit()
         

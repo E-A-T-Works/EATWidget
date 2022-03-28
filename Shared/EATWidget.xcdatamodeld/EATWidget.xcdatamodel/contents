@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CachedImage" representedClassName="CachedImage" syncable="YES" codeGenerationType="class">
+        <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="image" inverseEntity="NFTObject"/>
+    </entity>
     <entity name="NFTAttribute" representedClassName="NFTAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="key" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
@@ -12,10 +16,6 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
-    </entity>
-    <entity name="NFTImage" representedClassName="NFTImage" syncable="YES" codeGenerationType="class">
-        <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTObject" inverseName="image" inverseEntity="NFTObject"/>
     </entity>
     <entity name="NFTObject" representedClassName="NFTObject" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -32,7 +32,7 @@
         <attribute name="tokenId" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NFTAttribute" inverseName="object" inverseEntity="NFTAttribute"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NFTImage" inverseName="object" inverseEntity="NFTImage"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="object" inverseEntity="CachedImage"/>
         <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NFTWallet" inverseName="objects" inverseEntity="NFTWallet"/>
     </entity>
     <entity name="NFTWallet" representedClassName="NFTWallet" syncable="YES" codeGenerationType="class">
@@ -44,7 +44,7 @@
     <elements>
         <element name="NFTAttribute" positionX="145.33984375" positionY="-146.81640625" width="128" height="88"/>
         <element name="NFTCollection" positionX="-99" positionY="-54" width="128" height="119"/>
-        <element name="NFTImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="73"/>
+        <element name="CachedImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="59"/>
         <element name="NFTObject" positionX="-70.02734375" positionY="-185.70703125" width="128" height="269"/>
         <element name="NFTWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="89"/>
     </elements>

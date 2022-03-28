@@ -30,10 +30,10 @@ struct PersistenceController {
         newNFTObject.title = TestData.nft.title
         newNFTObject.text = TestData.nft.text
 
-        let newNFTImage = NFTImage(context: viewContext)
-        newNFTImage.blob = TestData.nft.image.jpegData(compressionQuality: 1.0)
+        let newImage = CachedImage(context: viewContext)
+        newImage.blob = TestData.nft.image.jpegData(compressionQuality: 1.0)
         
-        newNFTObject.image = newNFTImage
+        newNFTObject.image = newImage
         newNFTObject.simulationUrl = TestData.nft.simulationUrl
         newNFTObject.animationUrl = TestData.nft.animationUrl
         

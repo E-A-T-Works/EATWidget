@@ -81,7 +81,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             
             guard let imageBlob = data.image.jpegData(compressionQuality: 0.25) else { return }
             
-            let cachedImage = NFTImage(context: context)
+            let cachedImage = CachedImage(context: context)
             cachedImage.blob = imageBlob
             
             
