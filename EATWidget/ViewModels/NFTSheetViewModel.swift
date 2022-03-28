@@ -22,7 +22,7 @@ final class NFTSheetViewModel: ObservableObject {
     @Published private(set) var error: Bool = false
     
     @Published private(set) var nft: NFTObject?
-    @Published private(set) var attributes: [NFTAttribute] = []
+    @Published private(set) var attributes: [CachedAttribute] = []
     @Published private(set) var actionButtons: [ActionRowButton] = []
     
     @Published var sheetContent: NFTSheetContent = .Tutorial
@@ -76,7 +76,7 @@ final class NFTSheetViewModel: ObservableObject {
     }
     
     private func resolveAttributes() -> Void {
-        attributes = (nft?.attributes?.allObjects as? [NFTAttribute]) ?? []
+        attributes = (nft?.attributes?.allObjects as? [CachedAttribute]) ?? []
     }
 
     private func resolveActionButtons() -> Void {

@@ -110,11 +110,11 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             
             data.attributes.forEach { attribute in
 
-                let newNFTAttribute = NFTAttribute(context: context)
-                newNFTAttribute.key = attribute.key
-                newNFTAttribute.value = attribute.value
+                let newAttribute = CachedAttribute(context: context)
+                newAttribute.key = attribute.key
+                newAttribute.value = attribute.value
 
-                newNFTAttribute.object = newObject
+                newAttribute.object = newObject
             }
 
             

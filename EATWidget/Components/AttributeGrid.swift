@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AttributeGrid: View {
     
-    let list: [NFTAttribute]
+    let list: [CachedAttribute]
     
     let size: CGFloat = 120
     let spacing: CGFloat = 10

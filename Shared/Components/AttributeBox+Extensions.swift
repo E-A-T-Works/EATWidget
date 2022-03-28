@@ -8,7 +8,7 @@
 import Foundation
 
 extension AttributeBox {
-    init(item: NFTAttribute) {
+    init(item: CachedAttribute) {
         key = item.key
         value = item.value
     }
