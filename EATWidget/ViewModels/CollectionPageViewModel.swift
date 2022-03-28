@@ -23,7 +23,7 @@ final class CollectionPageViewModel: ObservableObject {
     
     @Published private(set) var collection: Collection?
     
-    @Published private(set) var owned: [NFTObject] = []
+    @Published private(set) var collected: [NFTObject] = []
     @Published private(set) var everything: [NFT] = []
     
     @Published private(set) var loading: Bool = false
@@ -43,20 +43,49 @@ final class CollectionPageViewModel: ObservableObject {
         load()
     }
     
+    
+    // MARK: - Loaders
+    
     private func load() {
-        fetchOwnedNFTs()
-        fetchCollectionNFTs()
         fetchCollection()
+        fetchCollectedNFTs()
+        fetchAllNFTs()
     }
     
     
-    private func fetchOwnedNFTs() {
+    private func fetchCollection() {
+        Task {
+            loading = true
+            
+            let annotated = await fb.loadCollection(for: address)
+            
+            if annotated != nil {
+                collection = annotated
+            } else {
+                collection = Collection(
+                    id: UUID().uuidString,
+                    address: address,
+                    title: "Unkown Collection",
+                    text: nil,
+                    links: [ExternalLink](),
+                    banner: URL(string: "https://via.placeholder.com/640x360")!,
+                    thumbnail: URL(string: "https://via.placeholder.com/150x150")!
+                )
+            }
+            
+            print(collection)
+            
+            loading = false
+        }
+    }
+    
+    private func fetchCollectedNFTs() {
         let cached = objectStorage.fetch().filter { $0.address == address }
         
-        owned = cached
+        collected = cached
     }
     
-    private func fetchCollectionNFTs() {
+    private func fetchAllNFTs() {
         Task {
             loading = true
             
@@ -73,16 +102,15 @@ final class CollectionPageViewModel: ObservableObject {
     }
     
     
-    private func fetchCollection() {
-        Task {
-            collection = await fb.loadCollection(for: address)
-        }
-    }
+    // MARK: - Overlay
+
     
     func presentNFTDetailsSheet(address: String, tokenId: String) {
         sheetContent = .NFTDetails(address: address, tokenId: tokenId)
         showingSheet.toggle()
     }
+    
+    // MARK: - Other
     
     func determineColumns(vertical: UserInterfaceSizeClass?, horizontal: UserInterfaceSizeClass?) -> Int {
         if vertical == .regular && horizontal == .compact {

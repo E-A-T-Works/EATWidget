@@ -35,8 +35,8 @@ struct CollectionHeader_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CollectionHeader(
-                title: "Every Icon",
-                address: "0x00000000000000000"
+                title: TestData.collection.title,
+                address: TestData.collection.address
             )
         }
         .previewLayout(PreviewLayout.sizeThatFits)

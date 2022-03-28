@@ -35,7 +35,7 @@ struct CollectionPage: View {
         
         ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
             
-            if viewModel.loading {
+            if viewModel.collection == nil {
                 
                 ViewLoader()
                 
@@ -43,12 +43,12 @@ struct CollectionPage: View {
 
                 ScrollView {
                     
-                    CollectionSection(item: TestData.collection)
+                    CollectionSection(item: viewModel.collection!)
                     
                     Divider().padding()
                     
                     StaggeredGrid(
-                        list: viewModel.owned,
+                        list: viewModel.collected,
                         columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
                         spacing: 10,
                         lazy: true,

@@ -13,9 +13,10 @@ struct CollectionSection: View {
     var body: some View {
         VStack {
             CollectionVisual(url: item.banner)
+                .frame(height: 150)
             
             VStack {
-                CollectionHeader(title: item.title,address: item.address)
+                CollectionHeader(title: item.title, address: item.address)
                     .padding(.bottom)
             
                 CreatorItem(title: "John Simon Jr")

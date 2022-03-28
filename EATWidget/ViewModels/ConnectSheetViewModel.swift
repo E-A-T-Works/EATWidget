@@ -122,7 +122,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 parsed: nil
             )
         }
-        
+
         isLoading = false
     }
     
@@ -168,6 +168,15 @@ final class ConnectSheetViewModel: ObservableObject {
 
             DispatchQueue.main.async { [weak self] in
                 self?.isParsing = false
+                
+                
+                let addresses = self?.list
+                    .filter { $0.state == .success }
+                    .map { $0.parsed }
+                    .compactMap { $0 }
+                    .map { $0.address }
+
+                print(addresses!.unique())
             }
         }
     }
