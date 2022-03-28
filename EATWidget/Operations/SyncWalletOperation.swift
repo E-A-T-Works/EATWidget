@@ -10,16 +10,16 @@ import Firebase
 
 final class SyncWalletOperation: AsyncOperation {
     
-    private let wallet: NFTWallet
+    private let wallet: CachedWallet
     private let completionHandler: ((NFT?) -> Void)?
     
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let adapters: NFTAdapters = NFTAdapters.shared
-    private let storage: NFTObjectStorage = NFTObjectStorage.shared
+    private let storage: CachedNFTStorage = CachedNFTStorage.shared
     
     private let queue = OperationQueue()
     
-    init(wallet: NFTWallet, completionHandler: ((NFT?) -> Void)? = nil) {
+    init(wallet: CachedWallet, completionHandler: ((NFT?) -> Void)? = nil) {
         self.wallet = wallet
         self.completionHandler = completionHandler
         

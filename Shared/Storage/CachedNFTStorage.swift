@@ -1,5 +1,5 @@
 //
-//  NFTObjectStorage.swift
+//  CachedNFTStorage.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/22/22.
@@ -11,25 +11,25 @@ import CoreData
 import UIKit
 
 
-final class NFTObjectStorage: NSObject, ObservableObject {
+final class CachedNFTStorage: NSObject, ObservableObject {
     
-    static let shared: NFTObjectStorage = NFTObjectStorage()
-    
-    
-    @Published var list: [NFTObject] = [NFTObject]()
+    static let shared: CachedNFTStorage = CachedNFTStorage()
     
     
-    private let fetchRequest: NSFetchRequest<NFTObject>
-    private let fetchedResultsController: NSFetchedResultsController<NFTObject>
+    @Published var list: [CachedNFT] = [CachedNFT]()
+    
+    
+    private let fetchRequest: NSFetchRequest<CachedNFT>
+    private let fetchedResultsController: NSFetchedResultsController<CachedNFT>
     
     private let persistenceController = PersistenceController.shared
     
     
     
     private override init() {
-        fetchRequest = NFTObject.fetchRequest()
+        fetchRequest = CachedNFT.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTObject.address, ascending: false)
+            NSSortDescriptor(keyPath: \CachedNFT.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -48,21 +48,21 @@ final class NFTObjectStorage: NSObject, ObservableObject {
     
     
     
-    func fetch() -> [NFTObject] {
-        var list: [NFTObject] {
+    func fetch() -> [CachedNFT] {
+        var list: [CachedNFT] {
             do {
                 try fetchedResultsController.performFetch()
-                return fetchedResultsController.fetchedObjects ?? [NFTObject]()
+                return fetchedResultsController.fetchedObjects ?? [CachedNFT]()
             } catch {
                 print("⚠️ \(error)")
-                return [NFTObject]()
+                return [CachedNFT]()
             }
         }
         
         return list
     }
     
-    func sync(wallet: NFTWallet, list: [NFT]) throws -> [NFTObject] {
+    func sync(wallet: CachedWallet, list: [NFT]) throws -> [CachedNFT] {
     
         let context = persistenceController.container.viewContext
 
@@ -85,7 +85,7 @@ final class NFTObjectStorage: NSObject, ObservableObject {
             cachedImage.blob = imageBlob
             
             
-            let newObject = NFTObject(context: context)
+            let newObject = CachedNFT(context: context)
             newObject.address = data.address
             newObject.tokenId = data.tokenId
             newObject.standard = data.standard
@@ -179,9 +179,9 @@ final class NFTObjectStorage: NSObject, ObservableObject {
 
 // MARK: - NSFetchedResultsControllerDelegate Extension
 
-extension NFTObjectStorage: NSFetchedResultsControllerDelegate {
+extension CachedNFTStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let list = controller.fetchedObjects as? [NFTObject] else { return }
+        guard let list = controller.fetchedObjects as? [CachedNFT] else { return }
 
         self.list = list
     }

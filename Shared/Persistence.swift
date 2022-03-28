@@ -17,36 +17,36 @@ struct PersistenceController {
         
         let viewContext = result.container.viewContext
         
-        let newWallet = NFTWallet(context: viewContext)
+        let newWallet = CachedWallet(context: viewContext)
         newWallet.address = TestData.nft.address
         newWallet.title = "Test Wallet"
         newWallet.timestamp = Date()
         
-        let newNFTObject = NFTObject(context: viewContext)
+        let newNFT = CachedNFT(context: viewContext)
         
-        newNFTObject.address = TestData.nft.address
-        newNFTObject.tokenId = TestData.nft.tokenId
-        newNFTObject.standard = TestData.nft.standard
-        newNFTObject.title = TestData.nft.title
-        newNFTObject.text = TestData.nft.text
+        newNFT.address = TestData.nft.address
+        newNFT.tokenId = TestData.nft.tokenId
+        newNFT.standard = TestData.nft.standard
+        newNFT.title = TestData.nft.title
+        newNFT.text = TestData.nft.text
 
         let newImage = CachedImage(context: viewContext)
         newImage.blob = TestData.nft.image.jpegData(compressionQuality: 1.0)
         
-        newNFTObject.image = newImage
-        newNFTObject.simulationUrl = TestData.nft.simulationUrl
-        newNFTObject.animationUrl = TestData.nft.animationUrl
+        newNFT.image = newImage
+        newNFT.simulationUrl = TestData.nft.simulationUrl
+        newNFT.animationUrl = TestData.nft.animationUrl
         
-        newNFTObject.discordUrl = TestData.nft.discordUrl
-        newNFTObject.twitterUrl = TestData.nft.twitterUrl
-        newNFTObject.externalUrl = TestData.nft.externalUrl
-        newNFTObject.metadataUrl = TestData.nft.metadataUrl
+        newNFT.discordUrl = TestData.nft.discordUrl
+        newNFT.twitterUrl = TestData.nft.twitterUrl
+        newNFT.externalUrl = TestData.nft.externalUrl
+        newNFT.metadataUrl = TestData.nft.metadataUrl
         
-        newNFTObject.attributes = []
+        newNFT.attributes = []
         
-        newNFTObject.wallet = newWallet
+        newNFT.wallet = newWallet
         
-        newNFTObject.timestamp = Date()
+        newNFT.timestamp = Date()
         
         
         

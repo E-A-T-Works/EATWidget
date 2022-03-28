@@ -23,7 +23,7 @@ final class ConnectSheetViewModel: ObservableObject {
         address: ""
     )
     
-    @Published private(set) var wallet: NFTWallet? = nil
+    @Published private(set) var wallet: CachedWallet? = nil
     
     @Published private(set) var isAddressSet: Bool = false
     @Published private(set) var isLoading: Bool = false
@@ -50,8 +50,8 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let queue = OperationQueue()
     
-    private let walletStorage = NFTWalletStorage.shared
-    private let objectStorage = NFTObjectStorage.shared
+    private let walletStorage = CachedWalletStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     

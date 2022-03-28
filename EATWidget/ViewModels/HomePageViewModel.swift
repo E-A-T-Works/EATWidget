@@ -12,7 +12,7 @@ import SwiftUI
 enum HomePageSheetContent {
     case ConnectForm
     case NFTDetails(address: String, tokenId: String)
-    case NFTWallets
+    case Wallets
     case Tutorial
     case MailForm(data: ComposeMailData)
 }
@@ -22,11 +22,11 @@ final class HomePageViewModel: ObservableObject {
     
     // MARK: - Properties
 
-    @Published private(set) var wallets: [NFTWallet] = []
-    @Published private(set) var nfts: [NFTObject] = []
+    @Published private(set) var wallets: [CachedWallet] = []
+    @Published private(set) var nfts: [CachedNFT] = []
     @Published private(set) var addresses: [String] = []
     
-    @Published private(set) var filterBy: NFTWallet?
+    @Published private(set) var filterBy: CachedWallet?
     
     @Published private(set) var loading: Bool = false
     
@@ -36,8 +36,8 @@ final class HomePageViewModel: ObservableObject {
     @Published var nextPageAddress: String = ""
     @Published var nextPage: String? = nil
     
-    private let walletStorage = NFTWalletStorage.shared
-    private let objectStorage = NFTObjectStorage.shared
+    private let walletStorage = CachedWalletStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     
     
@@ -55,7 +55,7 @@ final class HomePageViewModel: ObservableObject {
             .assign(to: &$wallets)
         
         Publishers.CombineLatest(objectStorage.$list, $filterBy)
-            .map { (list, filterBy) -> [NFTObject] in
+            .map { (list, filterBy) -> [CachedNFT] in
                 if filterBy != nil {
                     return list.filter { $0.wallet?.objectID == filterBy?.objectID }
                 } else {
@@ -85,7 +85,7 @@ final class HomePageViewModel: ObservableObject {
     
     // MARK: - Public Methods
 
-    func setFilterBy(wallet: NFTWallet) {
+    func setFilterBy(wallet: CachedWallet) {
         filterBy = wallet
     }
     
@@ -104,7 +104,7 @@ final class HomePageViewModel: ObservableObject {
     }
     
     func presentWalletsSheet() {
-        sheetContent = .NFTWallets
+        sheetContent = .Wallets
         showingSheet.toggle()
     }
     

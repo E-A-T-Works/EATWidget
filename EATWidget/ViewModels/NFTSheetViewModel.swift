@@ -21,14 +21,14 @@ final class NFTSheetViewModel: ObservableObject {
     @Published private(set) var loading: Bool = true
     @Published private(set) var error: Bool = false
     
-    @Published private(set) var nft: NFTObject?
+    @Published private(set) var nft: CachedNFT?
     @Published private(set) var attributes: [CachedAttribute] = []
     @Published private(set) var actionButtons: [ActionRowButton] = []
     
     @Published var sheetContent: NFTSheetContent = .Tutorial
     @Published var showingSheet: Bool = false
     
-    private let objectStorage = NFTObjectStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {

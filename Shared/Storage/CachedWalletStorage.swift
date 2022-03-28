@@ -1,5 +1,5 @@
 //
-//  NFTWalletStorage.swift
+//  CachedWalletStorage.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 2/22/22.
@@ -10,15 +10,15 @@ import Combine
 import CoreData
 
 
-final class NFTWalletStorage: NSObject, ObservableObject {
+final class CachedWalletStorage: NSObject, ObservableObject {
     
-    static let shared: NFTWalletStorage = NFTWalletStorage()
+    static let shared: CachedWalletStorage = CachedWalletStorage()
 
     
-    @Published var list: [NFTWallet] = [NFTWallet]()
+    @Published var list: [CachedWallet] = [CachedWallet]()
     
-    private let fetchRequest: NSFetchRequest<NFTWallet>
-    private let fetchedResultsController: NSFetchedResultsController<NFTWallet>
+    private let fetchRequest: NSFetchRequest<CachedWallet>
+    private let fetchedResultsController: NSFetchedResultsController<CachedWallet>
     
     
     private let persistenceController = PersistenceController.shared
@@ -26,9 +26,9 @@ final class NFTWalletStorage: NSObject, ObservableObject {
     
     
     private override init() {
-        fetchRequest = NFTWallet.fetchRequest()
+        fetchRequest = CachedWallet.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTWallet.address, ascending: false)
+            NSSortDescriptor(keyPath: \CachedWallet.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -48,21 +48,21 @@ final class NFTWalletStorage: NSObject, ObservableObject {
     
 
     
-    func fetch() -> [NFTWallet] {
-        var list: [NFTWallet] {
+    func fetch() -> [CachedWallet] {
+        var list: [CachedWallet] {
             do {
                 try fetchedResultsController.performFetch()
-                return fetchedResultsController.fetchedObjects ?? [NFTWallet]()
+                return fetchedResultsController.fetchedObjects ?? [CachedWallet]()
             } catch {
                 print("⚠️ \(error)")
-                return [NFTWallet]()
+                return [CachedWallet]()
             }
         }
         
         return list
     }
     
-    func set(address: String, title: String?) throws -> NFTWallet {
+    func set(address: String, title: String?) throws -> CachedWallet {
         let context = persistenceController.container.viewContext
         
         let cached = fetch().first { $0.address == address }
@@ -71,7 +71,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
             return try update(object: cached!, title: title)
         }
         
-        let newObject = NFTWallet(context: context)
+        let newObject = CachedWallet(context: context)
         newObject.address = address
         newObject.title = title
         newObject.timestamp = Date()
@@ -81,7 +81,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         return newObject
     }
     
-    func update(object: NFTWallet, title: String?) throws -> NFTWallet {
+    func update(object: CachedWallet, title: String?) throws -> CachedWallet {
         object.title = title
         
         try commit()
@@ -89,7 +89,7 @@ final class NFTWalletStorage: NSObject, ObservableObject {
         return object
     }
     
-    func delete(object: NFTWallet) throws {
+    func delete(object: CachedWallet) throws {
         let context = persistenceController.container.viewContext
         
         context.delete(object)
@@ -109,9 +109,9 @@ final class NFTWalletStorage: NSObject, ObservableObject {
 
 // MARK: - NSFetchedResultsControllerDelegate Extension
 
-extension NFTWalletStorage: NSFetchedResultsControllerDelegate {
+extension CachedWalletStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let list = controller.fetchedObjects as? [NFTWallet] else { return }
+        guard let list = controller.fetchedObjects as? [CachedWallet] else { return }
 
         self.list = list
     }

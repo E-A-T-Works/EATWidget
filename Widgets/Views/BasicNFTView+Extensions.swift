@@ -10,7 +10,7 @@
 import UIKit
 
 extension BasicNFTView {
-    init(item: NFTObject, displayInfo: Bool) {
+    init(item: CachedNFT, displayInfo: Bool) {
         address = item.address!
         tokenId = item.tokenId!
         image = UIImage(data: item.image!.blob!)!
@@ -21,7 +21,7 @@ extension BasicNFTView {
 }
 
 extension BasicNFTView {
-    init(item: NFTObject) {
+    init(item: CachedNFT) {
         address = item.address!
         tokenId = item.tokenId!
         image = UIImage(data: item.image!.blob!)!

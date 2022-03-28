@@ -14,11 +14,11 @@ import SwiftUI
 final class WalletsSheetViewModel: ObservableObject {
     // MARK: - Properties
 
-    @Published private(set) var wallets: [NFTWallet] = []
+    @Published private(set) var wallets: [CachedWallet] = []
     
     @Published private(set) var loading: Bool = false
     
-    private let walletStorage = NFTWalletStorage.shared
+    private let walletStorage = CachedWalletStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -47,7 +47,7 @@ final class WalletsSheetViewModel: ObservableObject {
         offsets.forEach { index in
             do {
                 guard let itemToDelete = (index > wallets.count ? nil : wallets[index]) else { return }
-                try NFTWalletStorage.shared.delete(object: itemToDelete)
+                try CachedWalletStorage.shared.delete(object: itemToDelete)
             } catch {
                 print("⚠️ \(error)")
             }

@@ -10,8 +10,8 @@ import SwiftUI
 
 struct BasicNFTWidgetProvider: IntentTimelineProvider {
     
-    private let walletStorage = NFTWalletStorage.shared
-    private let objectStorage = NFTObjectStorage.shared
+    private let walletStorage = CachedWalletStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     
     func placeholder(
         in context: Context
@@ -221,7 +221,7 @@ struct BasicNFTWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
     let displayInfo: Bool
-    let data: NFTObject?
+    let data: CachedNFT?
 }
 
 

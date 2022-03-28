@@ -206,7 +206,7 @@ struct HomePage: View {
                     tokenId: tokenId
                 )
                 
-            case .NFTWallets:
+            case .Wallets:
                 NavigationView {
                     WalletsSheet()
                 }

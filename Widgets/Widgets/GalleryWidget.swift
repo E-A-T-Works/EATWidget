@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GalleryWidgetProvider: IntentTimelineProvider {
     
-    private let objectStorage = NFTObjectStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     
     func placeholder(
         in context: Context
@@ -137,7 +137,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         
         let cached = objectStorage.fetch()
         
-        let data: [NFTObject?] = selection.map({ pick in
+        let data: [CachedNFT?] = selection.map({ pick in
             
             if pick.contains("RANDOM") {
                 return cached.randomElement()
@@ -148,7 +148,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
             }
         })
         
-        let cleanedData: [NFTObject] = data.compactMap { $0 }
+        let cleanedData: [CachedNFT] = data.compactMap { $0 }
 
         let timeline = Timeline(
             entries: [
@@ -171,7 +171,7 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
 struct GalleryWidgetEntry: TimelineEntry {
     let date: Date
     let kind: WidgetEntryKind
-    let data: [NFTObject]?
+    let data: [CachedNFT]?
 }
 
 

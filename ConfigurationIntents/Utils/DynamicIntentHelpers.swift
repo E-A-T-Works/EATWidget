@@ -10,8 +10,8 @@ import Intents
 
 final class DynamicIntentHelpers {
 
-    static let walletStorage = NFTWalletStorage.shared
-    static let objectStorage = NFTObjectStorage.shared
+    static let walletStorage = CachedWalletStorage.shared
+    static let objectStorage = CachedNFTStorage.shared
     
     static func provideWalletOptionsCollection() async throws -> INObjectCollection<WalletINO> {
         let wallets = walletStorage.fetch()

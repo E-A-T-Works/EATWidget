@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension NFTCard {
-    init(item: NFTObject) {
+    init(item: CachedNFT) {
         address = item.address ?? ""
         tokenId = item.tokenId ?? ""
         image = item.image != nil ? UIImage(data: item.image!.blob!)! : UIImage(systemName: "scribble")!

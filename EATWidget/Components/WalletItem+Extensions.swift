@@ -8,7 +8,7 @@
 import Foundation
 
 extension WalletItem {
-    init(item: NFTWallet) {
+    init(item: CachedWallet) {
         address = item.address ?? ""
         title = item.title ?? ""
     }

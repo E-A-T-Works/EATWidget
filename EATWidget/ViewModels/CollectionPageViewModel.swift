@@ -23,7 +23,7 @@ final class CollectionPageViewModel: ObservableObject {
     
     @Published private(set) var collection: Collection?
     
-    @Published private(set) var collected: [NFTObject] = []
+    @Published private(set) var collected: [CachedNFT] = []
     @Published private(set) var everything: [NFT] = []
     
     @Published private(set) var loading: Bool = false
@@ -31,7 +31,7 @@ final class CollectionPageViewModel: ObservableObject {
     @Published var sheetContent: CollectionPageSheetContent? = nil
     @Published var showingSheet: Bool = false
     
-    private let objectStorage = NFTObjectStorage.shared
+    private let objectStorage = CachedNFTStorage.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     

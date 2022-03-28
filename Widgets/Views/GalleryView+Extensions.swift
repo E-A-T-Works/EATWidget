@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension GalleryView {
-    init(list: [NFTObject]) {
+    init(list: [CachedNFT]) {
         self.list = list.map {
             GalleryItem(
                 address: $0.address!,
