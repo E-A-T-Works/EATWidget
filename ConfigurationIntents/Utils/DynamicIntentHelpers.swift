@@ -11,7 +11,7 @@ import Intents
 final class DynamicIntentHelpers {
 
     static let walletStorage = CachedWalletStorage.shared
-    static let objectStorage = CachedNFTStorage.shared
+    static let nftStorage = CachedNFTStorage.shared
     
     static func provideWalletOptionsCollection() async throws -> INObjectCollection<WalletINO> {
         let wallets = walletStorage.fetch()
@@ -39,7 +39,7 @@ final class DynamicIntentHelpers {
         /// ref: https://github.com/hackenbacker/FictionalCard/issues/1
         ///
         
-        let options = objectStorage.fetch()
+        let options = nftStorage.fetch()
         
         let items: [NFTINO] = [
             NFTINO(

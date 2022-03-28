@@ -31,113 +31,115 @@ struct ConnectSheet: View {
     var body: some View {
         
         ZStack {
-            
-            VStack {
-                
-                Form {
-                    Section {
-                        HStack {
-                            TextField(
-                                "ENS or Wallet Address",
-                                text: .init(
-                                    get: { [viewModel] in viewModel.form.address },
-                                    set: { [viewModel] in viewModel.updateAddress($0) }
-                                )
+                    
+            Form {
+                Section {
+                    HStack {
+                        TextField(
+                            "ENS or Wallet Address",
+                            text: .init(
+                                get: { [viewModel] in viewModel.form.address },
+                                set: { [viewModel] in viewModel.updateAddress($0) }
                             )
-                            .disabled(viewModel.isAddressSet)
-                            .autocapitalization(.none)
-                            .submitLabel(.next)
-                            .onSubmit {
-                                Task { await viewModel.lookupAndParse() }
-                            }
-                            
-                            Spacer()
-                            
-                            if viewModel.form.address.isEmpty {
-                                Button {
-                                    print("paste")
-                                    viewModel.setAddressFromPasteboard()
-                                } label: {
-                                    Image(systemName: "doc.on.clipboard")
-                                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                                }
-                                .disabled(!UIPasteboard.general.hasStrings)
-                            } else {
-                                Button {
-                                    viewModel.reset()
-                                } label: {
-                                    Image(systemName: "xmark")
-                                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                                }
-                            }
+                        )
+                        .disabled(viewModel.isAddressSet)
+                        .autocapitalization(.none)
+                        .submitLabel(.next)
+                        .onSubmit {
+                            Task { await viewModel.lookupAndParse() }
                         }
                         
-                    } footer: {
-                        if !viewModel.isAddressSet {
-                            HStack(alignment: .top) {
-                                Image(systemName: "info.circle")
-                                
-                                Text("You can find your Ethereum wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." )
-        
+                        Spacer()
+                        
+                        if viewModel.form.address.isEmpty {
+                            Button {
+                                print("paste")
+                                viewModel.setAddressFromPasteboard()
+                            } label: {
+                                Image(systemName: "doc.on.clipboard")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                            }
+                            .disabled(!UIPasteboard.general.hasStrings)
+                        } else {
+                            Button {
+                                viewModel.reset()
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
                             }
                         }
                     }
                     
-                    if viewModel.isAddressSet {
-                        
-                        Section {
-                            TextField(
-                                "Nickname (Optional)",
-                                text: .init(
-                                    get: { [viewModel] in viewModel.form.title },
-                                    set: { [viewModel] in viewModel.updateTitle($0) }
-                                )
-                            )
-                            .submitLabel(.done)
-                        }
-                        
-                        if viewModel.isLoading {
+                } footer: {
+                    if !viewModel.isAddressSet {
+                        HStack(alignment: .top) {
+                            Image(systemName: "info.circle")
                             
-                            ViewLoader(seed: 2)
-                                .padding(.vertical)
+                            Text("You can find your Ethereum wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." )
+    
+                        }
+                    }
+                }
+                
+                if viewModel.isAddressSet {
+                    
+                    Section {
+                        TextField(
+                            "Nickname (Optional)",
+                            text: .init(
+                                get: { [viewModel] in viewModel.form.title },
+                                set: { [viewModel] in viewModel.updateTitle($0) }
+                            )
+                        )
+                        .submitLabel(.done)
+                    }
+                    
+                    if viewModel.isLoading {
+                        
+                        ViewLoader(seed: 2)
+                            .padding(.vertical)
+                        
+                    } else {
+                        
+                        if viewModel.list.isEmpty {
+                            
+                            Text("Sorry, we could not find anything associated with this address. Currently we only support Ethereum addresses.")
                             
                         } else {
-                            
-                            if viewModel.list.isEmpty {
+                         
+                            Section {
+                                ForEach(viewModel.list.indices, id: \.self) { i in
+                                    NFTParseTaskItem(item: viewModel.list[i])
+                                }
+                            } header: {
                                 
-                                Text("Sorry, we could not find anything associated with this address. Currently we only support Ethereum addresses.")
-                                
-                            } else {
-                             
-                                Section {
-                                    ForEach(viewModel.list.indices, id: \.self) { i in
-                                        NFTParseTaskItem(item: viewModel.list[i])
-                                    }
-                                } header: {
-                                    
-                                    if viewModel.isParsing {
-                                        Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Discovered")
-                                    } else {
-                                        Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
-                                    }
-                                    
-                                } footer: {
-                                    HStack {
-                                        Text("Not seeing your NFTs?")
-
-                                        Button(action: {
-                                            viewModel.presentMailFormSheet()
-                                        }, label: {
-                                            Text("Let us know")
-                                        })
-                                    }
+                                if viewModel.isParsing {
+                                    Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Discovered")
+                                } else {
+                                    Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
                                 }
                                 
+                            } footer: {
+                                HStack {
+                                    Text("Not seeing your NFTs?")
+
+                                    Button(action: {
+                                        viewModel.presentMailFormSheet()
+                                    }, label: {
+                                        Text("Let us know")
+                                    })
+                                }
                             }
+                            
                         }
                     }
                 }
             }
+           
+            if viewModel.showingLoader {
+                OverlaySpinner()
+            }
+            
         }
         .navigationTitle("Connect a wallet")
         .toolbar(content: {

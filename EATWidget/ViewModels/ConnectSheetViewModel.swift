@@ -28,12 +28,15 @@ final class ConnectSheetViewModel: ObservableObject {
     @Published private(set) var isAddressSet: Bool = false
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var isParsing: Bool = false
+    @Published private(set) var isCaching: Bool = false
     
     @Published private(set) var list: [NFTParseTask] = [NFTParseTask]()
     @Published private(set) var totalCount: Int = 0
     @Published private(set) var parsedCount: Int = 0
     @Published private(set) var successCount: Int = 0
     @Published private(set) var failureCount: Int = 0
+    
+    @Published private(set) var collections: [Collection] = [Collection]()
     
     @Published var sheetContent: ConnectSheetSheetContent = .MailForm(
         data: ComposeMailData(
@@ -50,10 +53,14 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let queue = OperationQueue()
     
-    private let walletStorage = CachedWalletStorage.shared
-    private let objectStorage = CachedNFTStorage.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    
+    private let walletStorage = CachedWalletStorage.shared
+    private let collectionStorage = CachedCollectionStorage.shared
+    private let nftStorage = CachedNFTStorage.shared
+    
+    
     
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
@@ -87,7 +94,6 @@ final class ConnectSheetViewModel: ObservableObject {
     // MARK: - Form Submission and Lookup
  
     func lookup() async {
-        print("🔍 lookup:: \(form.address)")
         guard form.isValid else {
             showingError = true
             return
@@ -127,9 +133,9 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func parse() async {
-        print("🔍 parse:: \(form.address) | \(list.count)")
         isParsing = true
         
+        // parse the NFTs
         list.indices.forEach { index in
             let data = list[index]
             
@@ -161,6 +167,28 @@ final class ConnectSheetViewModel: ObservableObject {
             queue.addOperation(parseOp)
         }
         
+        // parse the collections
+        let addresses = list
+            .map { $0.address }
+            .compactMap { $0 }
+            .unique()
+        
+        addresses.indices.forEach { index in
+            let address = addresses[index]
+            
+            let parseOp = ParseCollectionOperation(address: address)
+
+            parseOp.completionBlock = {
+                DispatchQueue.main.async {
+                    guard let parsed = parseOp.parsed else { return }
+                    self.collections.append(parsed)
+                }
+            }
+
+            queue.addOperation(parseOp)
+        }
+        
+        
         // wait for everything to finish
         DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
             
@@ -168,18 +196,10 @@ final class ConnectSheetViewModel: ObservableObject {
 
             DispatchQueue.main.async { [weak self] in
                 self?.isParsing = false
-                
-                
-                let addresses = self?.list
-                    .filter { $0.state == .success }
-                    .map { $0.parsed }
-                    .compactMap { $0 }
-                    .map { $0.address }
-
-                print(addresses!.unique())
             }
         }
     }
+
     
     func submit() async {
         showingLoader = true
@@ -199,19 +219,24 @@ final class ConnectSheetViewModel: ObservableObject {
                 address: address,
                 title: title
             )
+
+            let _ = try collectionStorage.sync(
+                list: collections
+            )
             
-            let _ = try objectStorage.sync(
+            let _ = try nftStorage.sync(
                 wallet: wallet,
                 list: toCache
             )
             
         } catch {
             showingLoader = false
+            print("⚠️ submit \(error)")
             return
         }
         
         await fb.logWallet(address: address)
-
+       
         showingLoader = false
         
         dismiss()

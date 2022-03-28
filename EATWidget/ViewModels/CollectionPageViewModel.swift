@@ -31,7 +31,7 @@ final class CollectionPageViewModel: ObservableObject {
     @Published var sheetContent: CollectionPageSheetContent? = nil
     @Published var showingSheet: Bool = false
     
-    private let objectStorage = CachedNFTStorage.shared
+    private let nftStorage = CachedNFTStorage.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     
@@ -73,14 +73,12 @@ final class CollectionPageViewModel: ObservableObject {
                 )
             }
             
-            print(collection)
-            
             loading = false
         }
     }
     
     private func fetchCollectedNFTs() {
-        let cached = objectStorage.fetch().filter { $0.address == address }
+        let cached = nftStorage.fetch().filter { $0.address == address }
         
         collected = cached
     }

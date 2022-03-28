@@ -60,6 +60,10 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
         return list
     }
     
+    func sync(list: [Collection]) throws -> [CachedCollection] {
+        return [CachedCollection]()
+    }
+    
     func create(address: String, title: String?) throws -> CachedCollection {
         
         let existingObject = fetch().first { $0.address == address }

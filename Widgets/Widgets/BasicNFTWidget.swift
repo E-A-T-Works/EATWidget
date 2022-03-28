@@ -11,7 +11,7 @@ import SwiftUI
 struct BasicNFTWidgetProvider: IntentTimelineProvider {
     
     private let walletStorage = CachedWalletStorage.shared
-    private let objectStorage = CachedNFTStorage.shared
+    private let nftStorage = CachedNFTStorage.shared
     
     func placeholder(
         in context: Context
@@ -30,7 +30,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         completion: @escaping (BasicNFTWidgetEntry) -> Void
     ) {
 
-        guard let data = objectStorage.fetch().randomElement() else {
+        guard let data = nftStorage.fetch().randomElement() else {
             completion(
                 BasicNFTWidgetEntry(
                     date: Date(),
@@ -102,7 +102,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         
         let ownerAddress = preferredAddress != nil ? preferredAddress : wallets.map { $0.address! }.randomElement()
         
-        let options = objectStorage.fetch().filter { $0.wallet?.address == ownerAddress }
+        let options = nftStorage.fetch().filter { $0.wallet?.address == ownerAddress }
         
         guard let data = options.randomElement() else {
             let timeline = Timeline(
@@ -179,7 +179,7 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
         //  Fetch relevent data
         //
         
-        let options = objectStorage.fetch()
+        let options = nftStorage.fetch()
         
         guard let data = (options.first { $0.address == contractAddress && $0.tokenId == tokenId }) else {
             let timeline = Timeline(

@@ -37,7 +37,7 @@ final class HomePageViewModel: ObservableObject {
     @Published var nextPage: String? = nil
     
     private let walletStorage = CachedWalletStorage.shared
-    private let objectStorage = CachedNFTStorage.shared
+    private let nftStorage = CachedNFTStorage.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     
     
@@ -54,7 +54,7 @@ final class HomePageViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &$wallets)
         
-        Publishers.CombineLatest(objectStorage.$list, $filterBy)
+        Publishers.CombineLatest(nftStorage.$list, $filterBy)
             .map { (list, filterBy) -> [CachedNFT] in
                 if filterBy != nil {
                     return list.filter { $0.wallet?.objectID == filterBy?.objectID }

@@ -28,7 +28,7 @@ final class NFTSheetViewModel: ObservableObject {
     @Published var sheetContent: NFTSheetContent = .Tutorial
     @Published var showingSheet: Bool = false
     
-    private let objectStorage = CachedNFTStorage.shared
+    private let nftStorage = CachedNFTStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
     private var shouldDismissView = false {
@@ -53,7 +53,7 @@ final class NFTSheetViewModel: ObservableObject {
         Task {
             self.loading = true
             
-            guard let nft = (objectStorage.fetch().first {
+            guard let nft = (nftStorage.fetch().first {
                 $0.address == address && $0.tokenId == tokenId
             }) else {
                 self.error = true
