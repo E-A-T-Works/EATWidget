@@ -19,6 +19,6 @@ struct Collection: Identifiable, Hashable {
     
     let links: [ExternalLink]
     
-    let banner: URL
-    let thumbnail: URL
+    let banner: UIImage
+    let thumbnail: UIImage
 }

@@ -31,7 +31,6 @@ final class ParseNFTOperation: AsyncOperation {
             
             parsed = await adapters.parse(item: data)
             
-
             // Sync Results
             await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
             

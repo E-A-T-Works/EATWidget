@@ -77,43 +77,4 @@ final class FirebaseProvider {
         }
         
     }
-    
-    func loadCollection(for address: String) async -> Collection? {
-        do {
-            guard Auth.auth().currentUser != nil else {
-                return nil
-            }
-            
-            let db = Firestore.firestore()
-            
-            let ref = db
-                .collection("contracts")
-                .document(address)
-            
-            let snapshot = try await ref.getDocument()
-            
-            guard snapshot.exists else { return nil }
-            
-            let data = snapshot.data()
-            
-            let bannerURL = try await storage.reference().child("contracts/\(address)/banner.png").downloadURL()
-            let thumbnailURL = try await storage.reference().child("contracts/\(address)/thumbnail.png").downloadURL()
-
-            let collection = Collection(
-                id: snapshot.documentID,
-                address: snapshot.documentID,
-                title: (data?["title"] ?? "Untitled") as! String,
-                text: data?["text"] as? String,
-                links: [ExternalLink](),
-                banner: bannerURL,
-                thumbnail: thumbnailURL
-            )
-            
-            return collection
-            
-        } catch {
-            print("⚠️ \(error)")
-            return nil
-        }
-    }
 }

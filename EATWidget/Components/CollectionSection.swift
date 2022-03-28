@@ -12,8 +12,8 @@ struct CollectionSection: View {
     
     var body: some View {
         VStack {
-            CollectionVisual(url: item.banner)
-                .frame(height: 150)
+//            CollectionVisual(url: item.banner)
+//                .frame(height: 150)
             
             VStack {
                 CollectionHeader(title: item.title, address: item.address)

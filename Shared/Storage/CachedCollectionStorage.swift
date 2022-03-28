@@ -21,6 +21,8 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
     private let fetchRequest: NSFetchRequest<CachedCollection>
     private let fetchedResultsController: NSFetchedResultsController<CachedCollection>
     
+    private let persistenceController = PersistenceController.shared
+    
     // MARK: - Init
     
     private override init() {
@@ -61,7 +63,55 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
     }
     
     func sync(list: [Collection]) throws -> [CachedCollection] {
-        return [CachedCollection]()
+        let context = persistenceController.container.viewContext
+        
+        let cached = fetch()
+        
+        //
+        // Handle creation
+        //
+        
+        let toCreate = list.filter { item in
+            let exists = cached.first { $0.address == item.address } != nil
+            return !exists
+        }
+        
+        toCreate.forEach { data in
+            
+//            guard let imageBlob = data.image.jpegData(compressionQuality: 0.25) else { return }
+//
+//            let cachedImage = CachedImage(context: context)
+//            cachedImage.blob = imageBlob
+            
+            let newObject = CachedCollection(context: context)
+            newObject.address = data.address
+        
+        }
+        
+        //
+        // Handle updates
+        //
+
+        let toUpdate = cached.filter { item in
+            let exists = list.first { $0.address == item.address } != nil
+            return exists
+        }
+        
+        toUpdate.forEach { cached in
+            let update = list.first { $0.address == cached.address }
+            guard update != nil else { return }
+
+            cached.title = update!.title
+        }
+        
+        //
+        // Commit
+        //
+
+        try context.save()
+        
+        
+        return fetch()
     }
     
     func create(address: String, title: String?) throws -> CachedCollection {

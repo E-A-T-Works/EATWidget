@@ -44,7 +44,7 @@ struct CollectionVisual_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CollectionVisual(
-                url: TestData.collection.banner
+                url: URL(string: "https://google.com")!
             )
         }
         .previewLayout(PreviewLayout.sizeThatFits)

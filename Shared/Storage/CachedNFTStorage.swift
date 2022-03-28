@@ -15,7 +15,6 @@ final class CachedNFTStorage: NSObject, ObservableObject {
     
     static let shared: CachedNFTStorage = CachedNFTStorage()
     
-    
     @Published var list: [CachedNFT] = [CachedNFT]()
     
     
@@ -23,8 +22,6 @@ final class CachedNFTStorage: NSObject, ObservableObject {
     private let fetchedResultsController: NSFetchedResultsController<CachedNFT>
     
     private let persistenceController = PersistenceController.shared
-    
-    
     
     private override init() {
         fetchRequest = CachedNFT.fetchRequest()

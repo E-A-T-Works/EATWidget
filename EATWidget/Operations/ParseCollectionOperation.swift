@@ -13,6 +13,7 @@ final class ParseCollectionOperation: AsyncOperation {
     private let address: String
     private let completionHandler: ((Collection?) -> Void)?
     
+    private let adapters: CollectionAdapters = CollectionAdapters.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     
     init(address: String, completionHandler: ((Collection?) -> Void)? = nil) {
@@ -25,7 +26,7 @@ final class ParseCollectionOperation: AsyncOperation {
     override func main() {
         Task {
 
-            parsed = await fb.loadCollection(for: address)
+            parsed = await adapters.parse(address: address)
             
             // mark task as done
             state = .finished

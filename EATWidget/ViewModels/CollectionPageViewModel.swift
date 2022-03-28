@@ -57,21 +57,21 @@ final class CollectionPageViewModel: ObservableObject {
         Task {
             loading = true
             
-            let annotated = await fb.loadCollection(for: address)
+//            let annotated = await fb.loadCollection(for: address)
             
-            if annotated != nil {
-                collection = annotated
-            } else {
-                collection = Collection(
-                    id: UUID().uuidString,
-                    address: address,
-                    title: "Unkown Collection",
-                    text: nil,
-                    links: [ExternalLink](),
-                    banner: URL(string: "https://via.placeholder.com/640x360")!,
-                    thumbnail: URL(string: "https://via.placeholder.com/150x150")!
-                )
-            }
+//            if annotated != nil {
+//                collection = annotated
+//            } else {
+//                collection = Collection(
+//                    id: UUID().uuidString,
+//                    address: address,
+//                    title: "Unkown Collection",
+//                    text: nil,
+//                    links: [ExternalLink](),
+//                    banner: URL(string: "https://via.placeholder.com/640x360")!,
+//                    thumbnail: URL(string: "https://via.placeholder.com/150x150")!
+//                )
+//            }
             
             loading = false
         }
