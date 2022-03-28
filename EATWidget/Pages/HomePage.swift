@@ -31,60 +31,59 @@ struct HomePage: View {
    
     var body: some View {
         ZStack {
-            
-            if viewModel.loading {
+            if viewModel.nfts.isEmpty {
 
-                ViewLoader()
+                ViewPlaceholder(
+                    text: "Connect a wallet to see your NFTs"
+                )
 
             } else {
-
-                if viewModel.nfts.isEmpty {
-
-                    ViewPlaceholder(
-                        text: "Connect a wallet to see your NFTs"
-                    )
-
-                } else {
+                
+                ScrollView(showsIndicators: false) {
                     
-                    ScrollView(showsIndicators: false) {
-                        
-                        ForEach(viewModel.collections) { collection in
-                                                        
-                            NavigationLink(destination: CollectionPage(address: collection.address!)) {
-                                CollectionItem(item: collection)
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.horizontal)
-                            .padding(.top, 12)
-                            
-                            Divider().padding(.horizontal)
-                            
-                            StaggeredGrid(
-                                list: viewModel.nfts.filter { $0.address == collection.address },
-                                columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                                spacing: spacing,
-                                lazy: true,
-                                content: { item in
-                                    Button {
-                                        guard
-                                            let address = item.address,
-                                            let tokenId = item.tokenId
-                                        else { return}
-
-                                        viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
-                                    } label: {
-                                        NFTCard(item: item)
-                                            .matchedGeometryEffect(id: item.id, in: animation)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            )
-                            .padding(.horizontal)
-                            .animation(.easeInOut, value: viewModel.collections.count + 1)
+                    DiscordPrompt()
+                    
+                    ForEach(viewModel.collections) { collection in
+                                                    
+                        NavigationLink(destination: CollectionPage(address: collection.address!)) {
+                            CollectionItem(item: collection)
                         }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal)
+                        .padding(.top)
+                        
+                        Divider().padding(.horizontal)
+                        
+                        StaggeredGrid(
+                            list: viewModel.nfts.filter { $0.address == collection.address },
+                            columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+                            spacing: 10,
+                            lazy: true,
+                            content: { item in
+                                Button {
+                                    guard
+                                        let address = item.address,
+                                        let tokenId = item.tokenId
+                                    else { return}
+
+                                    viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                                } label: {
+                                    NFTCard(item: item)
+                                        .matchedGeometryEffect(id: item.id, in: animation)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        )
+                        .padding(.horizontal)
+                        .animation(.easeInOut, value: viewModel.collections.count + 1)
                     }
                 }
+                
+                
+                
             }
+            
+            
         }
         .navigationTitle("Collection")
         .toolbar(content: {
@@ -92,7 +91,6 @@ struct HomePage: View {
                 placement: .navigationBarLeading,
                 content: {
                     Button {
-                        // TODO: Think of what to do w this...
                         brandingIcon = Int.random(in: 0..<6)
                     } label: {
                         Branding(seed: brandingIcon)

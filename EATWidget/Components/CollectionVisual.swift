@@ -17,7 +17,7 @@ struct CollectionVisual: View {
             ZStack {
                 
                 if colorScheme == .dark {
-                    Color.white.opacity(0.04)
+                    Color.white.opacity(0.12)
                 } else {
                     Color.black.opacity(0.04)
                 }

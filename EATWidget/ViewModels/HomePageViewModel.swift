@@ -10,10 +10,10 @@ import Combine
 import SwiftUI
 
 enum HomePageSheetContent {
-    case ConnectForm
-    case NFTDetails(address: String, tokenId: String)
-    case Wallets
     case Tutorial
+    case ConnectForm
+    case Wallets
+    case NFTDetails(address: String, tokenId: String)
     case MailForm(data: ComposeMailData)
 }
 
@@ -28,19 +28,12 @@ final class HomePageViewModel: ObservableObject {
     
     @Published private(set) var filterBy: CachedWallet?
     
-    @Published private(set) var loading: Bool = false
-    
     @Published var sheetContent: HomePageSheetContent = .ConnectForm
     @Published var showingSheet: Bool = false
-    
-    @Published var nextPageAddress: String = ""
-    @Published var nextPage: String? = nil
-    
     
     private let walletStorage = CachedWalletStorage.shared
     private let nftStorage = CachedNFTStorage.shared
     private let collectionStorage = CachedCollectionStorage.shared
-    
     
     
     // MARK: - Initialization
