@@ -59,46 +59,50 @@ struct HomePage: View {
                             viewModel.presentTutorialSheet()
                         }
                         
-                        ForEach(viewModel.addresses, id: \.self) { address in
-                            
-                            VStack {
-                                NavigationLink(
-                                    destination: CollectionPage(address: address)
-                                ) {
-                                    HStack {
-                                        HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
-                                        Spacer()
-                                    }
-                                    .padding([.horizontal], 10)
-                                }.buttonStyle(.plain)
-                                
-                                Divider()
-                                    .padding([.horizontal], 10)
-                                
-                                StaggeredGrid(
-                                    list: viewModel.nfts.filter { $0.address == address },
-                                    columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                                    spacing: 10,
-                                    lazy: true,
-                                    content: { item in
-                                        NFTCard(item: item)
-                                            .matchedGeometryEffect(id: item.id, in: animation)
-                                            .onTapGesture {
-                                                
-                                                guard
-                                                    let address = item.address,
-                                                    let tokenId = item.tokenId
-                                                else { return}
-                                                
-                                                viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
-                                            }
-                                    }
-                                )
-                                .padding([.horizontal], 10)
-                            }
-
+                        ForEach(viewModel.collections) { collection in
+                            Text(collection.title ?? "Uknown")
                         }
-                        .animation(.easeInOut, value: viewModel.addresses.count + 1)
+                        
+//                        ForEach(viewModel.addresses, id: \.self) { address in
+//
+//                            VStack {
+//                                NavigationLink(
+//                                    destination: CollectionPage(address: address)
+//                                ) {
+//                                    HStack {
+//                                        HeadingLockup(title: address.formattedWeb3, text: nil, size: 16.0)
+//                                        Spacer()
+//                                    }
+//                                    .padding([.horizontal], 10)
+//                                }.buttonStyle(.plain)
+//
+//                                Divider()
+//                                    .padding([.horizontal], 10)
+//
+//                                StaggeredGrid(
+//                                    list: viewModel.nfts.filter { $0.address == address },
+//                                    columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+//                                    spacing: 10,
+//                                    lazy: true,
+//                                    content: { item in
+//                                        NFTCard(item: item)
+//                                            .matchedGeometryEffect(id: item.id, in: animation)
+//                                            .onTapGesture {
+//
+//                                                guard
+//                                                    let address = item.address,
+//                                                    let tokenId = item.tokenId
+//                                                else { return}
+//
+//                                                viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+//                                            }
+//                                    }
+//                                )
+//                                .padding([.horizontal], 10)
+//                            }
+//
+//                        }
+//                        .animation(.easeInOut, value: viewModel.addresses.count + 1)
 
                     }
                 }

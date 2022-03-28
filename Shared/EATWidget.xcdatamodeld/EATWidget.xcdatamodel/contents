@@ -3,7 +3,7 @@
     <entity name="CachedAttribute" representedClassName="CachedAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="key" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
-        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="attributes" inverseEntity="CachedNFT"/>
+        <relationship name="nft" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="attributes" inverseEntity="CachedNFT"/>
     </entity>
     <entity name="CachedCollection" representedClassName="CachedCollection" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -12,10 +12,14 @@
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
+        <relationship name="banner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="collectionBanner" inverseEntity="CachedImage"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="collectionThumbnail" inverseEntity="CachedImage"/>
     </entity>
     <entity name="CachedImage" representedClassName="CachedImage" syncable="YES" codeGenerationType="class">
         <attribute name="blob" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <relationship name="object" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="image" inverseEntity="CachedNFT"/>
+        <relationship name="collectionBanner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedCollection" inverseName="banner" inverseEntity="CachedCollection"/>
+        <relationship name="collectionThumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedCollection" inverseName="thumbnail" inverseEntity="CachedCollection"/>
+        <relationship name="nftImage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedNFT" inverseName="image" inverseEntity="CachedNFT"/>
     </entity>
     <entity name="CachedNFT" representedClassName="CachedNFT" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -31,21 +35,21 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="tokenId" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
-        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CachedAttribute" inverseName="object" inverseEntity="CachedAttribute"/>
-        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="object" inverseEntity="CachedImage"/>
-        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedWallet" inverseName="objects" inverseEntity="CachedWallet"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CachedAttribute" inverseName="nft" inverseEntity="CachedAttribute"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="nftImage" inverseEntity="CachedImage"/>
+        <relationship name="wallet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CachedWallet" inverseName="nfts" inverseEntity="CachedWallet"/>
     </entity>
     <entity name="CachedWallet" representedClassName="CachedWallet" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="objects" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CachedNFT" inverseName="wallet" inverseEntity="CachedNFT"/>
+        <relationship name="nfts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CachedNFT" inverseName="wallet" inverseEntity="CachedNFT"/>
     </entity>
     <elements>
-        <element name="CachedAttribute" positionX="145.33984375" positionY="-146.81640625" width="128" height="74"/>
-        <element name="CachedCollection" positionX="-99" positionY="-54" width="128" height="119"/>
-        <element name="CachedImage" positionX="143.42578125" positionY="-17.23046875" width="128" height="59"/>
-        <element name="CachedNFT" positionX="-70.02734375" positionY="-185.70703125" width="128" height="269"/>
-        <element name="CachedWallet" positionX="-301.08203125" positionY="-179.74609375" width="128" height="89"/>
+        <element name="CachedAttribute" positionX="107.9765625" positionY="-392.59375" width="128" height="88"/>
+        <element name="CachedCollection" positionX="-303.98828125" positionY="-439.5546875" width="128" height="163"/>
+        <element name="CachedImage" positionX="-550.15234375" positionY="-278.39453125" width="128" height="103"/>
+        <element name="CachedNFT" positionX="-134.69140625" positionY="-439.703125" width="128" height="269"/>
+        <element name="CachedWallet" positionX="-379.80078125" positionY="-96.89453125" width="128" height="103"/>
     </elements>
 </model>

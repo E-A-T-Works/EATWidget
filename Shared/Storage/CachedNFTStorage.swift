@@ -111,7 +111,7 @@ final class CachedNFTStorage: NSObject, ObservableObject {
                 newAttribute.key = attribute.key
                 newAttribute.value = attribute.value
 
-                newAttribute.object = newObject
+                newAttribute.nft = newObject
             }
 
             

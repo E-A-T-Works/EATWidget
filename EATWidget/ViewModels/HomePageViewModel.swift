@@ -23,7 +23,9 @@ final class HomePageViewModel: ObservableObject {
     // MARK: - Properties
 
     @Published private(set) var wallets: [CachedWallet] = []
+    @Published private(set) var collections: [CachedCollection] = []
     @Published private(set) var nfts: [CachedNFT] = []
+    
     @Published private(set) var addresses: [String] = []
     
     @Published private(set) var filterBy: CachedWallet?
@@ -36,9 +38,11 @@ final class HomePageViewModel: ObservableObject {
     @Published var nextPageAddress: String = ""
     @Published var nextPage: String? = nil
     
+    
     private let walletStorage = CachedWalletStorage.shared
+    private let collectionStorage = CachedCollectionStorage.shared
     private let nftStorage = CachedNFTStorage.shared
-    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    
     
     
     // MARK: - Initialization
@@ -53,6 +57,10 @@ final class HomePageViewModel: ObservableObject {
             .compactMap { $0 }
             .receive(on: RunLoop.main)
             .assign(to: &$wallets)
+        
+        collectionStorage.$list
+            .receive(on: RunLoop.main)
+            .assign(to: &$collections)
         
         Publishers.CombineLatest(nftStorage.$list, $filterBy)
             .map { (list, filterBy) -> [CachedNFT] in
@@ -72,7 +80,7 @@ final class HomePageViewModel: ObservableObject {
                 prev.elementsEqual(curr)
             }
             .receive(on: RunLoop.main)
-            .assign(to: &$addresses)
+            .assign(to: &$addresses)   
     }
     
     private func autoPresentConnectSheetIfNeeded() {

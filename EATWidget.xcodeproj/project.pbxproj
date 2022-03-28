@@ -683,8 +683,8 @@
 			isa = PBXGroup;
 			children = (
 				5C06456F27C5C3DA00E97D1C /* CachedWalletStorage.swift */,
-				5C06457327C5C3E200E97D1C /* CachedNFTStorage.swift */,
 				5CA04D3427E0C70300559129 /* CachedCollectionStorage.swift */,
+				5C06457327C5C3E200E97D1C /* CachedNFTStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";

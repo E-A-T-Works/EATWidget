@@ -77,15 +77,35 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
         }
         
         toCreate.forEach { data in
+        
+            var banner: CachedImage?
+            if data.banner != nil {
+                let blob = data.banner?.jpegData(compressionQuality: 1.0)
+                if blob != nil {
+                    banner = CachedImage(context: context)
+                    banner?.blob = blob
+                }
+            }
             
-//            guard let imageBlob = data.image.jpegData(compressionQuality: 0.25) else { return }
-//
-//            let cachedImage = CachedImage(context: context)
-//            cachedImage.blob = imageBlob
+            var thumbnail: CachedImage?
+            if data.thumbnail != nil {
+                let blob = data.banner?.jpegData(compressionQuality: 1.0)
+                if blob != nil {
+                    thumbnail = CachedImage(context: context)
+                    thumbnail?.blob = blob
+                }
+            }
+            
             
             let newObject = CachedCollection(context: context)
             newObject.address = data.address
-        
+            
+            newObject.title = data.title
+            newObject.text = data.text
+            
+            newObject.banner = banner
+            newObject.thumbnail = thumbnail
+            
         }
         
         //
@@ -101,7 +121,30 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             let update = list.first { $0.address == cached.address }
             guard update != nil else { return }
 
+            var banner: CachedImage?
+            if update!.banner != nil {
+                let blob = update!.banner?.jpegData(compressionQuality: 1.0)
+                if blob != nil {
+                    banner = CachedImage(context: context)
+                    banner?.blob = blob
+                }
+            }
+            
+            var thumbnail: CachedImage?
+            if update!.thumbnail != nil {
+                let blob = update!.banner?.jpegData(compressionQuality: 1.0)
+                if blob != nil {
+                    thumbnail = CachedImage(context: context)
+                    thumbnail?.blob = blob
+                }
+            }
+            
             cached.title = update!.title
+            cached.text = update!.text
+            
+            cached.banner = banner
+            cached.thumbnail = thumbnail
+            
         }
         
         //
@@ -109,7 +152,6 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
         //
 
         try context.save()
-        
         
         return fetch()
     }
