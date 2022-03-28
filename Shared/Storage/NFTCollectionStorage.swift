@@ -1,5 +1,5 @@
 //
-//  NFTCollectionStorage.swift
+//  CachedCollectionStorage.swift
 //  EATWidget
 //
 //  Created by Adrian Vatchinsky on 3/15/22.
@@ -10,23 +10,23 @@ import Combine
 import CoreData
 
 
-final class NFTCollectionStorage: NSObject, ObservableObject {
+final class CachedCollectionStorage: NSObject, ObservableObject {
     
-    static let shared: NFTCollectionStorage = NFTCollectionStorage()
+    static let shared: CachedCollectionStorage = CachedCollectionStorage()
     
     // MARK: - Properties
 
-    @Published var list: [NFTCollection] = [NFTCollection]()
+    @Published var list: [CachedCollection] = [CachedCollection]()
     
-    private let fetchRequest: NSFetchRequest<NFTCollection>
-    private let fetchedResultsController: NSFetchedResultsController<NFTCollection>
+    private let fetchRequest: NSFetchRequest<CachedCollection>
+    private let fetchedResultsController: NSFetchedResultsController<CachedCollection>
     
     // MARK: - Init
     
     private override init() {
-        fetchRequest = NFTCollection.fetchRequest()
+        fetchRequest = CachedCollection.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \NFTCollection.address, ascending: false)
+            NSSortDescriptor(keyPath: \CachedCollection.address, ascending: false)
         ]
         
         fetchedResultsController = NSFetchedResultsController(
@@ -46,21 +46,21 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
     
     // MARK: - Public
     
-    func fetch() -> [NFTCollection] {
-        var list: [NFTCollection] {
+    func fetch() -> [CachedCollection] {
+        var list: [CachedCollection] {
             do {
                 try fetchedResultsController.performFetch()
-                return fetchedResultsController.fetchedObjects ?? [NFTCollection]()
+                return fetchedResultsController.fetchedObjects ?? [CachedCollection]()
             } catch {
                 print("⚠️ \(error)")
-                return [NFTCollection]()
+                return [CachedCollection]()
             }
         }
         
         return list
     }
     
-    func create(address: String, title: String?) throws -> NFTCollection {
+    func create(address: String, title: String?) throws -> CachedCollection {
         
         let existingObject = fetch().first { $0.address == address }
         if existingObject != nil {
@@ -70,7 +70,7 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
         
         let context = PersistenceController.shared.container.viewContext
         
-        let newObject = NFTCollection(context: context)
+        let newObject = CachedCollection(context: context)
         newObject.address = address
         newObject.title = title
         
@@ -79,7 +79,7 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
         return newObject
     }
     
-    func update(title: String?, object: NFTCollection) throws -> NFTCollection {
+    func update(title: String?, object: CachedCollection) throws -> CachedCollection {
         object.title = title
         
         try commit()
@@ -87,7 +87,7 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
         return object
     }
     
-    func delete(object: NFTCollection) throws {
+    func delete(object: CachedCollection) throws {
         let context = PersistenceController.shared.container.viewContext
         context.delete(object)
         
@@ -106,9 +106,9 @@ final class NFTCollectionStorage: NSObject, ObservableObject {
 
 // MARK: - NSFetchedResultsControllerDelegate Extension
 
-extension NFTCollectionStorage: NSFetchedResultsControllerDelegate {
+extension CachedCollectionStorage: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let list = controller.fetchedObjects as? [NFTCollection] else { return }
+        guard let list = controller.fetchedObjects as? [CachedCollection] else { return }
 
         self.list = list
     }
