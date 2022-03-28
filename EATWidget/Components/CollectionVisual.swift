@@ -36,7 +36,7 @@ struct CollectionVisual: View {
             
             }.frame(width: geo.size.width)
         }
-        
+
     }
 }
 

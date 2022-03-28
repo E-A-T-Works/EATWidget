@@ -20,7 +20,7 @@ final class CollectionPageViewModel: ObservableObject {
     // MARK: - Properties
     
     let address: String
-    
+        
     @Published private(set) var collection: CachedCollection?
     
     @Published private(set) var collected: [CachedNFT] = []

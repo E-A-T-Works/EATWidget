@@ -18,6 +18,8 @@ struct HomePage: View {
     
     @State var brandingIcon: Int = 0
     
+    private let spacing: CGFloat = 24
+    
 
     init() {
         self._viewModel = StateObject(wrappedValue: HomePageViewModel())
@@ -45,49 +47,36 @@ struct HomePage: View {
                 } else {
                     
                     ScrollView(showsIndicators: false) {
-
-                        // TODO: Make this into a component
-                        VStack(alignment: .leading) {
-                            Text("Learn about iOS widgets")
-                                .font(.system(size: 12, design: .monospaced))
-                                .fontWeight(.bold)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 124)
-                        .background(.black)
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .onTapGesture {
-                            viewModel.presentTutorialSheet()
-                        }
-                        
                         
                         ForEach(viewModel.collections) { collection in
                                                         
                             NavigationLink(destination: CollectionPage(address: collection.address!)) {
-                                CollectionItem(item: collection).padding(.horizontal)
+                                CollectionItem(item: collection)
                             }
                             .buttonStyle(.plain)
+                            .padding(.horizontal)
+                            .padding(.top, 12)
                             
                             Divider().padding(.horizontal)
                             
                             StaggeredGrid(
                                 list: viewModel.nfts.filter { $0.address == collection.address },
                                 columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                                spacing: 10,
+                                spacing: spacing,
                                 lazy: true,
                                 content: { item in
-                                    NFTCard(item: item)
-                                        .matchedGeometryEffect(id: item.id, in: animation)
-                                        .onTapGesture {
+                                    Button {
+                                        guard
+                                            let address = item.address,
+                                            let tokenId = item.tokenId
+                                        else { return}
 
-                                            guard
-                                                let address = item.address,
-                                                let tokenId = item.tokenId
-                                            else { return}
-
-                                            viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
-                                        }
+                                        viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                                    } label: {
+                                        NFTCard(item: item)
+                                            .matchedGeometryEffect(id: item.id, in: animation)
+                                    }
+                                    .buttonStyle(.plain)
                                 }
                             )
                             .padding(.horizontal)

@@ -108,8 +108,8 @@ struct NFTSheet: View {
                                 viewModel.presentTutorialSheet()
                             } label: {
                                 HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Add Widget")
+                                    Image(systemName: "info.circle")
+                                    Text("Learn about Widgets")
                                         .font(.system(size: 16, design: .monospaced))
                                     
                                 }

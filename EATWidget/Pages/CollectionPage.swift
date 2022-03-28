@@ -10,6 +10,8 @@ import SwiftUI
 struct CollectionPage: View {
     let address: String
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -76,11 +78,22 @@ struct CollectionPage: View {
             }
         }
         .ignoresSafeArea()
-//        .navigationTitle("Every Icon")
-        .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            EmptyView()
-        })
+        .navigationTitle("Every Icon")
+//        .navigationBarBackButtonHidden(true)
+//        .toolbar(content: {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }, label: {
+//                    HStack {
+//                        Image(systemName: "chevron.backward")
+//                            .foregroundColor(colorScheme == .dark ? .white : .black)
+//                    }
+//                })
+//                
+//              
+//            }
+//        })
         .sheet(isPresented: $viewModel.showingSheet) {
             switch viewModel.sheetContent {
             case .NFTDetails(let address, let tokenId):
