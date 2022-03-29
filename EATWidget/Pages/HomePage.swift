@@ -44,13 +44,16 @@ struct HomePage: View {
                     DiscordPrompt()
                     
                     ForEach(viewModel.collections) { collection in
-                                                    
-                        NavigationLink(destination: CollectionPage(address: collection.address!)) {
+
+                        NavigationLink(
+                            destination: CollectionPage(address: collection.address!)
+                        ) {
                             CollectionItem(item: collection)
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal)
                         .padding(.top)
+                    
                         
                         Divider().padding(.horizontal)
                         
@@ -174,21 +177,17 @@ struct HomePage: View {
                 NavigationView {
                     ConnectSheet()
                 }
-                
+            case .Wallets:
+                NavigationView {
+                    WalletsSheet()
+                }
+            case .Tutorial:
+                TutorialSheet()
             case .NFTDetails(let address, let tokenId):
                 NFTSheet(
                     address: address,
                     tokenId: tokenId
                 )
-                
-            case .Wallets:
-                NavigationView {
-                    WalletsSheet()
-                }
-                
-            case .Tutorial:
-                TutorialSheet()
-                
             case .MailForm(let data):
                 MailView(data: data) { result in
                     print()

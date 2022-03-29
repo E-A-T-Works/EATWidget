@@ -21,7 +21,7 @@ struct Carousel: View {
                     CarouselCard(
                         title: list[index].title,
                         text: list[index].text,
-                        image: list[index].image
+                        animationUrl: list[index].animationUrl
                     )
                 }
             }

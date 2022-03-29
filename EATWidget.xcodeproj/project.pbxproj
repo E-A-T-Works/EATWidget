@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */; };
 		5C035EBF27B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
 		5C035EC027B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
 		5C035EC127B5A5C800A11697 /* Eth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EBE27B5A5C800A11697 /* Eth.png */; };
@@ -31,9 +30,6 @@
 		5C035EF027B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
 		5C035EF127B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
 		5C035EF227B6D17900A11697 /* Discord.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C035EEF27B6D17900A11697 /* Discord.png */; };
-		5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
-		5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
-		5C035EF627B6D75E00A11697 /* EthPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C035EF327B6D75E00A11697 /* EthPrice.swift */; };
 		5C0394B927D923E5003029D2 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0394B827D923E5003029D2 /* Carousel.swift */; };
 		5C0394BB27D92599003029D2 /* CarouselCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0394BA27D92599003029D2 /* CarouselCard.swift */; };
 		5C06457027C5C3DA00E97D1C /* CachedWalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06456F27C5C3DA00E97D1C /* CachedWalletStorage.swift */; };
@@ -48,7 +44,12 @@
 		5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
 		5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
 		5C1C71C827BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
-		5C1C71CA27BC05E7009BFC15 /* URLCache+imageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C927BC05E7009BFC15 /* URLCache+imageCache.swift */; };
+		5C24B9AD27F2ABA6006C294B /* tutorial-00.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */; };
+		5C24B9AE27F2ABA6006C294B /* tutorial-01.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */; };
+		5C24B9AF27F2ABA6006C294B /* tutorial-02.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */; };
+		5C24B9B027F2ABA6006C294B /* tutorial-03.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */; };
+		5C24B9B127F2ABA6006C294B /* tutorial-04.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */; };
+		5C24B9B227F2ABA6006C294B /* tutorial-05.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */; };
 		5C24E4F527EE122E00F3CF2A /* CollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */; };
 		5C24E4F727EE13DD00F3CF2A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */; };
 		5C24E4F927EE155900F3CF2A /* CollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */; };
@@ -309,7 +310,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 		5C035EBE27B5A5C800A11697 /* Eth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eth.png; sourceTree = "<group>"; };
 		5C035EC227B5B43500A11697 /* Opensea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Opensea.png; sourceTree = "<group>"; };
 		5C035EC327B5B43500A11697 /* Etherscan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Etherscan.png; sourceTree = "<group>"; };
@@ -321,7 +321,6 @@
 		5C035EE927B6CAE700A11697 /* NFTVisual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTVisual.swift; sourceTree = "<group>"; };
 		5C035EEB27B6D15900A11697 /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
 		5C035EEF27B6D17900A11697 /* Discord.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Discord.png; sourceTree = "<group>"; };
-		5C035EF327B6D75E00A11697 /* EthPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthPrice.swift; sourceTree = "<group>"; };
 		5C0394B827D923E5003029D2 /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		5C0394BA27D92599003029D2 /* CarouselCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCard.swift; sourceTree = "<group>"; };
 		5C06456F27C5C3DA00E97D1C /* CachedWalletStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedWalletStorage.swift; sourceTree = "<group>"; };
@@ -330,7 +329,12 @@
 		5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaceholder.swift; sourceTree = "<group>"; };
 		5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTDetails+Extensions.swift"; sourceTree = "<group>"; };
 		5C1C71C527BC011A009BFC15 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		5C1C71C927BC05E7009BFC15 /* URLCache+imageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLCache+imageCache.swift"; sourceTree = "<group>"; };
+		5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-00.MOV"; sourceTree = "<group>"; };
+		5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-01.MOV"; sourceTree = "<group>"; };
+		5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-02.MOV"; sourceTree = "<group>"; };
+		5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-03.MOV"; sourceTree = "<group>"; };
+		5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-04.MOV"; sourceTree = "<group>"; };
+		5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-05.MOV"; sourceTree = "<group>"; };
 		5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPage.swift; sourceTree = "<group>"; };
 		5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewModel.swift; sourceTree = "<group>"; };
@@ -638,6 +642,12 @@
 				5C035EC327B5B43500A11697 /* Etherscan.png */,
 				5C035EEB27B6D15900A11697 /* Twitter.png */,
 				5C035EEF27B6D17900A11697 /* Discord.png */,
+				5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */,
+				5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */,
+				5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */,
+				5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */,
+				5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */,
+				5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -735,8 +745,6 @@
 				5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */,
 				5C93784D27F21036003281EC /* OverlaySpinner.swift */,
 				5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */,
-				5C035EBC27B58E5800A11697 /* CachedAsyncImage.swift */,
-				5C1C71C927BC05E7009BFC15 /* URLCache+imageCache.swift */,
 				5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */,
 				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
@@ -846,7 +854,6 @@
 				5C035EE527B6C64E00A11697 /* URLButton.swift */,
 				5C366B0827B6FE5E00D9A0BE /* URLLink.swift */,
 				5C91BE2427B4754C001074CE /* Branding.swift */,
-				5C035EF327B6D75E00A11697 /* EthPrice.swift */,
 				5CD2ADAA27B716F300FDDAB3 /* HeadingLockup.swift */,
 				5C84116E27B9A1C40021008E /* SectionTitle.swift */,
 				5C366B0427B6F96300D9A0BE /* TableItem.swift */,
@@ -988,9 +995,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CBC06B627BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
+				5C24B9AD27F2ABA6006C294B /* tutorial-00.MOV in Resources */,
 				5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06AA27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
+				5C24B9B127F2ABA6006C294B /* tutorial-04.MOV in Resources */,
+				5C24B9AE27F2ABA6006C294B /* tutorial-01.MOV in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
 				5CF4A81627F27C9B0074C4FE /* testing.png in Resources */,
@@ -1002,8 +1012,10 @@
 				5CBC06A727BC5BC300C2CADD /* eat-b-w-06.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
 				5C36B35227E9111E0039A50E /* spinner-04.json in Resources */,
+				5C24B9AF27F2ABA6006C294B /* tutorial-02.MOV in Resources */,
 				5CBC06C527BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
 				5C36B35027E9111E0039A50E /* spinner-02.json in Resources */,
+				5C24B9B227F2ABA6006C294B /* tutorial-05.MOV in Resources */,
 				5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */,
 				5CBC069B27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
 				5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */,
@@ -1011,6 +1023,7 @@
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5CBC06AD27BC5BC300C2CADD /* eat-w-b-02.png in Resources */,
 				5CBC06A427BC5BC300C2CADD /* eat-b-w-01.png in Resources */,
+				5C24B9B027F2ABA6006C294B /* tutorial-03.MOV in Resources */,
 				5CBC06C227BC5BC300C2CADD /* eat-w-b-01.png in Resources */,
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
 				5CBC069E27BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
@@ -1110,7 +1123,6 @@
 				5C574CEF27BAF16300212FED /* NFT.swift in Sources */,
 				5C91BE1727B45FA0001074CE /* UIImage+Extensions.swift in Sources */,
 				5C24E4F727EE13DD00F3CF2A /* LayoutHelpers.swift in Sources */,
-				5C035EBD27B58E5800A11697 /* CachedAsyncImage.swift in Sources */,
 				5C60F05F27BCB6F7006F8AB4 /* NFTAdapters.swift in Sources */,
 				5CA04D3527E0C70300559129 /* CachedCollectionStorage.swift in Sources */,
 				5C63084527B2B44900AC2A24 /* EATWidget.xcdatamodeld in Sources */,
@@ -1142,7 +1154,6 @@
 				5C63091B27B4378D00AC2A24 /* ContentView.swift in Sources */,
 				5C63088127B2CD8400AC2A24 /* ConnectSheetViewModel.swift in Sources */,
 				5C3D47B027C97FD500C16464 /* View+Extensions.swift in Sources */,
-				5C1C71CA27BC05E7009BFC15 /* URLCache+imageCache.swift in Sources */,
 				5C63088327B2D2A000AC2A24 /* ConnectSheet.swift in Sources */,
 				5C06457827C5E2B200E97D1C /* FeedbackPrompt.swift in Sources */,
 				5C035EDC27B6C5B800A11697 /* NFTHeader.swift in Sources */,
@@ -1162,7 +1173,6 @@
 				5C55E2BA27EB5E18008639DD /* ParseNFTOperation.swift in Sources */,
 				5CB2024027C9CF910026A3D3 /* SVGImage.swift in Sources */,
 				5C84117727B9A6FE0021008E /* AttributeGrid.swift in Sources */,
-				5C035EF427B6D75E00A11697 /* EthPrice.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
 				5C93785627F2342B003281EC /* CollectionItem+Extensions.swift in Sources */,
@@ -1222,7 +1232,6 @@
 				5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C91BE1027B43A27001074CE /* Theme.swift in Sources */,
 				5C035EE727B6C64E00A11697 /* URLButton.swift in Sources */,
-				5C035EF527B6D75E00A11697 /* EthPrice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,7 +1287,6 @@
 				5C6308D327B2E3A100AC2A24 /* AppGroup.swift in Sources */,
 				5CE9CFA127B576BA00F29938 /* DerivedColors.swift in Sources */,
 				5C60F06327BCBF73006F8AB4 /* GalleryWidget.swift in Sources */,
-				5C035EF627B6D75E00A11697 /* EthPrice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

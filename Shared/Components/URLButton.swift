@@ -27,14 +27,16 @@ struct URLButton: View {
             destination: url,
             label: {
                 HStack{
-                    Image(uiImage: image).resizable()
-                        .aspectRatio(contentMode: .fit)
+                    Image(uiImage: image)
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                        .frame(width:24, height: 24)
+                        .frame(width: 18, height:  18)
                     
                     if title != nil {
                         Text(title!)
-                            .font(.system(size: 16, design: .monospaced))
+                            .font(.system(size: 12, design: .monospaced))
                             .lineLimit(1)
                             .foregroundColor(
                                 colorScheme == .dark ? Color.white : Color.black

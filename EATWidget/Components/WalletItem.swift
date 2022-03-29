@@ -14,6 +14,7 @@ struct WalletItem: View {
     
     var body: some View {
         HStack {
+            
             HeadingLockup(
                 title: title != nil && !title!.isEmpty ? title : address.formattedWeb3,
                 text: nil,

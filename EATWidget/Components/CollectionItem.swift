@@ -53,9 +53,13 @@ struct CollectionItem: View {
             
             Spacer()
             
-//            Image(systemName: "chevron.right")
-//                .foregroundColor(.black)
-//                .opacity(0.5)
+            Image(systemName: "chevron.right")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 12, height: 12, alignment: .center)
+                .foregroundColor(.black)
+                .opacity(0.5)
+            
         }
     }
 }

@@ -17,11 +17,12 @@ enum NFTSheetContent {
 final class NFTSheetViewModel: ObservableObject {
     
     // MARK: - Properties
-
-    @Published private(set) var loading: Bool = true
-    @Published private(set) var error: Bool = false
     
+    let address: String
+    let tokenId: String
+
     @Published private(set) var nft: CachedNFT?
+    
     @Published private(set) var attributes: [CachedAttribute] = []
     @Published private(set) var actionButtons: [ActionRowButton] = []
     
@@ -37,42 +38,28 @@ final class NFTSheetViewModel: ObservableObject {
         }
     }
 
+    
     // MARK: - Initialization
     
-    init() { }
-    
-    // MARK: - Public Methods
-    
-    func dismiss() {
-        shouldDismissView = true
+    init(address: String, tokenId: String) {
+        self.address = address
+        self.tokenId = tokenId
+        
+        load()
     }
     
-    // MARK: API Handlers
+    // MARK: - Loaders
     
-    func load(address: String, tokenId: String) {
-        Task {
-            self.loading = true
-            
-            guard let nft = (nftStorage.fetch().first {
-                $0.address == address && $0.tokenId == tokenId
-            }) else {
-                self.error = true
-                self.loading = false
-                return
-            }
-
-            self.nft = nft
-            
-            resolveAttributes()
-            resolveActionButtons()
-            
-            self.loading = false
-        }
+    private func load() {
+        fetchNFT()
     }
     
-    func presentTutorialSheet() {
-        sheetContent = .Tutorial
-        showingSheet.toggle()
+    private func fetchNFT() {
+        let cached = nftStorage.fetch()
+        nft = cached.first { $0.address == address && $0.tokenId == tokenId }
+        
+        resolveAttributes()
+        resolveActionButtons()
     }
     
     private func resolveAttributes() -> Void {
@@ -96,14 +83,15 @@ final class NFTSheetViewModel: ObservableObject {
             )
         }
 
-        if nft!.openseaUrl != nil {
-            buttonsToSet.append(
-                ActionRowButton(
-                    target: .Opensea,
-                    url: nft!.openseaUrl!
-                )
-            )
-        }
+        // TODO: Figure out how to convert the tokenId
+//        if nft!.openseaUrl != nil {
+//            buttonsToSet.append(
+//                ActionRowButton(
+//                    target: .Opensea,
+//                    url: nft!.openseaUrl!
+//                )
+//            )
+//        }
         
         if nft!.twitterUrl != nil {
             buttonsToSet.append(
@@ -124,5 +112,17 @@ final class NFTSheetViewModel: ObservableObject {
         }
     
         actionButtons = buttonsToSet
+    }
+    
+    
+    // MARK: - Overlay
+    
+    func presentTutorialSheet() {
+        sheetContent = .Tutorial
+        showingSheet.toggle()
+    }
+    
+    func dismiss() {
+        shouldDismissView = true
     }
 }

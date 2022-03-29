@@ -35,6 +35,7 @@ final class CollectionPageViewModel: ObservableObject {
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     
+    
     // MARK: - Initialization
     
     init(address: String) {

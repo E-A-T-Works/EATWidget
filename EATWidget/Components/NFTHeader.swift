@@ -21,9 +21,6 @@ struct NFTHeader: View {
             )
             
             Spacer()
-            
-            // TODO: Figure out this
-            // EthPrice()
         }
     }
 }

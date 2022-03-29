@@ -22,121 +22,103 @@ struct NFTSheet: View {
         self.address = address
         self.tokenId = tokenId
         
-        self._viewModel = StateObject(wrappedValue: NFTSheetViewModel())
+        self._viewModel = StateObject(wrappedValue: NFTSheetViewModel(address: address, tokenId: tokenId))
         
         LayoutHelpers.stylePageTitle()
     }
     
     var body: some View {
         GeometryReader { geo in
-        ZStack {
-            if viewModel.loading {
-                
-                ViewLoader()
-                
-            } else {
-                
-                if viewModel.error {
+            ZStack {
+            
+                VStack {
                     
-                    Text("Something went wrong...")
-                    
-                } else {
-                    
-                    VStack {
+                    ScrollView {
+                        NFTVisual(
+                            image: UIImage(data: viewModel.nft!.image!.blob!)!,
+                            simulationUrl: viewModel.nft?.simulationUrl,
+                            animationUrl: viewModel.nft?.animationUrl
+                        )
+                        .frame(width: geo.size.width, height: geo.size.width)
+                        .padding([.bottom], spacing)
                         
-                        ScrollView {
-                            NFTVisual(
-                                image: UIImage(data: viewModel.nft!.image!.blob!)!,
-                                simulationUrl: viewModel.nft?.simulationUrl,
-                                animationUrl: viewModel.nft?.animationUrl
-                            )
-                            .frame(width: geo.size.width, height: geo.size.width)
-                            .padding([.bottom], spacing)
-                            
-                            ActionRow(
-                                list: viewModel.actionButtons
+                        ActionRow(
+                            list: viewModel.actionButtons
+                        )
+                        .padding([.bottom], spacing)
+                        
+                        VStack(alignment: .leading) {
+                            NFTHeader(
+                                title: viewModel.nft?.title,
+                                text: nil
                             )
                             .padding([.bottom], spacing)
-                            
-                            VStack(alignment: .leading) {
-                                NFTHeader(
-                                    title: viewModel.nft?.title,
-                                    text: nil
-                                )
-                                .padding([.bottom], spacing)
 
-                                if viewModel.nft?.text != nil {
-                                    NFTDescription(text: viewModel.nft!.text!)
-                                        .padding([.bottom], spacing)
-                                }
-                                
-                                Divider().padding(.vertical)
-
-                                
-                                if viewModel.attributes.count > 0 {
-                                    AttributeGrid(list: viewModel.attributes)
-                                        .padding([.bottom], spacing)
-                                    Divider().padding(.vertical)
-                                }
-                                
-                                NFTDetails(
-                                    address: viewModel.nft?.address ?? "--",
-                                    tokenId: viewModel.nft?.tokenId ?? "--",
-                                    standard: viewModel.nft?.standard
-                                )
+                            if viewModel.nft?.text != nil {
+                                NFTDescription(text: viewModel.nft!.text!)
                                     .padding([.bottom], spacing)
-                                
-                        
-                                if(viewModel.nft?.metadataUrl != nil) {
-                                    HStack(alignment: .center) {
-                                        Spacer()
-                                        URLLink(
-                                            url: viewModel.nft!.metadataUrl!,
-                                            title: "metadata"
-                                        )
-                                        Spacer()
-                                    }
-                                    .padding(.vertical)
-                                }
                             }
-                            .padding(.horizontal)
-                            .padding(.bottom, 10)
-                        }
-                        
-                        Group {
-                            Button {
-                                viewModel.presentTutorialSheet()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "info.circle")
-                                    Text("Learn about Widgets")
-                                        .font(.system(size: 16, design: .monospaced))
-                                    
-                                }
-                                .padding(8)
-                                .frame(maxWidth: .infinity)
+                            
+                            Divider().padding(.vertical)
+
+                            
+                            if viewModel.attributes.count > 0 {
+                                AttributeGrid(list: viewModel.attributes)
+                                    .padding([.bottom], spacing)
+                                Divider().padding(.vertical)
                             }
-                            .buttonStyle(.borderedProminent)
-                            .padding(.horizontal)
-                            .padding(.bottom, 32)
+                            
+                            NFTDetails(
+                                address: viewModel.nft?.address ?? "--",
+                                tokenId: viewModel.nft?.tokenId ?? "--",
+                                standard: viewModel.nft?.standard
+                            )
+                                .padding([.bottom], spacing)
+                            
+                    
+                            if(viewModel.nft?.metadataUrl != nil) {
+                                HStack(alignment: .center) {
+                                    Spacer()
+                                    URLLink(
+                                        url: viewModel.nft!.metadataUrl!,
+                                        title: "metadata"
+                                    )
+                                    Spacer()
+                                }
+                                .padding(.vertical)
+                            }
                         }
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
                     }
                     
+                    Group {
+                        Button {
+                            viewModel.presentTutorialSheet()
+                        } label: {
+                            HStack {
+                                Image(systemName: "info.circle")
+                                Text("Learn about Widgets")
+                                    .font(.system(size: 16, design: .monospaced))
+                                
+                            }
+                            .padding(8)
+                            .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding(.horizontal)
+                        .padding(.bottom, 32)
+                    }
                 }
                 
+                SheetDismissButton(
+                    onTapFn: {
+                        viewModel.dismiss()
+                    }
+                )
             }
-            
-            SheetDismissButton(
-                onTapFn: {
-                    viewModel.dismiss()
-                }
-            )
-        }
         }
         .ignoresSafeArea()
-        .onAppear {
-            viewModel.load(address: address, tokenId: tokenId)
-        }
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in
             if shouldDismiss {
                 self.presentationMode.wrappedValue.dismiss()
