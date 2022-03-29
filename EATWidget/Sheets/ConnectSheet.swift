@@ -114,20 +114,26 @@ struct ConnectSheet: View {
                             } header: {
                                 
                                 if viewModel.isParsing {
-                                    Text("\(viewModel.parsedCount) out of \(viewModel.totalCount) Discovered")
+                                    Text("Imported \(viewModel.parsedCount) out of \(viewModel.totalCount)")
                                 } else {
                                     Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
                                 }
                                 
                             } footer: {
                                 HStack {
-                                    Text("Not seeing your NFTs?")
-
-                                    Button(action: {
-                                        viewModel.presentMailFormSheet()
-                                    }, label: {
-                                        Text("Let us know")
-                                    })
+                                    Text("Still not seeing your NFTs?")
+                                    
+                                    Link(
+                                        destination: URL(string: "https://discord.gg/tmaddD9C")!
+                                    ) {
+                                        HStack {
+                                            Text("Let us know on Discord")
+                                            Image(systemName: "arrow.up.right")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 8, height: 8)
+                                        }
+                                    }
                                 }
                             }
                             
