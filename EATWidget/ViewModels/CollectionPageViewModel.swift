@@ -26,8 +26,6 @@ final class CollectionPageViewModel: ObservableObject {
     @Published private(set) var collected: [CachedNFT] = []
     @Published private(set) var everything: [NFT] = []
     
-    @Published private(set) var loading: Bool = false
-    
     @Published var sheetContent: CollectionPageSheetContent? = nil
     @Published var showingSheet: Bool = false
     
@@ -56,30 +54,8 @@ final class CollectionPageViewModel: ObservableObject {
     
     
     private func fetchCollection() {
-        Task {
-            loading = true
-            
-            let cached = collectionStorage.fetch()
-            collection = cached.first { $0.address == address }
-            
-//            let annotated = await fb.loadCollection(for: address)
-            
-//            if annotated != nil {
-//                collection = annotated
-//            } else {
-//                collection = Collection(
-//                    id: UUID().uuidString,
-//                    address: address,
-//                    title: "Unkown Collection",
-//                    text: nil,
-//                    links: [ExternalLink](),
-//                    banner: URL(string: "https://via.placeholder.com/640x360")!,
-//                    thumbnail: URL(string: "https://via.placeholder.com/150x150")!
-//                )
-//            }
-            
-            loading = false
-        }
+        let cached = collectionStorage.fetch()
+        collection = cached.first { $0.address == address }
     }
     
     private func fetchCollectedNFTs() {
@@ -90,17 +66,11 @@ final class CollectionPageViewModel: ObservableObject {
     
     private func fetchAllNFTs() {
         Task {
-            loading = true
-            
             do {
-                let results = try await api.getNFTsForCollection(for: address)
-                
-                print(results.count)
+                let _ = try await api.getNFTsForCollection(for: address)
             } catch {
                 print("⚠️ \(error)")
             }
-            
-            loading = false
         }
     }
     

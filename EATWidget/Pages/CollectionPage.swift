@@ -11,8 +11,6 @@ import SwiftUI
 struct CollectionPage: View {
     let address: String
 
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
