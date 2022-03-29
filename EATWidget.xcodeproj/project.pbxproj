@@ -82,11 +82,7 @@
 		5C3D47B127C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
 		5C3D47B227C97FD500C16464 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47AF27C97FD500C16464 /* View+Extensions.swift */; };
 		5C3D47B427C98E5A00C16464 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D47B327C98E5A00C16464 /* WebView.swift */; };
-		5C5026C527F0AA8500B59C42 /* CollectionVisual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026C427F0AA8500B59C42 /* CollectionVisual.swift */; };
-		5C5026C727F0AB3900B59C42 /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026C627F0AB3900B59C42 /* CollectionHeader.swift */; };
-		5C5026C927F0AB4500B59C42 /* CollectionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */; };
 		5C5026CB27F0BC3100B59C42 /* CreatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CA27F0BC3100B59C42 /* CreatorItem.swift */; };
-		5C5026CD27F0CA3000B59C42 /* CollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CC27F0CA2F00B59C42 /* CollectionSection.swift */; };
 		5C5026CF27F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
 		5C5026D027F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
 		5C5026D127F0ED6D00B59C42 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5026CE27F0ED6D00B59C42 /* Helpers.swift */; };
@@ -275,6 +271,9 @@
 		5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */; };
 		5CE9CFA427B57A5900F29938 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */; };
 		5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */; };
+		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
+		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
+		5CF4A81827F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,11 +349,7 @@
 		5C3C881527EC1E7D005BECA1 /* SyncWalletOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncWalletOperation.swift; sourceTree = "<group>"; };
 		5C3D47AF27C97FD500C16464 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		5C3D47B327C98E5A00C16464 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		5C5026C427F0AA8500B59C42 /* CollectionVisual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVisual.swift; sourceTree = "<group>"; };
-		5C5026C627F0AB3900B59C42 /* CollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
-		5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDescription.swift; sourceTree = "<group>"; };
 		5C5026CA27F0BC3100B59C42 /* CreatorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorItem.swift; sourceTree = "<group>"; };
-		5C5026CC27F0CA2F00B59C42 /* CollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSection.swift; sourceTree = "<group>"; };
 		5C5026CE27F0ED6D00B59C42 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		5C55E2AD27EB5D3B008639DD /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		5C55E2B927EB5E18008639DD /* ParseNFTOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseNFTOperation.swift; sourceTree = "<group>"; };
@@ -465,6 +460,7 @@
 		5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPrompt.swift; sourceTree = "<group>"; };
+		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +615,7 @@
 		5C63084C27B2B46600AC2A24 /* Static */ = {
 			isa = PBXGroup;
 			children = (
+				5CF4A81527F27C9B0074C4FE /* testing.png */,
 				5CBC068D27BC5BC200C2CADD /* eat-b-w-00.png */,
 				5CBC068F27BC5BC200C2CADD /* eat-b-w-01.png */,
 				5CBC069127BC5BC200C2CADD /* eat-b-w-02.png */,
@@ -751,10 +748,6 @@
 				5C5026CA27F0BC3100B59C42 /* CreatorItem.swift */,
 				5C93785327F23326003281EC /* CollectionItem.swift */,
 				5C93785527F2342B003281EC /* CollectionItem+Extensions.swift */,
-				5C5026CC27F0CA2F00B59C42 /* CollectionSection.swift */,
-				5C5026C427F0AA8500B59C42 /* CollectionVisual.swift */,
-				5C5026C627F0AB3900B59C42 /* CollectionHeader.swift */,
-				5C5026C827F0AB4500B59C42 /* CollectionDescription.swift */,
 				5C63087027B2C4BC00AC2A24 /* NFTParseTaskItem.swift */,
 				5C63087E27B2CBEE00AC2A24 /* NFTParseTaskItem+Extensions.swift */,
 				5C91BE1227B44AE7001074CE /* NFTCard.swift */,
@@ -1000,6 +993,7 @@
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
+				5CF4A81627F27C9B0074C4FE /* testing.png in Resources */,
 				5CBC06B327BC5BC300C2CADD /* eat-w-b-03.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
 				5C36B35527E9111E0039A50E /* spinner-01.json in Resources */,
@@ -1048,6 +1042,7 @@
 				5CBC06BD27BC5BC300C2CADD /* eat-w-b-05.png in Resources */,
 				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
 				5CBC06AB27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
+				5CF4A81727F27C9B0074C4FE /* testing.png in Resources */,
 				5CBC06A227BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5CBC06C027BC5BC300C2CADD /* eat-b-w-04.png in Resources */,
 				5CBC06C627BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
@@ -1077,6 +1072,7 @@
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
+				5CF4A81827F27C9B0074C4FE /* testing.png in Resources */,
 				5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */,
 				5CBC069D27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
 				5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */,
@@ -1106,9 +1102,7 @@
 				5C035EDE27B6C5C600A11697 /* NFTDescription.swift in Sources */,
 				5C55E2CD27EB8A9B008639DD /* LottieView.swift in Sources */,
 				5CD2ADAB27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
-				5C5026C527F0AA8500B59C42 /* CollectionVisual.swift in Sources */,
 				5C91BE2827B47BC3001074CE /* NFTSheet.swift in Sources */,
-				5C5026C727F0AB3900B59C42 /* CollectionHeader.swift in Sources */,
 				5C574CEB27BAF09500212FED /* APIAlchemyProvider.swift in Sources */,
 				5C06457427C5C3E200E97D1C /* CachedNFTStorage.swift in Sources */,
 				5C574CE727BAF00E00212FED /* APIEtherscan.swift in Sources */,
@@ -1153,9 +1147,7 @@
 				5C06457827C5E2B200E97D1C /* FeedbackPrompt.swift in Sources */,
 				5C035EDC27B6C5B800A11697 /* NFTHeader.swift in Sources */,
 				5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */,
-				5C5026CD27F0CA3000B59C42 /* CollectionSection.swift in Sources */,
 				5C84117927B9A9530021008E /* AttributeBox.swift in Sources */,
-				5C5026C927F0AB4500B59C42 /* CollectionDescription.swift in Sources */,
 				5CA9ADA727C6A3CA003C25DE /* WalletsSheet.swift in Sources */,
 				5C93784E27F21036003281EC /* OverlaySpinner.swift in Sources */,
 				5C63087127B2C4BC00AC2A24 /* NFTParseTaskItem.swift in Sources */,

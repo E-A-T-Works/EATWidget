@@ -7,93 +7,104 @@
 
 import SwiftUI
 
+
 struct CollectionPage: View {
     let address: String
-    
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    
-    @Namespace var animation
-    
+
     @StateObject private var viewModel: CollectionPageViewModel
-    
-    @State var brandingIcon: Int = 0
+
     
     init(address: String) {
         self.address = address
-        
+
         self._viewModel = StateObject(wrappedValue: CollectionPageViewModel(address: address))
         
         LayoutHelpers.stylePageTitle()
         
-        UITabBar.appearance().isHidden = true
+//        let appearence = UINavigationBarAppearance()
+//
+//        appearence.backgroundImage = UIImage(named: "testing")!
+//        appearence.backgroundImageContentMode = .scaleAspectFill
+//        appearence.backgroundEffect = UIBlurEffect(style: .systemThickMaterial)
+//
+//        UINavigationBar.appearance().standardAppearance = appearence
+//        UINavigationBar.appearance().compactAppearance = appearence
+//        UINavigationBar.appearance().scrollEdgeAppearance = appearence
+    
     }
-    
-    
-    var body: some View {
-        
-        ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
-            
-            if viewModel.collection == nil {
-                
-                ViewLoader()
-                
-            } else {
 
-                ScrollView {
+
+    var body: some View {
+
+        ScrollView {
+
+            HStack {
+                Text(address.formattedWeb3)
+                    .font(.system(size: 12.0, design: .monospaced))
+                    .fontWeight(.light)
+                    .lineLimit(1)
                     
-                    CollectionSection(item: viewModel.collection!)
-                    
-                    Divider().padding()
-                    
-                    StaggeredGrid(
-                        list: viewModel.collected,
-                        columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
-                        spacing: 10,
-                        lazy: true,
-                        content: { item in
-                            NFTCard(item: item)
-                                .matchedGeometryEffect(id: item.id, in: animation)
-                                .onTapGesture {
-                                    
-                                    guard
-                                        let address = item.address,
-                                        let tokenId = item.tokenId
-                                    else { return}
-                                    
-                                    viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
-                                }
-                        }
-                    )
-                    .padding(.horizontal)
-                    
-                    Divider().padding()
-                    
-                    Text("Everything else")
-                }
-    
+                Spacer()
             }
+            .padding(.horizontal, 22)
+            
+            if viewModel.collection?.text != nil {
+                HStack {
+                    Text(viewModel.collection!.text!)
+                    .font(.system(size: 12.0, design: .monospaced))
+                    .lineSpacing(1.5)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 22)
+                .padding(.vertical)
+            }
+            
+            VStack {
+                HStack {
+                
+                    Text("Collected")
+                        .font(.system(size: 16.0, design: .monospaced))
+                        .fontWeight(.black)
+                        .lineLimit(1)
+                    
+                    Spacer()
+                }
+                
+                Divider()
+            }
+            .padding(.horizontal, 22)
+            .padding(.vertical)
+            
+            StaggeredGrid(
+                list: viewModel.collected,
+                columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
+                spacing: 10,
+                lazy: true,
+                content: { item in
+                    Button {
+                        guard
+                            let address = item.address,
+                            let tokenId = item.tokenId
+                        else { return}
+
+                        viewModel.presentNFTDetailsSheet(address: address, tokenId: tokenId)
+                    } label: {
+                        NFTCard(item: item)
+                    }
+                    .buttonStyle(.plain)
+                }
+            )
+            .padding(.horizontal)
+            
         }
-        .ignoresSafeArea()
-        .navigationTitle("Every Icon")
-//        .navigationBarBackButtonHidden(true)
-//        .toolbar(content: {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button(action: {
-//                    presentationMode.wrappedValue.dismiss()
-//                }, label: {
-//                    HStack {
-//                        Image(systemName: "chevron.backward")
-//                            .foregroundColor(colorScheme == .dark ? .white : .black)
-//                    }
-//                })
-//                
-//              
-//            }
-//        })
+        .navigationTitle(viewModel.collection?.title ?? "Unkown Collection")
         .sheet(isPresented: $viewModel.showingSheet) {
             switch viewModel.sheetContent {
             case .NFTDetails(let address, let tokenId):
@@ -110,6 +121,7 @@ struct CollectionPage: View {
             }
         }
     }
+
 }
 
 struct CollectionPage_Previews: PreviewProvider {
@@ -117,6 +129,6 @@ struct CollectionPage_Previews: PreviewProvider {
         NavigationView {
             CollectionPage(address: "0xf9a423b86afbf8db41d7f24fa56848f56684e43")
         }.previewInterfaceOrientation(.portrait)
-        
+
     }
 }
