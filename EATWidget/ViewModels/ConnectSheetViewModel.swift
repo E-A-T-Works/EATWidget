@@ -220,11 +220,9 @@ final class ConnectSheetViewModel: ObservableObject {
                 title: title
             )
 
-            let c = try collectionStorage.sync(
+            let _ = try collectionStorage.sync(
                 list: collections
             )
-            
-            print("collections stored:::: \(c)")
             
             let _ = try nftStorage.sync(
                 wallet: wallet,

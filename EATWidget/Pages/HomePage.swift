@@ -195,6 +195,9 @@ struct HomePage: View {
                 }
             }
         }
+        .onAppear {
+//            viewModel.sync()
+        }
     }
     
 }

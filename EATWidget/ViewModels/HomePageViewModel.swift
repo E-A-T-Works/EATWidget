@@ -155,16 +155,16 @@ final class HomePageViewModel: ObservableObject {
         
         let wallets = walletStorage.fetch()
         
-        print("➡️ syncing \(wallets.count) wallets...")
+        print("🏁 syncing \(wallets.count) wallets")
         
         wallets.forEach { wallet in
             let syncOp = SyncWalletOperation(wallet: wallet)
             syncOp.completionBlock = { }
             queue.addOperation(syncOp)
         }
-        
+
         DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
-            
+
             self?.queue.waitUntilAllOperationsAreFinished()
 
             DispatchQueue.main.async {
@@ -172,5 +172,7 @@ final class HomePageViewModel: ObservableObject {
             }
         }
     }
+    
+
 }
 

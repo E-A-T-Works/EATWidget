@@ -13,9 +13,11 @@ final class SyncWalletOperation: AsyncOperation {
     private let wallet: CachedWallet
     private let completionHandler: ((NFT?) -> Void)?
     
+    private let nftStorage: CachedNFTStorage = CachedNFTStorage.shared
+    private let collectionStorage: CachedCollectionStorage = CachedCollectionStorage.shared
+    
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
     private let adapters: NFTAdapters = NFTAdapters.shared
-    private let storage: CachedNFTStorage = CachedNFTStorage.shared
     
     private let queue = OperationQueue()
     
@@ -27,14 +29,19 @@ final class SyncWalletOperation: AsyncOperation {
     }
     
     override func main() {
+        
+        guard let address = wallet.address else {
+            state = .finished
+            return
+        }
+        
+        
         Task {
             
-            guard let address = wallet.address else {
-                state = .finished
-                return
-            }
-            
+            //
             // lookup
+            //
+            
             var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
             do {
                 results = try await api.getNFTs(for: address)
@@ -44,67 +51,67 @@ final class SyncWalletOperation: AsyncOperation {
                 return
             }
             
-            // parse
-            var parsedList: [NFT] = [NFT]()
+            //
+            // parse nfts
+            //
+            
+            var nfts: [NFT] = [NFT]()
 
             results.indices.forEach { index in
                 let data = results[index]
-                
+
                 let parseOp = ParseNFTOperation(data: data)
-                print("❇️ \(data.contract.address)|\(data.id.tokenId)")
                 parseOp.completionBlock = {
                     guard let parsed = parseOp.parsed else { return }
-                    print("✅ \(parsed.address)|\(parsed.tokenId)")
-                    parsedList.append(parsed)
-                    
+                    nfts.append(parsed)
                 }
-                
+
                 queue.addOperation(parseOp)
             }
-            
-            
+
             queue.waitUntilAllOperationsAreFinished()
+
+            print("done w nfts \(nfts.count)")
             
-            // store
-            do {
-                let _ = try storage.sync(wallet: wallet, list: parsedList)
-            } catch {
-                print("⚠️ sync::store \(error)")
-                state = .finished
-                return
+            //
+            // parse collections
+            //
+            
+            var collections: [Collection] = [Collection]()
+
+            let addresses = nfts
+                .map { $0.address }
+                .compactMap { $0 }
+                .unique()
+
+            addresses.indices.forEach { index in
+                let address = addresses[index]
+
+                let parseOp = ParseCollectionOperation(address: address)
+
+                parseOp.completionBlock = {
+                    guard let parsed = parseOp.parsed else { return }
+                    collections.append(parsed)
+                }
+
+                queue.addOperation(parseOp)
             }
 
-            // Sync Results
+            queue.waitUntilAllOperationsAreFinished()
             
-//                guard Auth.auth().currentUser != nil else {
-//                    state = .finished
-//                    return
-//                }
-//
-//                let db = Firestore.firestore()
-//
-//                await list.map { $0?.tokenId }.concurrentForEach({ tokenId in
-//
-//                    do {
-//                        try await db
-//                            .collection("contracts")
-//                            .document(address)
-//                            .collection("assets")
-//                            .document(tokenId)
-//                            .setData([
-//                                "success": tokenId != nil,
-//                                "timestamp": Date()
-//                            ])
-//                    } catch {
-//                        print("⚠️ Failed to log to firestore \(error)")
-//                    }
-//                })
+            print("done w collections \(collections.count)")
 
-                
+            //
+            // compare
+            //
 
+            let _ = try? collectionStorage.sync(list: collections)
+            let _ = try? nftStorage.sync(wallet: wallet, list: nfts)
+            
             // mark task as done
             state = .finished
         }
+
     }
     
     override func cancel() {
