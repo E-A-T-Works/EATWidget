@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AttributeBox: View {
+    @Environment(\.colorScheme) var colorScheme
     
     let key: String?
     let value: String?
@@ -15,7 +16,12 @@ struct AttributeBox: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.black.opacity(0.024)
+                
+                if colorScheme == .dark {
+                    Color.white.opacity(0.12)
+                } else {
+                    Color.black.opacity(0.04)
+                }
                 
                 VStack {
                     Text(key ?? "--")

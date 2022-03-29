@@ -57,7 +57,7 @@ struct CollectionItem: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 12, height: 12, alignment: .center)
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
                 .opacity(0.5)
             
         }
