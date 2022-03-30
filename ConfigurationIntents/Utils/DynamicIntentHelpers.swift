@@ -53,7 +53,7 @@ final class DynamicIntentHelpers {
         }.map { item in
             return NFTINO(
                 identifier: "\(item.address!)/\(item.tokenId!)",
-                display: (item.title ?? item.tokenId!.formattedWeb3)!,
+                display: (item.title != nil && !item.title!.isEmpty ? item.title : item.tokenId!.formattedWeb3)!,
                 subtitle: nil,
                 image: nil
 //                image: INImage(imageData: item.image!.blob!)

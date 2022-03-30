@@ -24,7 +24,8 @@ final class HomePageViewModel: ObservableObject {
 
     @Published private(set) var wallets: [CachedWallet] = []
     @Published private(set) var nfts: [CachedNFT] = []
-    @Published private(set) var collections: [CachedCollection] = []
+    @Published private(set) var addresses: [String] = []
+    @Published private(set) var collections: [Collection] = []
     
     @Published private(set) var filterBy: CachedWallet?
     
@@ -47,6 +48,10 @@ final class HomePageViewModel: ObservableObject {
         walletStorage.$list
             .compactMap { $0 }
             .receive(on: RunLoop.main)
+            .map {
+                print("✅ $wallets::tick: \($0.count)")
+                return $0
+            }
             .assign(to: &$wallets)
         
         Publishers.CombineLatest(nftStorage.$list, $filterBy)
@@ -59,21 +64,73 @@ final class HomePageViewModel: ObservableObject {
             }
             .compactMap { $0 }
             .receive(on: RunLoop.main)
+            .map {
+                print("✅ $nfts::tick: \($0.count)")
+                return $0
+            }
             .assign(to: &$nfts)
         
-        Publishers.CombineLatest($nfts, collectionStorage.$list)
-            .map { (nfts, collections) -> [CachedCollection] in
-                return collections.filter { collection in
-                    let list = nfts.filter { $0.address == collection.address }
-                    
-                    return !list.isEmpty
-                }
-            }
+        $nfts
+            .map { $0.map { $0.address }.compactMap { $0 } }
+            .map { $0.unique() }
             .removeDuplicates { prev, curr in
                 prev.elementsEqual(curr)
             }
             .receive(on: RunLoop.main)
+            .map {
+                print("✅ $addresses::tick: \($0.count)")
+                return $0
+            }
+            .assign(to: &$addresses)
+        
+        $addresses
+            .map { batch in
+                batch.map { address in
+                    let cached = self.collectionStorage.fetch()
+
+                    if let item = cached.first(where: {$0.address == address}) {
+
+                       return Collection(
+                            id: item.address!,
+                            address: item.address!,
+                            title: item.title!,
+                            text: item.text,
+                            links: [],
+                            banner: item.banner != nil ? UIImage(data: (item.banner?.blob)!)! : nil,
+                            thumbnail: item.thumbnail != nil ? UIImage(data: (item.thumbnail?.blob)!)! : nil
+                       )
+                    } else {
+                       return Collection(
+                            id: address,
+                            address: address,
+                            title: address.formattedWeb3,
+                            text: "",
+                            links: [],
+                            banner: nil,
+                            thumbnail: nil
+                       )
+                    }
+                }
+            }
+            .receive(on: RunLoop.main)
             .assign(to: &$collections)
+        
+
+        
+//        Publishers.CombineLatest($nfts, collectionStorage.$list)
+//            .map { (nfts, collections) -> [CachedCollection] in
+//                return collections.filter { collection in
+//                    let list = nfts.filter { $0.address == collection.address }
+//
+//                    return !list.isEmpty
+//                }
+//            }
+//            .removeDuplicates { prev, curr in
+//                prev.elementsEqual(curr)
+//            }
+//            .receive(on: RunLoop.main)
+//            .assign(to: &$collections)
+        
     }
     
     private func autoPresentConnectSheetIfNeeded() {
@@ -153,24 +210,24 @@ final class HomePageViewModel: ObservableObject {
     
     func sync() {
         
-        let wallets = walletStorage.fetch()
-        
-        print("🏁 syncing \(wallets.count) wallets")
-        
-        wallets.forEach { wallet in
-            let syncOp = SyncWalletOperation(wallet: wallet)
-            syncOp.completionBlock = { }
-            queue.addOperation(syncOp)
-        }
-
-        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
-
-            self?.queue.waitUntilAllOperationsAreFinished()
-
-            DispatchQueue.main.async {
-                print("♻️ done with sync")
-            }
-        }
+//        let wallets = walletStorage.fetch()
+//
+//        print("🏁 syncing \(wallets.count) wallets")
+//
+//        wallets.forEach { wallet in
+//            let syncOp = SyncWalletOperation(wallet: wallet)
+//            syncOp.completionBlock = { }
+//            queue.addOperation(syncOp)
+//        }
+//
+//        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async { [weak self] in
+//
+//            self?.queue.waitUntilAllOperationsAreFinished()
+//
+//            DispatchQueue.main.async {
+//                print("♻️ done with sync")
+//            }
+//        }
     }
     
 

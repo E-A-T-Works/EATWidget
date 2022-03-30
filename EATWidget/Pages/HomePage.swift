@@ -43,20 +43,24 @@ struct HomePage: View {
                     
                     DiscordPrompt()
                     
+//                    ForEach(viewModel.addresses, id: \.self) { address in
+//
+//                        Text(address)
+//
+//                    }
                     ForEach(viewModel.collections) { collection in
 
                         NavigationLink(
-                            destination: CollectionPage(address: collection.address!)
+                            destination: CollectionPage(address: collection.address)
                         ) {
                             CollectionItem(item: collection)
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal)
                         .padding(.top)
-                    
-                        
+
                         Divider().padding(.horizontal)
-                        
+
                         StaggeredGrid(
                             list: viewModel.nfts.filter { $0.address == collection.address },
                             columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),

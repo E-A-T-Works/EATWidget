@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 
+
+extension CollectionItem {
+    init(item: Collection) {
+        address = item.address
+        thumbnail = item.thumbnail
+        title = item.title
+    }
+}
+
 extension CollectionItem {
     init(item: CachedCollection) {
         address = item.address!

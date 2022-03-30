@@ -43,11 +43,10 @@ struct ConnectSheet: View {
                             )
                         )
                         .disabled(viewModel.isAddressSet)
+                        .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .submitLabel(.next)
-                        .onSubmit {
-                            Task { await viewModel.lookupAndParse() }
-                        }
+                        .onSubmit { Task { await viewModel.lookupAndParse() } }
                         
                         Spacer()
                         
@@ -114,7 +113,15 @@ struct ConnectSheet: View {
                             } header: {
                                 
                                 if viewModel.isParsing {
-                                    Text("Imported \(viewModel.parsedCount) out of \(viewModel.totalCount)")
+                                    HStack {
+                                        Text("Importing \(viewModel.parsedCount) out of \(viewModel.totalCount)")
+                                        
+                                        Spacer()
+                                    
+                                        LottieView(name: "spinner-00", loopMode: .loop)
+                                            .frame(width: 32, height: 32)
+                                    }
+
                                 } else {
                                     Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
                                 }
@@ -164,7 +171,7 @@ struct ConnectSheet: View {
                         Text("DONE")
                             .font(.system(size: 16, design: .monospaced))
                     } else {
-                        Text("CONNECT")
+                        Text("IMPORT")
                             .font(.system(size: 16, design: .monospaced))
                     }
 

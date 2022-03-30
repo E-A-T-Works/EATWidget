@@ -271,6 +271,10 @@
 		5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
 		5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */; };
 		5CE9CFA427B57A5900F29938 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */; };
+		5CF2B98E27F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
+		5CF2B98F27F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
+		5CF2B99027F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
+		5CF2B99227F4CB7800D25388 /* APIOpenseaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */; };
 		5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -463,6 +467,8 @@
 		5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDismissButton.swift; sourceTree = "<group>"; };
 		5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
+		5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenseaProvider.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -508,6 +514,7 @@
 			children = (
 				5C28D1C327ECB67100F98779 /* FirebaseProvider.swift */,
 				5C574CEA27BAF09500212FED /* APIAlchemyProvider.swift */,
+				5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -683,6 +690,7 @@
 				5C63086127B2B62A00AC2A24 /* APIRequest.swift */,
 				5C63085F27B2B60F00AC2A24 /* Formatters.swift */,
 				5C91BE0E27B43A27001074CE /* Theme.swift */,
+				5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */,
 				5C63085D27B2B5FD00AC2A24 /* Sequence+Extensions.swift */,
 				5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */,
 				5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */,
@@ -1178,11 +1186,13 @@
 				5C93785627F2342B003281EC /* CollectionItem+Extensions.swift in Sources */,
 				5C3C881027EBAFE8005BECA1 /* Wallet.swift in Sources */,
 				5C035EE627B6C64E00A11697 /* URLButton.swift in Sources */,
+				5CF2B99227F4CB7800D25388 /* APIOpenseaProvider.swift in Sources */,
 				5C93785227F21BF1003281EC /* CollectionAdapters.swift in Sources */,
 				5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* NFTParseTaskItem+Extensions.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* HomePageViewModel.swift in Sources */,
 				5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */,
+				5CF2B98E27F4A55E00D25388 /* Array+Extensions.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
 				5C5026CF27F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
@@ -1229,6 +1239,7 @@
 				5C5026D027F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5C06457527C5C3E200E97D1C /* CachedNFTStorage.swift in Sources */,
 				5C6308A227B2D8EE00AC2A24 /* IntentHandler.swift in Sources */,
+				5CF2B98F27F4A55E00D25388 /* Array+Extensions.swift in Sources */,
 				5C574CE027BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C91BE1027B43A27001074CE /* Theme.swift in Sources */,
 				5C035EE727B6C64E00A11697 /* URLButton.swift in Sources */,
@@ -1249,6 +1260,7 @@
 				5C6308F527B2F17E00AC2A24 /* BasicNFTView.swift in Sources */,
 				5C6308FB27B2F35B00AC2A24 /* BasicNFTView+Extensions.swift in Sources */,
 				5C06457627C5C3E200E97D1C /* CachedNFTStorage.swift in Sources */,
+				5CF2B99027F4A55E00D25388 /* Array+Extensions.swift in Sources */,
 				5C5026D127F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
 				5C60F06527BCCDE3006F8AB4 /* GalleryView+Extensions.swift in Sources */,
@@ -1432,7 +1444,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1465,7 +1477,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1495,7 +1507,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1521,7 +1533,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1549,7 +1561,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -1577,7 +1589,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;

@@ -66,13 +66,13 @@ final class CollectionPageViewModel: ObservableObject {
     }
     
     private func fetchAllNFTs() {
-        Task {
-            do {
-                let _ = try await api.getNFTsForCollection(for: address)
-            } catch {
-                print("⚠️ \(error)")
-            }
-        }
+//        Task {
+//            do {
+//                let _ = try await api.getNFTsForCollection(for: address)
+//            } catch {
+//                print("⚠️ \(error)")
+//            }
+//        }
     }
     
     

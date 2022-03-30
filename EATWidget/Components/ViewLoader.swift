@@ -10,6 +10,7 @@ import SwiftUI
 struct ViewLoader: View {
     
     var seed: Int = 0
+    var text: String? = "Loading..."
     
     init(seed: Int = 0) {
         if seed < 0 || seed > 5 {
@@ -27,10 +28,13 @@ struct ViewLoader: View {
                 LottieView(name: "spinner-\(String(format: "%02d", seed))", loopMode: .loop)
                     .frame(width: 80, height: 80)
                 
-                Text("Loading...")
-                    .font(.system(size: 12, design: .monospaced))
-                    .opacity(0.72)
-                    .padding(.vertical, 8)
+                if text != nil && !text!.isEmpty {
+                    Text("Loading...")
+                        .font(.system(size: 12, design: .monospaced))
+                        .opacity(0.72)
+                        .padding(.vertical, 8)
+                }
+                
             }
             
             Spacer()

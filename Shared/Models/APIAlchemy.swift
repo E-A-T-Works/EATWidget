@@ -252,12 +252,14 @@ extension APIAlchemyNFT {
 struct APIAlchemyGetNFTsResponse {
     let ownedNfts: [APIAlchemyNFT]
     let totalCount: Int
+    let pageKey: String?
 }
 
 extension APIAlchemyGetNFTsResponse: Decodable {
     enum CodingKeys: String, CodingKey {
         case ownedNfts = "ownedNfts"
         case totalCount = "totalCount"
+        case pageKey = "pageKey"
     }
     
     init(from decoder: Decoder) throws {
@@ -265,5 +267,6 @@ extension APIAlchemyGetNFTsResponse: Decodable {
 
         ownedNfts = (try? container.decode([APIAlchemyNFT].self, forKey: .ownedNfts)) ?? []
         totalCount = (try? container.decode(Int.self, forKey: .totalCount)) ?? 0
+        pageKey = (try? container.decode(String.self, forKey: .pageKey)) ?? nil
     }
 }

@@ -12,22 +12,49 @@ import UIKit
 final class APIAlchemyProvider {
     static let shared: APIAlchemyProvider = APIAlchemyProvider()
     
+    var nfts: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    
     func getNFTs(for ownerAddress: String) async throws -> [APIAlchemyNFT] {
+        clearResults()
+        
+        let key = try resolveKey()
+        
+        try await performAPICall(for: "/v2/\(key)/getNFTs", owner: ownerAddress)
+        
+        return nfts
+    }
+    
+    
+    // MARK: - Private
+    
+    private func resolveKey() throws -> String {
         let apiKey = Bundle.main.object(forInfoDictionaryKey: "API_KEY_ALCHEMY") as? String
         guard let key = apiKey, !key.isEmpty else {
-            print("⚠️ APIAlchemyProvider::fetchNFTs: Missing API Key")
-
+            print("⚠️ APIAlchemyProvider::resolveKey: Missing API Key")
             throw APIError.MissingKey
         }
         
+        return key
+    }
+    
+    private func clearResults() {
+        nfts =  [APIAlchemyNFT]()
+    }
+    
+    private func performAPICall(for path: String, owner: String, pageKey: String? = nil) async throws {
+
         var components = URLComponents()
         components.scheme = "https"
         components.host = "eth-mainnet.alchemyapi.io"
-        components.path = "/v2/\(key)/getNFTs"
+        components.path = path
         components.queryItems = [
-            URLQueryItem(name: "owner", value: ownerAddress),
+            URLQueryItem(name: "owner", value: owner),
             URLQueryItem(name: "withMetadata", value: "true")
        ]
+        
+        if pageKey != nil {
+            components.queryItems?.append(URLQueryItem(name: "pageKey", value: pageKey))
+        }
         
         guard let url = components.url else {
             throw APIError.InvalidUrl
@@ -35,21 +62,18 @@ final class APIAlchemyProvider {
         
         do {
             let request = APIRequest(url: url)
-            
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
             
-            return response.ownedNfts
-
-        } catch {
-            print("⚠️ APIAlchemyProvider::fetchNFTs: \(error)")
+            let list = response.ownedNfts
             
-            throw APIError.BadResponse
-        }
-    }
-    
-    func getNFTsForCollection(for contractAddress: String, startToken: String? = nil) async throws -> [APIAlchemyNFT] {
-        
-        
-        return [APIAlchemyNFT]()
+            self.nfts.append(contentsOf: list)
+            
+            guard let nextPageKey = response.pageKey else {
+                return
+            }
+
+            try await performAPICall(for: path, owner: owner, pageKey: nextPageKey)
+            
+        } catch { throw APIError.BadResponse }
     }
 }
