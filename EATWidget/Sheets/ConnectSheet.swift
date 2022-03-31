@@ -78,6 +78,7 @@ struct ConnectSheet: View {
                             Text("You can find your Ethereum wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." ).font(.system(size: 12, design: .monospaced))
                                 .fixedSize(horizontal: false, vertical: true)
                                 .lineLimit(nil)
+                                .lineSpacing(1.4)
                                 .multilineTextAlignment(.leading)
     
                         }
@@ -111,6 +112,7 @@ struct ConnectSheet: View {
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
+                                    .lineSpacing(1.4)
                                     .multilineTextAlignment(.leading)
                                     .opacity(0.72)
                                     .padding(.bottom)
@@ -120,6 +122,7 @@ struct ConnectSheet: View {
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
+                                    .lineSpacing(1.4)
                                     .multilineTextAlignment(.leading)
                                     .opacity(0.72)
                                     .padding(.bottom)
@@ -128,6 +131,7 @@ struct ConnectSheet: View {
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
+                                    .lineSpacing(1.4)
                                     .multilineTextAlignment(.leading)
                                     .opacity(0.72)
                                     .padding(.bottom)
@@ -204,13 +208,6 @@ struct ConnectSheet: View {
                         }
                     }
                 }
-                else {
-                    Text("boop")
-                        .font(.system(size: 12, design: .monospaced))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(nil)
-                        .multilineTextAlignment(.leading)
-                }
             }
            
             if viewModel.showingLoader {
@@ -235,7 +232,7 @@ struct ConnectSheet: View {
                         Text("DONE")
                             .font(.system(size: 16, design: .monospaced))
                     } else {
-                        Text("IMPORT")
+                        Text("CONNECT")
                             .font(.system(size: 16, design: .monospaced))
                     }
 

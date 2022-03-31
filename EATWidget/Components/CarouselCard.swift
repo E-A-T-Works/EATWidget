@@ -42,10 +42,19 @@ struct CarouselCard: View {
                         Text(title)
                             .font(.system(size: 16, design: .monospaced))
                             .fontWeight(.black)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(1)
+                            .padding(.bottom)
+                            
                         
                         Text(text)
                             .font(.system(size: 12, design: .monospaced))
-                            .opacity(0.64)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(nil)
+                            .lineSpacing(1.4)
+                            .multilineTextAlignment(.leading)
+                            .opacity(0.72)
+                            .padding(.bottom)
                     }
                     Spacer()
                 }
@@ -62,8 +71,8 @@ struct CarouselCard_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CarouselCard(
-                title: "Title",
-                text: "Text",
+                title: "1. Get Jiggy",
+                text: "Start by going to your home screen and loooooooong pressing on it until everything starts jiggling like it's 1967.",
                 animationUrl: Bundle.main.url(
                     forResource: "tutorial-01",
                     withExtension: "MOV"
