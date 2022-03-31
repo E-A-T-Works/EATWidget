@@ -120,9 +120,6 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
             return
         }
         
-        
-        print("🎨 BasicNFTWidget:getTimelineForRandomNFT \(data)")
-        
         let timeline = Timeline(
             entries: [
                 BasicNFTWidgetEntry(
@@ -197,8 +194,6 @@ struct BasicNFTWidgetProvider: IntentTimelineProvider {
             return
             
         }
-        
-        print("🎨 BasicNFTWidget:getTimelineForSpecificNFT \(data)")
         
         let timeline = Timeline(
             entries: [

@@ -15,16 +15,16 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if splashing {
-                SplashPage()
+                SplashPage() {
+                    print("!!!!")
+                    
+                    splashing = false
+                }
             } else {
                 NavigationView {
                     HomePage()
                 }
                 .navigationViewStyle(.stack)
-            }
-        }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                splashing = false
             }
         }
     }

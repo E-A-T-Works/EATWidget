@@ -97,8 +97,6 @@ struct GalleryWidgetProvider: IntentTimelineProvider {
         }) as? [[String]] ?? []
         
         // Placeholder if empty
-        
-        print("🎨 GalleryWidget::getTimeline \(selection)")
 
         if selection.isEmpty {
             let timeline = Timeline(

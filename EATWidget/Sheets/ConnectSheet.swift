@@ -53,7 +53,6 @@ struct ConnectSheet: View {
                         
                         if viewModel.form.address.isEmpty {
                             Button {
-                                print("paste")
                                 viewModel.setAddressFromPasteboard()
                             } label: {
                                 Image(systemName: "doc.on.clipboard")

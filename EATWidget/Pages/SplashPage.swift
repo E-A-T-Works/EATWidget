@@ -9,15 +9,20 @@ import SwiftUI
 
 struct SplashPage: View {
     
-    @State var line1: String = "e."
-    @State var line2: String = "a."
-    @State var line3: String = "t."
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
+    
+    @State var line1: String = ""
+    @State var line2: String = ""
+    @State var line3: String = ""
+    
+    var onComplete: (() -> Void)?
     
     var body: some View {
         ZStack {
 
-            
             VStack(alignment: .leading) {
+                
+                Spacer()
                 
                 HStack {
                     Branding()
@@ -28,49 +33,64 @@ struct SplashPage: View {
                 .padding(.horizontal, 10)
                 
                 HStack {
-                    Text(line1)
-                        .font(.system(size: 42.0, design: .monospaced))
-                        .fontWeight(.black)
-                        .lineLimit(1)
-                        .animation(.easeIn, value: line1.count)
-                    
+                    if line1.isEmpty {
+                        Spacer(minLength: 42)
+                    } else {
+                        Text(line1)
+                            .font(.system(size: 42.0, design: .monospaced))
+                            .fontWeight(.black)
+                            .lineLimit(1)
+                    }
+
                     Spacer()
                 }.padding(.horizontal)
                 
                 
                 HStack {
-                    Text(line2)
-                        .font(.system(size: 42.0, design: .monospaced))
-                        .fontWeight(.black)
-                        .lineLimit(1)
-                        .animation(.easeIn, value: line1.count)
+                    if line2.isEmpty {
+                        Spacer(minLength: 42)
+                    } else {
+                        Text(line2)
+                            .font(.system(size: 42.0, design: .monospaced))
+                            .fontWeight(.black)
+                            .lineLimit(1)
+                    }
                     
                     Spacer()
                 }.padding(.horizontal)
                 
                 HStack {
-                    Text(line3)
-                        .font(.system(size: 42.0, design: .monospaced))
-                        .fontWeight(.black)
-                        .lineLimit(1)
-                        .animation(.easeIn, value: line1.count)
+                    if line3.isEmpty {
+                        Spacer(minLength: 42)
+                    } else {
+                        Text(line3)
+                            .font(.system(size: 42.0, design: .monospaced))
+                            .fontWeight(.black)
+                            .lineLimit(1)
+                    }
                     
                     Spacer()
                 }.padding(.horizontal)
-            }
+            }.padding(.bottom, safeAreaInsets.bottom)
         }
         .ignoresSafeArea()
         .onAppear {
-            "xperiments".enumerated().forEach { index, character in
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.1) {
+            let l1 = "e.xperiments"
+            let l2 = "a.rt"
+            let l3 = "t.echnology_"
+            
+            let delta = 0.1
+            
+            l1.enumerated().forEach { index, character in
+                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * delta) {
                     
                   line1 += String(character)
                     
                 }
             }
             
-            "rt".enumerated().forEach { index, character in
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.1) {
+            l2.enumerated().forEach { index, character in
+                DispatchQueue.main.asyncAfter(deadline: .now() + (Double(l1.count) * delta) + Double(index) * delta) {
                     
                   line2 += String(character)
                     
@@ -78,13 +98,24 @@ struct SplashPage: View {
             }
             
             
-            "echnology_".enumerated().forEach { index, character in
-                DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.1) {
+            l3.enumerated().forEach { index, character in
+                DispatchQueue.main.asyncAfter(deadline: .now() + (Double(l1.count) * delta) + (Double(l2.count) * delta) + Double(index) * delta) {
                     
                   line3 += String(character)
                     
                 }
             }
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + (Double(l1.count) * delta) + (Double(l2.count) * delta) + (Double(l3.count) * delta) + 0.5) {
+                
+                if onComplete != nil {
+                    onComplete!()
+                }
+                
+            }
+            
+            
         }
     }
 }
