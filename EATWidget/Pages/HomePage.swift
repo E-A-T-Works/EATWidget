@@ -41,13 +41,10 @@ struct HomePage: View {
                 
                 ScrollView(showsIndicators: false) {
                     
-                    DiscordPrompt()
+//                    DiscordPrompt()
                     
-//                    ForEach(viewModel.addresses, id: \.self) { address in
-//
-//                        Text(address)
-//
-//                    }
+                    
+                    
                     ForEach(viewModel.collections) { collection in
 
                         NavigationLink(
@@ -109,69 +106,87 @@ struct HomePage: View {
             ToolbarItem(
                 placement: .navigationBarTrailing,
                 content: {
+                    
+                    HStack {
+                        Spacer()
+                         
+                        if viewModel.wallets.isEmpty {
 
-                    if viewModel.wallets.isEmpty {
+                            Button(action: {
+                                viewModel.presentConnectSheet()
+                            }, label: {
+                                Text("connect")
+                                    .font(.system(size: 16, design: .monospaced))
+                            })
+                            
+                        } else if viewModel.filterBy != nil {
 
-                        Button(action: {
-                            viewModel.presentConnectSheet()
-                        }, label: {
-                            Text("connect")
-                                .font(.system(size: 16, design: .monospaced))
-                        })
-                        
-                    } else if viewModel.filterBy != nil {
-                        
-                        Button(action: {
-                            viewModel.clearFilterBy()
-                        }, label: {
-                            HStack {
-                                Text(viewModel.filterBy!.title ?? viewModel.filterBy!.address!.formattedWeb3)
-                                    .font(.system(size: 12, design: .monospaced))
+                            Button(action: {
+                                viewModel.clearFilterBy()
+                            }, label: {
+                                HStack {
+                                    Text(viewModel.filterBy!.title ?? viewModel.filterBy!.address!.formattedWeb3)
+                                        .font(.system(size: 12, design: .monospaced))
+                                    
+                                    Image(systemName: "xmark")
+                                        .font(.system(size: 8, design: .monospaced))
+                                }
                                 
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 8, design: .monospaced))
+                            }).buttonStyle(.bordered)
+                            
+                        } else {
+                            
+                            Link(destination: URL(string: "https://discord.gg/tmaddD9C")!) {
+                                
+                                Image(uiImage: UIImage(named: "Discord")!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 32, height: 32)
+                                
                             }
                             
-                        }).buttonStyle(.bordered)
-                        
-                    } else {
-                        
-                        Menu(content: {
-                            Section {
-                                ForEach(viewModel.wallets) { wallet in
+                            Menu(content: {
+                                Section {
+                                    ForEach(viewModel.wallets) { wallet in
+                                        Button(action: {
+                                            viewModel.setFilterBy(wallet: wallet)
+                                        }, label: {
+                                            Text(wallet.title ?? (wallet.address ?? "").formattedWeb3)
+                                        })
+                                    }
+                                }
+                                
+                                Section {
                                     Button(action: {
-                                        viewModel.setFilterBy(wallet: wallet)
+                                        viewModel.presentWalletsSheet()
                                     }, label: {
-                                        Text(wallet.title ?? (wallet.address ?? "").formattedWeb3)
+                                        HStack {
+                                            Image(systemName: "slider.horizontal.3")
+                                            Text("Manage Wallets")
+                                        }
+                                    })
+                                    
+                                    Button(action: {
+                                        viewModel.presentConnectSheet()
+                                    }, label: {
+                                        HStack {
+                                            Image(systemName: "plus")
+                                            Text("Connect Wallet")
+                                        }
                                     })
                                 }
-                            }
+                            }, label: {
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+                                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                            })
                             
-                            Section {
-                                Button(action: {
-                                    viewModel.presentWalletsSheet()
-                                }, label: {
-                                    HStack {
-                                        Image(systemName: "slider.horizontal.3")
-                                        Text("Manage Wallets")
-                                    }
-                                })
-                                
-                                Button(action: {
-                                    viewModel.presentConnectSheet()
-                                }, label: {
-                                    HStack {
-                                        Image(systemName: "plus")
-                                        Text("Connect Wallet")
-                                    }
-                                })
-                            }
-                        }, label: {
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                        })
-                        
+                        }
                     }
+                    
+             
+                    
+
+                   
                 }
             )
         })

@@ -41,17 +41,13 @@ final class HomePageViewModel: ObservableObject {
     
     init() {
         setupSubscriptions()
-        autoPresentConnectSheetIfNeeded()
+//        autoPresentConnectSheetIfNeeded()
     }
     
     private func setupSubscriptions() {
         walletStorage.$list
             .compactMap { $0 }
             .receive(on: RunLoop.main)
-            .map {
-                print("✅ $wallets::tick: \($0.count)")
-                return $0
-            }
             .assign(to: &$wallets)
         
         Publishers.CombineLatest(nftStorage.$list, $filterBy)
@@ -64,10 +60,6 @@ final class HomePageViewModel: ObservableObject {
             }
             .compactMap { $0 }
             .receive(on: RunLoop.main)
-            .map {
-                print("✅ $nfts::tick: \($0.count)")
-                return $0
-            }
             .assign(to: &$nfts)
         
         $nfts
@@ -77,10 +69,6 @@ final class HomePageViewModel: ObservableObject {
                 prev.elementsEqual(curr)
             }
             .receive(on: RunLoop.main)
-            .map {
-                print("✅ $addresses::tick: \($0.count)")
-                return $0
-            }
             .assign(to: &$addresses)
         
         $addresses
@@ -114,23 +102,6 @@ final class HomePageViewModel: ObservableObject {
             }
             .receive(on: RunLoop.main)
             .assign(to: &$collections)
-        
-
-        
-//        Publishers.CombineLatest($nfts, collectionStorage.$list)
-//            .map { (nfts, collections) -> [CachedCollection] in
-//                return collections.filter { collection in
-//                    let list = nfts.filter { $0.address == collection.address }
-//
-//                    return !list.isEmpty
-//                }
-//            }
-//            .removeDuplicates { prev, curr in
-//                prev.elementsEqual(curr)
-//            }
-//            .receive(on: RunLoop.main)
-//            .assign(to: &$collections)
-        
     }
     
     private func autoPresentConnectSheetIfNeeded() {
