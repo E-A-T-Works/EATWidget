@@ -17,8 +17,8 @@ struct TutorialSheet: View {
         ZStack {
             Carousel(list: [
                 CarouselCardContent(
-                    title: "1. Press, Hold, Jiggle",
-                    text: "From your iPhone’s Home Screen, touch and hold a widget or an empty area of the screen until the apps start to jiggle.",
+                    title: "1. Get Jiggy",
+                    text: "Start by going to your home screen and loooooooong pressing on it until everything starts jiggling like it's 1967.",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-00",
                         withExtension: "MOV"
@@ -26,39 +26,39 @@ struct TutorialSheet: View {
                 ),
                 CarouselCardContent(
                     title: "2. Add a Widget",
-                    text: "Tap the Add button in the upper-left corner.",
+                    text: "With the whole world jiggling, you'll see a button on the top left that says '+'. So what are you waiting for, press it!",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-01",
                         withExtension: "MOV"
                     )!
                 ),
                 CarouselCardContent(
-                    title: "3. Choose an App",
-                    text: "Select an app to power the widget. Choose from the list provided or search for the app you’re looking for.",
+                    title: "3. Select e∙a∙t∙}",
+                    text: "You'll see a bunch of things, but you know what you want. Scroll all the way to the bottom and you'll find e∙a∙t∙}. Select it to pick a widget.",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-02",
                         withExtension: "MOV"
                     )!
                 ),
                 CarouselCardContent(
-                    title: "4. Choose a Size",
-                    text: "Choose you’re preferred Widget size and shape from the three available, then tap Add Widget.",
+                    title: "4. Pick a widget",
+                    text: "Scrolling left and right, you'll see what widgets are available (we'll be adding a ton more soon). When you have the one you want focused, smash that 'Add Widget' button on the bottom.",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-03",
                         withExtension: "MOV"
                     )!
                 ),
                 CarouselCardContent(
-                    title: "5. Place & Configure",
-                    text: "Drag and drop your widget to place it on your home screen (you can stack widgets of the same size!). Once it's placed, tap on it again while the screen is jiggling to configure it.",
+                    title: "5. Make things pretty",
+                    text: "Your widget was just dropped hot on your homescreen. While things are still jiggling, you can drag it around (maybe even stack it with another similarly-sized one too).",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-04",
                         withExtension: "MOV"
                     )!
                 ),
                 CarouselCardContent(
-                    title: "6. Done!",
-                    text: "To move your widget, long press and drag your Widget around. Once you’re homescreen is as you want, tap done.",
+                    title: "6. Set it up and boom done!",
+                    text: "Once you find the perfect home for your new widget on the home screen, tap it (while it's jiggling) to set it up. Depending on the widget, you'll have a set of options that will let you make it your own!",
                     animationUrl: Bundle.main.url(
                         forResource: "tutorial-05",
                         withExtension: "MOV"

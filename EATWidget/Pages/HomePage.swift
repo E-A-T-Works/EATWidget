@@ -115,7 +115,7 @@ struct HomePage: View {
                             Button(action: {
                                 viewModel.presentConnectSheet()
                             }, label: {
-                                Text("connect")
+                                Text("CONNECT")
                                     .font(.system(size: 16, design: .monospaced))
                             })
                             

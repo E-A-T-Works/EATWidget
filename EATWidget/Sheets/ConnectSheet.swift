@@ -75,7 +75,10 @@ struct ConnectSheet: View {
                         HStack(alignment: .top) {
                             Image(systemName: "info.circle")
                             
-                            Text("You can find your Ethereum wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." )
+                            Text("You can find your Ethereum wallet address from [Metamask](https://metamask.app.link), [Trust](https://link.trustwallet.com), [Rainbow](https://rnbwapp.com), or whatever you use to manage your wallet." ).font(.system(size: 12, design: .monospaced))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
     
                         }
                     }
@@ -200,6 +203,13 @@ struct ConnectSheet: View {
                             
                         }
                     }
+                }
+                else {
+                    Text("boop")
+                        .font(.system(size: 12, design: .monospaced))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.leading)
                 }
             }
            
