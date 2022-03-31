@@ -281,7 +281,8 @@
 		5CF2B99827F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
 		5CF2B99927F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
 		5CF2B99A27F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
-		5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */; };
+		5CF2B99C27F6019300D25388 /* SplashPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99B27F6019300D25388 /* SplashPage.swift */; };
+		5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* GridPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81827F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -477,7 +478,8 @@
 		5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenseaProvider.swift; sourceTree = "<group>"; };
 		5CF2B99327F5359900D25388 /* APIOpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenSea.swift; sourceTree = "<group>"; };
 		5CF2B99727F5532000D25388 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
-		5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPrompt.swift; sourceTree = "<group>"; };
+		5CF2B99B27F6019300D25388 /* SplashPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPage.swift; sourceTree = "<group>"; };
+		5CF4A81327F25EF10074C4FE /* GridPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -723,6 +725,7 @@
 		5C63086B27B2C47600AC2A24 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				5CF2B99B27F6019300D25388 /* SplashPage.swift */,
 				5C63087827B2C6FE00AC2A24 /* HomePage.swift */,
 				5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */,
 			);
@@ -767,7 +770,7 @@
 				5C828CFB27BC50DB009D92D6 /* LoopingPlayer.swift */,
 				5C035EE127B6C5E500A11697 /* ActionRow.swift */,
 				5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */,
-				5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */,
+				5CF4A81327F25EF10074C4FE /* GridPrompt.swift */,
 				5C84117627B9A6FE0021008E /* AttributeGrid.swift */,
 				5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */,
 				5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */,
@@ -1161,7 +1164,7 @@
 				5C91BE1327B44AE7001074CE /* NFTCard.swift in Sources */,
 				5C84116F27B9A1C40021008E /* SectionTitle.swift in Sources */,
 				5C1C71C427BBFBFA009BFC15 /* NFTDetails+Extensions.swift in Sources */,
-				5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */,
+				5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */,
 				5C63086727B2C34900AC2A24 /* API.swift in Sources */,
 				5C55E2AE27EB5D3B008639DD /* AsyncOperation.swift in Sources */,
 				5C63087727B2C6A000AC2A24 /* NFTSheetViewModel.swift in Sources */,
@@ -1206,6 +1209,7 @@
 				5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5CF2B98E27F4A55E00D25388 /* Array+Extensions.swift in Sources */,
 				5C63083927B2B44800AC2A24 /* EATWidgetApp.swift in Sources */,
+				5CF2B99C27F6019300D25388 /* SplashPage.swift in Sources */,
 				5C5026CF27F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5C91BE2527B4754C001074CE /* Branding.swift in Sources */,
 				5CA9ADAF27C6ABC2003C25DE /* WalletItem.swift in Sources */,

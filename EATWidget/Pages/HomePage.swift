@@ -41,10 +41,12 @@ struct HomePage: View {
                 
                 ScrollView(showsIndicators: false) {
                     
-//                    DiscordPrompt()
-                    
-                    
-                    
+                    Button {
+                        viewModel.presentTutorialSheet()
+                    } label: {
+                        GridPrompt()
+                    }.buttonStyle(.plain)
+
                     ForEach(viewModel.collections) { collection in
 
                         NavigationLink(

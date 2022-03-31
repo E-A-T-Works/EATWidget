@@ -9,11 +9,24 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
+    @State var splashing: Bool = true
+    
     var body: some View {
-        NavigationView {
-            HomePage()
+        ZStack {
+            if splashing {
+                SplashPage()
+            } else {
+                NavigationView {
+                    HomePage()
+                }
+                .navigationViewStyle(.stack)
+            }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                splashing = false
+            }
         }
-        .navigationViewStyle(.stack)
     }
 }
 

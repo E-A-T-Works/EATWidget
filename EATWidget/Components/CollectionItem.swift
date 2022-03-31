@@ -58,7 +58,7 @@ struct CollectionItem: View {
                 .scaledToFit()
                 .frame(width: 12, height: 12, alignment: .center)
                 .foregroundColor(colorScheme == .dark ? .white : .black)
-                .opacity(0.5)
+                .opacity(0.32)
             
         }
     }
