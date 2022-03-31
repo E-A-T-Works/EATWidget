@@ -282,6 +282,7 @@
 		5CF2B99927F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
 		5CF2B99A27F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
 		5CF2B99C27F6019300D25388 /* SplashPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99B27F6019300D25388 /* SplashPage.swift */; };
+		5CF2B99E27F603CD00D25388 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99D27F603CD00D25388 /* AnimatedText.swift */; };
 		5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* GridPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -479,6 +480,7 @@
 		5CF2B99327F5359900D25388 /* APIOpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenSea.swift; sourceTree = "<group>"; };
 		5CF2B99727F5532000D25388 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		5CF2B99B27F6019300D25388 /* SplashPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPage.swift; sourceTree = "<group>"; };
+		5CF2B99D27F603CD00D25388 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* GridPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -889,6 +891,7 @@
 			children = (
 				5C828CF927BC4178009D92D6 /* EmailHelpers.swift */,
 				5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */,
+				5CF2B99D27F603CD00D25388 /* AnimatedText.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				5C5026CB27F0BC3100B59C42 /* CreatorItem.swift in Sources */,
 				5C91BE1A27B468B0001074CE /* UIColor+Extensions.swift in Sources */,
 				5C366B0927B6FE5E00D9A0BE /* URLLink.swift in Sources */,
+				5CF2B99E27F603CD00D25388 /* AnimatedText.swift in Sources */,
 				5C06457A27C68BC500E97D1C /* ViewPlaceholder.swift in Sources */,
 				5C63086027B2B60F00AC2A24 /* Formatters.swift in Sources */,
 				5C63087927B2C6FE00AC2A24 /* HomePage.swift in Sources */,

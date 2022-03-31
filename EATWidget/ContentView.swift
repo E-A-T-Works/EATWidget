@@ -23,7 +23,7 @@ struct ContentView: View {
                 .navigationViewStyle(.stack)
             }
         }.onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 splashing = false
             }
         }
