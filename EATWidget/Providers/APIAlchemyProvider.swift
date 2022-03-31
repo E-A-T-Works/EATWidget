@@ -71,6 +71,7 @@ final class APIAlchemyProvider {
                     id: "\(raw.contract.address)/\(raw.id.tokenId)",
                     address: raw.contract.address,
                     tokenId: raw.id.tokenId,
+                    collection: nil,
                     title: raw.title,
                     text: raw.text,
                     imageUrl: nil,

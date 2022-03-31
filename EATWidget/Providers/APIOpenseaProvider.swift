@@ -75,12 +75,29 @@ final class APIOpenseaProvider {
             let request = APIRequest(request: _request)
             
             let response = try await request.perform(ofType: APIOpenSeaGetNFTsResponse.self)
+            
+            
                         
             let list = response.assets.map { raw -> API_NFT in
                 return API_NFT(
                     id: "\(raw.contract.address)/\(raw.tokenId)",
                     address: raw.contract.address,
                     tokenId: raw.tokenId,
+                    collection: raw.collection != nil ? APICollection(
+                        id: raw.contract.address,
+                        address: raw.contract.address,
+                        title: raw.collection!.title,
+                        text: raw.collection!.text,
+                        thumbnailUrl: raw.collection!.thumbnailUrl,
+                        bannerUrl: raw.collection!.bannerUrl,
+                        chatUrl: raw.collection!.chatUrl,
+                        discordUrl: raw.collection!.discordUrl,
+                        telegramUrl: raw.collection!.telegramUrl,
+                        wikiUrl: raw.collection!.wikiUrl,
+                        externalUrl: raw.collection!.externalUrl,
+                        twitterUsername: raw.collection!.twitterUsername,
+                        instagramUsername: raw.collection!.instagramUsername
+                    ) : nil,
                     title: raw.title,
                     text: raw.text,
                     imageUrl: raw.imageUrl,

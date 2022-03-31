@@ -36,7 +36,8 @@ struct ConnectSheet: View {
                 Section {
                     HStack {
                         TextField(
-                            "ENS or Wallet Address",
+//                            "ENS or Wallet Address",
+                            "Wallet Address",
                             text: .init(
                                 get: { [viewModel] in viewModel.form.address },
                                 set: { [viewModel] in viewModel.updateAddress($0) }
@@ -102,7 +103,54 @@ struct ConnectSheet: View {
                         
                         if viewModel.list.isEmpty {
                             
-                            Text("Sorry, we could not find anything associated with this address. Currently we only support Ethereum addresses.")
+                            VStack(alignment: .leading) {
+                                Text("Ohh geez, we couldn't find anything.")
+                                    .font(.system(size: 12, design: .monospaced))
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .opacity(0.72)
+                                    .padding(.bottom)
+                                
+                                
+                                Text("Hey, do us a favor and make sure you are adding a valid Ethereum address.")
+                                    .font(.system(size: 12, design: .monospaced))
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .opacity(0.72)
+                                    .padding(.bottom)
+                                
+                                Text("PS: We're working on getting ENS support to work smoother than butter!")
+                                    .font(.system(size: 12, design: .monospaced))
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .opacity(0.72)
+                                    .padding(.bottom)
+                                
+                                HStack {
+                                    Link(
+                                        destination: URL(string: "https://discord.gg/tmaddD9C")!
+                                    ) {
+                                        HStack {
+                                            Text("You can always drop us a note on Discord")
+                                                .font(.system(size: 12, design: .monospaced))
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .lineLimit(nil)
+                                                .multilineTextAlignment(.leading)
+                                                .opacity(0.72)
+                                            
+                                            
+                                            Image(systemName: "arrow.up.right")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 8, height: 8)
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(.vertical)
                             
                         } else {
                          
@@ -117,6 +165,7 @@ struct ConnectSheet: View {
                                 if viewModel.isParsing {
                                     HStack {
                                         Text("Importing \(viewModel.parsedCount) out of \(viewModel.totalCount)")
+                                            .font(.system(size: 12, design: .monospaced))
                                         
                                         Spacer()
                                     
@@ -125,17 +174,21 @@ struct ConnectSheet: View {
 
                                 } else {
                                     Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
+                                        .font(.system(size: 12, design: .monospaced))
                                 }
                                 
                             } footer: {
                                 HStack {
                                     Text("Still not seeing your NFTs?")
+                                        .font(.system(size: 12, design: .monospaced))
                                     
                                     Link(
                                         destination: URL(string: "https://discord.gg/tmaddD9C")!
                                     ) {
                                         HStack {
                                             Text("Let us know on Discord")
+                                                .font(.system(size: 12, design: .monospaced))
+                                            
                                             Image(systemName: "arrow.up.right")
                                                 .resizable()
                                                 .scaledToFit()

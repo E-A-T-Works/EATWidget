@@ -26,6 +26,8 @@ struct API_NFT: Identifiable {
     let address: String
     let tokenId: String
     
+    let collection: APICollection?
+    
     let title: String?
     let text: String?
     
@@ -58,7 +60,8 @@ struct APICollection: Identifiable {
     let externalUrl: URL?
     
     let twitterUsername: String?
-    let instagramUsername: String?}
+    let instagramUsername: String?
+}
 
 struct APIContract: Identifiable {
     let id: String

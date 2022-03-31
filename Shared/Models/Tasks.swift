@@ -19,6 +19,8 @@ struct NFTParseTask: Identifiable {
     let tokenId: String
     
     var state: NFTParseTaskState
+    
+    var collection: APICollection?
     var raw: API_NFT
     var parsed: NFT?
 }

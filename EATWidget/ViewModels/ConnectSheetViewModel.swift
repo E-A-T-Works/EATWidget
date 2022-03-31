@@ -122,6 +122,7 @@ final class ConnectSheetViewModel: ObservableObject {
                 address: $0.address,
                 tokenId: $0.tokenId,
                 state: .pending,
+                collection: $0.collection,
                 raw: $0,
                 parsed: nil
             )
@@ -166,15 +167,21 @@ final class ConnectSheetViewModel: ObservableObject {
         }
         
         // parse the collections
-        let addresses = list
-            .map { $0.address }
+        let collections = list
+            .map { $0.collection }
             .compactMap { $0 }
-            .unique()
-        
-        addresses.indices.forEach { index in
-            let address = addresses[index]
-            
-            let parseOp = ParseCollectionOperation(address: address)
+
+        var uniqueCollections = [APICollection]()
+        for item in collections {
+            if !uniqueCollections.contains(where: {$0.id == item.id }) {
+                uniqueCollections.append(item)
+            }
+        }
+
+        uniqueCollections.indices.forEach { index in
+            let data = uniqueCollections[index]
+
+            let parseOp = ParseCollectionOperation(data: data)
 
             parseOp.completionBlock = {
                 DispatchQueue.main.async {

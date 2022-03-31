@@ -136,6 +136,8 @@ struct APIOpenSeaNFT {
     let contract: APIOpenSeaContract
     let tokenId: String
     
+    let collection: APIOpenSeaCollection?
+    
     let title: String?
     let text: String?
     
@@ -152,6 +154,7 @@ extension APIOpenSeaNFT: Decodable {
         case id = "id"
         case contract = "asset_contract"
         case tokenId = "token_id"
+        case collection = "collection"
         case title = "name"
         case text = "description"
         case imageUrl = "image_url"
@@ -168,15 +171,17 @@ extension APIOpenSeaNFT: Decodable {
         contract = try container.decode(APIOpenSeaContract.self, forKey: .contract)
         tokenId = try container.decode(String.self, forKey: .tokenId)
         
-        title = (try? container.decode(String.self, forKey: .title)) ?? nil
-        text = (try? container.decode(String.self, forKey: .text)) ?? nil
+        collection = try? container.decode(APIOpenSeaCollection.self, forKey: .collection)
         
-        imageUrl = (try? URL(string: container.decode(String.self, forKey: .imageUrl))) ?? nil
-        animationUrl =  (try? URL(string: container.decode(String.self, forKey: .animationUrl))) ?? nil
+        title = try? container.decode(String.self, forKey: .title)
+        text = try? container.decode(String.self, forKey: .text)
         
-        permalink = (try? URL(string: container.decode(String.self, forKey: .permalink))) ?? nil
+        imageUrl = try? URL(string: container.decode(String.self, forKey: .imageUrl))
+        animationUrl = try? URL(string: container.decode(String.self, forKey: .animationUrl))
         
-        metadataUrl =  (try? URL(string: container.decode(String.self, forKey: .metadataUrl))) ?? nil
+        permalink = try? URL(string: container.decode(String.self, forKey: .permalink))
+        
+        metadataUrl = try? URL(string: container.decode(String.self, forKey: .metadataUrl))
         
         attributes = (try? container.decode([APIOpenSeaAttribute].self, forKey: .attributes)) ?? [APIOpenSeaAttribute]()
     }

@@ -60,7 +60,7 @@ extension CollectionAdapters {
         }
         
         if item.instagramUsername != nil {
-            links.append(ExternalLink(target: .Instagram, url: URL(string: "https://www.instagram.com/\(item.twitterUsername!)")!))
+            links.append(ExternalLink(target: .Instagram, url: URL(string: "https://www.instagram.com/\(item.instagramUsername!)")!))
         }
         
         

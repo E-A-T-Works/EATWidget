@@ -10,13 +10,13 @@ import Foundation
 final class ParseCollectionOperation: AsyncOperation {
     var parsed: Collection?
     
-    private let address: String
+    private let data: APICollection
     private let completionHandler: ((Collection?) -> Void)?
      
     private let adapters: CollectionAdapters = CollectionAdapters.shared
     
-    init(address: String, completionHandler: ((Collection?) -> Void)? = nil) {
-        self.address = address
+    init(data: APICollection, completionHandler: ((Collection?) -> Void)? = nil) {
+        self.data = data
         self.completionHandler = completionHandler
         
         super.init()
@@ -24,30 +24,7 @@ final class ParseCollectionOperation: AsyncOperation {
     
     override func main() {
         Task {
-            
-            let api: APIOpenseaProvider = APIOpenseaProvider()
-            
-            print("❇️ parse collection: \(address)")
-            
-            var contract: APIContract?
-            do {
-                contract = try await api.getContract(for: address)
-            } catch {
-                print("⚠️ failed to lookup contract: \(error)")
-                parsed = nil
-                state = .finished
-                return
-            }
-            
-            print("❇️ got contract: \(contract)")
-            
-            guard let collection: APICollection = contract?.collection else {
-                parsed = nil
-                state = .finished
-                return
-            }
-
-            parsed = await adapters.parse(item: collection)
+            parsed = await adapters.parse(item: data)
             
             // mark task as done
             state = .finished
