@@ -8,19 +8,31 @@
 import Foundation
 
 final class APIOpenseaProvider {
-    static let shared: APIOpenseaProvider = APIOpenseaProvider()
-    
+
+    var contract: APIContract?
     var nfts: [API_NFT] = [API_NFT]()
     
+    init() {}
+    
     func getNFTs(for ownerAddress: String) async throws -> [API_NFT] {
-        clearResults()
+        nfts =  [API_NFT]()
         
-        try await performAPICall(for: "/api/v1/assets", owner: ownerAddress)
+        try await performGetNFTsCall(for: ownerAddress)
         
         return nfts
     }
     
-    init() {}
+    func getNFT(address: String, tokenId: String) async throws -> API_NFT? {
+        return nil
+    }
+    
+    func getContract(for address: String) async throws -> APIContract? {
+        contract = nil
+        
+        try await performGetAContractCall(for: address)
+        
+        return contract
+    }
     
     // MARK: - Private
     
@@ -34,19 +46,14 @@ final class APIOpenseaProvider {
         return key
     }
     
-    private func clearResults() {
-        nfts =  [API_NFT]()
-    }
-    
-    
-    private func performAPICall(for path: String, owner: String, cursor: String? = nil) async throws {
+    private func performGetNFTsCall(for owner: String, cursor: String? = nil) async throws {
         
         let key = try resolveKey()
 
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.opensea.io"
-        components.path = path
+        components.path =  "/api/v1/assets"
         components.queryItems = [
             URLQueryItem(name: "owner", value: owner),
             URLQueryItem(name: "limit", value: "50")
@@ -92,7 +99,7 @@ final class APIOpenseaProvider {
                 return
             }
 
-            try await performAPICall(for: path, owner: owner, cursor: nextCursor)
+            try await performGetNFTsCall(for: owner, cursor: nextCursor)
             
         } catch {
             print("⚠️ APIOpenseaProvider \(error)")
@@ -100,4 +107,60 @@ final class APIOpenseaProvider {
         }
     }
     
+    
+    private func performGetAContractCall(for address: String) async throws {
+        
+        let key = try resolveKey()
+
+//        var components = URLComponents()
+//        components.scheme = "https"
+//        components.host = "api.opensea.io"
+//        components.path =  "api/v1/asset_contract/\(address)"
+//        components.queryItems = []
+//
+//        guard let url = components.url else {
+//            throw APIError.InvalidUrl
+//        }
+
+        guard let url = URL(string:"https://api.opensea.io/api/v1/asset_contract/\(address)") else {
+            throw APIError.InvalidUrl
+        }
+        
+        do {
+            var _request = URLRequest(url: url)
+            _request.setValue(key, forHTTPHeaderField: "X-API-KEY")
+
+            let request = APIRequest(request: _request)
+
+            let response = try await request.perform(ofType: APIOpenSeaGetContractResponse.self)
+
+            guard let collection = response.collection else {
+                throw APIError.BadResponse
+            }
+
+            contract = APIContract(
+                id: address,
+                address: address,
+                collection: APICollection(
+                    id: address,
+                    address: address,
+                    title: collection.title,
+                    text: collection.text,
+                    thumbnailUrl: collection.thumbnailUrl,
+                    bannerUrl: collection.bannerUrl,
+                    chatUrl: collection.chatUrl,
+                    discordUrl: collection.discordUrl,
+                    telegramUrl: collection.telegramUrl,
+                    wikiUrl: collection.wikiUrl,
+                    externalUrl: collection.externalUrl,
+                    twitterUsername: collection.twitterUsername,
+                    instagramUsername: collection.instagramUsername
+                )
+            )
+
+        } catch {
+            print("⚠️ APIOpenseaProvider: \(address) | \(error)")
+            throw APIError.BadResponse
+        }
+    }
 }

@@ -7,6 +7,85 @@
 
 import Foundation
 
+
+// MARK: - Contract
+
+struct APIOpenSeaCollection {
+    let title: String?
+    let text: String?
+    
+    let thumbnailUrl: URL?
+    let bannerUrl: URL?
+    
+    let chatUrl: URL?
+    let discordUrl: URL?
+    let telegramUrl: URL?
+    let wikiUrl: URL?
+    let externalUrl: URL?
+    
+    let twitterUsername: String?
+    let instagramUsername: String?
+}
+
+extension APIOpenSeaCollection: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case title = "name"
+        case text = "description"
+        case thumbnailUrl = "image_url"
+        case bannerUrl = "banner_image_url"
+        case chatUrl = "chat_url"
+        case discordUrl = "discord_url"
+        case telegramUrl = "telegram_url"
+        case wikiUrl = "wiki_url"
+        case externalUrl = "external_link"
+        case twitterUsername = "twitter_username"
+        case instagramUsername = "instagram_username"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        title = (try? container.decode(String.self, forKey: .title)) ?? nil
+        text = (try? container.decode(String.self, forKey: .text)) ?? nil
+        
+        thumbnailUrl = (try? URL(string: container.decode(String.self, forKey: .thumbnailUrl))) ?? nil
+        bannerUrl = (try? URL(string: container.decode(String.self, forKey: .bannerUrl))) ?? nil
+        
+        chatUrl = (try? URL(string: container.decode(String.self, forKey: .chatUrl))) ?? nil
+        discordUrl = (try? URL(string: container.decode(String.self, forKey: .discordUrl))) ?? nil
+        telegramUrl = (try? URL(string: container.decode(String.self, forKey: .telegramUrl))) ?? nil
+        wikiUrl = (try? URL(string: container.decode(String.self, forKey: .wikiUrl))) ?? nil
+        externalUrl = (try? URL(string: container.decode(String.self, forKey: .externalUrl))) ?? nil
+        
+        twitterUsername = (try? container.decode(String.self, forKey: .twitterUsername)) ?? nil
+        instagramUsername = (try? container.decode(String.self, forKey: .instagramUsername)) ?? nil
+    }
+}
+
+struct APIOpenSeaGetContractResponse {
+    let address: String
+    
+    let collection: APIOpenSeaCollection?
+}
+
+extension APIOpenSeaGetContractResponse: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case address = "address"
+        case collection = "collection"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        address = try container.decode(String.self, forKey: .address)
+        
+        collection = try? container.decode(APIOpenSeaCollection.self, forKey: .collection)
+    }
+}
+
+
+// MARK: - NFT
+
 struct APIOpenSeaContract {
     let address: String
 }
@@ -88,6 +167,7 @@ extension APIOpenSeaNFT: Decodable {
         id = try container.decode(Int.self, forKey: .id)
         contract = try container.decode(APIOpenSeaContract.self, forKey: .contract)
         tokenId = try container.decode(String.self, forKey: .tokenId)
+        
         title = (try? container.decode(String.self, forKey: .title)) ?? nil
         text = (try? container.decode(String.self, forKey: .text)) ?? nil
         
@@ -124,4 +204,5 @@ extension APIOpenSeaGetNFTsResponse: Decodable {
         next = (try? container.decode(String.self, forKey: .next)) ?? nil
     }
 }
+
 

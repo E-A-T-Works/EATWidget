@@ -14,7 +14,7 @@ struct Collection: Identifiable, Hashable {
     
     let address: String
     
-    let title: String
+    let title: String?
     let text: String?
     
     let links: [ExternalLink]

@@ -7,11 +7,15 @@
     </entity>
     <entity name="CachedCollection" representedClassName="CachedCollection" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="chatUrl" optional="YES" attributeType="URI"/>
         <attribute name="discordUrl" optional="YES" attributeType="URI"/>
+        <attribute name="externalUrl" optional="YES" attributeType="URI"/>
+        <attribute name="instagramUrl" optional="YES" attributeType="URI"/>
         <attribute name="openseaUrl" optional="YES" attributeType="URI"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="twitterUrl" optional="YES" attributeType="URI"/>
+        <attribute name="wikiUrl" optional="YES" attributeType="URI"/>
         <relationship name="banner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="collectionBanner" inverseEntity="CachedImage"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CachedImage" inverseName="collectionThumbnail" inverseEntity="CachedImage"/>
     </entity>
@@ -47,7 +51,7 @@
     </entity>
     <elements>
         <element name="CachedAttribute" positionX="107.9765625" positionY="-392.59375" width="128" height="88"/>
-        <element name="CachedCollection" positionX="-303.98828125" positionY="-439.5546875" width="128" height="163"/>
+        <element name="CachedCollection" positionX="-303.98828125" positionY="-439.5546875" width="128" height="209"/>
         <element name="CachedImage" positionX="-550.15234375" positionY="-278.39453125" width="128" height="103"/>
         <element name="CachedNFT" positionX="-134.69140625" positionY="-439.703125" width="128" height="269"/>
         <element name="CachedWallet" positionX="-379.80078125" positionY="-96.89453125" width="128" height="103"/>

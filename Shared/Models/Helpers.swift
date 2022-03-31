@@ -12,7 +12,10 @@ enum ExternalLinkTarget {
     case Opensea
     case Etherscan
     case Twitter
+    case Instagram
     case Discord
+    case Chat
+    case Wiki
     case Other
 }
 

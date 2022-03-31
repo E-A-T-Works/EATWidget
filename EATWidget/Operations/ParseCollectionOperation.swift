@@ -12,9 +12,8 @@ final class ParseCollectionOperation: AsyncOperation {
     
     private let address: String
     private let completionHandler: ((Collection?) -> Void)?
-    
+     
     private let adapters: CollectionAdapters = CollectionAdapters.shared
-    private let fb: FirebaseProvider = FirebaseProvider.shared
     
     init(address: String, completionHandler: ((Collection?) -> Void)? = nil) {
         self.address = address
@@ -25,8 +24,30 @@ final class ParseCollectionOperation: AsyncOperation {
     
     override func main() {
         Task {
+            
+            let api: APIOpenseaProvider = APIOpenseaProvider()
+            
+            print("❇️ parse collection: \(address)")
+            
+            var contract: APIContract?
+            do {
+                contract = try await api.getContract(for: address)
+            } catch {
+                print("⚠️ failed to lookup contract: \(error)")
+                parsed = nil
+                state = .finished
+                return
+            }
+            
+            print("❇️ got contract: \(contract)")
+            
+            guard let collection: APICollection = contract?.collection else {
+                parsed = nil
+                state = .finished
+                return
+            }
 
-            parsed = await adapters.parse(address: address)
+            parsed = await adapters.parse(item: collection)
             
             // mark task as done
             state = .finished

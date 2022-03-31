@@ -105,7 +105,13 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             
             newObject.banner = banner
             newObject.thumbnail = thumbnail
-            
+          
+            newObject.chatUrl = data.links.first(where: { $0.target == .Chat })?.url
+            newObject.discordUrl = data.links.first(where: { $0.target == .Discord })?.url
+            newObject.wikiUrl = data.links.first(where: { $0.target == .Wiki })?.url
+            newObject.externalUrl = data.links.first(where: { $0.target == .Other })?.url
+            newObject.twitterUrl = data.links.first(where: { $0.target == .Twitter })?.url
+            newObject.instagramUrl = data.links.first(where: { $0.target == .Instagram })?.url
         }
         
         //
@@ -144,6 +150,13 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             
             cached.banner = banner
             cached.thumbnail = thumbnail
+          
+            cached.chatUrl = update!.links.first(where: { $0.target == .Chat })?.url
+            cached.discordUrl = update!.links.first(where: { $0.target == .Discord })?.url
+            cached.wikiUrl = update!.links.first(where: { $0.target == .Wiki })?.url
+            cached.externalUrl = update!.links.first(where: { $0.target == .Other })?.url
+            cached.twitterUrl = update!.links.first(where: { $0.target == .Twitter })?.url
+            cached.instagramUrl = update!.links.first(where: { $0.target == .Instagram })?.url
             
         }
         

@@ -55,7 +55,7 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let fb: FirebaseProvider = FirebaseProvider.shared
 //    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
-    private let api: APIOpenseaProvider = APIOpenseaProvider.shared
+//    private let api: APIOpenseaProvider = APIOpenseaProvider.shared
     
     private let walletStorage = CachedWalletStorage.shared
     private let collectionStorage = CachedCollectionStorage.shared
@@ -104,7 +104,8 @@ final class ConnectSheetViewModel: ObservableObject {
         isLoading = true
         
         let address = form.address
-        
+    
+        let api = APIOpenseaProvider()
         var results: [API_NFT] = [API_NFT]()
     
         do {
