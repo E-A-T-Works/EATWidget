@@ -26,7 +26,7 @@ struct AttributeGrid: View {
         VStack(alignment: .leading) {
             SectionTitle(text: "Attributes")
 
-            Lazy    VGrid(columns: gridItemLayout, spacing: 10) {
+            LazyVGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(list, id: \.self) { item in
                     AttributeBox(item: item)
                 }

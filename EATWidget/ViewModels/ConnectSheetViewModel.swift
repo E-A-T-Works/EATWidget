@@ -55,6 +55,7 @@ final class ConnectSheetViewModel: ObservableObject {
     
     private let fb: FirebaseProvider = FirebaseProvider.shared
     private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    private let os: APIOpenseaProvider = APIOpenseaProvider.shared
     
     private let walletStorage = CachedWalletStorage.shared
     private let collectionStorage = CachedCollectionStorage.shared
@@ -104,30 +105,40 @@ final class ConnectSheetViewModel: ObservableObject {
         
         let address = form.address
         
-        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
-    
+        var results: [APIOpenSeaNFT] = [APIOpenSeaNFT]()
         do {
-            results = try await api.getNFTs(for: address)
+            results = try await os.getNFTs(for: address)
         } catch {
             print("⚠️ \(error)")
         }
         
-        totalCount = results.count
+        print("✅ \(results.count)")
         
-        list = results.map { result in
-            let address = result.contract.address
-            let tokenId = result.id.tokenId
-            let key = "\(address)/\(tokenId)"
-            
-            return NFTParseTask(
-                id: key,
-                address: address,
-                tokenId: tokenId,
-                state: .pending,
-                raw: result,
-                parsed: nil
-            )
-        }
+//        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    
+        
+//        do {
+//            results = try await api.getNFTs(for: address)
+//        } catch {
+//            print("⚠️ \(error)")
+//        }
+//
+//        totalCount = results.count
+//
+//        list = results.map { result in
+//            let address = result.contract.address
+//            let tokenId = result.id.tokenId
+//            let key = "\(address)/\(tokenId)"
+//
+//            return NFTParseTask(
+//                id: key,
+//                address: address,
+//                tokenId: tokenId,
+//                state: .pending,
+//                raw: result,
+//                parsed: nil
+//            )
+//        }
 
         isLoading = false
     }

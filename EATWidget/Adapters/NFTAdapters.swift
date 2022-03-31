@@ -32,6 +32,9 @@ final class NFTAdapters {
 //        case "0x1ca15ccdd91b55cd617a48dc9eefb98cae224757":
 //            return await normalizeStrangeAttractors(item: item)
             
+//        case "0xb6329bd2741c4e5e91e26c4e653db643e74b2b19":
+//            return await
+            
         default:
             return await normalizeAlchemyNFT(item: item)
         }
@@ -52,12 +55,26 @@ extension NFTAdapters {
             else {
                 return nil
             }
-
-            let imageData = try Data(contentsOf: imageUrl)
             
+            let imageUrlPathExtension = imageUrl.pathExtension
+            
+            var imageData: Data?
+            
+            switch imageUrlPathExtension {
+            case "gif":
+                imageData = nil
+            case "mp4":
+                imageData = nil
+            default:
+                imageData = try Data(contentsOf: imageUrl)
+            }
+            
+            guard imageData != nil else { return nil }
+            
+
             // enforce 10mb size limit
-            if imageData.count > (10 * 1_000_000) { return nil }
-            guard let image = UIImage(data: imageData) else { return nil }
+            if imageData!.count > (10 * 1_000_000) { return nil }
+            guard let image = UIImage(data: imageData!) else { return nil }
             
             let attributes: [Attribute] = (metadata.attributes ?? [APIAlchemyAttribute]())
                 .filter { $0.traitType != nil && $0.value != nil }
@@ -71,7 +88,7 @@ extension NFTAdapters {
                 title: item.title,
                 text: item.text,
                 image: image,
-                simulationUrl: nil,
+                simulationUrl: ["gif"].contains(imageUrlPathExtension) ? imageUrl : nil,
                 animationUrl: item.metadata?.animationUrl,
                 twitterUrl: nil,
                 discordUrl: nil,

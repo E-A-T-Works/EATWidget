@@ -61,7 +61,9 @@ final class APIAlchemyProvider {
         }
         
         do {
-            let request = APIRequest(url: url)
+            let _request = URLRequest(url: url)
+            
+            let request = APIRequest(request: _request)
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
             
             let list = response.ownedNfts

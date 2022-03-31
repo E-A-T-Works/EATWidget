@@ -14,17 +14,16 @@ import Foundation
 
 class APIRequest {
     
-    let url: URL
+    let request: URLRequest
     
-    init(url: URL) {
-        self.url = url
+    init(request: URLRequest) {
+        self.request = request
     }
     
     func perform<T: Decodable>(ofType: T.Type) async throws -> T {
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        
-        let (data, _) = try await session.data(from: url)
-        
+        let (data, _) = try await session.data(for: request)
+
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
         return try decoder.decode(T.self, from: data)
@@ -32,18 +31,18 @@ class APIRequest {
     
     func perform<T: Decodable>(with completion: @escaping (T?) -> Void) {
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
-        
-        let task = session.dataTask(with: url) { (data, _, _) in
+
+        let task = session.dataTask(with: request) { (data, _, _) in
             guard let data = data else {
                 completion(nil)
                 return
             }
-            
+
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .secondsSince1970
             completion(try? decoder.decode(T.self, from: data))
         }
-        
+
         task.resume()
     }
 }

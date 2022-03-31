@@ -10,8 +10,8 @@
 
 import Foundation
 
-// MARK: URI
 
+// MARK: URI
 
 struct APIAlchemyStringUri {
     let raw: String?
@@ -155,7 +155,7 @@ struct APIAlchemyMetadata {
     let animationUrl: URL?
     let externalUrl: URL?
     let backgroundColor: String?
-    let attributes: [APIAlchemyAttribute]?
+    let attributes: [APIAlchemyAttribute]
 }
 
 extension APIAlchemyMetadata: Decodable {
@@ -184,7 +184,7 @@ extension APIAlchemyMetadata: Decodable {
         
         backgroundColor = (try? container.decode(String.self, forKey: .backgroundColor)) ?? nil
         
-        attributes = (try? container.decode([APIAlchemyAttribute].self, forKey: .attributes)) ?? nil
+        attributes = (try? container.decode([APIAlchemyAttribute].self, forKey: .attributes)) ?? [APIAlchemyAttribute]()
     }
 }
 

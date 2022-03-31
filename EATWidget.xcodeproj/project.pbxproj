@@ -275,6 +275,9 @@
 		5CF2B98F27F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
 		5CF2B99027F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
 		5CF2B99227F4CB7800D25388 /* APIOpenseaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */; };
+		5CF2B99427F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
+		5CF2B99527F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
+		5CF2B99627F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
 		5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -469,6 +472,7 @@
 		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
 		5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenseaProvider.swift; sourceTree = "<group>"; };
+		5CF2B99327F5359900D25388 /* APIOpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenSea.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -667,6 +671,7 @@
 				5C574CEE27BAF16300212FED /* NFT.swift */,
 				5C63086627B2C34900AC2A24 /* API.swift */,
 				5C574CDE27BAE2AF00212FED /* APIAlchemy.swift */,
+				5CF2B99327F5359900D25388 /* APIOpenSea.swift */,
 				5C574CE627BAF00E00212FED /* APIEtherscan.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
 				5C5026CE27F0ED6D00B59C42 /* Helpers.swift */,
@@ -1190,6 +1195,7 @@
 				5C93785227F21BF1003281EC /* CollectionAdapters.swift in Sources */,
 				5C828CFA27BC4178009D92D6 /* EmailHelpers.swift in Sources */,
 				5C63087F27B2CBEE00AC2A24 /* NFTParseTaskItem+Extensions.swift in Sources */,
+				5CF2B99427F5359900D25388 /* APIOpenSea.swift in Sources */,
 				5C63087527B2C5CB00AC2A24 /* HomePageViewModel.swift in Sources */,
 				5C24E4FB27EE1D8600F3CF2A /* Collection.swift in Sources */,
 				5CF2B98E27F4A55E00D25388 /* Array+Extensions.swift in Sources */,
@@ -1208,6 +1214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF2B99527F5359900D25388 /* APIOpenSea.swift in Sources */,
 				5C6308B627B2DA0800AC2A24 /* Sequence+Extensions.swift in Sources */,
 				5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
@@ -1270,6 +1277,7 @@
 				5C6308D527B2E3A500AC2A24 /* EATWidget.xcdatamodeld in Sources */,
 				5C91BE2627B4754C001074CE /* Branding.swift in Sources */,
 				5C84117027B9A2350021008E /* SectionTitle.swift in Sources */,
+				5CF2B99627F5359900D25388 /* APIOpenSea.swift in Sources */,
 				5C6308DC27B2E3B400AC2A24 /* Formatters.swift in Sources */,
 				5C6308E027B2E3C300AC2A24 /* WidgetIntents.intentdefinition in Sources */,
 				5C6308DF27B2E3BB00AC2A24 /* TestData.swift in Sources */,
