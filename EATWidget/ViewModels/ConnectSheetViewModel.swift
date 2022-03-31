@@ -54,8 +54,8 @@ final class ConnectSheetViewModel: ObservableObject {
     private let queue = OperationQueue()
     
     private let fb: FirebaseProvider = FirebaseProvider.shared
-    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
-    private let os: APIOpenseaProvider = APIOpenseaProvider.shared
+//    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
+    private let api: APIOpenseaProvider = APIOpenseaProvider.shared
     
     private let walletStorage = CachedWalletStorage.shared
     private let collectionStorage = CachedCollectionStorage.shared
@@ -105,40 +105,26 @@ final class ConnectSheetViewModel: ObservableObject {
         
         let address = form.address
         
-        var results: [APIOpenSeaNFT] = [APIOpenSeaNFT]()
+        var results: [API_NFT] = [API_NFT]()
+    
         do {
-            results = try await os.getNFTs(for: address)
+            results = try await api.getNFTs(for: address)
         } catch {
             print("⚠️ \(error)")
         }
-        
-        print("✅ \(results.count)")
-        
-//        var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
-    
-        
-//        do {
-//            results = try await api.getNFTs(for: address)
-//        } catch {
-//            print("⚠️ \(error)")
-//        }
-//
-//        totalCount = results.count
-//
-//        list = results.map { result in
-//            let address = result.contract.address
-//            let tokenId = result.id.tokenId
-//            let key = "\(address)/\(tokenId)"
-//
-//            return NFTParseTask(
-//                id: key,
-//                address: address,
-//                tokenId: tokenId,
-//                state: .pending,
-//                raw: result,
-//                parsed: nil
-//            )
-//        }
+
+        totalCount = results.count
+
+        list = results.map {
+            NFTParseTask(
+                id: $0.id,
+                address: $0.address,
+                tokenId: $0.tokenId,
+                state: .pending,
+                raw: $0,
+                parsed: nil
+            )
+        }
 
         isLoading = false
     }

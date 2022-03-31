@@ -19,7 +19,6 @@ struct NFT: Identifiable, Hashable {
     
     let address: String
     let tokenId: String
-    let standard: String
     
     let title: String?
     let text: String?
@@ -36,22 +35,4 @@ struct NFT: Identifiable, Hashable {
     let metadataUrl: URL?
     
     let attributes: [Attribute]
-}
-
-
-
-
-enum NFTParseTaskState: String {
-    case pending, success, failure
-}
-
-struct NFTParseTask: Identifiable {
-    let id: String
-    
-    let address: String
-    let tokenId: String
-    
-    var state: NFTParseTaskState
-    var raw: APIAlchemyNFT
-    var parsed: NFT?
 }

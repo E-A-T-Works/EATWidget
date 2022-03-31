@@ -25,8 +25,8 @@ extension APIOpenSeaContract: Decodable {
 
 
 struct APIOpenSeaAttribute {
-    let traitType: String?
-    let value: String?
+    let traitType: String
+    let value: String
 }
 
 extension APIOpenSeaAttribute: Decodable {
@@ -38,14 +38,14 @@ extension APIOpenSeaAttribute: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        traitType = (try? container.decode(String.self, forKey: .traitType)) ?? nil
+        traitType = try container.decode(String.self, forKey: .traitType)
         
         do {
             value = try String(container.decode(Int.self, forKey: .value))
         } catch DecodingError.typeMismatch {
             value = try container.decode(String.self, forKey: .value)
         } catch {
-            value = nil
+            value = ""
         }
     }
 }

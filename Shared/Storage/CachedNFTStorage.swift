@@ -85,7 +85,6 @@ final class CachedNFTStorage: NSObject, ObservableObject {
             let newObject = CachedNFT(context: context)
             newObject.address = data.address
             newObject.tokenId = data.tokenId
-            newObject.standard = data.standard
 
             newObject.title = data.title
             newObject.text = data.text
@@ -127,7 +126,7 @@ final class CachedNFTStorage: NSObject, ObservableObject {
         }
 
         toUpdate.forEach { cached in
-            let update = list.first { $0.address == cached.address }
+            let update = list.first { $0.address == cached.address && $0.tokenId == cached.tokenId }
             guard update != nil else { return }
 
             cached.title = update!.title

@@ -12,9 +12,9 @@ import UIKit
 final class APIAlchemyProvider {
     static let shared: APIAlchemyProvider = APIAlchemyProvider()
     
-    var nfts: [APIAlchemyNFT] = [APIAlchemyNFT]()
+    var nfts: [API_NFT] = [API_NFT]()
     
-    func getNFTs(for ownerAddress: String) async throws -> [APIAlchemyNFT] {
+    func getNFTs(for ownerAddress: String) async throws -> [API_NFT] {
         clearResults()
         
         let key = try resolveKey()
@@ -38,7 +38,7 @@ final class APIAlchemyProvider {
     }
     
     private func clearResults() {
-        nfts =  [APIAlchemyNFT]()
+        nfts =  [API_NFT]()
     }
     
     private func performAPICall(for path: String, owner: String, pageKey: String? = nil) async throws {
@@ -66,7 +66,21 @@ final class APIAlchemyProvider {
             let request = APIRequest(request: _request)
             let response = try await request.perform(ofType: APIAlchemyGetNFTsResponse.self)
             
-            let list = response.ownedNfts
+            let list = response.ownedNfts.map { raw in
+                return API_NFT(
+                    id: "\(raw.contract.address)/\(raw.id.tokenId)",
+                    address: raw.contract.address,
+                    tokenId: raw.id.tokenId,
+                    title: raw.title,
+                    text: raw.text,
+                    imageUrl: nil,
+                    animationUrl: nil,
+                    metadataUrl: nil,
+                    permalink: nil,
+                    attributes: [API_NFT_Attribute]()
+                )
+                
+            }
             
             self.nfts.append(contentsOf: list)
             

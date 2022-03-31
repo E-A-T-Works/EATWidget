@@ -10,9 +10,9 @@ import Foundation
 final class APIOpenseaProvider {
     static let shared: APIOpenseaProvider = APIOpenseaProvider()
     
-    var nfts: [APIOpenSeaNFT] = [APIOpenSeaNFT]()
+    var nfts: [API_NFT] = [API_NFT]()
     
-    func getNFTs(for ownerAddress: String) async throws -> [APIOpenSeaNFT] {
+    func getNFTs(for ownerAddress: String) async throws -> [API_NFT] {
         clearResults()
         
         try await performAPICall(for: "/api/v1/assets", owner: ownerAddress)
@@ -35,7 +35,7 @@ final class APIOpenseaProvider {
     }
     
     private func clearResults() {
-        nfts =  [APIOpenSeaNFT]()
+        nfts =  [API_NFT]()
     }
     
     
@@ -68,12 +68,25 @@ final class APIOpenseaProvider {
             let request = APIRequest(request: _request)
             
             let response = try await request.perform(ofType: APIOpenSeaGetNFTsResponse.self)
-            
-            print(response)
-            
-//            let list = response.assets
-//
-//            self.nfts.append(contentsOf: list)
+                        
+            let list = response.assets.map { raw -> API_NFT in
+                return API_NFT(
+                    id: "\(raw.contract.address)/\(raw.tokenId)",
+                    address: raw.contract.address,
+                    tokenId: raw.tokenId,
+                    title: raw.title,
+                    text: raw.text,
+                    imageUrl: raw.imageUrl,
+                    animationUrl: raw.animationUrl,
+                    metadataUrl: raw.metadataUrl,
+                    permalink: raw.permalink,
+                    attributes: raw.attributes.map {
+                        API_NFT_Attribute(key: $0.traitType, value: $0.value)
+                    }
+                )
+            }
+
+            self.nfts.append(contentsOf: list)
             
             guard let nextCursor = response.next else {
                 return

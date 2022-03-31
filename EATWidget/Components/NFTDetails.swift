@@ -42,7 +42,7 @@ struct NFTDetails_Previews: PreviewProvider {
             NFTDetails(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.tokenId,
-                standard: TestData.nft.standard
+                standard: ""
             )
         }
         .padding()

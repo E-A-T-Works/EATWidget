@@ -11,6 +11,6 @@ extension NFTDetails {
     init(item: NFT) {
         address = item.address
         tokenId = item.tokenId
-        standard = item.standard
+        standard = ""
     }
 }

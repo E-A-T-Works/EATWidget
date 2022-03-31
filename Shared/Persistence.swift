@@ -26,7 +26,6 @@ struct PersistenceController {
         
         newNFT.address = TestData.nft.address
         newNFT.tokenId = TestData.nft.tokenId
-        newNFT.standard = TestData.nft.standard
         newNFT.title = TestData.nft.title
         newNFT.text = TestData.nft.text
 

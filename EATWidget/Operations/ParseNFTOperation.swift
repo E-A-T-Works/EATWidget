@@ -10,13 +10,13 @@ import Foundation
 final class ParseNFTOperation: AsyncOperation {
     var parsed: NFT?
     
-    private let data: APIAlchemyNFT
+    private let data: API_NFT
     private let completionHandler: ((NFT?) -> Void)?
     
     private let adapters: NFTAdapters = NFTAdapters.shared
     private let fb: FirebaseProvider = FirebaseProvider.shared
     
-    init(data: APIAlchemyNFT, completionHandler: ((NFT?) -> Void)? = nil) {
+    init(data: API_NFT, completionHandler: ((NFT?) -> Void)? = nil) {
         self.data = data
         self.completionHandler = completionHandler
         
@@ -26,8 +26,8 @@ final class ParseNFTOperation: AsyncOperation {
     override func main() {
         Task {
             
-            let address = data.contract.address
-            let tokenId = data.id.tokenId
+            let address = data.address
+            let tokenId = data.tokenId
             
             parsed = await adapters.parse(item: data)
             

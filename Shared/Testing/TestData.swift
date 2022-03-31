@@ -24,7 +24,6 @@ struct TestData {
         id: "0x066f2d5ead7951f0d0038c19affd500b9f02c0e5/0x0000000000000000000000000000000000000000000000000000000000000d2c",
         address: "0x066f2d5ead7951f0d0038c19affd500b9f02c0e5",
         tokenId: "0x0000000000000000000000000000000000000000000000000000000000000d2c",
-        standard: "ERC721",
         title: "#3372 Janky",
         text: "0x066f2d5ead7951f0d0038c19affd500b9f02c0e5",
         image: UIImage(named: "Placeholder")!,

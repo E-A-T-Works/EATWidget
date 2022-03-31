@@ -16,12 +16,15 @@ final class NFTAdapters {
     
     private init() {}
     
-    func parse(item: APIAlchemyNFT) async -> NFT? {
-        let address = item.contract.address
+    func parse(item: API_NFT) async -> NFT? {
+        let address = item.address
 
         switch address {
-        case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
-            return await normalizeCryptopunk(item: item)
+        case "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85":
+            return nil // ENS addresses
+
+//        case "0x282bdd42f4eb70e7a9d9f40c8fea0825b7f68c5d":
+//            return await normalizeCryptopunk(item: item)
 
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
@@ -35,8 +38,11 @@ final class NFTAdapters {
 //        case "0xb6329bd2741c4e5e91e26c4e653db643e74b2b19":
 //            return await
             
+//        default:
+//            return await normalizeAlchemyNFT(item: item)
+            
         default:
-            return await normalizeAlchemyNFT(item: item)
+            return await normalizeGeneric(for: item)
         }
     }
 }
@@ -46,6 +52,38 @@ final class NFTAdapters {
 // MARK: - Generic
 
 extension NFTAdapters {
+    private func normalizeGeneric(for item: API_NFT) async -> NFT? {
+            
+        guard let imageUrl = item.imageUrl else { return nil }
+        guard let imageData = try? Data(contentsOf: imageUrl) else { return nil }
+        
+        // enforce 10mb size limit
+        if imageData.count > (10 * 1_000_000) { return nil }
+        guard let image = UIImage(data: imageData) else { return nil }
+        
+        var simulationUrl: URL?
+        if item.animationUrl != nil && item.animationUrl!.absoluteString.contains("generator.artblocks.io") {
+            simulationUrl = item.animationUrl
+        }
+        
+        return NFT(
+            id: item.id,
+            address: item.address,
+            tokenId: item.tokenId,
+            title: item.title,
+            text: item.text,
+            image: image,
+            simulationUrl: simulationUrl,
+            animationUrl: item.animationUrl,
+            twitterUrl: nil,
+            discordUrl: nil,
+            openseaUrl: URL(string: "https://opensea.io/assets/\(item.address)/\(item.tokenId)"),
+            externalUrl: nil,
+            metadataUrl: item.metadataUrl,
+            attributes: item.attributes.map { Attribute(key: $0.key, value: $0.value) }
+        )
+    }
+    
     private func normalizeAlchemyNFT(item: APIAlchemyNFT) async -> NFT? {
         do {
             
@@ -84,7 +122,6 @@ extension NFTAdapters {
                 id: "\(item.contract.address)/\(item.id.tokenId)",
                 address: item.contract.address,
                 tokenId: item.id.tokenId,
-                standard: item.id.tokenMetadata.tokenType,
                 title: item.title,
                 text: item.text,
                 image: image,
@@ -135,7 +172,6 @@ extension NFTAdapters {
                 id: "\(item.contract.address)/\(item.id.tokenId)",
                 address: item.contract.address,
                 tokenId: item.id.tokenId,
-                standard: item.id.tokenMetadata.tokenType,
                 title: item.title,
                 text: item.text,
                 image: image,
@@ -170,67 +206,127 @@ extension NFTAdapters {
     /// to convert it to a UIImage and save it to a temporary
     ///
     ///
-    private func normalizeEveryIcon(item: APIAlchemyNFT) async -> NFT? {
-        do {
-           
-            guard let metadata = item.metadata else { return nil }
-            
-            guard let svgString = metadata.image?
-                    .replacingOccurrences(of: "data:image/svg+xml,", with: "")
-                    .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
-                    .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
-                    .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
-                    .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'") else { return nil }
-            
-            let temporaryDirectoryURL = URL(
-                fileURLWithPath: NSTemporaryDirectory(),
-                isDirectory: true
-            )
-            
-            let temporaryFilename = ProcessInfo().globallyUniqueString
+//    private func normalizeEveryIcon(item: APIAlchemyNFT) async -> NFT? {
+//        do {
+//
+//            guard let metadata = item.metadata else { return nil }
+//
+//            guard let svgString = metadata.image?
+//                    .replacingOccurrences(of: "data:image/svg+xml,", with: "")
+//                    .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
+//                    .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
+//                    .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
+//                    .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'") else { return nil }
+//
+//            let temporaryDirectoryURL = URL(
+//                fileURLWithPath: NSTemporaryDirectory(),
+//                isDirectory: true
+//            )
+//
+//            let temporaryFilename = ProcessInfo().globallyUniqueString
+//
+//            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
+//
+//            let svgData: Data = svgString.data(using: .utf8)!
+//            try svgData.write(
+//                to: temporaryFileURL,
+//                options: .atomic
+//            )
+//
+//
+//            let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
+//
+//            let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
+//            svgLayer.frame = frame
+//
+//            guard let image = snapshotImage(for: svgLayer) else { return nil }
+//
+//            try FileManager.default.removeItem(at: temporaryFileURL)
+//
+//            return NFT(
+//                id: "\(item.contract.address)/\(item.id.tokenId)",
+//                address: item.contract.address,
+//                tokenId: item.id.tokenId,
+//                title: item.title,
+//                text: item.text,
+//
+//                image: image,
+//                simulationUrl: item.metadata?.animationUrl,
+//                animationUrl: nil,
+//
+//                twitterUrl: URL(string: "https://twitter.com/eatworksnyc"),
+//                discordUrl: URL(string: "https://discord.gg/TAjvAMVUmc"),
+//                openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
+//                externalUrl: URL(string: "https://www.eatworks.xyz/projects-3/e-a-t-works-every-icon"),
+//                metadataUrl: nil,
+//
+//                attributes: [Attribute]()
+//            )
+//        } catch {
+//            print("⚠️ normalizeEveryIcon \(item.contract.address) \(item.id.tokenId) \(error)")
+//            return nil
+//        }
+//    }
+    
+    private func normalizeEveryIcon(item: API_NFT) async -> NFT? {
+        
+        guard let base64EncodedMetadata = item.metadataUrl?.absoluteString.replacingOccurrences(of: "data:application/json;base64,", with: "") else { return nil }
 
-            let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
-            
-            let svgData: Data = svgString.data(using: .utf8)!
-            try svgData.write(
-                to: temporaryFileURL,
-                options: .atomic
-            )
-            
-            
-            let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
-            
-            let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
-            svgLayer.frame = frame
+        guard let decodedData = Data(base64Encoded: base64EncodedMetadata) else { return nil }
+        
+        guard let jsonData = try? JSONSerialization.jsonObject(with: decodedData, options : .allowFragments) as? Dictionary<String,Any> else { return nil }
 
-            guard let image = snapshotImage(for: svgLayer) else { return nil }
+        guard let jsonSVGString = jsonData["image"] as? String else { return nil }
 
-            try FileManager.default.removeItem(at: temporaryFileURL)
-            
-            return NFT(
-                id: "\(item.contract.address)/\(item.id.tokenId)",
-                address: item.contract.address,
-                tokenId: item.id.tokenId,
-                standard: item.id.tokenMetadata.tokenType,
-                title: item.title,
-                text: item.text,
-                
-                image: image,
-                simulationUrl: item.metadata?.animationUrl,
-                animationUrl: nil,
-                
-                twitterUrl: URL(string: "https://twitter.com/eatworksnyc"),
-                discordUrl: URL(string: "https://discord.gg/TAjvAMVUmc"),
-                openseaUrl: URL(string: "https://opensea.io/assets/\(item.contract.address)/\(item.id.tokenId)"),
-                externalUrl: URL(string: "https://www.eatworks.xyz/projects-3/e-a-t-works-every-icon"),
-                metadataUrl: nil,
+        let svgString = jsonSVGString
+            .replacingOccurrences(of: "data:image/svg+xml,", with: "")
+            .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
+            .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
+            .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
+            .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'")
 
-                attributes: [Attribute]()
-            )
-        } catch {
-            print("⚠️ normalizeEveryIcon \(item.contract.address) \(item.id.tokenId) \(error)")
-            return nil
-        }
+
+        let temporaryDirectoryURL = URL(
+            fileURLWithPath: NSTemporaryDirectory(),
+            isDirectory: true
+        )
+        let temporaryFilename = ProcessInfo().globallyUniqueString
+        let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
+
+        let svgData: Data = svgString.data(using: .utf8)!
+        try? svgData.write(
+            to: temporaryFileURL,
+            options: .atomic
+        )
+
+        let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
+
+        let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
+        svgLayer.frame = frame
+
+        guard let image = snapshotImage(for: svgLayer) else { return nil }
+
+        try? FileManager.default.removeItem(at: temporaryFileURL)
+
+        
+        print("!!!!!!!!!!!!!!!!!!! \(item.animationUrl)")
+        
+        return NFT(
+            id: item.id,
+            address: item.address,
+            tokenId: item.tokenId,
+            title: item.title,
+            text: item.text,
+            image: image,
+            simulationUrl: item.animationUrl,
+            animationUrl: nil,
+            twitterUrl: nil,
+            discordUrl: nil,
+            openseaUrl: URL(string: "https://opensea.io/assets/\(item.address)/\(item.tokenId)"),
+            externalUrl: nil,
+            metadataUrl: item.metadataUrl,
+            attributes: item.attributes.map { Attribute(key: $0.key, value: $0.value) }
+        )
     }
     
 }
@@ -276,7 +372,6 @@ extension NFTAdapters {
                 id: "\(item.contract.address)/\(item.id.tokenId)",
                 address: item.contract.address,
                 tokenId: item.id.tokenId,
-                standard: item.id.tokenMetadata.tokenType,
                 title: item.title,
                 text: item.text,
                 image: image,

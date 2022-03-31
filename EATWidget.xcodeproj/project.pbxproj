@@ -278,6 +278,9 @@
 		5CF2B99427F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
 		5CF2B99527F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
 		5CF2B99627F5359900D25388 /* APIOpenSea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99327F5359900D25388 /* APIOpenSea.swift */; };
+		5CF2B99827F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
+		5CF2B99927F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
+		5CF2B99A27F5532000D25388 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99727F5532000D25388 /* Tasks.swift */; };
 		5CF4A81427F25EF10074C4FE /* DiscordPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -473,6 +476,7 @@
 		5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenseaProvider.swift; sourceTree = "<group>"; };
 		5CF2B99327F5359900D25388 /* APIOpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenSea.swift; sourceTree = "<group>"; };
+		5CF2B99727F5532000D25388 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* DiscordPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -675,6 +679,7 @@
 				5C574CE627BAF00E00212FED /* APIEtherscan.swift */,
 				5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */,
 				5C5026CE27F0ED6D00B59C42 /* Helpers.swift */,
+				5CF2B99727F5532000D25388 /* Tasks.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1148,6 +1153,7 @@
 				5C574CDF27BAE2AF00212FED /* APIAlchemy.swift in Sources */,
 				5C93785027F21356003281EC /* ParseCollectionOperation.swift in Sources */,
 				5C035EEA27B6CAE700A11697 /* NFTVisual.swift in Sources */,
+				5CF2B99827F5532000D25388 /* Tasks.swift in Sources */,
 				5CE9CF9E27B5651200F29938 /* StaggeredGrid.swift in Sources */,
 				5CA9ADA927C6A578003C25DE /* WalletsSheetViewModel.swift in Sources */,
 				5C28D1C427ECB67100F98779 /* FirebaseProvider.swift in Sources */,
@@ -1219,6 +1225,7 @@
 				5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */,
 				5C366B0A27B6FE5E00D9A0BE /* URLLink.swift in Sources */,
 				5C06457127C5C3DA00E97D1C /* CachedWalletStorage.swift in Sources */,
+				5CF2B99927F5532000D25388 /* Tasks.swift in Sources */,
 				5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */,
 				5C6308B727B2DA0A00AC2A24 /* Formatters.swift in Sources */,
 				5C6308AC27B2D92800AC2A24 /* WidgetIntents.intentdefinition in Sources */,
@@ -1270,6 +1277,7 @@
 				5CF2B99027F4A55E00D25388 /* Array+Extensions.swift in Sources */,
 				5C5026D127F0ED6D00B59C42 /* Helpers.swift in Sources */,
 				5CD2ADAD27B716F300FDDAB3 /* HeadingLockup.swift in Sources */,
+				5CF2B99A27F5532000D25388 /* Tasks.swift in Sources */,
 				5C60F06527BCCDE3006F8AB4 /* GalleryView+Extensions.swift in Sources */,
 				5CA04D3727E0C70300559129 /* CachedCollectionStorage.swift in Sources */,
 				5C366B0727B6F96300D9A0BE /* TableItem.swift in Sources */,
