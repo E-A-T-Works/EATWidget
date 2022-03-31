@@ -64,7 +64,8 @@ struct NFTSheet: View {
                             
                             if viewModel.attributes.count > 0 {
                                 AttributeGrid(list: viewModel.attributes)
-                                    .padding([.bottom], spacing)
+                                    .padding(.bottom, spacing)
+                                
                                 Divider().padding(.vertical)
                             }
                             

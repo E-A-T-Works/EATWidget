@@ -57,7 +57,6 @@ extension NFTAdapters {
             
             // enforce 10mb size limit
             if imageData.count > (10 * 1_000_000) { return nil }
-            
             guard let image = UIImage(data: imageData) else { return nil }
             
             let attributes: [Attribute] = (metadata.attributes ?? [APIAlchemyAttribute]())

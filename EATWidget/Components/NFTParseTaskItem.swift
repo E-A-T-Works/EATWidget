@@ -46,27 +46,21 @@ struct NFTParseTaskItem: View {
             case .pending:
                 LottieView(name: loader, loopMode: .loop)
                     .frame(width: 40, height: 40)
-                    .padding(4)
                     .background(.thickMaterial)
-                    .cornerRadius(4)
                 
             case .success:
                 Image(uiImage: image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
-                    .padding(4)
                     .background(.thickMaterial)
-                    .cornerRadius(4)
                 
             case .failure:
                 Image(uiImage: UIImage(named: fallback)!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
-                    .padding(4)
                     .background(.thickMaterial)
-                    .cornerRadius(4)
             }
             
             

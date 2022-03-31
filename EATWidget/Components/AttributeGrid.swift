@@ -11,27 +11,27 @@ struct AttributeGrid: View {
     
     let list: [CachedAttribute]
     
-    let size: CGFloat = 120
-    let spacing: CGFloat = 10
+    private var gridItemLayout = [
+        GridItem(.adaptive(minimum: 150, maximum: 200)),
+        GridItem(.adaptive(minimum: 150, maximum: 200)),
+        GridItem(.adaptive(minimum: 150, maximum: 200)),
+    ]
+    
+    init(list: [CachedAttribute]) {
+        self.list = list
+    }
     
     var body: some View {
         
         VStack(alignment: .leading) {
             SectionTitle(text: "Attributes")
-            
-            LazyVGrid(
-                columns: Array(
-                    repeating: .init(
-                        .fixed(size), spacing: spacing, alignment: .center
-                    ), count: 3
-                ),
-                spacing: spacing
-            ) {
+
+            Lazy    VGrid(columns: gridItemLayout, spacing: 10) {
                 ForEach(list, id: \.self) { item in
                     AttributeBox(item: item)
-                        .frame(width: size, height: size, alignment: .center)
                 }
             }
+
         }
     }
 }

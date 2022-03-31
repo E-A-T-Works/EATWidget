@@ -108,7 +108,9 @@ struct ConnectSheet: View {
                          
                             Section {
                                 ForEach(viewModel.list.indices, id: \.self) { i in
+                                    
                                     NFTParseTaskItem(item: viewModel.list[i])
+                                    
                                 }
                             } header: {
                                 
@@ -118,8 +120,7 @@ struct ConnectSheet: View {
                                         
                                         Spacer()
                                     
-                                        LottieView(name: "spinner-00", loopMode: .loop)
-                                            .frame(width: 32, height: 32)
+                                        ProgressView()
                                     }
 
                                 } else {

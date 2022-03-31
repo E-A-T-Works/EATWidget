@@ -10,6 +10,8 @@
 //
 
 import SwiftUI
+import UIKit
+import ImageIO
 
 extension UIImage {
     var averageColor: UIColor? {
@@ -26,23 +28,3 @@ extension UIImage {
         return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
     }
 }
-
-
-//extension UIImage {
-//    
-//    func toData() -> Data? {
-//        return pngData()
-//    }
-//    
-//    var sizeInBytes: Int {
-//        if let data = toData() {
-//            return data.count
-//        } else {
-//            return 0
-//        }
-//    }
-//    
-//    var sizeInMB: Double {
-//        return Double(sizeInBytes) / 1_000_000
-//    }
-//}

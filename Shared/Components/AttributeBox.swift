@@ -8,39 +8,28 @@
 import SwiftUI
 
 struct AttributeBox: View {
-    @Environment(\.colorScheme) var colorScheme
-    
     let key: String?
     let value: String?
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                
-                if colorScheme == .dark {
-                    Color.white.opacity(0.12)
-                } else {
-                    Color.black.opacity(0.04)
-                }
-                
-                VStack {
-                    Text(key ?? "--")
-                        .font(.system(size: 10, design: .monospaced))
-                        .fontWeight(.bold)
-                        .lineLimit(1)
-                        .padding(.bottom, 1)
-                    
-                    Text(value ?? "--")
-                        .font(.system(size: 10, design: .monospaced))
-                        .fontWeight(.light)
-                        .lineLimit(1)
-                }
-                .padding()
-            }
-            .frame(width: geo.size.width, height: geo.size.width)
-            .cornerRadius(2)
-        }
         
+        VStack {
+            Text(key ?? "--")
+                .font(.system(size: 10, design: .monospaced))
+                .fontWeight(.bold)
+                .lineLimit(1)
+                .padding(.bottom, 1)
+            
+            Text(value ?? "--")
+                .font(.system(size: 10, design: .monospaced))
+                .fontWeight(.light)
+                .lineLimit(1)
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
+        .background(.thickMaterial)
+
     }
 }
 
