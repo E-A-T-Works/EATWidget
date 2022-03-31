@@ -99,7 +99,7 @@ struct NFTSheet: View {
                         } label: {
                             HStack {
                                 Image(systemName: "info.circle")
-                                Text("Learn about Widgets")
+                                Text("How to add as a widget")
                                     .font(.system(size: 16, design: .monospaced))
                                 
                             }

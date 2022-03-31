@@ -19,6 +19,14 @@ struct SplashPage: View {
     
     var body: some View {
         ZStack {
+            
+//            Image(uiImage: UIImage(named: "eat-artifact-000")!)
+//                .resizable()
+//                .scaledToFit()
+//                .frame(maxWidth: .infinity)
+//                .frame(maxHeight: .infinity)
+//                .frame(alignment: .center)
+//                .clipped()
 
             VStack(alignment: .leading) {
                 

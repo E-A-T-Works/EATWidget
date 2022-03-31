@@ -284,6 +284,9 @@
 		5CF2B99C27F6019300D25388 /* SplashPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99B27F6019300D25388 /* SplashPage.swift */; };
 		5CF2B99E27F603CD00D25388 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99D27F603CD00D25388 /* AnimatedText.swift */; };
 		5CF2B9A027F61CBB00D25388 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99F27F61CBB00D25388 /* SafeAreaInsets.swift */; };
+		5CF2B9A827F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
+		5CF2B9A927F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
+		5CF2B9AA27F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
 		5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* GridPrompt.swift */; };
 		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
@@ -483,6 +486,7 @@
 		5CF2B99B27F6019300D25388 /* SplashPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPage.swift; sourceTree = "<group>"; };
 		5CF2B99D27F603CD00D25388 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		5CF2B99F27F61CBB00D25388 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
+		5CF2B9A727F622E900D25388 /* eat-artifact-000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-artifact-000.png"; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* GridPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPrompt.swift; sourceTree = "<group>"; };
 		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -641,6 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF4A81527F27C9B0074C4FE /* testing.png */,
+				5CF2B9A727F622E900D25388 /* eat-artifact-000.png */,
 				5CBC068D27BC5BC200C2CADD /* eat-b-w-00.png */,
 				5CBC068F27BC5BC200C2CADD /* eat-b-w-01.png */,
 				5CBC069127BC5BC200C2CADD /* eat-b-w-02.png */,
@@ -1033,6 +1038,7 @@
 				5CF4A81627F27C9B0074C4FE /* testing.png in Resources */,
 				5CBC06B327BC5BC300C2CADD /* eat-w-b-03.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
+				5CF2B9A827F622E900D25388 /* eat-artifact-000.png in Resources */,
 				5C36B35527E9111E0039A50E /* spinner-01.json in Resources */,
 				5C36B35327E9111E0039A50E /* spinner-05.json in Resources */,
 				5CBC06BF27BC5BC300C2CADD /* eat-b-w-04.png in Resources */,
@@ -1077,6 +1083,7 @@
 				5CBC06C327BC5BC300C2CADD /* eat-w-b-01.png in Resources */,
 				5CBC069F27BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5CBC06A527BC5BC300C2CADD /* eat-b-w-01.png in Resources */,
+				5CF2B9A927F622E900D25388 /* eat-artifact-000.png in Resources */,
 				5C035EC027B5A5C800A11697 /* Eth.png in Resources */,
 				5C035EC527B5B43500A11697 /* Opensea.png in Resources */,
 				5CBC06BD27BC5BC300C2CADD /* eat-w-b-05.png in Resources */,
@@ -1110,6 +1117,7 @@
 				5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A027BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
+				5CF2B9AA27F622E900D25388 /* eat-artifact-000.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
 				5CF4A81827F27C9B0074C4FE /* testing.png in Resources */,
@@ -1472,7 +1480,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1505,7 +1513,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1535,7 +1543,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1561,7 +1569,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1589,7 +1597,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -1617,7 +1625,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
