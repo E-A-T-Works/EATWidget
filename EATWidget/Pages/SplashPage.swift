@@ -19,21 +19,18 @@ struct SplashPage: View {
     
     var body: some View {
         ZStack {
+            Color.black
             
-//            Image(uiImage: UIImage(named: "eat-artifact-000")!)
-//                .resizable()
-//                .scaledToFit()
-//                .frame(maxWidth: .infinity)
-//                .frame(maxHeight: .infinity)
-//                .frame(alignment: .center)
-//                .clipped()
-
             VStack(alignment: .leading) {
                 
                 Spacer()
                 
                 HStack {
-                    Branding()
+                    Image(
+                        uiImage: UIImage(named: "eat-w-b-00")!
+                    )
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                         .frame(width: 42, height: 42)
                     
                     Spacer()
@@ -48,6 +45,7 @@ struct SplashPage: View {
                             .font(.system(size: 42.0, design: .monospaced))
                             .fontWeight(.black)
                             .lineLimit(1)
+                            .foregroundColor(.white)
                     }
 
                     Spacer()
@@ -62,6 +60,7 @@ struct SplashPage: View {
                             .font(.system(size: 42.0, design: .monospaced))
                             .fontWeight(.black)
                             .lineLimit(1)
+                            .foregroundColor(.white)
                     }
                     
                     Spacer()
@@ -75,6 +74,7 @@ struct SplashPage: View {
                             .font(.system(size: 42.0, design: .monospaced))
                             .fontWeight(.black)
                             .lineLimit(1)
+                            .foregroundColor(.white)
                     }
                     
                     Spacer()
