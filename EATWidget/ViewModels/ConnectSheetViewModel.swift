@@ -54,14 +54,10 @@ final class ConnectSheetViewModel: ObservableObject {
     private let queue = OperationQueue()
     
     private let fb: FirebaseProvider = FirebaseProvider.shared
-//    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
-//    private let api: APIOpenseaProvider = APIOpenseaProvider.shared
     
     private let walletStorage = CachedWalletStorage.shared
     private let collectionStorage = CachedCollectionStorage.shared
     private let nftStorage = CachedNFTStorage.shared
-    
-    
     
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
@@ -93,6 +89,31 @@ final class ConnectSheetViewModel: ObservableObject {
     
     
     // MARK: - Form Submission and Lookup
+    
+    func convert() async {
+        guard form.isValid else {
+            showingError = true
+            return
+        }
+        
+        // check if address is ENS
+        let address = form.address
+        
+        if address.hasSuffix(".eth") {
+            let ens = APIEnsideasProvider()
+            
+            do {
+                let realAddress = try await ens.resolve(for: address)
+                updateAddress(realAddress)
+                updateTitle(address)
+                
+            } catch {
+                print("⚠️ convert: \(error)")
+            }
+            
+        }
+        
+    }
  
     func lookup() async {
         guard form.isValid else {
@@ -270,6 +291,7 @@ final class ConnectSheetViewModel: ObservableObject {
     }
     
     func lookupAndParse() async {
+        await convert()
         await lookup()
         await parse()
     }
@@ -312,6 +334,9 @@ final class ConnectSheetViewModel: ObservableObject {
     // MARK: - Form Field Helpers
     
     func updateAddress(_ newValue: String) {
+        
+        
+        
         form.address = newValue
         updateFormValidity()
     }
