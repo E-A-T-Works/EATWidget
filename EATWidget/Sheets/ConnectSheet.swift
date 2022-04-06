@@ -107,7 +107,7 @@ struct ConnectSheet: View {
                         if viewModel.list.isEmpty {
                             
                             VStack(alignment: .leading) {
-                                Text("Ohh geez, we couldn't find anything.")
+                                Text("Hmm, we couldn't find anything.")
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
@@ -117,7 +117,7 @@ struct ConnectSheet: View {
                                     .padding(.bottom)
                                 
                                 
-                                Text("Hey, do us a favor and make sure you are adding a valid Ethereum address.")
+                                Text("Please make sure you are adding a valid Ethereum address.")
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
@@ -126,7 +126,7 @@ struct ConnectSheet: View {
                                     .opacity(0.72)
                                     .padding(.bottom)
                                 
-                                Text("PS: We're working on getting ENS support to work smoother than butter!")
+                                Text("PS: We're working on ENS support!")
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
@@ -140,7 +140,7 @@ struct ConnectSheet: View {
                                         destination: URL(string: "https://discord.gg/tmaddD9C")!
                                     ) {
                                         HStack {
-                                            Text("You can always drop us a note on Discord")
+                                            Text("Other suggestions? You can always drop us a note on Discord.")
                                                 .font(.system(size: 12, design: .monospaced))
                                                 .fixedSize(horizontal: false, vertical: true)
                                                 .lineLimit(nil)
