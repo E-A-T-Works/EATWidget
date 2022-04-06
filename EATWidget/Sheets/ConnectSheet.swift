@@ -116,7 +116,6 @@ struct ConnectSheet: View {
                                     .opacity(0.72)
                                     .padding(.bottom)
                                 
-                                
                                 Text("Please make sure you are adding a valid Ethereum address.")
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
@@ -126,7 +125,7 @@ struct ConnectSheet: View {
                                     .opacity(0.72)
                                     .padding(.bottom)
                                 
-                                Text("PS: We're working on ENS support!")
+                                Text("PS: We're still perfecting ENS support!")
                                     .font(.system(size: 12, design: .monospaced))
                                     .fixedSize(horizontal: false, vertical: true)
                                     .lineLimit(nil)
