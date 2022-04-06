@@ -19,7 +19,7 @@ struct GridPrompt: View {
                 .frame(width: 32, height: 32)
             
             
-            Text("Howdy! Looks like you have a pretty awesome collection. Why not add it to your home screen as a widget? Learn how right here...")
+            Text("Oh hey, nice art! Some of these would look beautiful on your home screen. Let us show you how...")
                 .font(.system(size: 12.0, design: .monospaced))
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)

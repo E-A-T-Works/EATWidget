@@ -12,7 +12,7 @@ struct UnconfiguredView: View {
     var body: some View {
         VStack{
             Branding().frame(width: 40, height: 40, alignment: .center)
-            Text("Widget is not setup")
+            Text("Hold and press to add some art!")
                 .font(.system(size: 12, design: .monospaced))
                 .multilineTextAlignment(.center)
                 .padding()
