@@ -14,16 +14,22 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            if splashing {
-                SplashPage() {
-                    splashing = false
-                }
-            } else {
-                NavigationView {
-                    HomePage()
-                }
-                .navigationViewStyle(.stack)
+//            if splashing {
+//                SplashPage() {
+//                    splashing = false
+//                }
+//            } else {
+//                NavigationView {
+//                    HomePage()
+//                }
+//                .navigationViewStyle(.stack)
+//            }
+            
+            
+            NavigationView {
+                HomePage()
             }
+            .navigationViewStyle(.stack)
         }
     }
 }

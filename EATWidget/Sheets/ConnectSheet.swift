@@ -191,7 +191,7 @@ struct ConnectSheet: View {
                                         destination: URL(string: "https://discord.gg/tmaddD9C")!
                                     ) {
                                         HStack {
-                                            Text("Let us know on Discord")
+                                            Text("Let us know")
                                                 .font(.system(size: 12, design: .monospaced))
                                             
                                             Image(systemName: "arrow.up.right")

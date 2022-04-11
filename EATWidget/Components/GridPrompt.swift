@@ -12,13 +12,6 @@ struct GridPrompt: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Image(systemName: "square.3.layers.3d.down.right")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(colorScheme == .dark ? .white : .black)
-                .frame(width: 32, height: 32)
-            
-            
             Text("Oh hey, nice art! Some of these would look beautiful on your home screen. Let us show you how...")
                 .font(.system(size: 12.0, design: .monospaced))
                 .fontWeight(.bold)
@@ -26,14 +19,15 @@ struct GridPrompt: View {
             
             Spacer()
             
-            Image(systemName: "chevron.right")
+            Image(systemName: "arrow.up.right")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 12, height: 12, alignment: .center)
                 .foregroundColor(colorScheme == .dark ? .white : .black)
                 .opacity(0.32)
         }
-        .padding()
+        .padding(.vertical)
+        .padding(.horizontal, 10)
         .background(colorScheme == .dark ? .white.opacity(0.12) : .black.opacity(0.04))
         .foregroundColor(colorScheme == .dark ? .white : .black)
     }

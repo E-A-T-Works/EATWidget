@@ -39,48 +39,28 @@ struct HomePage: View {
 
             } else {
                 
-                ScrollView(showsIndicators: false) {
-                    
-                    Button {
-                        
-                        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async {
-                        
-                            print("❇️ Start")
-                            
-                            let queue = OperationQueue()
-                            let operation = RefreshAppContentsOperation()
-                            queue.addOperation(operation)
-                            
-                            queue.waitUntilAllOperationsAreFinished()
-                            
-                            print("🎉 DONE")
-                            
-                        }
-                        
-                    } label: {
-                        Text("Test refresh")
-                    }
-                    
-                    
+                ScrollView {
                     Button {
                         viewModel.presentTutorialSheet()
                     } label: {
                         GridPrompt()
-                    }.buttonStyle(.plain)
-
+                    }
+                    .buttonStyle(.plain)
+                    
                     ForEach(viewModel.collections) { collection in
-
+                        
                         NavigationLink(
                             destination: CollectionPage(address: collection.address)
                         ) {
                             CollectionItem(item: collection)
                         }
                         .buttonStyle(.plain)
-                        .padding(.horizontal)
                         .padding(.top)
-
-                        Divider().padding(.horizontal)
-
+                        .padding(.horizontal, 10)
+                        
+                        Divider()
+                            .padding(.horizontal, 10)
+                        
                         StaggeredGrid(
                             list: viewModel.nfts.filter { $0.address == collection.address },
                             columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),
@@ -101,16 +81,12 @@ struct HomePage: View {
                                 .buttonStyle(.plain)
                             }
                         )
-                        .padding(.horizontal)
+                        .padding(.horizontal, 10)
                         .animation(.easeInOut, value: viewModel.collections.count + 1)
+
                     }
                 }
-                
-                
-                
             }
-            
-            
         }
         .navigationTitle("Collection")
         .toolbar(content: {
@@ -235,9 +211,6 @@ struct HomePage: View {
                     print()
                 }
             }
-        }
-        .onAppear {
-//            viewModel.sync()
         }
     }
     

@@ -18,6 +18,8 @@ final class WalletsSheetViewModel: ObservableObject {
     
     @Published private(set) var loading: Bool = false
     
+    @Published private(set) var isSyncing: Bool = false
+    
     private let walletStorage = CachedWalletStorage.shared
     
     var viewDismissalModePublisher = PassthroughSubject<Bool, Never>()
@@ -59,5 +61,23 @@ final class WalletsSheetViewModel: ObservableObject {
         self.shouldDismissView = true
     }
     
+    
+    func sync() {
+        isSyncing = true
+        
+        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async {
+            
+            let queue = OperationQueue()
+            let operation = RefreshAppContentsOperation()
+            queue.addOperation(operation)
+
+            queue.waitUntilAllOperationsAreFinished()
+
+            DispatchQueue.main.async {
+                self.isSyncing = false
+            }
+            
+        }
+    }
     
 }
