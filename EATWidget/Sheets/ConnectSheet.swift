@@ -178,7 +178,7 @@ struct ConnectSheet: View {
                                     }
 
                                 } else {
-                                    Text("\(viewModel.successCount) out of  \(viewModel.totalCount) Supported")
+                                    Text("\(viewModel.successCount) out of \(viewModel.totalCount) Supported")
                                         .font(.system(size: 12, design: .monospaced))
                                 }
                                 

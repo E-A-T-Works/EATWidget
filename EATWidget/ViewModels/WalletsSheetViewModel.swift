@@ -61,6 +61,7 @@ final class WalletsSheetViewModel: ObservableObject {
         self.shouldDismissView = true
     }
     
+    func add() {}
     
     func sync() {
         isSyncing = true

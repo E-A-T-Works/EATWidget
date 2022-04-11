@@ -40,27 +40,32 @@ struct WalletsSheet: View {
                     .onDelete { offsets in
                         viewModel.delete(at: offsets)
                     }
-                    
-                    Button {
-                        viewModel.sync()
-                    } label: {
-                        Text("Refresh NFTs")
-                    }
-
+                }.refreshable {
+                    try? await Task.sleep(nanoseconds: UInt64(3e+9))
                 }
                 
             }
         }
-        .navigationTitle("Connected Wallets")
+        .navigationTitle("Wallets")
         .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                
-                Button(action: {
+            ToolbarItem(placement: .navigationBarLeading, content: {
+                Button {
                     viewModel.dismiss()
-                }, label: {
-                    Text("DONE")
+                } label: {
+                    Label("Dismiss", systemImage: "xmark")
+                        .frame(width: 16, height: 16)
+                }
+                .buttonStyle(.plain)
+                
+          })
+            
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                NavigationLink(
+                    destination: ConnectSheet()
+                ) {
+                    Text("CONNECT")
                         .font(.system(size: 16, design: .monospaced))
-                })
+                }
           })
         })
         .onReceive(viewModel.viewDismissalModePublisher) { shouldDismiss in

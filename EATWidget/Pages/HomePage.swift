@@ -181,11 +181,6 @@ struct HomePage: View {
                             
                         }
                     }
-                    
-             
-                    
-
-                   
                 }
             )
         })
