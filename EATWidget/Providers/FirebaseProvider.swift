@@ -77,4 +77,26 @@ final class FirebaseProvider {
         }
         
     }
+
+    func logRefresh() async {
+        do {
+            guard Auth.auth().currentUser != nil else {
+                return
+            }
+            
+            let uid = Auth.auth().currentUser!.uid
+            let db = Firestore.firestore()
+            
+            try await db
+                .collection("refreshes")
+                .document(uid)
+                .setData([
+                    "timestamp": Date()
+                ])
+
+        } catch {
+            print("⚠️ Failed to log to firestore \(error)")
+        }
+    }
 }
+

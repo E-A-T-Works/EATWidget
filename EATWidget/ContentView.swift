@@ -16,8 +16,6 @@ struct ContentView: View {
         ZStack {
             if splashing {
                 SplashPage() {
-                    print("!!!!")
-                    
                     splashing = false
                 }
             } else {

@@ -8,6 +8,10 @@
 	<string>${API_KEY_ETHERSCAN}</string>
 	<key>API_KEY_OPENSEA</key>
 	<string>${API_KEY_OPENSEA}</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>xyz.eatworks.EATWidget.tasks.refresh</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>processing</string>

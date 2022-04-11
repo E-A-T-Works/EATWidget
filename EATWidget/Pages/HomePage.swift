@@ -42,6 +42,24 @@ struct HomePage: View {
                 ScrollView(showsIndicators: false) {
                     
                     Button {
+                        Task {
+                            print("❇️ Start")
+                            let queue = OperationQueue()
+                            let operation = RefreshAppContentsOperation()
+                            queue.addOperation(operation)
+                            
+                            queue.waitUntilAllOperationsAreFinished()
+                            
+                            print("🎉 DONE")
+                        }
+                        
+                        
+                    } label: {
+                        Text("Test refresh")
+                    }
+                    
+                    
+                    Button {
                         viewModel.presentTutorialSheet()
                     } label: {
                         GridPrompt()

@@ -40,6 +40,7 @@
 		5C06457627C5C3E200E97D1C /* CachedNFTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457327C5C3E200E97D1C /* CachedNFTStorage.swift */; };
 		5C06457827C5E2B200E97D1C /* FeedbackPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */; };
 		5C06457A27C68BC500E97D1C /* ViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */; };
+		5C13AB2F28047B80004638C9 /* RefreshAppContentsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C13AB2E28047B80004638C9 /* RefreshAppContentsOperation.swift */; };
 		5C1A4A7027FDF4C700A31223 /* APIEnsideasProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A6F27FDF4C700A31223 /* APIEnsideasProvider.swift */; };
 		5C1A4A7227FDF5BC00A31223 /* APIEnsideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */; };
 		5C1A4A7327FDF5BC00A31223 /* APIEnsideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */; };
@@ -353,6 +354,7 @@
 		5C06457327C5C3E200E97D1C /* CachedNFTStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedNFTStorage.swift; sourceTree = "<group>"; };
 		5C06457727C5E2B200E97D1C /* FeedbackPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPrompt.swift; sourceTree = "<group>"; };
 		5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaceholder.swift; sourceTree = "<group>"; };
+		5C13AB2E28047B80004638C9 /* RefreshAppContentsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAppContentsOperation.swift; sourceTree = "<group>"; };
 		5C1A4A6F27FDF4C700A31223 /* APIEnsideasProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnsideasProvider.swift; sourceTree = "<group>"; };
 		5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnsideas.swift; sourceTree = "<group>"; };
 		5C1A4A9127FE010400A31223 /* tutorial-w-b-04.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-04.mov"; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				5C3C881527EC1E7D005BECA1 /* SyncWalletOperation.swift */,
 				5C55E2B927EB5E18008639DD /* ParseNFTOperation.swift */,
 				5C93784F27F21356003281EC /* ParseCollectionOperation.swift */,
+				5C13AB2E28047B80004638C9 /* RefreshAppContentsOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				5C55E2BA27EB5E18008639DD /* ParseNFTOperation.swift in Sources */,
 				5CB2024027C9CF910026A3D3 /* SVGImage.swift in Sources */,
 				5C84117727B9A6FE0021008E /* AttributeGrid.swift in Sources */,
+				5C13AB2F28047B80004638C9 /* RefreshAppContentsOperation.swift in Sources */,
 				5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */,
 				5C828CFC27BC50DB009D92D6 /* LoopingPlayer.swift in Sources */,
 				5C93785627F2342B003281EC /* CollectionItem+Extensions.swift in Sources */,
@@ -1520,13 +1524,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EATWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "e∙a∙t∙}";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1553,13 +1558,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EATWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "e∙a∙t∙}";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1583,7 +1589,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1609,7 +1615,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1637,7 +1643,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -1665,7 +1671,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
