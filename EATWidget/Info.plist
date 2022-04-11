@@ -8,5 +8,9 @@
 	<string>${API_KEY_ETHERSCAN}</string>
 	<key>API_KEY_OPENSEA</key>
 	<string>${API_KEY_OPENSEA}</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+	</array>
 </dict>
 </plist>
