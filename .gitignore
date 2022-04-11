@@ -1,2 +1,3 @@
 Shared/Secrets.xcconfig
+Static/*.mov
 EATWidget/GoogleService-Info.plist
