@@ -18,7 +18,7 @@ final class FirebaseProvider {
     
     init() {}
     
-    func logWallet(address: String) async {
+    func logWallet(address: String, parsedCount: Int = 0, successCount: Int = 0, failureCount: Int = 0) async {
         
         do {
             guard Auth.auth().currentUser != nil else {
@@ -31,6 +31,9 @@ final class FirebaseProvider {
                 .collection("wallets")
                 .document(address)
                 .setData([
+                    "parsedCount": parsedCount,
+                    "successCount": successCount,
+                    "failureCount": failureCount,
                     "timestamp": Date()
                 ])
 

@@ -9,6 +9,13 @@ import Foundation
 import Firebase
 
 final class SyncWalletOperation: AsyncOperation {
+    private(set) var collections: [Collection] = [Collection]()
+    
+    private(set) var list: [NFTParseTask] = [NFTParseTask]()
+    private(set) var parsedCount: Int = 0
+    private(set) var successCount: Int = 0
+    private(set) var failureCount: Int = 0
+    
     
     private let wallet: CachedWallet
     private let completionHandler: ((NFT?) -> Void)?
@@ -16,8 +23,7 @@ final class SyncWalletOperation: AsyncOperation {
     private let nftStorage: CachedNFTStorage = CachedNFTStorage.shared
     private let collectionStorage: CachedCollectionStorage = CachedCollectionStorage.shared
     
-    private let api: APIAlchemyProvider = APIAlchemyProvider.shared
-    private let adapters: NFTAdapters = NFTAdapters.shared
+    private let fb: FirebaseProvider = FirebaseProvider.shared
     
     private let queue = OperationQueue()
     
@@ -35,80 +41,26 @@ final class SyncWalletOperation: AsyncOperation {
             return
         }
         
-        
         Task {
+            print("❇️ START:SYNC: \(address)")
             
-//            //
-//            // lookup
-//            //
-//            
-//            var results: [APIAlchemyNFT] = [APIAlchemyNFT]()
-//            do {
-//                results = try await api.getNFTs(for: address)
-//            } catch {
-//                print("⚠️ sync::lookup \(error)")
-//                state = .finished
-//                return
-//            }
-//            
-//            //
-//            // parse nfts
-//            //
-//            
-//            var nfts: [NFT] = [NFT]()
-//
-//            results.indices.forEach { index in
-//                let data = results[index]
-//
-//                let parseOp = ParseNFTOperation(data: data)
-//                parseOp.completionBlock = {
-//                    guard let parsed = parseOp.parsed else { return }
-//                    nfts.append(parsed)
-//                }
-//
-//                queue.addOperation(parseOp)
-//            }
-//
-//            queue.waitUntilAllOperationsAreFinished()
-//
-//            print("done w nfts \(nfts.count)")
-//            
-//            //
-//            // parse collections
-//            //
-//            
-//            var collections: [Collection] = [Collection]()
-//
-//            let addresses = nfts
-//                .map { $0.address }
-//                .compactMap { $0 }
-//                .unique()
-//
-//            addresses.indices.forEach { index in
-//                let address = addresses[index]
-//
-//                let parseOp = ParseCollectionOperation(address: address)
-//
-//                parseOp.completionBlock = {
-//                    guard let parsed = parseOp.parsed else { return }
-//                    collections.append(parsed)
-//                }
-//
-//                queue.addOperation(parseOp)
-//            }
-//
-//            queue.waitUntilAllOperationsAreFinished()
-//            
-//            print("done w collections \(collections.count)")
-//
-//            //
-//            // compare
-//            //
-//
-//            let _ = try? collectionStorage.sync(list: collections)
-//            let _ = try? nftStorage.sync(wallet: wallet, list: nfts)
-//            
-            // mark task as done
+            await lookup(for: address)
+            await parse()
+            
+            let toCache: [NFT] = list.filter { $0.state == .success }.map { $0.parsed }.compactMap { $0 }
+            
+            do {
+                let _ = try collectionStorage.sync(list: collections)
+                let _ = try nftStorage.sync(wallet: wallet, list: toCache)
+            } catch {
+                
+            }
+            
+            await fb.logWallet(address: address, parsedCount: parsedCount, successCount: successCount, failureCount: failureCount)
+            
+        
+            print("✅ DONE:SYNC: \(address)")
+            
             state = .finished
         }
 
@@ -116,7 +68,105 @@ final class SyncWalletOperation: AsyncOperation {
     
     override func cancel() {
         super.cancel()
+        
         // Do any other cleanup
+        
+        queue.cancelAllOperations()
+    }
+    
+    
+    func lookup(for address: String) async {
+        let api = APIOpenseaProvider()
+        var results: [API_NFT] = [API_NFT]()
+        
+        do {
+            results = try await api.getNFTs(for: address)
+        } catch {
+            print("⚠️ \(error)")
+        }
+        
+        list = results.map {
+            NFTParseTask(
+                id: $0.id,
+                address: $0.address,
+                tokenId: $0.tokenId,
+                state: .pending,
+                collection: $0.collection,
+                raw: $0,
+                parsed: nil
+            )
+        }
+    }
+    
+    func parse() async {
+        
+        ///
+        /// Parse the NFTs
+        ///
+        
+        list.indices.forEach { index in
+            let data = list[index]
+            
+            let parseOp = ParseNFTOperation(data: data.raw)
+
+            parseOp.completionBlock = {
+                DispatchQueue.main.async {
+                    
+                    let parsed = parseOp.parsed
+                    
+                    var data = self.list[index]
+                    data.state = parsed == nil ? .failure : .success
+                    data.parsed = parseOp.parsed
+                    
+                    self.list[index] = data
+                    
+                    self.parsedCount += 1
+                    
+                    if parsed == nil {
+                        self.failureCount += 1
+                    } else {
+                        self.successCount += 1
+                    }
+                    
+                    
+                }
+            }
+
+            queue.addOperation(parseOp)
+        }
+        
+        ///
+        /// Parse the Collections
+        ///
+        
+        let collections = list
+            .map { $0.collection }
+            .compactMap { $0 }
+
+        var uniqueCollections = [APICollection]()
+        for item in collections {
+            if !uniqueCollections.contains(where: {$0.id == item.id }) {
+                uniqueCollections.append(item)
+            }
+        }
+
+        uniqueCollections.indices.forEach { index in
+            let data = uniqueCollections[index]
+
+            let parseOp = ParseCollectionOperation(data: data)
+
+            parseOp.completionBlock = {
+                DispatchQueue.main.async {
+                    guard let parsed = parseOp.parsed else { return }
+                    self.collections.append(parsed)
+                }
+            }
+
+            queue.addOperation(parseOp)
+        }
+        
+        
+        queue.waitUntilAllOperationsAreFinished()
     }
 }
 

@@ -42,8 +42,11 @@ struct HomePage: View {
                 ScrollView(showsIndicators: false) {
                     
                     Button {
-                        Task {
+                        
+                        DispatchQueue(label: "xyz.eatworks.app.worker", qos: .userInitiated).async {
+                        
                             print("❇️ Start")
+                            
                             let queue = OperationQueue()
                             let operation = RefreshAppContentsOperation()
                             queue.addOperation(operation)
@@ -51,8 +54,8 @@ struct HomePage: View {
                             queue.waitUntilAllOperationsAreFinished()
                             
                             print("🎉 DONE")
+                            
                         }
-                        
                         
                     } label: {
                         Text("Test refresh")

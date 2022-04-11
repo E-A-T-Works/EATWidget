@@ -261,7 +261,7 @@ final class ConnectSheetViewModel: ObservableObject {
             return
         }
         
-        await fb.logWallet(address: address)
+        await fb.logWallet(address: address, parsedCount: parsedCount, successCount: successCount, failureCount: failureCount)
        
         showingLoader = false
         
