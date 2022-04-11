@@ -44,16 +44,24 @@
 		5C1A4A7227FDF5BC00A31223 /* APIEnsideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */; };
 		5C1A4A7327FDF5BC00A31223 /* APIEnsideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */; };
 		5C1A4A7427FDF5BC00A31223 /* APIEnsideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */; };
+		5C1A4A9F27FE010400A31223 /* tutorial-w-b-04.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9127FE010400A31223 /* tutorial-w-b-04.mov */; };
+		5C1A4AA027FE010400A31223 /* tutorial-w-b-05.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9227FE010400A31223 /* tutorial-w-b-05.mov */; };
+		5C1A4AA127FE010400A31223 /* tutorial-b-w-02.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9327FE010400A31223 /* tutorial-b-w-02.mov */; };
+		5C1A4AA227FE010400A31223 /* tutorial-b-w-00.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9427FE010400A31223 /* tutorial-b-w-00.mov */; };
+		5C1A4AA327FE010400A31223 /* tutorial-b-w-01.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9527FE010400A31223 /* tutorial-b-w-01.mov */; };
+		5C1A4AA427FE010400A31223 /* tutorial-w-b-01.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9627FE010400A31223 /* tutorial-w-b-01.mov */; };
+		5C1A4AA527FE010400A31223 /* tutorial-b-w-06.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9727FE010400A31223 /* tutorial-b-w-06.mov */; };
+		5C1A4AA627FE010400A31223 /* tutorial-b-w-05.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9827FE010400A31223 /* tutorial-b-w-05.mov */; };
+		5C1A4AA727FE010400A31223 /* tutorial-w-b-02.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9927FE010400A31223 /* tutorial-w-b-02.mov */; };
+		5C1A4AA827FE010400A31223 /* tutorial-w-b-03.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9A27FE010400A31223 /* tutorial-w-b-03.mov */; };
+		5C1A4AA927FE010400A31223 /* tutorial-b-w-03.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9B27FE010400A31223 /* tutorial-b-w-03.mov */; };
+		5C1A4AAA27FE010400A31223 /* tutorial-b-w-04.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9C27FE010400A31223 /* tutorial-b-w-04.mov */; };
+		5C1A4AAB27FE010400A31223 /* tutorial-w-b-00.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9D27FE010400A31223 /* tutorial-w-b-00.mov */; };
+		5C1A4AAC27FE010400A31223 /* tutorial-w-b-06.mov in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A4A9E27FE010400A31223 /* tutorial-w-b-06.mov */; };
 		5C1C71C427BBFBFA009BFC15 /* NFTDetails+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */; };
 		5C1C71C627BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
 		5C1C71C727BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
 		5C1C71C827BC011A009BFC15 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1C71C527BC011A009BFC15 /* String+Extensions.swift */; };
-		5C24B9AD27F2ABA6006C294B /* tutorial-00.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */; };
-		5C24B9AE27F2ABA6006C294B /* tutorial-01.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */; };
-		5C24B9AF27F2ABA6006C294B /* tutorial-02.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */; };
-		5C24B9B027F2ABA6006C294B /* tutorial-03.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */; };
-		5C24B9B127F2ABA6006C294B /* tutorial-04.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */; };
-		5C24B9B227F2ABA6006C294B /* tutorial-05.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */; };
 		5C24E4F527EE122E00F3CF2A /* CollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */; };
 		5C24E4F727EE13DD00F3CF2A /* LayoutHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */; };
 		5C24E4F927EE155900F3CF2A /* CollectionPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */; };
@@ -61,6 +69,7 @@
 		5C24E4FC27EE1D8600F3CF2A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4FA27EE1D8600F3CF2A /* Collection.swift */; };
 		5C24E4FD27EE1D8600F3CF2A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C24E4FA27EE1D8600F3CF2A /* Collection.swift */; };
 		5C28D1C427ECB67100F98779 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C28D1C327ECB67100F98779 /* FirebaseProvider.swift */; };
+		5C3228F827FE0FC9001C1CCB /* eat-artifact-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C3228F727FE0FC9001C1CCB /* eat-artifact-01.jpg */; };
 		5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C33D15427E8C53500EFD666 /* GoogleService-Info.plist */; };
 		5C366B0527B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
 		5C366B0627B6F96300D9A0BE /* TableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C366B0427B6F96300D9A0BE /* TableItem.swift */; };
@@ -288,13 +297,10 @@
 		5CF2B99C27F6019300D25388 /* SplashPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99B27F6019300D25388 /* SplashPage.swift */; };
 		5CF2B99E27F603CD00D25388 /* AnimatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99D27F603CD00D25388 /* AnimatedText.swift */; };
 		5CF2B9A027F61CBB00D25388 /* SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B99F27F61CBB00D25388 /* SafeAreaInsets.swift */; };
-		5CF2B9A827F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
-		5CF2B9A927F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
-		5CF2B9AA27F622E900D25388 /* eat-artifact-000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-000.png */; };
+		5CF2B9A827F622E900D25388 /* eat-artifact-00.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-00.png */; };
+		5CF2B9A927F622E900D25388 /* eat-artifact-00.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-00.png */; };
+		5CF2B9AA27F622E900D25388 /* eat-artifact-00.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-00.png */; };
 		5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* GridPrompt.swift */; };
-		5CF4A81627F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
-		5CF4A81727F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
-		5CF4A81827F27C9B0074C4FE /* testing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF4A81527F27C9B0074C4FE /* testing.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -349,19 +355,28 @@
 		5C06457927C68BC500E97D1C /* ViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaceholder.swift; sourceTree = "<group>"; };
 		5C1A4A6F27FDF4C700A31223 /* APIEnsideasProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnsideasProvider.swift; sourceTree = "<group>"; };
 		5C1A4A7127FDF5BC00A31223 /* APIEnsideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnsideas.swift; sourceTree = "<group>"; };
+		5C1A4A9127FE010400A31223 /* tutorial-w-b-04.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-04.mov"; sourceTree = "<group>"; };
+		5C1A4A9227FE010400A31223 /* tutorial-w-b-05.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-05.mov"; sourceTree = "<group>"; };
+		5C1A4A9327FE010400A31223 /* tutorial-b-w-02.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-02.mov"; sourceTree = "<group>"; };
+		5C1A4A9427FE010400A31223 /* tutorial-b-w-00.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-00.mov"; sourceTree = "<group>"; };
+		5C1A4A9527FE010400A31223 /* tutorial-b-w-01.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-01.mov"; sourceTree = "<group>"; };
+		5C1A4A9627FE010400A31223 /* tutorial-w-b-01.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-01.mov"; sourceTree = "<group>"; };
+		5C1A4A9727FE010400A31223 /* tutorial-b-w-06.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-06.mov"; sourceTree = "<group>"; };
+		5C1A4A9827FE010400A31223 /* tutorial-b-w-05.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-05.mov"; sourceTree = "<group>"; };
+		5C1A4A9927FE010400A31223 /* tutorial-w-b-02.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-02.mov"; sourceTree = "<group>"; };
+		5C1A4A9A27FE010400A31223 /* tutorial-w-b-03.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-03.mov"; sourceTree = "<group>"; };
+		5C1A4A9B27FE010400A31223 /* tutorial-b-w-03.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-03.mov"; sourceTree = "<group>"; };
+		5C1A4A9C27FE010400A31223 /* tutorial-b-w-04.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-b-w-04.mov"; sourceTree = "<group>"; };
+		5C1A4A9D27FE010400A31223 /* tutorial-w-b-00.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-00.mov"; sourceTree = "<group>"; };
+		5C1A4A9E27FE010400A31223 /* tutorial-w-b-06.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-w-b-06.mov"; sourceTree = "<group>"; };
 		5C1C71C327BBFBFA009BFC15 /* NFTDetails+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTDetails+Extensions.swift"; sourceTree = "<group>"; };
 		5C1C71C527BC011A009BFC15 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-00.MOV"; sourceTree = "<group>"; };
-		5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-01.MOV"; sourceTree = "<group>"; };
-		5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-02.MOV"; sourceTree = "<group>"; };
-		5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-03.MOV"; sourceTree = "<group>"; };
-		5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-04.MOV"; sourceTree = "<group>"; };
-		5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "tutorial-05.MOV"; sourceTree = "<group>"; };
 		5C24E4F427EE122E00F3CF2A /* CollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPage.swift; sourceTree = "<group>"; };
 		5C24E4F627EE13DD00F3CF2A /* LayoutHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutHelpers.swift; sourceTree = "<group>"; };
 		5C24E4F827EE155900F3CF2A /* CollectionPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageViewModel.swift; sourceTree = "<group>"; };
 		5C24E4FA27EE1D8600F3CF2A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		5C28D1C327ECB67100F98779 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
+		5C3228F727FE0FC9001C1CCB /* eat-artifact-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eat-artifact-01.jpg"; sourceTree = "<group>"; };
 		5C33D15427E8C53500EFD666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C366B0427B6F96300D9A0BE /* TableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItem.swift; sourceTree = "<group>"; };
 		5C366B0827B6FE5E00D9A0BE /* URLLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLLink.swift; sourceTree = "<group>"; };
@@ -492,9 +507,8 @@
 		5CF2B99B27F6019300D25388 /* SplashPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPage.swift; sourceTree = "<group>"; };
 		5CF2B99D27F603CD00D25388 /* AnimatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedText.swift; sourceTree = "<group>"; };
 		5CF2B99F27F61CBB00D25388 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
-		5CF2B9A727F622E900D25388 /* eat-artifact-000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-artifact-000.png"; sourceTree = "<group>"; };
+		5CF2B9A727F622E900D25388 /* eat-artifact-00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-artifact-00.png"; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* GridPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPrompt.swift; sourceTree = "<group>"; };
-		5CF4A81527F27C9B0074C4FE /* testing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testing.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,8 +665,8 @@
 		5C63084C27B2B46600AC2A24 /* Static */ = {
 			isa = PBXGroup;
 			children = (
-				5CF4A81527F27C9B0074C4FE /* testing.png */,
-				5CF2B9A727F622E900D25388 /* eat-artifact-000.png */,
+				5CF2B9A727F622E900D25388 /* eat-artifact-00.png */,
+				5C3228F727FE0FC9001C1CCB /* eat-artifact-01.jpg */,
 				5CBC068D27BC5BC200C2CADD /* eat-b-w-00.png */,
 				5CBC068F27BC5BC200C2CADD /* eat-b-w-01.png */,
 				5CBC069127BC5BC200C2CADD /* eat-b-w-02.png */,
@@ -675,12 +689,20 @@
 				5C035EC327B5B43500A11697 /* Etherscan.png */,
 				5C035EEB27B6D15900A11697 /* Twitter.png */,
 				5C035EEF27B6D17900A11697 /* Discord.png */,
-				5C24B9A727F2ABA6006C294B /* tutorial-00.MOV */,
-				5C24B9A827F2ABA6006C294B /* tutorial-01.MOV */,
-				5C24B9A927F2ABA6006C294B /* tutorial-02.MOV */,
-				5C24B9AA27F2ABA6006C294B /* tutorial-03.MOV */,
-				5C24B9AB27F2ABA6006C294B /* tutorial-04.MOV */,
-				5C24B9AC27F2ABA6006C294B /* tutorial-05.MOV */,
+				5C1A4A9427FE010400A31223 /* tutorial-b-w-00.mov */,
+				5C1A4A9527FE010400A31223 /* tutorial-b-w-01.mov */,
+				5C1A4A9327FE010400A31223 /* tutorial-b-w-02.mov */,
+				5C1A4A9B27FE010400A31223 /* tutorial-b-w-03.mov */,
+				5C1A4A9C27FE010400A31223 /* tutorial-b-w-04.mov */,
+				5C1A4A9827FE010400A31223 /* tutorial-b-w-05.mov */,
+				5C1A4A9727FE010400A31223 /* tutorial-b-w-06.mov */,
+				5C1A4A9D27FE010400A31223 /* tutorial-w-b-00.mov */,
+				5C1A4A9627FE010400A31223 /* tutorial-w-b-01.mov */,
+				5C1A4A9927FE010400A31223 /* tutorial-w-b-02.mov */,
+				5C1A4A9A27FE010400A31223 /* tutorial-w-b-03.mov */,
+				5C1A4A9127FE010400A31223 /* tutorial-w-b-04.mov */,
+				5C1A4A9227FE010400A31223 /* tutorial-w-b-05.mov */,
+				5C1A4A9E27FE010400A31223 /* tutorial-w-b-06.mov */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -1035,42 +1057,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CBC06B627BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
-				5C24B9AD27F2ABA6006C294B /* tutorial-00.MOV in Resources */,
 				5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06AA27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
-				5C24B9B127F2ABA6006C294B /* tutorial-04.MOV in Resources */,
-				5C24B9AE27F2ABA6006C294B /* tutorial-01.MOV in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
 				5C035EC727B5B43500A11697 /* Etherscan.png in Resources */,
-				5CF4A81627F27C9B0074C4FE /* testing.png in Resources */,
+				5C1A4AAB27FE010400A31223 /* tutorial-w-b-00.mov in Resources */,
 				5CBC06B327BC5BC300C2CADD /* eat-w-b-03.png in Resources */,
 				5C035EEC27B6D15900A11697 /* Twitter.png in Resources */,
-				5CF2B9A827F622E900D25388 /* eat-artifact-000.png in Resources */,
+				5CF2B9A827F622E900D25388 /* eat-artifact-00.png in Resources */,
+				5C1A4AA827FE010400A31223 /* tutorial-w-b-03.mov in Resources */,
 				5C36B35527E9111E0039A50E /* spinner-01.json in Resources */,
 				5C36B35327E9111E0039A50E /* spinner-05.json in Resources */,
+				5C1A4AA427FE010400A31223 /* tutorial-w-b-01.mov in Resources */,
 				5CBC06BF27BC5BC300C2CADD /* eat-b-w-04.png in Resources */,
+				5C3228F827FE0FC9001C1CCB /* eat-artifact-01.jpg in Resources */,
+				5C1A4AA627FE010400A31223 /* tutorial-b-w-05.mov in Resources */,
 				5CBC06A727BC5BC300C2CADD /* eat-b-w-06.png in Resources */,
 				5C91BE1C27B46C70001074CE /* Icon_White.png in Resources */,
 				5C36B35227E9111E0039A50E /* spinner-04.json in Resources */,
-				5C24B9AF27F2ABA6006C294B /* tutorial-02.MOV in Resources */,
+				5C1A4AA327FE010400A31223 /* tutorial-b-w-01.mov in Resources */,
 				5CBC06C527BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
+				5C1A4AAA27FE010400A31223 /* tutorial-b-w-04.mov in Resources */,
 				5C36B35027E9111E0039A50E /* spinner-02.json in Resources */,
-				5C24B9B227F2ABA6006C294B /* tutorial-05.MOV in Resources */,
 				5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */,
 				5CBC069B27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
+				5C1A4AA227FE010400A31223 /* tutorial-b-w-00.mov in Resources */,
+				5C1A4AA527FE010400A31223 /* tutorial-b-w-06.mov in Resources */,
 				5C91BE1D27B46C72001074CE /* Icon_Black.png in Resources */,
 				5C035EF027B6D17900A11697 /* Discord.png in Resources */,
+				5C1A4AAC27FE010400A31223 /* tutorial-w-b-06.mov in Resources */,
 				5C63084E27B2B4A500AC2A24 /* Placeholder.png in Resources */,
 				5CBC06AD27BC5BC300C2CADD /* eat-w-b-02.png in Resources */,
+				5C1A4AA927FE010400A31223 /* tutorial-b-w-03.mov in Resources */,
 				5CBC06A427BC5BC300C2CADD /* eat-b-w-01.png in Resources */,
-				5C24B9B027F2ABA6006C294B /* tutorial-03.MOV in Resources */,
 				5CBC06C227BC5BC300C2CADD /* eat-w-b-01.png in Resources */,
 				5C035EBF27B5A5C800A11697 /* Eth.png in Resources */,
 				5CBC069E27BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5C36B35127E9111E0039A50E /* spinner-00.json in Resources */,
+				5C1A4AA127FE010400A31223 /* tutorial-b-w-02.mov in Resources */,
 				5C36B35427E9111E0039A50E /* spinner-03.json in Resources */,
+				5C1A4AA027FE010400A31223 /* tutorial-w-b-05.mov in Resources */,
+				5C1A4AA727FE010400A31223 /* tutorial-w-b-02.mov in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
+				5C1A4A9F27FE010400A31223 /* tutorial-w-b-04.mov in Resources */,
 				5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B027BC5BC300C2CADD /* eat-w-b-04.png in Resources */,
 				5CBC06A127BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
@@ -1091,13 +1121,12 @@
 				5CBC06C327BC5BC300C2CADD /* eat-w-b-01.png in Resources */,
 				5CBC069F27BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5CBC06A527BC5BC300C2CADD /* eat-b-w-01.png in Resources */,
-				5CF2B9A927F622E900D25388 /* eat-artifact-000.png in Resources */,
+				5CF2B9A927F622E900D25388 /* eat-artifact-00.png in Resources */,
 				5C035EC027B5A5C800A11697 /* Eth.png in Resources */,
 				5C035EC527B5B43500A11697 /* Opensea.png in Resources */,
 				5CBC06BD27BC5BC300C2CADD /* eat-w-b-05.png in Resources */,
 				5C035EED27B6D15900A11697 /* Twitter.png in Resources */,
 				5CBC06AB27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
-				5CF4A81727F27C9B0074C4FE /* testing.png in Resources */,
 				5CBC06A227BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5CBC06C027BC5BC300C2CADD /* eat-b-w-04.png in Resources */,
 				5CBC06C627BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
@@ -1125,10 +1154,9 @@
 				5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A027BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
-				5CF2B9AA27F622E900D25388 /* eat-artifact-000.png in Resources */,
+				5CF2B9AA27F622E900D25388 /* eat-artifact-00.png in Resources */,
 				5CBC06A327BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5C035EC627B5B43500A11697 /* Opensea.png in Resources */,
-				5CF4A81827F27C9B0074C4FE /* testing.png in Resources */,
 				5C63090B27B30FDD00AC2A24 /* Icon_White.png in Resources */,
 				5CBC069D27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
 				5C63090C27B30FDD00AC2A24 /* Icon_Black.png in Resources */,
@@ -1492,7 +1520,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1525,7 +1553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EATWidget/EATWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_ASSET_PATHS = "\"EATWidget/Preview Content\"";
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				ENABLE_PREVIEWS = YES;
@@ -1555,7 +1583,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1581,7 +1609,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ConfigurationIntents/ConfigurationIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ConfigurationIntents/Info.plist;
@@ -1609,7 +1637,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
@@ -1637,7 +1665,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 6Q774V38S5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
