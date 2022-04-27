@@ -63,8 +63,7 @@ struct WalletsSheet: View {
                 NavigationLink(
                     destination: ConnectSheet()
                 ) {
-                    Text("CONNECT")
-                        .font(.system(size: 16, design: .monospaced))
+                    Image(systemName: "plus.rectangle")
                 }
           })
         })

@@ -34,7 +34,7 @@ struct HomePage: View {
             if viewModel.nfts.isEmpty {
 
                 ViewPlaceholder(
-                    text: "Connect a wallet to see your NFTs"
+                    text: "Add a wallet to your collection"
                 )
 
             } else {
@@ -114,8 +114,7 @@ struct HomePage: View {
                             Button(action: {
                                 viewModel.presentConnectSheet()
                             }, label: {
-                                Text("CONNECT")
-                                    .font(.system(size: 16, design: .monospaced))
+                                Image(systemName: "plus.rectangle")
                             })
                             
                         } else if viewModel.filterBy != nil {
@@ -170,7 +169,7 @@ struct HomePage: View {
                                     }, label: {
                                         HStack {
                                             Image(systemName: "plus")
-                                            Text("Connect Wallet")
+                                            Text("Add Wallet")
                                         }
                                     })
                                 }

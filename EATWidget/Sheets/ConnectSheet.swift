@@ -36,8 +36,7 @@ struct ConnectSheet: View {
                 Section {
                     HStack {
                         TextField(
-//                            "ENS or Wallet Address",
-                            "Wallet Address",
+                            "ENS or Wallet Address",
                             text: .init(
                                 get: { [viewModel] in viewModel.form.address },
                                 set: { [viewModel] in viewModel.updateAddress($0) }
@@ -213,7 +212,7 @@ struct ConnectSheet: View {
             }
             
         }
-        .navigationTitle("Connect a wallet")
+        .navigationTitle("Add a wallet")
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing, content: {
                 Button{
@@ -230,7 +229,7 @@ struct ConnectSheet: View {
                         Text("DONE")
                             .font(.system(size: 16, design: .monospaced))
                     } else {
-                        Text("CONNECT")
+                        Text("ADD")
                             .font(.system(size: 16, design: .monospaced))
                     }
 
