@@ -196,17 +196,17 @@ final class WalletsSheetViewModel: ObservableObject {
             //
             // Log to results
             
-//            await walletsToSync.indices.asyncForEach { [walletsToSync] index in
-//                let wallet = walletsToSync[index]
-//                guard let address = wallet.address else { return }
-//
+            await walletsToSync.indices.asyncForEach { [walletsToSync] index in
+                let wallet = walletsToSync[index]
+                guard let address = wallet.address else { return }
+
 //                await syncProvider.log(
 //                    address: address,
 //                    parsedCount: parsedCount[address]!,
 //                    successCount: successCount[address]!,
 //                    failureCount: failureCount[address]!
 //                )
-//            }
+            }
             
             print("👀: did log")
             
