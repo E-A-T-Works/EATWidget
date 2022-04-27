@@ -18,6 +18,7 @@ struct NFTVisual: View {
     let simulationUrl: URL?
     let animationUrl: URL?
     
+
     var body: some View {
         ZStack {
 
@@ -31,6 +32,10 @@ struct NFTVisual: View {
                     .aspectRatio(contentMode: .fit)
             }
 
+        }.onAppear {
+            print(image)
+            print(animationUrl)
+            print(simulationUrl)
         }
     }
 }

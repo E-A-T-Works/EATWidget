@@ -27,7 +27,10 @@ final class NFTAdapters {
 
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
-
+            
+        case "0x976a145bce31266d3ed460a359330dd53466db97":
+            return await normalizeTheKiss(item: item)
+            
         default:
             return await normalizeGeneric(for: item)
         }
@@ -51,6 +54,8 @@ extension NFTAdapters {
         var simulationUrl: URL?
         if item.animationUrl != nil && (item.animationUrl!.absoluteString.contains("generator.artblocks.io") || ["gif"].contains(item.animationUrl!.pathExtension)) {
             simulationUrl = item.animationUrl
+        } else if ["svg"].contains(item.imageUrl!.pathExtension) {
+            simulationUrl = item.imageUrl
         }
         
         return NFT(
@@ -180,7 +185,6 @@ extension NFTAdapters {
 }
 
 
-
 // MARK: - EveryIcon
 
 extension NFTAdapters {
@@ -250,6 +254,77 @@ extension NFTAdapters {
             metadataUrl: item.metadataUrl,
             attributes: item.attributes.map { Attribute(key: $0.key, value: $0.value) }
         )
+    }
+    
+}
+
+
+// MARK: - The Kiss
+
+extension NFTAdapters {
+
+    private func normalizeTheKiss(item: API_NFT) async -> NFT? {
+
+        print("normalizeTheKiss")
+//        guard let imageUrl = item.imageUrl else { return nil }
+        
+        let svgString = "<svg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 32000 32000'><filter id='t' x='0%' y='0%' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.04' result='n' numOctaves='5' /><feDiffuseLighting in='n' lighting-color='white' surfaceScale='0.4' diffuseConstant='1.35' result='l'><feDistantLight azimuth='-90' elevation='45' /></feDiffuseLighting><feBlend in='SourceGraphic' in2='l' mode='multiply'/></filter><style>circle{stroke:#fbf8f4;stroke-width:4;stroke-opacity:100%}.c0{fill:#1b998b}.c1{fill:#1b998b}.c2{fill:#1b998b}.c3{fill:#1b998b}.c4{fill:#302840}.c5{fill:#302840}.c6{fill:#302840}.c7{fill:#d4e2d4}.c8{fill:#d4e2d4}.c9{fill:#d4e2d4}.c10{fill:#ffb433}.c11{fill:#ffb433}.c12{fill:#da6746}.c13{fill:#da6746}.c14{fill:#da6746}.c15{fill:#da6746}.m0{fill:#d4e2d4}.m1{fill:#d4e2d4}.m2{fill:#d4e2d4}.m3{fill:#d4e2d4}.m4{fill:#ffb433}.m5{fill:#ffb433}.m6{fill:#ffb433}.m7{fill:#ffb433}</style><g filter='url(#t)'><rect width='32000' height='32000' fill='#fbf8f4'/><g transform='rotate(0,16000,16000)'><circle cx='16000' cy='16000' r='12800' class='c14'/><circle cx='16000' cy='9604' r='6404' class='m2'/><circle cx='16000' cy='22404' r='6395' class='m2'/><circle cx='24533' cy='16010' r='4266' class='c6'/><circle cx='19413' cy='16008' r='853' class='c0'/><circle cx='16000' cy='7174' r='3974' class='c3'/><circle cx='16000' cy='13578' r='2429' class='c2'/><circle cx='19943' cy='11625' r='1971' class='c3'/><circle cx='17602' cy='11246' r='400' class='c13'/><circle cx='16000' cy='6573' r='3373' class='c14'/><circle cx='16000' cy='10548' r='601' class='c3'/><circle cx='17171' cy='10355' r='585' class='c10'/><circle cx='16527' cy='10038' r='131' class='c0'/><circle cx='16000' cy='4632' r='1432' class='c5'/><circle cx='16000' cy='8006' r='1940' class='c5'/><circle cx='18181' cy='5901' r='1090' class='c14'/><circle cx='16877' cy='6032' r='219' class='c12'/><circle cx='7466' cy='16010' r='4266' class='c6'/><circle cx='12586' cy='16008' r='853' class='c0'/><circle cx='12056' cy='11625' r='1971' class='c3'/><circle cx='14397' cy='11246' r='400' class='c13'/><circle cx='14828' cy='10355' r='585' class='c10'/><circle cx='15472' cy='10038' r='131' class='c0'/><circle cx='13818' cy='5901' r='1090' class='c14'/><circle cx='15122' cy='6032' r='219' class='c12'/></g></g></svg>"
+
+//        let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
+//
+//        let svgLayer = SVGLayer(contentsOf: imageUrl)
+//        svgLayer.frame = frame
+//
+//        guard let image = snapshotImage(for: svgLayer) else { return nil }
+        
+        print("✅ \(svgString)")
+        
+        let temporaryDirectoryURL = URL(
+            fileURLWithPath: NSTemporaryDirectory(),
+            isDirectory: true
+        )
+        let temporaryFilename = ProcessInfo().globallyUniqueString
+        let temporaryFileURL = temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
+
+        let svgData: Data = svgString.data(using: .utf8)!
+        try? svgData.write(
+            to: temporaryFileURL,
+            options: .atomic
+        )
+        
+        print("➡️ \(svgData)")
+
+        let frame = CGRect(x: 0, y: 0, width: 512, height: 512)
+
+        let svgLayer = SVGLayer(contentsOf: temporaryFileURL)
+        svgLayer.frame = frame
+
+        guard let image = snapshotImage(for: svgLayer) else {
+            print("💥 FAILED")
+            return nil }
+
+        print("⏫ \(image)")
+        
+        try? FileManager.default.removeItem(at: temporaryFileURL)
+
+
+        return NFT(
+            id: item.id,
+            address: item.address,
+            tokenId: item.tokenId,
+            title: item.title,
+            text: item.text,
+            image: image,
+            simulationUrl: nil,
+            animationUrl: nil,
+            twitterUrl: nil,
+            discordUrl: nil,
+            openseaUrl: URL(string: "https://opensea.io/assets/\(item.address)/\(item.tokenId)"),
+            externalUrl: nil,
+            metadataUrl: item.metadataUrl,
+            attributes: item.attributes.map { Attribute(key: $0.key, value: $0.value) }
+        )
+        
     }
     
 }

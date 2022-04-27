@@ -12,8 +12,19 @@ struct WebView: UIViewRepresentable {
     var url: URL
     
     func makeUIView(context: Context) -> WKWebView {
-        let view = WKWebView()
-//        view.loadHTMLString(html, baseURL: nil)
+//        let metaTagModifier = "var meta = document.createElement('meta'); meta.setAttribute('http-equiv', 'Content-Security-Policy'); meta.setAttribute('content', 'default-src 'self'; img-src https://*; child-src 'none';'); document.getElementsByTagName('head')[0].appendChild(meta);"
+//
+//        let script = WKUserScript(source: metaTagModifier, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+//
+//        let controller = WKUserContentController()
+//        controller.addUserScript(script)
+//
+//        let config = WKWebViewConfiguration()
+//        config.userContentController = controller
+//
+//        let view = WKWebView(frame: CGRect.zero, configuration: config)
+        
+        let view = WKWebView(frame: CGRect.zero)
         view.load(URLRequest.init(url: url))
         
         return view
