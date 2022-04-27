@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 final class SyncWalletOperation: AsyncOperation {
+    
     private(set) var collections: [Collection] = [Collection]()
     
     private(set) var list: [NFTParseTask] = [NFTParseTask]()
@@ -18,7 +19,6 @@ final class SyncWalletOperation: AsyncOperation {
     
     
     private let wallet: CachedWallet
-    private let completionHandler: ((NFT?) -> Void)?
     
     private let nftStorage: CachedNFTStorage = CachedNFTStorage.shared
     private let collectionStorage: CachedCollectionStorage = CachedCollectionStorage.shared
@@ -27,37 +27,58 @@ final class SyncWalletOperation: AsyncOperation {
     
     private let queue = OperationQueue()
     
-    init(wallet: CachedWallet, completionHandler: ((NFT?) -> Void)? = nil) {
+    init(wallet: CachedWallet) {
+        
+        print("👀 INIT SYNC WALLET?")
         self.wallet = wallet
-        self.completionHandler = completionHandler
         
         super.init()
     }
     
     override func main() {
-        
-        guard let address = wallet.address else {
-            state = .finished
-            return
-        }
-        
         Task {
+            print("👀 main")
+            guard let address = wallet.address else {
+                print("⚠️ Wallet Missing Address")
+                state = .finished
+                return
+            }
+        
+            print("👀 main::past address")
             print("❇️ START:SYNC: \(address)")
             
             await lookup(for: address)
+            
+            print("👀 main::past lookup")
+            
+            
             await parse()
+            
+            print("👀 main::past parse")
             
             let toCache: [NFT] = list.filter { $0.state == .success }.map { $0.parsed }.compactMap { $0 }
             
+            print("👀 main::past toCache")
+            
             do {
                 let _ = try collectionStorage.sync(list: collections)
+                print("👀 main::past collectionStorage:sync")
                 let _ = try nftStorage.sync(wallet: wallet, list: toCache)
+                print("👀 main::past nftStorage:sync")
             } catch {
-                
+                print("⚠️ \(error)")
             }
             
-            await fb.logWallet(address: address, parsedCount: parsedCount, successCount: successCount, failureCount: failureCount)
+            print("👀 main::past sync")
             
+            await fb.logWallet(
+                address: address,
+                parsedCount: parsedCount,
+                successCount: successCount,
+                failureCount: failureCount
+            )
+            
+            print("👀 main::past log")
         
             print("✅ DONE:SYNC: \(address)")
             
@@ -67,6 +88,7 @@ final class SyncWalletOperation: AsyncOperation {
     }
     
     override func cancel() {
+        print("⚠️ SyncWalletOperation:Cancel")
         super.cancel()
         
         // Do any other cleanup
@@ -76,6 +98,9 @@ final class SyncWalletOperation: AsyncOperation {
     
     
     func lookup(for address: String) async {
+        
+        print("👀 LOokup")
+        
         let api = APIOpenseaProvider()
         var results: [API_NFT] = [API_NFT]()
         

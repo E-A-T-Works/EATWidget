@@ -28,9 +28,9 @@ final class NFTAdapters {
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
             return await normalizeEveryIcon(item: item)
             
-        case "0x976a145bce31266d3ed460a359330dd53466db97":
-            return await normalizeTheKiss(item: item)
-            
+//        case "0x976a145bce31266d3ed460a359330dd53466db97":
+//            return await normalizeTheKiss(item: item)
+//            
         default:
             return await normalizeGeneric(for: item)
         }
@@ -302,8 +302,6 @@ extension NFTAdapters {
         guard let image = snapshotImage(for: svgLayer) else {
             print("💥 FAILED")
             return nil }
-
-        print("⏫ \(image)")
         
         try? FileManager.default.removeItem(at: temporaryFileURL)
 

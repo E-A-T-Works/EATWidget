@@ -25,6 +25,8 @@ final class RefreshAppContentsOperation: AsyncOperation {
                 let data = cachedWallets[index]
                 let syncOp = SyncWalletOperation(wallet: data)
                 
+                print("▶️ Syncing: \(data)")
+                
                 queue.addOperation(syncOp)
             }
 
@@ -39,6 +41,7 @@ final class RefreshAppContentsOperation: AsyncOperation {
     }
     
     override func cancel() {
+        print("⚠️ RefreshAppContentsOperation:Cancel")
         super.cancel()
         
         // Do any other cleanup

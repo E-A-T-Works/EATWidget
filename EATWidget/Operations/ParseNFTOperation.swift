@@ -32,7 +32,7 @@ final class ParseNFTOperation: AsyncOperation {
             parsed = await adapters.parse(item: data)
             
             // Sync Results
-            await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
+//            await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
             
             // mark task as done
             state = .finished

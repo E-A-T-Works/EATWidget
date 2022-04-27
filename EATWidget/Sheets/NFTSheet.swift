@@ -37,6 +37,7 @@ struct NFTSheet: View {
                         NFTVisual(
                             image: UIImage(data: viewModel.nft!.image!.blob!)!,
                             simulationUrl: viewModel.nft?.simulationUrl,
+//                            simulationUrl: URL(string: "https://openseauserdata.com/files/a21720f067dd95b049139eb633ba6d1d.svg")!,
                             animationUrl: viewModel.nft?.animationUrl
                         )
                         .frame(width: geo.size.width, height: geo.size.width)
