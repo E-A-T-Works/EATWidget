@@ -36,9 +36,8 @@ struct NFTSheet: View {
                     ScrollView {
                         NFTVisual(
                             image: UIImage(data: viewModel.nft!.image!.blob!)!,
-                            simulationUrl: viewModel.nft?.simulationUrl,
-//                            simulationUrl: URL(string: "https://openseauserdata.com/files/a21720f067dd95b049139eb633ba6d1d.svg")!,
-                            animationUrl: viewModel.nft?.animationUrl
+                            animationUrl: viewModel.nft!.animationUrl,
+                            simulationUrl: viewModel.nft!.simulationUrl
                         )
                         .frame(width: geo.size.width, height: geo.size.width)
                         .padding([.bottom], spacing)

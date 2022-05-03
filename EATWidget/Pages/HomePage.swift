@@ -38,7 +38,7 @@ struct HomePage: View {
                 )
 
             } else {
-                
+
                 ScrollView {
                     Button {
                         viewModel.presentTutorialSheet()
@@ -46,9 +46,12 @@ struct HomePage: View {
                         GridPrompt()
                     }
                     .buttonStyle(.plain)
-                    
+
+
+
+
                     ForEach(viewModel.collections) { collection in
-                        
+
                         NavigationLink(
                             destination: CollectionPage(address: collection.address)
                         ) {
@@ -57,10 +60,10 @@ struct HomePage: View {
                         .buttonStyle(.plain)
                         .padding(.top)
                         .padding(.horizontal, 10)
-                        
+
                         Divider()
                             .padding(.horizontal, 10)
-                        
+
                         StaggeredGrid(
                             list: viewModel.nfts.filter { $0.address == collection.address },
                             columns: viewModel.determineColumns(vertical: verticalSizeClass, horizontal: horizontalSizeClass),

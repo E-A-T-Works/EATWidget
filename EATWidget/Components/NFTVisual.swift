@@ -15,8 +15,8 @@ struct NFTVisual: View {
     @Environment(\.colorScheme) var colorScheme
     
     let image: UIImage
-    let simulationUrl: URL?
     let animationUrl: URL?
+    let simulationUrl: URL?
     
 
     var body: some View {
@@ -31,11 +31,6 @@ struct NFTVisual: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-
-        }.onAppear {
-            print(image)
-            print(animationUrl)
-            print(simulationUrl)
         }
     }
 }
@@ -45,8 +40,8 @@ struct NFTVisual_Previews: PreviewProvider {
         VStack {
             NFTVisual(
                 image: TestData.nft.image,
-                simulationUrl: URL(string: "https://everyicon.xyz/icon/?tokenId=40"),
-                animationUrl: TestData.nft.animationUrl
+                animationUrl: TestData.nft.animationUrl,
+                simulationUrl: TestData.nft.simulationUrl
             )
         }
         .frame(width: 500, height: 500)
