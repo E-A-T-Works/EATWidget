@@ -41,11 +41,8 @@ struct WalletsSheet: View {
                         viewModel.delete(at: offsets)
                     }
                 }.refreshable {
-//                    try? await Task.sleep(nanoseconds: UInt64(3e+9))
-                    
-//                    try? viewModel.sync()
-                    try? await Task.sleep(nanoseconds: UInt64(4e+9))
-//                    $viewModel.isSyncing.first(where: !$0)
+                    await viewModel.sync()
+//                    try? await Task.sleep(nanoseconds: UInt64(4e+9))
                 }
                 
             }

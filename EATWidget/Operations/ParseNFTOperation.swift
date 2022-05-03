@@ -25,22 +25,20 @@ final class ParseNFTOperation: AsyncOperation {
     
     override func main() {
         Task {
-            
             let address = data.address
             let tokenId = data.tokenId
             
             parsed = await adapters.parse(item: data)
+                        
+            await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
             
-            // Sync Results
-//            await fb.logNFT(address: address, tokenId: tokenId, success: parsed != nil)
+            if completionHandler != nil { completionHandler!(parsed) }
             
-            // mark task as done
             state = .finished
         }
     }
     
     override func cancel() {
         super.cancel()
-        // Do any other cleanup
     }
 }

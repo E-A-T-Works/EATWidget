@@ -14,6 +14,7 @@ final class ParseCollectionOperation: AsyncOperation {
     private let completionHandler: ((Collection?) -> Void)?
      
     private let adapters: CollectionAdapters = CollectionAdapters.shared
+    private let fb: FirebaseProvider = FirebaseProvider.shared
     
     init(data: APICollection, completionHandler: ((Collection?) -> Void)? = nil) {
         self.data = data
@@ -26,13 +27,13 @@ final class ParseCollectionOperation: AsyncOperation {
         Task {
             parsed = await adapters.parse(item: data)
             
-            // mark task as done
+            if completionHandler != nil { completionHandler!(parsed) }
+            
             state = .finished
         }
     }
     
     override func cancel() {
         super.cancel()
-        // Do any other cleanup
     }
 }

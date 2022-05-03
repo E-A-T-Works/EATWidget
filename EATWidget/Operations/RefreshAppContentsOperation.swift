@@ -9,43 +9,28 @@ import Foundation
 
 final class RefreshAppContentsOperation: AsyncOperation {
 
-    private let fb: FirebaseProvider = FirebaseProvider.shared
-    
     private let cachedWalletStorage: CachedWalletStorage = CachedWalletStorage.shared
     
-    private let queue = OperationQueue()
+    private let fb: FirebaseProvider = FirebaseProvider.shared
     
     override func main() {
         Task {
-            print("❇️ RefreshAppContentsOperation::START:")
+            let wallets = cachedWalletStorage.fetch()
             
-            let cachedWallets = cachedWalletStorage.fetch()
-            
-            cachedWallets.indices.forEach { index in
-                let data = cachedWallets[index]
-                let syncOp = SyncWalletOperation(wallet: data)
-                
-                print("▶️ Syncing: \(data)")
-                
-                queue.addOperation(syncOp)
+            await wallets.asyncForEach { wallet in
+                guard let address = wallet.address else { return }
+                let syncProvider = SyncProvider(address: address)
+                await syncProvider.parse()
+                await syncProvider.sync()
             }
-
-            queue.waitUntilAllOperationsAreFinished()
             
             await fb.logRefresh()
-            
-            print("✅ RefreshAppContentsOperation::END:")
-            
+
             state = .finished
         }
     }
     
     override func cancel() {
-        print("⚠️ RefreshAppContentsOperation:Cancel")
         super.cancel()
-        
-        // Do any other cleanup
-        
-        queue.cancelAllOperations()
     }
 }
