@@ -26,11 +26,9 @@ struct NFT: Identifiable, Hashable {
     let image: UIImage
     let animationUrl: URL?
     let simulationUrl: URL?
-    
-    
-    let twitterUrl: URL?
-    let discordUrl: URL?
+
     let openseaUrl: URL?
+    
     let externalUrl: URL?
     let metadataUrl: URL?
     

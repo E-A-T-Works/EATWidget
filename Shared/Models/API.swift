@@ -34,9 +34,9 @@ struct API_NFT: Identifiable {
     let imageUrl: URL?
     let animationUrl: URL?
     
+    let openseaUrl: URL?
+    let externalUrl: URL?
     let metadataUrl: URL?
-    
-    let permalink: URL?
     
     let attributes: [API_NFT_Attribute]
 }
@@ -53,14 +53,13 @@ struct APICollection: Identifiable {
     let thumbnailUrl: URL?
     let bannerUrl: URL?
     
-    let chatUrl: URL?
-    let discordUrl: URL?
-    let telegramUrl: URL?
+    let twitterUrl: URL?
+    let instagramUrl: URL?
     let wikiUrl: URL?
+    let discordUrl: URL?
+    let chatUrl: URL?
+    let openseaUrl: URL?
     let externalUrl: URL?
-    
-    let twitterUsername: String?
-    let instagramUsername: String?
 }
 
 struct APIContract: Identifiable {

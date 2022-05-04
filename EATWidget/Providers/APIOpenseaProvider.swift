@@ -76,34 +76,43 @@ final class APIOpenseaProvider {
             
             let response = try await request.perform(ofType: APIOpenSeaGetNFTsResponse.self)
             
-            
-                        
             let list = response.assets.map { raw -> API_NFT in
                 return API_NFT(
                     id: "\(raw.contract.address)/\(raw.tokenId)",
+                    
                     address: raw.contract.address,
                     tokenId: raw.tokenId,
+                    
                     collection: raw.collection != nil ? APICollection(
                         id: raw.contract.address,
+                        
                         address: raw.contract.address,
+                        
                         title: raw.collection!.title,
                         text: raw.collection!.text,
+                        
                         thumbnailUrl: raw.collection!.thumbnailUrl,
                         bannerUrl: raw.collection!.bannerUrl,
-                        chatUrl: raw.collection!.chatUrl,
-                        discordUrl: raw.collection!.discordUrl,
-                        telegramUrl: raw.collection!.telegramUrl,
+                                                
+                        twitterUrl: raw.collection!.twitterUsername != nil ? URL(string:"https://twitter.com/\(raw.collection!.twitterUsername!)") : nil,
+                        instagramUrl: raw.collection!.instagramUsername != nil ? URL(string:"https://instagram.com/\(raw.collection!.instagramUsername!)") : nil,
                         wikiUrl: raw.collection!.wikiUrl,
-                        externalUrl: raw.collection!.externalUrl,
-                        twitterUsername: raw.collection!.twitterUsername,
-                        instagramUsername: raw.collection!.instagramUsername
+                        discordUrl: raw.collection!.discordUrl,
+                        chatUrl: raw.collection!.chatUrl,
+                        openseaUrl: raw.collection!.openseaUrl,
+                        externalUrl: raw.collection!.externalUrl
                     ) : nil,
+                    
                     title: raw.title,
                     text: raw.text,
+                    
                     imageUrl: raw.imageUrl,
                     animationUrl: raw.animationUrl,
+                    
+                    openseaUrl: raw.permalink,
+                    externalUrl: raw.permalink,
                     metadataUrl: raw.metadataUrl,
-                    permalink: raw.permalink,
+                    
                     attributes: raw.attributes.map {
                         API_NFT_Attribute(key: $0.traitType, value: $0.value)
                     }
@@ -129,16 +138,6 @@ final class APIOpenseaProvider {
         
         let key = try resolveKey()
 
-//        var components = URLComponents()
-//        components.scheme = "https"
-//        components.host = "api.opensea.io"
-//        components.path =  "api/v1/asset_contract/\(address)"
-//        components.queryItems = []
-//
-//        guard let url = components.url else {
-//            throw APIError.InvalidUrl
-//        }
-
         guard let url = URL(string:"https://api.opensea.io/api/v1/asset_contract/\(address)") else {
             throw APIError.InvalidUrl
         }
@@ -160,18 +159,22 @@ final class APIOpenseaProvider {
                 address: address,
                 collection: APICollection(
                     id: address,
+                    
                     address: address,
+                    
                     title: collection.title,
                     text: collection.text,
+                    
                     thumbnailUrl: collection.thumbnailUrl,
                     bannerUrl: collection.bannerUrl,
-                    chatUrl: collection.chatUrl,
-                    discordUrl: collection.discordUrl,
-                    telegramUrl: collection.telegramUrl,
+                    
+                    twitterUrl: collection.twitterUsername != nil ? URL(string:"https://twitter.com/\(collection.twitterUsername!)") : nil,
+                    instagramUrl: collection.instagramUsername != nil ? URL(string:"https://instagram.com/\(collection.instagramUsername!)") : nil,
                     wikiUrl: collection.wikiUrl,
-                    externalUrl: collection.externalUrl,
-                    twitterUsername: collection.twitterUsername,
-                    instagramUsername: collection.instagramUsername
+                    discordUrl: collection.discordUrl,
+                    chatUrl: collection.chatUrl,
+                    openseaUrl: collection.openseaUrl,
+                    externalUrl: collection.externalUrl
                 )
             )
 

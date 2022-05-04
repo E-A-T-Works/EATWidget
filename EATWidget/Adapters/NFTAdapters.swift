@@ -74,18 +74,22 @@ extension NFTAdapters {
         
         return NFT(
             id: item.id,
+            
             address: item.address,
             tokenId: item.tokenId,
+            
             title: item.title,
             text: item.text,
+            
             image: image!,
             animationUrl: animationUrl,
             simulationUrl: simulationUrl,
-            twitterUrl: nil,
-            discordUrl: nil,
-            openseaUrl: URL(string: "https://opensea.io/assets/\(item.address)/\(item.tokenId)"),
-            externalUrl: nil,
+            
+            openseaUrl: item.openseaUrl,
+            
+            externalUrl: item.externalUrl,
             metadataUrl: item.metadataUrl,
+            
             attributes: item.attributes.map { Attribute(key: $0.key, value: $0.value) }
         )
     }
@@ -96,48 +100,48 @@ extension NFTAdapters {
 // MARK: - Cryptopunks
 
 extension NFTAdapters {
-    private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
-
-        do {
-            guard
-                let imageUrl = item.media.first?.gateway ?? item.media.first?.raw,
-                let metadata = item.metadata
-            else {
-                return nil
-            }
-            
-            let imageData = try Data(contentsOf: imageUrl)
-            
-            // enforce 10mb size limit
-            if imageData.count > (10 * 1_000_000) { return nil }
-            
-            guard let image = UIImage(data: imageData) else { return nil }
-            
-            let attributes: [Attribute] = (metadata.attributes )
-                .filter { $0.traitType != nil && $0.value != nil }
-                .map { Attribute(key: $0.traitType!, value: $0.value!) }
-
-            return NFT(
-                id: "\(item.contract.address)/\(item.id.tokenId)",
-                address: item.contract.address,
-                tokenId: item.id.tokenId,
-                title: item.title,
-                text: item.text,
-                image: image,
-                animationUrl: item.metadata?.animationUrl,
-                simulationUrl: nil,
-                twitterUrl: URL(string: "https://twitter.com/v1punks"),
-                discordUrl: URL(string: "https://discord.com/invite/v1punks"),
-                openseaUrl: nil,
-                externalUrl: URL(string: "https://www.v1punks.io"),
-                metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
-                attributes: attributes
-            )
-        } catch {
-            print("⚠️ normalizeCryptopunk \(item.contract.address) \(item.id.tokenId) \(error)")
-            return nil
-        }
-    }
+//    private func normalizeCryptopunk(item: APIAlchemyNFT) async -> NFT? {
+//
+//        do {
+//            guard
+//                let imageUrl = item.media.first?.gateway ?? item.media.first?.raw,
+//                let metadata = item.metadata
+//            else {
+//                return nil
+//            }
+//
+//            let imageData = try Data(contentsOf: imageUrl)
+//
+//            // enforce 10mb size limit
+//            if imageData.count > (10 * 1_000_000) { return nil }
+//
+//            guard let image = UIImage(data: imageData) else { return nil }
+//
+//            let attributes: [Attribute] = (metadata.attributes )
+//                .filter { $0.traitType != nil && $0.value != nil }
+//                .map { Attribute(key: $0.traitType!, value: $0.value!) }
+//
+//            return NFT(
+//                id: "\(item.contract.address)/\(item.id.tokenId)",
+//                address: item.contract.address,
+//                tokenId: item.id.tokenId,
+//                title: item.title,
+//                text: item.text,
+//                image: image,
+//                animationUrl: item.metadata?.animationUrl,
+//                simulationUrl: nil,
+//                twitterUrl: URL(string: "https://twitter.com/v1punks"),
+//                discordUrl: URL(string: "https://discord.com/invite/v1punks"),
+//                openseaUrl: nil,
+//                externalUrl: URL(string: "https://www.v1punks.io"),
+//                metadataUrl: item.tokenUri.gateway ?? item.tokenUri.raw,
+//                attributes: attributes
+//            )
+//        } catch {
+//            print("⚠️ normalizeCryptopunk \(item.contract.address) \(item.id.tokenId) \(error)")
+//            return nil
+//        }
+//    }
     
 }
 

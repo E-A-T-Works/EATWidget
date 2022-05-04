@@ -193,9 +193,7 @@
 		5C84117D27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
 		5C84117E27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
 		5C84117F27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
-		5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
-		5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
-		5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */; };
+		5C9044AA2821D52B00884743 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9044A92821D52B00884743 /* SVGKitSwift */; };
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
@@ -222,9 +220,6 @@
 		5CA9ADA927C6A578003C25DE /* WalletsSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADA827C6A578003C25DE /* WalletsSheetViewModel.swift */; };
 		5CA9ADAF27C6ABC2003C25DE /* WalletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */; };
 		5CA9ADB127C6ADF5003C25DE /* WalletItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */; };
-		5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
-		5CB2023627C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
-		5CB2023727C9C9DA0026A3D3 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CB2023427C9C9DA0026A3D3 /* circle.svg */; };
 		5CBC069B27BC5BC300C2CADD /* eat-b-w-05.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-05.png */; };
 		5CBC069C27BC5BC300C2CADD /* eat-b-w-05.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-05.png */; };
 		5CBC069D27BC5BC300C2CADD /* eat-b-w-05.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CBC068C27BC5BC200C2CADD /* eat-b-w-05.png */; };
@@ -295,10 +290,6 @@
 		5CF2B9A927F622E900D25388 /* eat-artifact-00.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-00.png */; };
 		5CF2B9AA27F622E900D25388 /* eat-artifact-00.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CF2B9A727F622E900D25388 /* eat-artifact-00.png */; };
 		5CF4019F28216311008C27D2 /* SyncDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4019E28216311008C27D2 /* SyncDataProvider.swift */; };
-		5CF401A42821ABCA008C27D2 /* test.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5CF401A32821ABCA008C27D2 /* test.svg */; };
-		5CF401A72821ACCB008C27D2 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CF401A62821ACCB008C27D2 /* SVGKitSwift */; };
-		5CF401AA2821ADE8008C27D2 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5CF401A92821ADE8008C27D2 /* SVGKit */; };
-		5CF401AC2821ADE8008C27D2 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CF401AB2821ADE8008C27D2 /* SVGKitSwift */; };
 		5CF401AE2821AE94008C27D2 /* SVGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF401AD2821AE94008C27D2 /* SVGView.swift */; };
 		5CF4A81427F25EF10074C4FE /* GridPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4A81327F25EF10074C4FE /* GridPrompt.swift */; };
 /* End PBXBuildFile section */
@@ -461,7 +452,6 @@
 		5C84117627B9A6FE0021008E /* AttributeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeGrid.swift; sourceTree = "<group>"; };
 		5C84117827B9A9530021008E /* AttributeBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeBox.swift; sourceTree = "<group>"; };
 		5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributeBox+Extensions.swift"; sourceTree = "<group>"; };
-		5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "everyicon-test.svg"; sourceTree = "<group>"; };
 		5C91BE0E27B43A27001074CE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		5C91BE1227B44AE7001074CE /* NFTCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCard.swift; sourceTree = "<group>"; };
 		5C91BE1427B44B5C001074CE /* NFTCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NFTCard+Extensions.swift"; sourceTree = "<group>"; };
@@ -479,7 +469,6 @@
 		5CA9ADA827C6A578003C25DE /* WalletsSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsSheetViewModel.swift; sourceTree = "<group>"; };
 		5CA9ADAE27C6ABC2003C25DE /* WalletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletItem.swift; sourceTree = "<group>"; };
 		5CA9ADB027C6ADF5003C25DE /* WalletItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletItem+Extensions.swift"; sourceTree = "<group>"; };
-		5CB2023427C9C9DA0026A3D3 /* circle.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = circle.svg; sourceTree = "<group>"; };
 		5CBC068C27BC5BC200C2CADD /* eat-b-w-05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-05.png"; sourceTree = "<group>"; };
 		5CBC068D27BC5BC200C2CADD /* eat-b-w-00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-b-w-00.png"; sourceTree = "<group>"; };
 		5CBC068E27BC5BC200C2CADD /* eat-w-b-06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-w-b-06.png"; sourceTree = "<group>"; };
@@ -508,7 +497,6 @@
 		5CF2B99F27F61CBB00D25388 /* SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaInsets.swift; sourceTree = "<group>"; };
 		5CF2B9A727F622E900D25388 /* eat-artifact-00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eat-artifact-00.png"; sourceTree = "<group>"; };
 		5CF4019E28216311008C27D2 /* SyncDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDataProvider.swift; sourceTree = "<group>"; };
-		5CF401A32821ABCA008C27D2 /* test.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.svg; sourceTree = "<group>"; };
 		5CF401AD2821AE94008C27D2 /* SVGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGView.swift; sourceTree = "<group>"; };
 		5CF4A81327F25EF10074C4FE /* GridPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPrompt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -518,9 +506,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF401AC2821ADE8008C27D2 /* SVGKitSwift in Frameworks */,
-				5CF401A72821ACCB008C27D2 /* SVGKitSwift in Frameworks */,
-				5CF401AA2821ADE8008C27D2 /* SVGKit in Frameworks */,
+				5C9044AA2821D52B00884743 /* SVGKitSwift in Frameworks */,
 				5C36B34627E8CBAF0039A50E /* FirebaseFirestore in Frameworks */,
 				5C36B34427E8CBAF0039A50E /* FirebaseAuth in Frameworks */,
 				5C36B34827E8CBAF0039A50E /* FirebaseStorage in Frameworks */,
@@ -706,7 +692,6 @@
 				5C1A4A9127FE010400A31223 /* tutorial-w-b-04.mov */,
 				5C1A4A9227FE010400A31223 /* tutorial-w-b-05.mov */,
 				5C1A4A9E27FE010400A31223 /* tutorial-w-b-06.mov */,
-				5CF401A32821ABCA008C27D2 /* test.svg */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -732,8 +717,6 @@
 		5C63085627B2B58B00AC2A24 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
-				5C8C6A0027C7249100D66BD7 /* everyicon-test.svg */,
-				5CB2023427C9C9DA0026A3D3 /* circle.svg */,
 				5C63085927B2B5BE00AC2A24 /* TestData.swift */,
 			);
 			path = Testing;
@@ -963,9 +946,7 @@
 				5C36B34527E8CBAF0039A50E /* FirebaseFirestore */,
 				5C36B34727E8CBAF0039A50E /* FirebaseStorage */,
 				5C3C880927EB8DD9005BECA1 /* Lottie */,
-				5CF401A62821ACCB008C27D2 /* SVGKitSwift */,
-				5CF401A92821ADE8008C27D2 /* SVGKit */,
-				5CF401AB2821ADE8008C27D2 /* SVGKitSwift */,
+				5C9044A92821D52B00884743 /* SVGKitSwift */,
 			);
 			productName = EATWidget;
 			productReference = 5C63083527B2B44800AC2A24 /* EATWidget.app */;
@@ -1042,8 +1023,7 @@
 			packageReferences = (
 				5C36B34027E8CBAF0039A50E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5C3C880827EB8DD8005BECA1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				5CF401A52821ACCB008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */,
-				5CF401A82821ADE8008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */,
+				5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = 5C63083627B2B44800AC2A24 /* Products */;
 			projectDirPath = "";
@@ -1062,7 +1042,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CBC06B627BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
-				5C8C6A0127C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06AA27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
 				5C63084027B2B44900AC2A24 /* Preview Assets.xcassets in Resources */,
 				5C035EC427B5B43500A11697 /* Opensea.png in Resources */,
@@ -1103,11 +1082,9 @@
 				5C1A4AA127FE010400A31223 /* tutorial-b-w-02.mov in Resources */,
 				5C36B35427E9111E0039A50E /* spinner-03.json in Resources */,
 				5C1A4AA027FE010400A31223 /* tutorial-w-b-05.mov in Resources */,
-				5CF401A42821ABCA008C27D2 /* test.svg in Resources */,
 				5C1A4AA727FE010400A31223 /* tutorial-w-b-02.mov in Resources */,
 				5C63083D27B2B44900AC2A24 /* Assets.xcassets in Resources */,
 				5C1A4A9F27FE010400A31223 /* tutorial-w-b-04.mov in Resources */,
-				5CB2023527C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B027BC5BC300C2CADD /* eat-w-b-04.png in Resources */,
 				5CBC06A127BC5BC300C2CADD /* eat-w-b-06.png in Resources */,
 				5CBC06BC27BC5BC300C2CADD /* eat-w-b-05.png in Resources */,
@@ -1121,7 +1098,6 @@
 				5CBC069C27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
 				5C035EF127B6D17900A11697 /* Discord.png in Resources */,
 				5CBC06AE27BC5BC300C2CADD /* eat-w-b-02.png in Resources */,
-				5C8C6A0227C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A827BC5BC300C2CADD /* eat-b-w-06.png in Resources */,
 				5CBC06B427BC5BC300C2CADD /* eat-w-b-03.png in Resources */,
 				5CBC06C327BC5BC300C2CADD /* eat-w-b-01.png in Resources */,
@@ -1139,7 +1115,6 @@
 				5CBC06B727BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
 				5C6308BA27B2DA1200AC2A24 /* Placeholder.png in Resources */,
 				5CBC06B127BC5BC300C2CADD /* eat-w-b-04.png in Resources */,
-				5CB2023627C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5C035EC827B5B43500A11697 /* Etherscan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1152,12 +1127,10 @@
 				5CBC06C727BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
 				5CBC06A627BC5BC300C2CADD /* eat-b-w-01.png in Resources */,
 				5CBC06AF27BC5BC300C2CADD /* eat-w-b-02.png in Resources */,
-				5CB2023727C9C9DA0026A3D3 /* circle.svg in Resources */,
 				5CBC06B227BC5BC300C2CADD /* eat-w-b-04.png in Resources */,
 				5CBC06AC27BC5BC300C2CADD /* eat-b-w-02.png in Resources */,
 				5CBC06B527BC5BC300C2CADD /* eat-w-b-03.png in Resources */,
 				5CBC06C127BC5BC300C2CADD /* eat-b-w-04.png in Resources */,
-				5C8C6A0327C7249100D66BD7 /* everyicon-test.svg in Resources */,
 				5CBC06A027BC5BC300C2CADD /* eat-b-w-00.png in Resources */,
 				5CBC06B827BC5BC300C2CADD /* eat-w-b-00.png in Resources */,
 				5CF2B9AA27F622E900D25388 /* eat-artifact-00.png in Resources */,
@@ -1751,15 +1724,7 @@
 				minimumVersion = 3.3.0;
 			};
 		};
-		5CF401A52821ACCB008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SVGKit/SVGKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		5CF401A82821ADE8008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+		5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SVGKit/SVGKit";
 			requirement = {
@@ -1795,19 +1760,9 @@
 			package = 5C3C880827EB8DD8005BECA1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		5CF401A62821ACCB008C27D2 /* SVGKitSwift */ = {
+		5C9044A92821D52B00884743 /* SVGKitSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5CF401A52821ACCB008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKitSwift;
-		};
-		5CF401A92821ADE8008C27D2 /* SVGKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5CF401A52821ACCB008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */;
-			productName = SVGKit;
-		};
-		5CF401AB2821ADE8008C27D2 /* SVGKitSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5CF401A52821ACCB008C27D2 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			package = 5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

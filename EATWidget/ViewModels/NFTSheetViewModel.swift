@@ -67,51 +67,51 @@ final class NFTSheetViewModel: ObservableObject {
     }
 
     private func resolveActionButtons() -> Void {
-        var buttonsToSet = [ActionRowButton]()
+//        var buttonsToSet = [ActionRowButton]()
 
-        if nft == nil {
-            actionButtons = buttonsToSet
-            return
-        }
-        
-        if nft!.externalUrl != nil {
-            buttonsToSet.append(
-                ActionRowButton(
-                    target: .Other,
-                    url: nft!.externalUrl!
-                )
-            )
-        }
-
-        // TODO: Figure out how to convert the tokenId
-//        if nft!.openseaUrl != nil {
+//        if nft == nil {
+//            actionButtons = buttonsToSet
+//            return
+//        }
+//
+//        if nft!.externalUrl != nil {
 //            buttonsToSet.append(
 //                ActionRowButton(
-//                    target: .Opensea,
-//                    url: nft!.openseaUrl!
+//                    target: .Other,
+//                    url: nft!.externalUrl!
 //                )
 //            )
 //        }
-        
-        if nft!.twitterUrl != nil {
-            buttonsToSet.append(
-                ActionRowButton(
-                    target: .Twitter,
-                    url: nft!.twitterUrl!
-                )
-            )
-        }
-        
-        if nft!.discordUrl != nil {
-            buttonsToSet.append(
-                ActionRowButton(
-                    target: .Discord,
-                    url: nft!.discordUrl!
-                )
-            )
-        }
+//
+//        // TODO: Figure out how to convert the tokenId
+////        if nft!.openseaUrl != nil {
+////            buttonsToSet.append(
+////                ActionRowButton(
+////                    target: .Opensea,
+////                    url: nft!.openseaUrl!
+////                )
+////            )
+////        }
+//
+//        if nft!.twitterUrl != nil {
+//            buttonsToSet.append(
+//                ActionRowButton(
+//                    target: .Twitter,
+//                    url: nft!.twitterUrl!
+//                )
+//            )
+//        }
+//
+//        if nft!.discordUrl != nil {
+//            buttonsToSet.append(
+//                ActionRowButton(
+//                    target: .Discord,
+//                    url: nft!.discordUrl!
+//                )
+//            )
+//        }
     
-        actionButtons = buttonsToSet
+//        actionButtons = buttonsToSet
     }
     
     

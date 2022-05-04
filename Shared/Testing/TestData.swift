@@ -15,9 +15,17 @@ struct TestData {
         address: "0x0000000000000000",
         title: "Every Icon",
         text: "A re-imagining of Every Icon, John F. Simon Jr.'s seminal web-based software art work first released in 1997.  This blockchain-native, on-chain expression was created by John F. Simon Jr. and divergence, in collaboration with FingerprintsDAO and e•a•t•}works",
-        links: [ExternalLink](),
+        
         banner: UIImage(named: "Placeholder")!,
-        thumbnail: UIImage(named: "Placeholder")!
+        thumbnail: UIImage(named: "Placeholder")!,
+        
+        twitterUrl: nil,
+        instagramUrl: nil,
+        wikiUrl: nil,
+        discordUrl: nil,
+        chatUrl: nil,
+        openseaUrl: nil,
+        externalUrl: nil
     )
     
     static let nft: NFT = NFT(
@@ -30,9 +38,8 @@ struct TestData {
         animationUrl: URL(string: "https://res.cloudinary.com/nifty-gateway/video/upload/v1613068880/A/SuperPlastic/Kranky_Metal_As_Fuck_Black_Edition_Superplastic_X_SketOne_wyhzcf_hivljh.mp4"),
         simulationUrl: URL(string: "https://everyicon.xyz/icon/?tokenId=40"),
         
-        twitterUrl: nil,
-        discordUrl: nil,
         openseaUrl: nil,
+        
         externalUrl: nil,
         metadataUrl: nil,
         

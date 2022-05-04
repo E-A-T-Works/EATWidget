@@ -79,22 +79,43 @@ final class HomePageViewModel: ObservableObject {
 
                        return Collection(
                             id: item.address!,
+                            
                             address: item.address!,
+                            
                             title: item.title!,
                             text: item.text,
-                            links: [],
+                            
                             banner: item.banner != nil ? UIImage(data: (item.banner?.blob)!)! : nil,
-                            thumbnail: item.thumbnail != nil ? UIImage(data: (item.thumbnail?.blob)!)! : nil
+                            thumbnail: item.thumbnail != nil ? UIImage(data: (item.thumbnail?.blob)!)! : nil,
+                            
+                            twitterUrl: item.twitterUrl,
+                            instagramUrl: item.instagramUrl,
+                            wikiUrl: item.wikiUrl,
+                            discordUrl: item.discordUrl,
+                            chatUrl: item.chatUrl,
+                            openseaUrl: item.openseaUrl,
+                            
+                            externalUrl: item.externalUrl
                        )
                     } else {
                        return Collection(
                             id: address,
                             address: address,
+                            
                             title: address.formattedWeb3,
                             text: "",
-                            links: [],
+                            
                             banner: nil,
-                            thumbnail: nil
+                            thumbnail: nil,
+                            
+                            twitterUrl: nil,
+                            instagramUrl: nil,
+                            wikiUrl: nil,
+                            discordUrl: nil,
+                            chatUrl: nil,
+                            openseaUrl: nil,
+                            
+                            externalUrl: nil
                        )
                     }
                 }

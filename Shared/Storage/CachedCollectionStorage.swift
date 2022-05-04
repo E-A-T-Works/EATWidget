@@ -106,12 +106,14 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             newObject.banner = banner
             newObject.thumbnail = thumbnail
           
-            newObject.chatUrl = data.links.first(where: { $0.target == .Chat })?.url
-            newObject.discordUrl = data.links.first(where: { $0.target == .Discord })?.url
-            newObject.wikiUrl = data.links.first(where: { $0.target == .Wiki })?.url
-            newObject.externalUrl = data.links.first(where: { $0.target == .Other })?.url
-            newObject.twitterUrl = data.links.first(where: { $0.target == .Twitter })?.url
-            newObject.instagramUrl = data.links.first(where: { $0.target == .Instagram })?.url
+            newObject.twitterUrl = data.twitterUrl
+            newObject.instagramUrl = data.instagramUrl
+            newObject.wikiUrl = data.wikiUrl
+            newObject.discordUrl = data.discordUrl
+            newObject.chatUrl = data.chatUrl
+            newObject.openseaUrl = data.openseaUrl
+            
+            newObject.externalUrl = data.externalUrl
         }
         
         //
@@ -151,12 +153,14 @@ final class CachedCollectionStorage: NSObject, ObservableObject {
             cached.banner = banner
             cached.thumbnail = thumbnail
           
-            cached.chatUrl = update!.links.first(where: { $0.target == .Chat })?.url
-            cached.discordUrl = update!.links.first(where: { $0.target == .Discord })?.url
-            cached.wikiUrl = update!.links.first(where: { $0.target == .Wiki })?.url
-            cached.externalUrl = update!.links.first(where: { $0.target == .Other })?.url
-            cached.twitterUrl = update!.links.first(where: { $0.target == .Twitter })?.url
-            cached.instagramUrl = update!.links.first(where: { $0.target == .Instagram })?.url
+            cached.twitterUrl = update!.twitterUrl
+            cached.instagramUrl = update!.instagramUrl
+            cached.wikiUrl = update!.wikiUrl
+            cached.discordUrl = update!.discordUrl
+            cached.chatUrl = update!.chatUrl
+            cached.openseaUrl = update!.openseaUrl
+            
+            cached.externalUrl = update!.externalUrl
             
         }
         

@@ -36,8 +36,6 @@ struct PersistenceController {
         newNFT.simulationUrl = TestData.nft.simulationUrl
         newNFT.animationUrl = TestData.nft.animationUrl
         
-        newNFT.discordUrl = TestData.nft.discordUrl
-        newNFT.twitterUrl = TestData.nft.twitterUrl
         newNFT.externalUrl = TestData.nft.externalUrl
         newNFT.metadataUrl = TestData.nft.metadataUrl
         

@@ -69,15 +69,22 @@ final class APIAlchemyProvider {
             let list = response.ownedNfts.map { raw in
                 return API_NFT(
                     id: "\(raw.contract.address)/\(raw.id.tokenId)",
+                    
                     address: raw.contract.address,
                     tokenId: raw.id.tokenId,
+                    
                     collection: nil,
+                    
                     title: raw.title,
                     text: raw.text,
+                    
                     imageUrl: nil,
                     animationUrl: nil,
+                    
+                    openseaUrl: nil,
+                    externalUrl: nil,
                     metadataUrl: nil,
-                    permalink: nil,
+                    
                     attributes: [API_NFT_Attribute]()
                 )
                 

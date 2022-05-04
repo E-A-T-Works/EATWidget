@@ -76,7 +76,7 @@ final class CachedNFTStorage: NSObject, ObservableObject {
 
         toCreate.forEach { data in
             
-            guard let imageBlob = data.image.jpegData(compressionQuality: 0.25) else { return }
+            guard let imageBlob = data.image.jpegData(compressionQuality: 1.0) else { return }
             
             let cachedImage = CachedImage(context: context)
             cachedImage.blob = imageBlob
@@ -90,15 +90,14 @@ final class CachedNFTStorage: NSObject, ObservableObject {
             newObject.text = data.text
 
             newObject.image = cachedImage
-            newObject.simulationUrl = data.simulationUrl
             newObject.animationUrl = data.animationUrl
-
-            newObject.twitterUrl = data.twitterUrl
-            newObject.discordUrl = data.discordUrl
+            newObject.simulationUrl = data.simulationUrl
+            
             newObject.openseaUrl = data.openseaUrl
+
             newObject.externalUrl = data.externalUrl
             newObject.metadataUrl = data.metadataUrl
-
+                        
             newObject.wallet = wallet
 
             newObject.timestamp = Date()
@@ -126,18 +125,24 @@ final class CachedNFTStorage: NSObject, ObservableObject {
         }
 
         toUpdate.forEach { cached in
+            
             let update = list.first { $0.address == cached.address && $0.tokenId == cached.tokenId }
             guard update != nil else { return }
+            
+            guard let imageBlob = update!.image.jpegData(compressionQuality: 1.0) else { return }
+            
+            let cachedImage = CachedImage(context: context)
+            cachedImage.blob = imageBlob
 
             cached.title = update!.title
             cached.text = update!.text
             
-            cached.simulationUrl = update!.simulationUrl
+            cached.image = cachedImage
             cached.animationUrl = update!.animationUrl
+            cached.simulationUrl = update!.simulationUrl
 
-            cached.twitterUrl = update!.twitterUrl
-            cached.discordUrl = update!.discordUrl
             cached.openseaUrl = update!.openseaUrl
+            
             cached.externalUrl = update!.externalUrl
             cached.metadataUrl = update!.metadataUrl
         }

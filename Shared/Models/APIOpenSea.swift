@@ -21,6 +21,7 @@ struct APIOpenSeaCollection {
     let discordUrl: URL?
     let telegramUrl: URL?
     let wikiUrl: URL?
+    let openseaUrl: URL?
     let externalUrl: URL?
     
     let twitterUsername: String?
@@ -37,7 +38,8 @@ extension APIOpenSeaCollection: Decodable {
         case discordUrl = "discord_url"
         case telegramUrl = "telegram_url"
         case wikiUrl = "wiki_url"
-        case externalUrl = "external_link"
+        case openseaUrl = "permalink"
+        case externalUrl = "slug"
         case twitterUsername = "twitter_username"
         case instagramUsername = "instagram_username"
     }
@@ -55,6 +57,8 @@ extension APIOpenSeaCollection: Decodable {
         discordUrl = (try? URL(string: container.decode(String.self, forKey: .discordUrl))) ?? nil
         telegramUrl = (try? URL(string: container.decode(String.self, forKey: .telegramUrl))) ?? nil
         wikiUrl = (try? URL(string: container.decode(String.self, forKey: .wikiUrl))) ?? nil
+        openseaUrl = (try? URL(string: "https://opensea.io/collection/\(container.decode(String.self, forKey: .openseaUrl))")) ?? nil
+    
         externalUrl = (try? URL(string: container.decode(String.self, forKey: .externalUrl))) ?? nil
         
         twitterUsername = (try? container.decode(String.self, forKey: .twitterUsername)) ?? nil

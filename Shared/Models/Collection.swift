@@ -16,9 +16,16 @@ struct Collection: Identifiable, Hashable {
     
     let title: String?
     let text: String?
-    
-    let links: [ExternalLink]
-    
+
     let banner: UIImage?
     let thumbnail: UIImage?
+    
+    let twitterUrl: URL?
+    let instagramUrl: URL?
+    let wikiUrl: URL?
+    let discordUrl: URL?
+    let chatUrl: URL?
+    let openseaUrl: URL?
+    
+    let externalUrl: URL?
 }
