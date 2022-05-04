@@ -18,6 +18,7 @@ struct NFTVisual: View {
     let animationUrl: URL?
     let simulationUrl: URL?
     
+    @State var contentMode: ContentMode = .fit
 
     var body: some View {
         ZStack {
@@ -29,7 +30,15 @@ struct NFTVisual: View {
             } else {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: contentMode)
+                    .animation(.easeInOut, value: contentMode)
+                    .onTapGesture {
+                        if contentMode == .fit {
+                            contentMode = .fill
+                        } else {
+                            contentMode = .fit
+                        }
+                    }
             }
         }
     }
