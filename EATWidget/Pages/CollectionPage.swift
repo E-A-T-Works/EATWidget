@@ -64,6 +64,11 @@ struct CollectionPage: View {
                 .padding(.vertical)
             }
             
+            ActionRow(
+                list: viewModel.actionButtons
+            )
+            .padding(.vertical)
+            
             VStack {
                 HStack {
                 

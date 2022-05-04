@@ -58,60 +58,32 @@ final class NFTSheetViewModel: ObservableObject {
         let cached = nftStorage.fetch()
         nft = cached.first { $0.address == address && $0.tokenId == tokenId }
         
-        resolveAttributes()
         resolveActionButtons()
+        resolveAttributes()
+    }
+
+    private func resolveActionButtons() -> Void {
+        var buttonsToSet = [ActionRowButton]()
+
+        if (nft == nil) {
+            actionButtons = buttonsToSet
+            return
+        }
+
+        if nft!.openseaUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Opensea,
+                    url: nft!.openseaUrl!
+                )
+            )
+        }
+
+        actionButtons = buttonsToSet
     }
     
     private func resolveAttributes() -> Void {
         attributes = (nft?.attributes?.allObjects as? [CachedAttribute]) ?? []
-    }
-
-    private func resolveActionButtons() -> Void {
-//        var buttonsToSet = [ActionRowButton]()
-
-//        if nft == nil {
-//            actionButtons = buttonsToSet
-//            return
-//        }
-//
-//        if nft!.externalUrl != nil {
-//            buttonsToSet.append(
-//                ActionRowButton(
-//                    target: .Other,
-//                    url: nft!.externalUrl!
-//                )
-//            )
-//        }
-//
-//        // TODO: Figure out how to convert the tokenId
-////        if nft!.openseaUrl != nil {
-////            buttonsToSet.append(
-////                ActionRowButton(
-////                    target: .Opensea,
-////                    url: nft!.openseaUrl!
-////                )
-////            )
-////        }
-//
-//        if nft!.twitterUrl != nil {
-//            buttonsToSet.append(
-//                ActionRowButton(
-//                    target: .Twitter,
-//                    url: nft!.twitterUrl!
-//                )
-//            )
-//        }
-//
-//        if nft!.discordUrl != nil {
-//            buttonsToSet.append(
-//                ActionRowButton(
-//                    target: .Discord,
-//                    url: nft!.discordUrl!
-//                )
-//            )
-//        }
-    
-//        actionButtons = buttonsToSet
     }
     
     

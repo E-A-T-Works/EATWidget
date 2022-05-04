@@ -11,6 +11,7 @@ enum ActionRowButtonTarget {
     case Opensea
     case Etherscan
     case Twitter
+    case Instagram
     case Discord
     case Other
 }
@@ -27,6 +28,8 @@ struct ActionRowButton {
             return UIImage(named: "Etherscan")!
         case .Twitter:
             return UIImage(named: "Twitter")!
+        case .Instagram:
+            return UIImage(named: "Instagram")!
         case .Discord:
             return UIImage(named: "Discord")!
         case .Other:
@@ -42,6 +45,8 @@ struct ActionRowButton {
             return "Etherscan"
         case .Twitter:
             return "Twitter"
+        case .Instagram:
+            return "Instagram"
         case .Discord:
             return "Discord"
         case .Other:

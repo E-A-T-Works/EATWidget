@@ -51,11 +51,9 @@ extension NFTAdapters {
 
         var image: UIImage?
         if imageUrl.pathExtension.lowercased() == "svg" {
-            let svgImage: SVGKImage = SVGKImage(data: imageData)
-            svgImage.size = CGSize(width: 600, height: 600)
-            
+            guard let svgImage = SVGKImage(data: imageData) else {
+                return nil }
             image = svgImage.uiImage
-
         } else {
             image = UIImage(data: imageData)
         }

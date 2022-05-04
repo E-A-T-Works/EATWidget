@@ -28,10 +28,8 @@ struct URLButton: View {
             label: {
                 HStack{
                     Image(uiImage: image)
-                        .renderingMode(.template)
                         .resizable()
                         .scaledToFit()
-                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         .frame(width: 18, height:  18)
                     
                     if title != nil {

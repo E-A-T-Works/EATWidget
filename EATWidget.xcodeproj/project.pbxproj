@@ -193,7 +193,6 @@
 		5C84117D27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
 		5C84117E27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
 		5C84117F27B9A9620021008E /* AttributeBox+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C84117C27B9A9620021008E /* AttributeBox+Extensions.swift */; };
-		5C9044AA2821D52B00884743 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5C9044A92821D52B00884743 /* SVGKitSwift */; };
 		5C91BE0F27B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1027B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
 		5C91BE1127B43A27001074CE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE0E27B43A27001074CE /* Theme.swift */; };
@@ -273,6 +272,8 @@
 		5CE9CFA227B5771D00F29938 /* DerivedColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */; };
 		5CE9CFA327B57A5600F29938 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1927B468B0001074CE /* UIColor+Extensions.swift */; };
 		5CE9CFA427B57A5900F29938 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C91BE1627B45FA0001074CE /* UIImage+Extensions.swift */; };
+		5CEAF21428221837000E878E /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5CEAF21328221837000E878E /* SVGKitSwift */; };
+		5CEAF216282220BC000E878E /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAF215282220BC000E878E /* Instagram.png */; };
 		5CF2B98E27F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
 		5CF2B98F27F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
 		5CF2B99027F4A55E00D25388 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */; };
@@ -488,6 +489,7 @@
 		5CD2ADAE27B71B5000FDDAB3 /* SheetDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDismissButton.swift; sourceTree = "<group>"; };
 		5CE9CF9D27B5651200F29938 /* StaggeredGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaggeredGrid.swift; sourceTree = "<group>"; };
 		5CE9CF9F27B576BA00F29938 /* DerivedColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedColors.swift; sourceTree = "<group>"; };
+		5CEAF215282220BC000E878E /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
 		5CF2B98D27F4A55E00D25388 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		5CF2B99127F4CB7800D25388 /* APIOpenseaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenseaProvider.swift; sourceTree = "<group>"; };
 		5CF2B99327F5359900D25388 /* APIOpenSea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOpenSea.swift; sourceTree = "<group>"; };
@@ -506,10 +508,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C9044AA2821D52B00884743 /* SVGKitSwift in Frameworks */,
 				5C36B34627E8CBAF0039A50E /* FirebaseFirestore in Frameworks */,
 				5C36B34427E8CBAF0039A50E /* FirebaseAuth in Frameworks */,
 				5C36B34827E8CBAF0039A50E /* FirebaseStorage in Frameworks */,
+				5CEAF21428221837000E878E /* SVGKitSwift in Frameworks */,
 				5C36B34227E8CBAF0039A50E /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				5C3C880A27EB8DD9005BECA1 /* Lottie in Frameworks */,
 			);
@@ -677,6 +679,7 @@
 				5C035EC227B5B43500A11697 /* Opensea.png */,
 				5C035EC327B5B43500A11697 /* Etherscan.png */,
 				5C035EEB27B6D15900A11697 /* Twitter.png */,
+				5CEAF215282220BC000E878E /* Instagram.png */,
 				5C035EEF27B6D17900A11697 /* Discord.png */,
 				5C1A4A9427FE010400A31223 /* tutorial-b-w-00.mov */,
 				5C1A4A9527FE010400A31223 /* tutorial-b-w-01.mov */,
@@ -946,7 +949,7 @@
 				5C36B34527E8CBAF0039A50E /* FirebaseFirestore */,
 				5C36B34727E8CBAF0039A50E /* FirebaseStorage */,
 				5C3C880927EB8DD9005BECA1 /* Lottie */,
-				5C9044A92821D52B00884743 /* SVGKitSwift */,
+				5CEAF21328221837000E878E /* SVGKitSwift */,
 			);
 			productName = EATWidget;
 			productReference = 5C63083527B2B44800AC2A24 /* EATWidget.app */;
@@ -1023,7 +1026,7 @@
 			packageReferences = (
 				5C36B34027E8CBAF0039A50E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5C3C880827EB8DD8005BECA1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */,
+				5CEAF21228221837000E878E /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = 5C63083627B2B44800AC2A24 /* Products */;
 			projectDirPath = "";
@@ -1063,6 +1066,7 @@
 				5C1A4AA327FE010400A31223 /* tutorial-b-w-01.mov in Resources */,
 				5CBC06C527BC5BC300C2CADD /* eat-b-w-03.png in Resources */,
 				5C1A4AAA27FE010400A31223 /* tutorial-b-w-04.mov in Resources */,
+				5CEAF216282220BC000E878E /* Instagram.png in Resources */,
 				5C36B35027E9111E0039A50E /* spinner-02.json in Resources */,
 				5C33D15527E8C53500EFD666 /* GoogleService-Info.plist in Resources */,
 				5CBC069B27BC5BC300C2CADD /* eat-b-w-05.png in Resources */,
@@ -1724,7 +1728,7 @@
 				minimumVersion = 3.3.0;
 			};
 		};
-		5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+		5CEAF21228221837000E878E /* XCRemoteSwiftPackageReference "SVGKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SVGKit/SVGKit";
 			requirement = {
@@ -1760,9 +1764,9 @@
 			package = 5C3C880827EB8DD8005BECA1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		5C9044A92821D52B00884743 /* SVGKitSwift */ = {
+		5CEAF21328221837000E878E /* SVGKitSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5C9044A82821D52B00884743 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			package = 5CEAF21228221837000E878E /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKitSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -23,15 +23,13 @@ struct SVGView:UIViewRepresentable
         
         uiView.image.size = size
     }
-    
-    
 }
 
 struct SVGImage_Previews: PreviewProvider {
     static var previews: some View {
         SVGView(
-            url: .constant(URL(string:"https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/android.svg")!),
-            size: .constant(CGSize(width: 100,height: 100))
+            url: .constant(URL(string: "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/android.svg")!),
+            size: .constant(CGSize(width: 100, height: 100))
         ).frame(width: 100, height: 100)
     }
 }

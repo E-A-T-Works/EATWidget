@@ -23,6 +23,8 @@ final class CollectionPageViewModel: ObservableObject {
         
     @Published private(set) var collection: CachedCollection?
     
+    @Published private(set) var actionButtons: [ActionRowButton] = []
+    
     @Published private(set) var collected: [CachedNFT] = []
     @Published private(set) var everything: [NFT] = []
     
@@ -49,6 +51,7 @@ final class CollectionPageViewModel: ObservableObject {
     
     private func load() {
         fetchCollection()
+        resolveActionButtons()
         fetchCollectedNFTs()
         fetchAllNFTs()
     }
@@ -57,6 +60,53 @@ final class CollectionPageViewModel: ObservableObject {
     private func fetchCollection() {
         let cached = collectionStorage.fetch()
         collection = cached.first { $0.address == address }
+    }
+    
+    private func resolveActionButtons() -> Void {
+        var buttonsToSet = [ActionRowButton]()
+
+        if (collection == nil) {
+            actionButtons = buttonsToSet
+            return
+        }
+
+        if collection!.openseaUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Opensea,
+                    url: collection!.openseaUrl!
+                )
+            )
+        }
+        
+        if collection!.discordUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Discord,
+                    url: collection!.discordUrl!
+                )
+            )
+        }
+        
+        if collection!.twitterUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Twitter,
+                    url: collection!.twitterUrl!
+                )
+            )
+        }
+        
+        if collection!.instagramUrl != nil {
+            buttonsToSet.append(
+                ActionRowButton(
+                    target: .Instagram,
+                    url: collection!.instagramUrl!
+                )
+            )
+        }
+
+        actionButtons = buttonsToSet
     }
     
     private func fetchCollectedNFTs() {
