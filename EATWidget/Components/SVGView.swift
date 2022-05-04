@@ -27,9 +27,21 @@ struct SVGView:UIViewRepresentable
 
 struct SVGImage_Previews: PreviewProvider {
     static var previews: some View {
-        SVGView(
-            url: .constant(URL(string: "https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/android.svg")!),
-            size: .constant(CGSize(width: 100, height: 100))
-        ).frame(width: 100, height: 100)
+        VStack {
+            
+            SVGView(
+                url: .constant(
+                    URL(string: "https://openseauserdata.com/files/e80cb036156c095dddb9b92899610039.svg")!
+                ),
+                size: .constant(
+                    CGSize(width: 100, height: 100)
+                )
+            ).frame(width: 100, height: 100)
+            
+        }
+        .padding()
+        .background(.red)
+        .previewLayout(PreviewLayout.sizeThatFits)
+        
     }
 }
