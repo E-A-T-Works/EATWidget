@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import SVGKit
+import FirebaseStorage
+import FirebaseFunctions
 
 
 final class NFTAdapters {
@@ -33,16 +34,40 @@ final class NFTAdapters {
     private func normalize(for item: API_NFT) async -> NFT? {
         
         guard let imageUrl = item.imageUrl else { return nil }
-        guard let imageData = resolveImageData(item: item) else { return nil }
-        // enforce 10mb size limit
-        if imageData.count > (10 * 1_000_000) { return nil }
 
         var image: UIImage?
         if imageUrl.pathExtension.lowercased() == "svg" {
-            guard let svgImage = SVGKImage(data: imageData) else {
-                return nil }
-            image = svgImage.uiImage
+            
+            guard let svgImageData = resolveImageData(item: item) else { return nil }
+            if svgImageData.count > (10 * 1_000_000) { return nil }
+
+            let storage = Storage.storage()
+
+            let baseFilePath = "svg2png/\(item.address)"
+            let baseFileName = "\(item.tokenId)"
+            
+            let newMetadata = StorageMetadata()
+            newMetadata.contentType = "image/svg+xml"
+                        
+            let svgRef = storage.reference().child(baseFilePath).child("\(baseFileName).svg");
+            svgRef.putData(svgImageData, metadata: newMetadata)
+
+            
+            lazy var functions = Functions.functions()
+            let callable = functions.httpsCallable("convertSvgToPngFn")
+            
+            guard let _ = try? await callable.call(["address": item.address, "tokenId": item.tokenId]) else { return nil }
+            
+            let pngRef = storage.reference(withPath: "\(baseFileName).png")
+            guard let pngUrl = try? await pngRef.downloadURL() else { return nil }
+
+            guard let pngImageData = try? Data(contentsOf: pngUrl) else { return nil }
+            image = UIImage(data: pngImageData)
+            
         } else {
+            guard let imageData = resolveImageData(item: item) else { return nil }
+            // enforce 10mb size limit
+            if imageData.count > (10 * 1_000_000) { return nil }
             image = UIImage(data: imageData)
         }
         
@@ -97,20 +122,7 @@ extension NFTAdapters {
         //
         // everyicon
         case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
-            guard let metadataUrl = item.metadataUrl else { return nil }
-            let base64EncodedMetadata = metadataUrl.absoluteString.replacingOccurrences(of: "data:application/json;base64,", with: "")
-            guard let decodedData = Data(base64Encoded: base64EncodedMetadata) else { return nil }
-            guard let jsonData = try? JSONSerialization.jsonObject(with: decodedData, options : .allowFragments) as? Dictionary<String,Any> else { return nil }
-            
-            guard let jsonSVGString = jsonData["image"] as? String else { return nil }
-            
-            let svgString = jsonSVGString
-                .replacingOccurrences(of: "data:image/svg+xml,", with: "")
-                .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
-                .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
-                .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
-                .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'")
-            
+            guard let svgString = resolveSVGString(item: item) else { return nil }
             let svgData: Data = svgString.data(using: .utf8)!
 
             return svgData
@@ -136,5 +148,56 @@ extension NFTAdapters {
             
             return imageData
         }
+    }
+    
+    
+    private func resolveSVGString(item: API_NFT) -> String? {
+        let address = item.address
+        
+        guard let imageUrl = item.imageUrl else { return nil }
+        if imageUrl.pathExtension.lowercased() != "svg" { return nil }
+
+        switch address {
+        //
+        // everyicon
+        case "0xf9a423b86afbf8db41d7f24fa56848f56684e43f":
+            guard let metadataUrl = item.metadataUrl else { return nil }
+            let base64EncodedMetadata = metadataUrl.absoluteString.replacingOccurrences(of: "data:application/json;base64,", with: "")
+            guard let decodedData = Data(base64Encoded: base64EncodedMetadata) else { return nil }
+            guard let jsonData = try? JSONSerialization.jsonObject(with: decodedData, options : .allowFragments) as? Dictionary<String,Any> else { return nil }
+            
+            guard let jsonSVGString = jsonData["image"] as? String else { return nil }
+            
+            let svgString = jsonSVGString
+                .replacingOccurrences(of: "data:image/svg+xml,", with: "")
+                .replacingOccurrences(of: "<svg width='512' height='512'", with: "<svg viewBox='0 0 512 512' width='512' height='512'")
+                .replacingOccurrences(of: "<style>rect{width:16px;height:16px;stroke-width:1px;stroke:#c4c4c4}.b{fill:#000}.w{fill:#fff}</style>", with: "")
+                .replacingOccurrences(of: "class='b'", with: "fill='#000000'")
+                .replacingOccurrences(of: "class='w'", with: "fill='#ffffff'")
+                .replacingOccurrences(of: "<rect", with: "<rect stroke='#c4c4c4' stroke-width='1' width='16' height='16'")
+            
+            return svgString
+          
+        default:
+            let svgString = try? String(contentsOf: item.imageUrl!)
+
+            return svgString
+        }
+    }
+    
+    
+    
+    private func snapshotImage(for layer: CALayer) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.bounds.size, false, UIScreen.main.scale)
+        
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        
+        layer.render(in: context)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return image
     }
 }
