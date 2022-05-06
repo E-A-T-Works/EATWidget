@@ -56,11 +56,13 @@ final class NFTAdapters {
             lazy var functions = Functions.functions()
             let callable = functions.httpsCallable("convertSvgToPngFn")
             
-            guard let _ = try? await callable.call(["address": item.address, "tokenId": item.tokenId]) else { return nil }
+            guard let result = try? await callable.call(["address": item.address, "tokenId": item.tokenId]) else { return nil }
             
-            let pngRef = storage.reference(withPath: "\(baseFileName).png")
-            guard let pngUrl = try? await pngRef.downloadURL() else { return nil }
-
+            guard let resultData = result.data as? [String: Any] else { return nil }
+            guard let pngUrlRaw = resultData["url"] as? String else { return nil }
+            
+            guard let pngUrl = URL(string: pngUrlRaw) else { return nil }
+            
             guard let pngImageData = try? Data(contentsOf: pngUrl) else { return nil }
             image = UIImage(data: pngImageData)
             
