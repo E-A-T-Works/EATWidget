@@ -72,11 +72,11 @@ struct NFTSheet: View {
                             NFTDetails(
                                 address: viewModel.nft?.address ?? "--",
                                 tokenId: viewModel.nft?.tokenId ?? "--",
-                                standard: viewModel.nft?.standard
+                                standard: viewModel.nft?.standard,
+                                wallet: viewModel.nft?.wallet?.title ?? viewModel.nft?.wallet?.address
                             )
                                 .padding([.bottom], spacing)
                             
-                    
                             if(viewModel.nft?.metadataUrl != nil) {
                                 HStack(alignment: .center) {
                                     Spacer()

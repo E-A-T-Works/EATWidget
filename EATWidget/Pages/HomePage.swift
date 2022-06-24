@@ -137,7 +137,7 @@ struct HomePage: View {
                             
                         } else {
                             
-                            Link(destination: URL(string: "https://discord.gg/tmaddD9C")!) {
+                            Link(destination: URL(string: "https://discord.gg/3StEnPGwY8")!) {
                                 
                                 Image(uiImage: UIImage(named: "Discord")!)
                                     .resizable()

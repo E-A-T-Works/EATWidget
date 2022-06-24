@@ -12,6 +12,7 @@ struct NFTDetails: View {
     let address: String
     let tokenId: String
     let standard: String?
+    let wallet: String?
     
     var body: some View {
         
@@ -28,6 +29,10 @@ struct NFTDetails: View {
                     TableItem(key: "Token Standard", value: standard!)
                 }
                 
+                if wallet != nil {
+                    TableItem(key: "Wallet", value: wallet!)
+                }
+                
             }
         }
         
@@ -42,7 +47,8 @@ struct NFTDetails_Previews: PreviewProvider {
             NFTDetails(
                 address: TestData.nft.address,
                 tokenId: TestData.nft.tokenId,
-                standard: ""
+                standard: "",
+                wallet: ""
             )
         }
         .padding()

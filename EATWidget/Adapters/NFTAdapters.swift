@@ -46,25 +46,43 @@ final class NFTAdapters {
             let baseFilePath = "svg2png/\(item.address)"
             let baseFileName = "\(item.tokenId)"
             
-            let newMetadata = StorageMetadata()
-            newMetadata.contentType = "image/svg+xml"
-                        
+            // check if the png exists already and download it
+            
             let svgRef = storage.reference().child(baseFilePath).child("\(baseFileName).svg");
-            svgRef.putData(svgImageData, metadata: newMetadata)
+            let pngRef = storage.reference().child(baseFilePath).child("\(baseFileName).png");
+            
+            
+            do {
+                
+                let pngUrl = try await pngRef.downloadURL()
+                guard let pngImageData = try? Data(contentsOf: pngUrl) else { return nil }
+                image = UIImage(data: pngImageData)
+                
+            } catch {
+                
+                let newMetadata = StorageMetadata()
+                newMetadata.contentType = "image/svg+xml"
+                            
+                svgRef.putData(svgImageData, metadata: newMetadata)
 
-            
-            lazy var functions = Functions.functions()
-            let callable = functions.httpsCallable("convertSvgToPngFn")
-            
-            guard let result = try? await callable.call(["address": item.address, "tokenId": item.tokenId]) else { return nil }
-            
-            guard let resultData = result.data as? [String: Any] else { return nil }
-            guard let pngUrlRaw = resultData["url"] as? String else { return nil }
-            
-            guard let pngUrl = URL(string: pngUrlRaw) else { return nil }
-            
-            guard let pngImageData = try? Data(contentsOf: pngUrl) else { return nil }
-            image = UIImage(data: pngImageData)
+                sleep(1)
+                
+                lazy var functions = Functions.functions()
+                let callable = functions.httpsCallable("convertSvgToPngFn")
+                
+                guard let result = try? await callable.call(["address": item.address, "tokenId": item.tokenId]) else { return nil }
+                
+                guard let resultData = result.data as? [String: Any] else { return nil }
+                guard let pngUrlRaw = resultData["url"] as? String else { return nil }
+                
+                guard let pngUrl = URL(string: pngUrlRaw) else { return nil }
+                
+                sleep(1)
+                
+                guard let pngImageData = try? Data(contentsOf: pngUrl) else { return nil }
+                image = UIImage(data: pngImageData)
+                
+            }
             
         } else {
             guard let imageData = resolveImageData(item: item) else { return nil }

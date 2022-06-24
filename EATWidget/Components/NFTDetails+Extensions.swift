@@ -12,5 +12,6 @@ extension NFTDetails {
         address = item.address
         tokenId = item.tokenId
         standard = ""
+        wallet = ""
     }
 }

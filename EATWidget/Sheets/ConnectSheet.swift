@@ -135,7 +135,7 @@ struct ConnectSheet: View {
                                 
                                 HStack {
                                     Link(
-                                        destination: URL(string: "https://discord.gg/tmaddD9C")!
+                                        destination: URL(string: "https://discord.gg/3StEnPGwY8")!
                                     ) {
                                         HStack {
                                             Text("Other suggestions? You can always drop us a note on Discord.")
@@ -187,7 +187,7 @@ struct ConnectSheet: View {
                                         .font(.system(size: 12, design: .monospaced))
                                     
                                     Link(
-                                        destination: URL(string: "https://discord.gg/tmaddD9C")!
+                                        destination: URL(string: "https://discord.gg/3StEnPGwY8")!
                                     ) {
                                         HStack {
                                             Text("Let us know")

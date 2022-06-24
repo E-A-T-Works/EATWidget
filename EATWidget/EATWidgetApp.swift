@@ -39,9 +39,9 @@ struct EATWidgetApp: App {
         /// Schedule background refresh
         ///
         
-        BGTaskScheduler.shared.register(forTaskWithIdentifier: "xyz.eatworks.EATWidget.tasks.refresh", using: nil) { [self] task in
-             self.handleAppRefresh(task: task as! BGAppRefreshTask)
-        }
+//        BGTaskScheduler.shared.register(forTaskWithIdentifier: "xyz.eatworks.EATWidget.tasks.refresh", using: nil) { [self] task in
+//             self.handleAppRefresh(task: task as! BGAppRefreshTask)
+//        }
     }
     
     var body: some Scene {
